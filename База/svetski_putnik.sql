@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 26, 2016 at 11:50 AM
+-- Generation Time: May 18, 2016 at 03:46 PM
 -- Server version: 5.7.9
 -- PHP Version: 5.6.16
 
@@ -26,7 +26,6 @@ SET time_zone = "+00:00";
 -- Table structure for table `administrator`
 --
 
-DROP TABLE IF EXISTS `administrator`;
 CREATE TABLE IF NOT EXISTS `administrator` (
   `IDKor` bigint(20) NOT NULL,
   PRIMARY KEY (`IDKor`)
@@ -38,7 +37,6 @@ CREATE TABLE IF NOT EXISTS `administrator` (
 -- Table structure for table `igra`
 --
 
-DROP TABLE IF EXISTS `igra`;
 CREATE TABLE IF NOT EXISTS `igra` (
   `IDIgr` bigint(20) NOT NULL AUTO_INCREMENT,
   `Poeni` int(11) NOT NULL,
@@ -57,7 +55,6 @@ CREATE TABLE IF NOT EXISTS `igra` (
 -- Table structure for table `licnost_pitanje`
 --
 
-DROP TABLE IF EXISTS `licnost_pitanje`;
 CREATE TABLE IF NOT EXISTS `licnost_pitanje` (
   `IDPit` bigint(20) NOT NULL,
   `Licnost` varchar(50) NOT NULL,
@@ -77,11 +74,17 @@ CREATE TABLE IF NOT EXISTS `licnost_pitanje` (
 -- Table structure for table `moderator`
 --
 
-DROP TABLE IF EXISTS `moderator`;
 CREATE TABLE IF NOT EXISTS `moderator` (
   `IDKor` bigint(20) NOT NULL,
   PRIMARY KEY (`IDKor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `moderator`
+--
+
+INSERT INTO `moderator` (`IDKor`) VALUES
+(1);
 
 -- --------------------------------------------------------
 
@@ -89,12 +92,20 @@ CREATE TABLE IF NOT EXISTS `moderator` (
 -- Table structure for table `nivo_tezine`
 --
 
-DROP TABLE IF EXISTS `nivo_tezine`;
 CREATE TABLE IF NOT EXISTS `nivo_tezine` (
   `IDNiv` bigint(20) NOT NULL AUTO_INCREMENT,
   `Naziv` varchar(20) NOT NULL,
   PRIMARY KEY (`IDNiv`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `nivo_tezine`
+--
+
+INSERT INTO `nivo_tezine` (`IDNiv`, `Naziv`) VALUES
+(1, 'Beba'),
+(2, 'Skolarac'),
+(3, 'Svetstki putnik');
 
 -- --------------------------------------------------------
 
@@ -102,12 +113,61 @@ CREATE TABLE IF NOT EXISTS `nivo_tezine` (
 -- Table structure for table `oblast`
 --
 
-DROP TABLE IF EXISTS `oblast`;
 CREATE TABLE IF NOT EXISTS `oblast` (
   `IDObl` bigint(20) NOT NULL AUTO_INCREMENT,
   `Naziv` varchar(50) NOT NULL,
   PRIMARY KEY (`IDObl`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=130 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `oblast`
+--
+
+INSERT INTO `oblast` (`IDObl`, `Naziv`) VALUES
+(1, 'Aljaska'),
+(2, 'Severozapadne teritorije'),
+(3, 'Grenland'),
+(4, 'Alberta'),
+(5, 'Ontario'),
+(6, 'Kvebek'),
+(7, 'Zapad(SAD)'),
+(8, 'Istok(SAD)'),
+(9, 'Meksiko'),
+(10, 'Kolumbija'),
+(11, 'Brazil'),
+(12, 'Peru'),
+(13, 'Patagonija'),
+(14, 'Skandinavija'),
+(15, 'Island'),
+(16, 'Velika Britanija'),
+(17, 'Zapadna Evropa'),
+(18, 'Ukrajina'),
+(19, 'JuÅ¾na Evropa'),
+(20, 'IstoÄna Evropa'),
+(21, 'Egipat'),
+(22, 'Severna Afrika'),
+(23, 'Kongo'),
+(24, 'IstoÄna Afrika'),
+(25, 'JuÅ¾na Afrika'),
+(26, 'Madagaskar'),
+(27, 'Indonezija'),
+(28, 'Filipini'),
+(29, 'Nova Gvineja'),
+(30, 'Novi Zeland'),
+(31, 'Zapadna Australija'),
+(32, 'IstoÄna Australija'),
+(33, 'Ural'),
+(34, 'Sibir'),
+(35, 'Jakutsk'),
+(36, 'Irkutsk'),
+(37, 'Mongolija'),
+(38, 'Japan'),
+(39, 'Kazahstan'),
+(40, 'Kina'),
+(41, 'Bliski Istok'),
+(42, 'Indija'),
+(43, 'Tajland'),
+(44, 'KamÄatka');
 
 -- --------------------------------------------------------
 
@@ -115,7 +175,6 @@ CREATE TABLE IF NOT EXISTS `oblast` (
 -- Table structure for table `osvajanje`
 --
 
-DROP TABLE IF EXISTS `osvajanje`;
 CREATE TABLE IF NOT EXISTS `osvajanje` (
   `IDIgr` bigint(20) NOT NULL,
   `IDObl` bigint(20) NOT NULL,
@@ -130,7 +189,6 @@ CREATE TABLE IF NOT EXISTS `osvajanje` (
 -- Table structure for table `pitanje`
 --
 
-DROP TABLE IF EXISTS `pitanje`;
 CREATE TABLE IF NOT EXISTS `pitanje` (
   `IdPit` bigint(20) NOT NULL AUTO_INCREMENT,
   `IdNiv` bigint(20) NOT NULL,
@@ -142,7 +200,7 @@ CREATE TABLE IF NOT EXISTS `pitanje` (
   KEY `IdNiv` (`IdNiv`),
   KEY `IDObl` (`IDObl`),
   KEY `IDKor` (`IDKor`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -150,13 +208,19 @@ CREATE TABLE IF NOT EXISTS `pitanje` (
 -- Table structure for table `reg_korisnik`
 --
 
-DROP TABLE IF EXISTS `reg_korisnik`;
 CREATE TABLE IF NOT EXISTS `reg_korisnik` (
   `IDKor` bigint(20) NOT NULL AUTO_INCREMENT,
   `Username` varchar(20) NOT NULL,
   `Password` varchar(20) NOT NULL,
   PRIMARY KEY (`IDKor`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `reg_korisnik`
+--
+
+INSERT INTO `reg_korisnik` (`IDKor`, `Username`, `Password`) VALUES
+(1, 'User', 'Pass');
 
 -- --------------------------------------------------------
 
@@ -164,7 +228,6 @@ CREATE TABLE IF NOT EXISTS `reg_korisnik` (
 -- Table structure for table `se_granici_sa`
 --
 
-DROP TABLE IF EXISTS `se_granici_sa`;
 CREATE TABLE IF NOT EXISTS `se_granici_sa` (
   `IDObl1` bigint(20) NOT NULL,
   `IDObl2` bigint(20) NOT NULL,
@@ -172,13 +235,168 @@ CREATE TABLE IF NOT EXISTS `se_granici_sa` (
   KEY `se_granici_sa_ibfk_2` (`IDObl2`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `se_granici_sa`
+--
+
+INSERT INTO `se_granici_sa` (`IDObl1`, `IDObl2`) VALUES
+(2, 1),
+(4, 1),
+(44, 1),
+(1, 2),
+(3, 2),
+(4, 2),
+(5, 2),
+(2, 3),
+(5, 3),
+(15, 3),
+(1, 4),
+(2, 4),
+(5, 4),
+(7, 4),
+(2, 5),
+(3, 5),
+(4, 5),
+(6, 5),
+(7, 5),
+(8, 5),
+(5, 6),
+(8, 6),
+(4, 7),
+(5, 7),
+(8, 7),
+(9, 7),
+(5, 8),
+(6, 8),
+(7, 8),
+(9, 8),
+(7, 9),
+(8, 9),
+(10, 9),
+(9, 10),
+(11, 10),
+(12, 10),
+(10, 11),
+(12, 11),
+(13, 11),
+(22, 11),
+(10, 12),
+(11, 12),
+(13, 12),
+(11, 13),
+(12, 13),
+(15, 14),
+(18, 14),
+(3, 15),
+(14, 15),
+(16, 15),
+(15, 16),
+(17, 16),
+(16, 17),
+(19, 17),
+(20, 17),
+(22, 17),
+(14, 18),
+(19, 18),
+(20, 18),
+(33, 18),
+(39, 18),
+(41, 18),
+(17, 19),
+(18, 19),
+(20, 19),
+(41, 19),
+(17, 20),
+(18, 20),
+(19, 20),
+(22, 21),
+(24, 21),
+(41, 21),
+(11, 22),
+(17, 22),
+(21, 22),
+(23, 22),
+(24, 22),
+(22, 23),
+(24, 23),
+(25, 23),
+(21, 24),
+(22, 24),
+(23, 24),
+(25, 24),
+(23, 25),
+(24, 25),
+(26, 25),
+(25, 26),
+(28, 27),
+(29, 27),
+(32, 27),
+(43, 27),
+(27, 28),
+(27, 29),
+(32, 30),
+(32, 31),
+(27, 32),
+(30, 32),
+(31, 32),
+(18, 33),
+(34, 33),
+(39, 33),
+(40, 33),
+(33, 34),
+(35, 34),
+(36, 34),
+(37, 34),
+(40, 34),
+(34, 35),
+(36, 35),
+(44, 35),
+(34, 36),
+(35, 36),
+(37, 36),
+(44, 36),
+(34, 37),
+(36, 37),
+(38, 37),
+(40, 37),
+(44, 37),
+(37, 38),
+(44, 38),
+(18, 39),
+(33, 39),
+(40, 39),
+(41, 39),
+(42, 39),
+(33, 40),
+(34, 40),
+(37, 40),
+(39, 40),
+(42, 40),
+(43, 40),
+(18, 41),
+(19, 41),
+(21, 41),
+(39, 41),
+(42, 41),
+(39, 42),
+(40, 42),
+(41, 42),
+(43, 42),
+(27, 43),
+(40, 43),
+(42, 43),
+(1, 44),
+(35, 44),
+(36, 44),
+(37, 44),
+(38, 44);
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `slika_pitanje`
 --
 
-DROP TABLE IF EXISTS `slika_pitanje`;
 CREATE TABLE IF NOT EXISTS `slika_pitanje` (
   `IDPit` bigint(20) NOT NULL,
   `Postavka` varchar(200) NOT NULL,
@@ -197,7 +415,6 @@ CREATE TABLE IF NOT EXISTS `slika_pitanje` (
 -- Table structure for table `takmicar`
 --
 
-DROP TABLE IF EXISTS `takmicar`;
 CREATE TABLE IF NOT EXISTS `takmicar` (
   `IDKor` bigint(20) NOT NULL,
   `Ime` varchar(20) NOT NULL,
@@ -212,7 +429,6 @@ CREATE TABLE IF NOT EXISTS `takmicar` (
 -- Table structure for table `tekst_pitanje`
 --
 
-DROP TABLE IF EXISTS `tekst_pitanje`;
 CREATE TABLE IF NOT EXISTS `tekst_pitanje` (
   `IDPit` bigint(20) NOT NULL,
   `Postavka` varchar(200) NOT NULL,
@@ -230,7 +446,6 @@ CREATE TABLE IF NOT EXISTS `tekst_pitanje` (
 -- Table structure for table `vredi_putnika`
 --
 
-DROP TABLE IF EXISTS `vredi_putnika`;
 CREATE TABLE IF NOT EXISTS `vredi_putnika` (
   `IDNiv` bigint(20) NOT NULL,
   `IDObl` bigint(20) NOT NULL,
