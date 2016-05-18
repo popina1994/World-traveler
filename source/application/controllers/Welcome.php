@@ -35,10 +35,8 @@ class Welcome extends CI_Controller {
 		
 		
 		//opcija1 za INSERT - napravila gotove funkcije
-		/*
-		$data = Array('username'=>'dragana', 'password'=>'d123' );
-		$this->Model->createModerator($data);
-		*/
+		//$data = Array('username'=>'Djordje', 'password'=>'Dj1234' );
+		//$this->Model->createModerator($data);
 		
 		//opcija2 za INSERT - rucno
 		/*

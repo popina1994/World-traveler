@@ -41,7 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-$autoload['packages'] = array();
+$autoload['packages'] = array(APPPATH.'models/entities/RegKorisnik.php');
 
 
 /*
@@ -61,7 +61,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
 
-$autoload['libraries'] = array();
+$autoload['libraries'] = array('form_validation', 'session', 'doctrine');
 
 
 /*
@@ -89,7 +89,7 @@ $autoload['drivers'] = array();
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array();
+$autoload['helper'] = array('url', 'html');
 
 
 /*
@@ -138,4 +138,4 @@ $autoload['language'] = array();
 |	$autoload['model'] = array('first_model' => 'first');
 */
 
-$autoload['model'] = array();
+$autoload['model'] = array('proxies/Model');
