@@ -1,10 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-include APPPATH.'models/entities/NivoTezine.php';
-include APPPATH.'models/entities/Moderator.php';
-include APPPATH.'models/entities/Administrator.php';
-include APPPATH.'models/entities/RegKorisnik.php';
+include_once  APPPATH.'models/entities/NivoTezine.php';
+include_once APPPATH.'models/entities/Moderator.php';
+include_once APPPATH.'models/entities/Administrator.php';
+include_once APPPATH.'models/entities/RegKorisnik.php';
+
+include_once APPPATH.'models/entities/Igra.php';
 class Welcome extends CI_Controller {
 
 	
@@ -30,13 +32,27 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		
+		
+	
+		
 		$this->load->library('doctrine');
 		$this->load->model('proxies/Model');
 		
 		
-		//opcija1 za INSERT - napravila gotove funkcije
 		/*
-		$data = Array('username'=>'dragana', 'password'=>'d123' );
+		$igra = $this->doctrine->em->find("Igra", 1);
+
+		
+		$osv = $igra->getIdosv();
+		foreach($osv as $osvajanje)
+			echo $osvajanje->getStatus();
+			
+		*/
+		
+		//opcija1 za INSERT - napravila gotove funkcije
+		
+		/*
+		$data = Array('username'=>'žćčđ', 'password'=>'d123' );
 		$this->Model->createModerator($data);
 		*/
 		
@@ -55,7 +71,12 @@ class Welcome extends CI_Controller {
 		}
 		 */
 		
-
+		
+		
+		//echo $this->doctrine->em->find("TekstPitanje", 1)->getIdpit()->getIdkor()->getIdkor()->getUsername();
+		//$slika = $this->doctrine->em->find("SlikaPitanje", 1)->getSlika();
+		//echo "<img src=$slika />";
+		
 		//pretraga po ID
 		//echo $this->doctrine->em->find("RegKorisnik", 2)->getUsername();
 		
@@ -65,7 +86,7 @@ class Welcome extends CI_Controller {
 		$users =  $this->doctrine->em->getRepository('RegKorisnik')->findBy(array('username' => 'dragana'));
 		foreach($users as $user) echo $user->getPassword();
 		*/
-		
 	}
+	
 	
 }
