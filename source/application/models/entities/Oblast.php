@@ -45,6 +45,13 @@ class Oblast
     private $idobl2;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\OneToMany(targetEntity="VrediPutnika", mappedBy="idobl")
+     */
+    private $idvp;
+
+    /**
      * Constructor
      */
     public function __construct()

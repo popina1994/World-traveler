@@ -1,11 +1,6 @@
 <?php
 require_once(APPPATH."models/entities/NivoTezine.php");
 require_once(APPPATH."models/entities/VrediPutnika.php");
-require_once(APPPATH."models/entities/SlikaPitanje.php");
-require_once(APPPATH."models/entities/TekstPitanje.php");
-require_once(APPPATH."models/entities/Pitanje.php");
-require_once(APPPATH."models/entities/LicnostPitanje.php");
-require_once(APPPATH."models/entities/Igra.php");
 
 class Model extends CI_Model {
 	 
@@ -20,72 +15,6 @@ class Model extends CI_Model {
 		$this->em = $this->doctrine->em;
 	}
 	 
-	function createIgra($data){
-	
-		$igra = new Igra();
-		$igra->setPoeni(0);
-		$igra->setPutnici($data['putnici']); //zadat pocetni broj
-		$igra->setStatus('n'); //nova igra, igra u toku
-		
-		$igra->setIdkor($data['idkor']);
-		$igra->setIdniv($data['idniv']);
-	
-		try {
-			//save to database
-			$this->em->persist($igra);
-			$this->em->flush();
-		}
-		catch(Exception $err){
-			die($err->getMessage());
-		}
-		return true;
-	
-	}
-	
-	//kad se napadne oblast
-	function createOsvajanje($data){
-	
-		$osvajanje = new Osvajanje();
-		$osvajanje->setStatus('z'); //zapoceto osvajanje
-		
-		$igra = $data['idigr'];
-		$oblast = $data['idobl'];
-		
-		$osvajanje->setIdigr($igra);
-		$osvajanje->setIdobl($oblast);
-	
-		$igra->addIdosv($osvajanje);
-		try {
-			//save to database
-			$this->em->persist($osvajanje);
-			$this->em->flush();
-			$this->em->persist($igra);
-			$this->em->flush();
-		}
-		catch(Exception $err){
-			die($err->getMessage());
-		}
-		return true;
-	
-	}
-	
-	//nakon osvajanja oblasti
-	function updateOsvajanje($osvajanje){
-	
-		$osvajanje->setStatus('o'); //osvojena
-		
-		try {
-			//save to database
-			$this->em->persist($osvajanje);
-			$this->em->flush();
-		}
-		catch(Exception $err){
-			die($err->getMessage());
-		}
-		return true;
-	
-	}
-	
 	
 	function createModerator($data){
 		
@@ -250,103 +179,6 @@ class Model extends CI_Model {
 		}
 		catch(Exception $err){
 	
-			die($err->getMessage());
-		}
-		return true;
-	}
-	
-	function createTekstPitanje($data){
-	
-		$pit = new Pitanje();
-		$pit->setBrnetacno(0);
-		$pit->setBrtacno(0);
-		$pit->setIdniv($data['idniv']);
-		$pit->setIdobl($data['idobl']);
-		$pit->setIdkor($data['idkor']);
-	
-		$tp = new TekstPitanje();
-		$tp->setIdpit($pit);
-		$tp->setOdgovor1($data['odgovor1']);
-		$tp->setOdgovor2($data['odgovor2']);
-		$tp->setOdgovor3($data['odgovor3']);
-		$tp->setOdgovor4($data['odgovor4']);
-		$tp->setPostavka($data['postavka']);
-		$tp->setTacanodgovor($data['tacan']);
-	
-		try {
-			//save to database
-			$this->em->persist($pit);
-			$this->em->flush();
-			$this->em->persist($tp);
-			$this->em->flush();
-		}
-		catch(Exception $err){
-			die($err->getMessage());
-		}
-		return true;
-	}
-	
-	function createSlikaPitanje($data){
-	
-		$pit = new Pitanje();
-		$pit->setBrnetacno(0);
-		$pit->setBrtacno(0);
-		$pit->setIdniv($data['idniv']);
-		$pit->setIdobl($data['idobl']);
-		$pit->setIdkor($data['idkor']);
-	
-		$sp = new SlikaPitanje();
-		$sp->setIdpit($pit);
-		$sp->setOdgovor1($data['odgovor1']);
-		$sp->setOdgovor2($data['odgovor2']);
-		$sp->setOdgovor3($data['odgovor3']);
-		$sp->setOdgovor4($data['odgovor4']);
-		$sp->setPostavka($data['postavka']);
-		$sp->setSlika($data['slika']);
-		$sp->setTacanodgovor($data['tacan']);
-	
-		try {
-			//save to database
-			$this->em->persist($pit);
-			$this->em->flush();
-			$this->em->persist($sp);
-			$this->em->flush();
-		}
-		catch(Exception $err){
-			die($err->getMessage());
-		}
-		return true;
-	}
-	
-	function createLicnostPitanje($data){
-	
-		$pit = new Pitanje();
-		$pit->setBrnetacno(0);
-		$pit->setBrtacno(0);
-		$pit->setIdniv($data['idniv']);
-		$pit->setIdobl($data['idobl']);
-		$pit->setIdkor($data['idkor']);
-	
-		$lp = new LicnostPitanje();
-		$lp->setIdpit($pit);
-		$lp->setLicnost($data['licnost']);
-		$lp->setSlika($data['slika']);
-		
-		$lp->setPodatak1($data['podatak1']);
-		$lp->setPodatak2($data['podatak2']);
-		$lp->setPodatak3($data['podatak3']);
-		$lp->setPodatak4($data['podatak4']);
-		$lp->setPodatak5($data['podatak5']);
-		$lp->setPodatak6($data['podatak6']);
-	
-		try {
-			//save to database
-			$this->em->persist($pit);
-			$this->em->flush();
-			$this->em->persist($lp);
-			$this->em->flush();
-		}
-		catch(Exception $err){
 			die($err->getMessage());
 		}
 		return true;
