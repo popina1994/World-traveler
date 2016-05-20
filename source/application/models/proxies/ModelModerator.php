@@ -1,6 +1,6 @@
 <?php
-require_once (APPPATH . "models/entities/Administrator.php");
-class ModelAdministrator extends CI_Model {
+require_once (APPPATH . "models/entities/Moderator.php");
+class ModelModerator extends CI_Model {
 	
 	/**
 	 *
@@ -13,7 +13,7 @@ class ModelAdministrator extends CI_Model {
 		$this->em = $this->doctrine->em;
 	}
 	
-	function createAdministrator($data) {
+	function createModerator($data) {
 		$user = $data ['username'];
 		$users = $this->em->getRepository ( 'RegKorisnik' )->findBy ( array (
 				'username' => $user 
@@ -24,14 +24,14 @@ class ModelAdministrator extends CI_Model {
 		$korisnik = new RegKorisnik ();
 		$korisnik->setUsername ( $data ['username'] );
 		$korisnik->setPassword ( $data ['password'] );
-		$admin = new Administrator ();
-		$admin->setIdkor ( $korisnik );
+		$mod = new Moderator ();
+		$mod->setIdkor ( $korisnik );
 		
 		try {
 			// save to database
 			$this->em->persist ( $korisnik );
 			$this->em->flush ();
-			$this->em->persist ( $admin );
+			$this->em->persist ( $mod );
 			$this->em->flush ();
 		} catch ( Exception $err ) {
 			die ( $err->getMessage () );
@@ -47,7 +47,7 @@ class ModelAdministrator extends CI_Model {
 				'password' => $password 
 		) );
 		if (count ( $users ) == 1) {
-			$admin = $this->doctrine->em->find ( "Administrator", $users [0]->getIdkor () );
+			$admin = $this->doctrine->em->find ( "Moderator", $users [0]->getIdkor () );
 			if ($admin == null)
 				return false;
 			else
@@ -56,7 +56,7 @@ class ModelAdministrator extends CI_Model {
 			return false;
 	}
 	
-	function getAdministrator($data) {
+	function getModerator($data) {
 		$username = $data ['username'];
 		$password = $data ['password'];
 		$users = $this->doctrine->em->getRepository ( 'RegKorisnik' )->findBy ( array (
@@ -64,7 +64,7 @@ class ModelAdministrator extends CI_Model {
 				'password' => $password 
 		) );
 		if (count ( $users ) == 1)
-			return $this->doctrine->em->find ( "Administrator", $users [0]->getIdkor () );
+			return $this->doctrine->em->find ( "Moderator", $users [0]->getIdkor () );
 		else
 			return null;
 	}

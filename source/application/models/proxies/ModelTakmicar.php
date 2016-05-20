@@ -1,6 +1,6 @@
 <?php
-require_once (APPPATH . "models/entities/Administrator.php");
-class ModelAdministrator extends CI_Model {
+require_once (APPPATH . "models/entities/Takmicar.php");
+class ModelTakmicar extends CI_Model {
 	
 	/**
 	 *
@@ -13,7 +13,7 @@ class ModelAdministrator extends CI_Model {
 		$this->em = $this->doctrine->em;
 	}
 	
-	function createAdministrator($data) {
+	function createTakmicar($data) {
 		$user = $data ['username'];
 		$users = $this->em->getRepository ( 'RegKorisnik' )->findBy ( array (
 				'username' => $user 
@@ -24,14 +24,19 @@ class ModelAdministrator extends CI_Model {
 		$korisnik = new RegKorisnik ();
 		$korisnik->setUsername ( $data ['username'] );
 		$korisnik->setPassword ( $data ['password'] );
-		$admin = new Administrator ();
-		$admin->setIdkor ( $korisnik );
+		$tak = new Takmicar ();
+		$tak->setIdkor ( $korisnik );
+		$tak->setIme ( $data ['ime'] );
+		$tak->setPrezime ( $data ['prezime'] );
+		
+		if (array_key_exists ( 'slika', $data ))
+			$tak->setSlika ( $data ['slika'] );
 		
 		try {
 			// save to database
 			$this->em->persist ( $korisnik );
 			$this->em->flush ();
-			$this->em->persist ( $admin );
+			$this->em->persist ( $tak );
 			$this->em->flush ();
 		} catch ( Exception $err ) {
 			die ( $err->getMessage () );
@@ -47,7 +52,7 @@ class ModelAdministrator extends CI_Model {
 				'password' => $password 
 		) );
 		if (count ( $users ) == 1) {
-			$admin = $this->doctrine->em->find ( "Administrator", $users [0]->getIdkor () );
+			$admin = $this->doctrine->em->find ( "Takmicar", $users [0]->getIdkor () );
 			if ($admin == null)
 				return false;
 			else
@@ -56,7 +61,7 @@ class ModelAdministrator extends CI_Model {
 			return false;
 	}
 	
-	function getAdministrator($data) {
+	function getTakmicar($data) {
 		$username = $data ['username'];
 		$password = $data ['password'];
 		$users = $this->doctrine->em->getRepository ( 'RegKorisnik' )->findBy ( array (
@@ -64,7 +69,7 @@ class ModelAdministrator extends CI_Model {
 				'password' => $password 
 		) );
 		if (count ( $users ) == 1)
-			return $this->doctrine->em->find ( "Administrator", $users [0]->getIdkor () );
+			return $this->doctrine->em->find ( "Takmicar", $users [0]->getIdkor () );
 		else
 			return null;
 	}
