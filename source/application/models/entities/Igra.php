@@ -1,7 +1,8 @@
 <?php
 
 include_once 'takmicar.php';
-
+include_once 'osvajanje.php';
+include_once 'nivotezine.php';
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -46,17 +47,9 @@ class Igra
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Oblast", inversedBy="idigr")
-     * @ORM\JoinTable(name="osvajanje",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="IDIgr", referencedColumnName="IDIgr")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="IDObl", referencedColumnName="IDObl")
-     *   }
-     * )
+     * @ORM\OneToMany(targetEntity="Osvajanje", mappedBy="idigr")
      */
-    private $idobl;
+    private $idosv;
 
     /**
      * @var \NivoTezine
@@ -83,7 +76,7 @@ class Igra
      */
     public function __construct()
     {
-        $this->idobl = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->idosv = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -166,36 +159,36 @@ class Igra
     }
 
     /**
-     * Add idobl
+     * Add idosv
      *
-     * @param \Oblast $idobl
+     * @param \Osvajanje $idosv
      * @return Igra
      */
-    public function addIdobl(\Oblast $idobl)
+    public function addIdosv(\Osvajanje $idosv)
     {
-        $this->idobl[] = $idobl;
+        $this->idosv[] = $idosv;
     
         return $this;
     }
 
     /**
-     * Remove idobl
+     * Remove idosv
      *
-     * @param \Oblast $idobl
+     * @param \Osvajanje $idosv
      */
-    public function removeIdobl(\Oblast $idobl)
+    public function removeIdosv(\Osvajanje $idosv)
     {
-        $this->idobl->removeElement($idobl);
+        $this->idosv->removeElement($idosv);
     }
 
     /**
-     * Get idobl
+     * Get idosv
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getIdobl()
+    public function getIdosv()
     {
-        return $this->idobl;
+        return $this->idosv;
     }
 
     /**
