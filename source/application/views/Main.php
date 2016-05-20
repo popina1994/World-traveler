@@ -2,8 +2,13 @@
 <html>
 <head>
         <script  src = "http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script type="text/javascript">
+        var BASE_URL = '<?= base_url(); ?>'
+      </script>
         <script type = 'text/javascript' src = "<?php echo base_url(); 
-            ?>js/Svetski_putnik.js"></script>
+            ?>js/Main.js"></script>
+
+            
   <link rel = "stylesheet" type = "text/css" 
     href = "<?php echo base_url(); ?>css/Svetski_putnik.css">
     
@@ -21,7 +26,8 @@
 		</div>
 		<div id="d1" >
                         <?php 
-                            $attrubutes = array('name'=>'prijava', 'class'=>'form-horizontal');
+                            $attrubutes = array('name'=>'loginForm', 'class'=>'form-horizontal',
+                                'id'=>'loginForm');
                             echo form_open('main/login', $attrubutes); ?>
                             <div class="control-group">
 				<table>
@@ -41,7 +47,7 @@
 						</td>
 						<td>
                                                     <div class="controls">
-							<input type="text" name="nameLogin" id="nameLogin1"  >
+							<input type="text" name="nameLogin" id="nameLogin"  >
                                                         <p class="help-block"></p>
                                                     </div>
 						</td>
@@ -53,7 +59,7 @@
 						</td>
 						<td>
                                                     <div class="controls">
-                                                    <input type="password" name="passLogin" id="passLogin1" >
+                                                    <input type="password" name="passLogin" id="passLogin" >
                                                         <p class="help-block"></p>
                                                     </div>
                                                 </td>
@@ -62,8 +68,8 @@
 					<tr>
 						<td colspan="2">
 							<div id="dugmici">
-								<button class="button2" id ="btOkLogIn" >OK</button>
-								<button class="button2" onclick="close1();">OTKAŽI</button>
+                                                            <button class="button2" id ="btOkLogIn" onclick="show1()" >OK</button>
+								<button class="button2" type="button" onclick="close1();">OTKAŽI</button>
 							</div>
 							
 						</td>

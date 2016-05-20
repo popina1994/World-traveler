@@ -17,9 +17,11 @@ class Main extends CI_Controller {
 			
 			
          /* Set validation rule for name field in the form */ 
-         $this->form_validation->set_rules('nameLogin', 'Name', 'required|callback_loginValidation'); 
-         $this->form_validation->set_rules('passLogin', 'Password', 'required|md5');		
+         $this->form_validation->set_rules('nameLogin', 'Name', 'required'); 
+         $this->form_validation->set_rules('passLogin', 'Password', 'required|md5|callback_loginValidation');		
          if ($this->form_validation->run() == FALSE) {
+             // In case JS is disableed.
+             //
             $this->load->view('WrongLogin.php'); 
          } 
          else {
@@ -36,15 +38,19 @@ class Main extends CI_Controller {
     }
     
     public function loginValidation() {
-        $username = $this->input->post("nameLogin");
+         if (!isset($_POST['nameLogin']))
+            return false;
+        
+        $username = $this->input->post('nameLogin');
         $password = $this->input->post("passLogin");
         $this->load->model('proxies/ModelRegKorisnik');
         if ($this->ModelRegKorisnik->canLogIn($data = array('user'=>$username, 'pass'=>$password)))
-                    return true;
+                   $return['userExists'] = true ;
              else  {
-                 $this->form_validation->set_message('loginValidation', 'Neispravno korisnicko ime');
-                 return false;
+                 $return['userExists'] = false;
              }
+        echo json_encode($return);
+        return true;
     }
     
     public function validation() {
