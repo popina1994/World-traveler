@@ -1,3 +1,13 @@
+var base_url = window.location.origin;
+$(document).ready(function(){   
+
+    $("#btOkLogIn").click(function()
+    {       
+     $("#ime").text("mama");
+     return false;
+ });
+ });
+
 
 function f() {
     location.href = "Izaberi nivo.html";
@@ -37,3 +47,5 @@ function alertf1(){
 function alertf2(){
 	alert("Proverava se da li je uspesna registracija");
 }
+
+

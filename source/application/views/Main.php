@@ -1,15 +1,17 @@
 
 <html>
 <head>
+        <script  src = "http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script type = 'text/javascript' src = "<?php echo base_url(); 
             ?>js/Svetski_putnik.js"></script>
-            
-        <link rel = "stylesheet" type = "text/css" 
+  <link rel = "stylesheet" type = "text/css" 
     href = "<?php echo base_url(); ?>css/Svetski_putnik.css">
     
 	<title>Svetski putnik</title>
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 </head>
+            
+      
 <body>
 
 		<button class="button" onclick="f()">START</button>		
@@ -18,8 +20,10 @@
 			<button class="button1" onclick="show2();" id="b12">REGISTRUJ SE</button>
 		</div>
 		<div id="d1" >
-                        <?php echo form_open('main/login'); ?>
-
+                        <?php 
+                            $attrubutes = array('name'=>'prijava', 'class'=>'form-horizontal');
+                            echo form_open('main/login', $attrubutes); ?>
+                            <div class="control-group">
 				<table>
 					<tr >
 						<td colspan="2">
@@ -28,41 +32,50 @@
 				</tr>
                                         
                                         <tr >   <td> 
-                                                    <?php echo validation_errors(); ?>   
+                                                    
                                                </td>
                                         </tr>
 					<tr>
 						<td>
-							<p>Korisničko ime:</p>
+							 <label class="control-label">Korisnicko ime</label>
 						</td>
 						<td>
-							<input type="text" name="nameLogin" >
+                                                    <div class="controls">
+							<input type="text" name="nameLogin" id="nameLogin1"  >
+                                                        <p class="help-block"></p>
+                                                    </div>
 						</td>
 						
 					</tr>
 					<tr>
 						<td>
-							<p>Lozinka:</p>
+							<label class="control-label">Lozinka</label>
 						</td>
 						<td>
-                                                    <input type="password" name="passLogin" >
-						</td>
+                                                    <div class="controls">
+                                                    <input type="password" name="passLogin" id="passLogin1" >
+                                                        <p class="help-block"></p>
+                                                    </div>
+                                                </td>
 						
 					</tr>
 					<tr>
 						<td colspan="2">
 							<div id="dugmici">
-								<button class="button2" onclick="alertf1()">OK</button>
+								<button class="button2" id ="btOkLogIn" >OK</button>
 								<button class="button2" onclick="close1();">OTKAŽI</button>
 							</div>
 							
 						</td>
 					</tr>
 				</table>
-			</form>
+                            </div>
+			<?php echo form_close(); ?>
 		</div>
 		<div id="d2" >
-			<form>
+			<?php 
+                            $attrubutes = array('name'=>'registracija', 'class'=>'form-horizontal');
+                            echo form_open('main/register', $attrubutes); ?>
 				<table id="t2">
 					<tr >
 						<td colspan="2">

@@ -20,7 +20,7 @@ class Main extends CI_Controller {
          $this->form_validation->set_rules('nameLogin', 'Name', 'required|callback_loginValidation'); 
          $this->form_validation->set_rules('passLogin', 'Password', 'required|md5');		
          if ($this->form_validation->run() == FALSE) {
-            $this->load->view('Main'); 
+            $this->load->view('WrongLogin.php'); 
          } 
          else {
              redirect('Welcome');
@@ -31,6 +31,10 @@ class Main extends CI_Controller {
 
     }
     
+    public function register() {
+        
+    }
+    
     public function loginValidation() {
         $username = $this->input->post("nameLogin");
         $password = $this->input->post("passLogin");
@@ -38,9 +42,23 @@ class Main extends CI_Controller {
         if ($this->ModelRegKorisnik->canLogIn($data = array('user'=>$username, 'pass'=>$password)))
                     return true;
              else  {
-                 $this->form_validation->set_message('loginValidation', 'incorecte usernmae/password');
+                 $this->form_validation->set_message('loginValidation', 'Neispravno korisnicko ime');
                  return false;
              }
+    }
+    
+    public function validation() {
+        if (!isset($_POST['nameLogin']))
+            $message = "Hvala kurcu";
+        else 
+            $message = $_POST['nameLogin'];
+        echo $message;
+        
+    }
+    
+    public function test() {
+        $this->load->view('test');
+        
     }
 }
 ?>

@@ -178,6 +178,43 @@ p{
 img{
   width: 120px;
   height: 130px;
- margin-right: 10px;
+  margin-right: 10px;
 
+}
+
+.control-group{
+  margin:0px;
+  padding: 0px;
+}
+
+.controls{
+  margin:0px;
+  padding: 0px;
+}
+.control-label{
+  margin: 0px;
+  padding: 0px;
+}
+
+label{
+  margin: 0px;
+  padding: 0px;
+}
+
+.help-block{
+  margin:0px;
+  padding: 0px;
+}
+
+#poruka{
+  text-align: center;
+  background-color: gray;
+  font-size: 30px;
+  color: black;
+  width: 400px;
+  height: 150px;
+  margin-left: 450px;
+  margin-top: 250px;
+  border-radius: 10px;
+  border: 2px solid black;
 }
