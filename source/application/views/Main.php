@@ -27,7 +27,7 @@
 		<div id="d1" >
                         <?php 
                             $attrubutes = array('name'=>'loginForm', 'class'=>'form-horizontal',
-                                'id'=>'loginForm');
+                                'id'=>'loginForm', 'method'=>'post');
                             echo form_open('main/login', $attrubutes); ?>
                             <div class="control-group">
 				<table>
@@ -76,6 +76,7 @@
 					</tr>
 				</table>
                             </div>
+                    
 			<?php echo form_close(); ?>
 		</div>
 		<div id="d2" >
@@ -94,7 +95,7 @@
 						<td>
 							Ime:
 							<br>
-							<input type="text" >
+							<input type="text" id="nameRegister" name="nameRegister">
 						</td>
 						
 					</tr>
@@ -102,7 +103,7 @@
 						<td>
 							Prezime:
 							<br>
-							<input type="text" >
+							<input type="text" id ="surNameRegister" name ="surNameRegister" >
 						</td>
 						
 					</tr>
@@ -110,7 +111,7 @@
 						<td>
 							Korisničko ime:
 							<br>
-							<input type="text" >
+							<input type="text" id ="userNameRegister" name ="userNameRegister">
 						</td>
 					</tr>
 					<tr>
@@ -121,14 +122,24 @@
 						<td>
 							Loznika:
 							<br>
+							<input type="password" id ="passRegister" name = "passRegister">
+						</td>
+
+					</tr>
+                                        <tr>
+						<td>&nbsp;</td>
+						<td>
+							Potvrda lozinke:
+							<br>
 							<input type="password" >
 						</td>
 					</tr>
+                                        
 					<tr>
 						<td colspan="2">
 							<div id="dugmici">
 								<button class="button2" onclick="alertf2()" id="dod2">OK</button>
-								<button class="button2" onclick="close2();" id="dod2">OTKAŽI</button>
+								<button class="button2"type="button" onclick="close2();" id="dod2">OTKAŽI</button>
 							</div>
 							
 						</td>

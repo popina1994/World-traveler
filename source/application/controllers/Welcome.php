@@ -32,6 +32,7 @@ class Welcome extends CI_Controller {
 		
 		$this->load->library('doctrine');
 		$this->load->model('proxies/Model');
+                $this->load->view('game');
 		
 		
 		//opcija1 za INSERT - napravila gotove funkcije
