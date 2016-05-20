@@ -49,10 +49,11 @@ class Main extends CI_Controller {
     
     public function validation() {
         if (!isset($_POST['nameLogin']))
-            $message = "Hvala kurcu";
-        else 
-            $message = $_POST['nameLogin'];
-        echo $message;
+            $return["userName"]  = "Hvala kurcu";
+        else {
+            $return["userName"] = $_POST['nameLogin'];
+        }    
+        echo json_encode($return);
         
     }
     

@@ -6,21 +6,22 @@
         <script>
         $(document).ready(function(){   
 
-    $("#btOkLogIn").click(function()
-    { 
-        search = "Mama";
-    $.ajax({
-      type: "POST",
-      url: "<?php echo site_url();?>/main/validation/",
-      data : {userName : $("#nameLogin1").val()},
-      dataType: "text",
-      success:function(data){
-        alert(data);
-      }
+            $("#btOkLogIn").click(function()
+            { 
+                search = "Mama";
+                $.ajax({
+                  type: "POST",
+                  url: "<?php echo site_url();?>/main/validation/",
+                  data : {nameLogin : $("#nameLogin1").val()},
+                  dataType: "json", 
+                 success:function(data){
+                    //$("#ime").text.html(data);
+                    alert("To" + data.userName);
+                  }
 
-    });
-     return false;
- });
+                });
+                 return false;
+         });
  });
     
         </script>

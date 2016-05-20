@@ -1,13 +1,3 @@
-var base_url = window.location.origin;
-$(document).ready(function(){   
-
-    $("#btOkLogIn").click(function()
-    {       
-     $("#ime").text("mama");
-     return false;
- });
- });
-
 
 function f() {
     location.href = "Izaberi nivo.html";
