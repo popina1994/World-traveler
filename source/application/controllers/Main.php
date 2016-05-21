@@ -63,14 +63,18 @@ class Main extends CI_Controller {
         // In future regex will be used for pass creation.
         //
         $return['error'] = "";
-        
-        if ( ($password == $passCheck)  && (!$this->ModelRegKorisnik->exists($data=['username'=>$username])) ) {
+    
+        if ( ($password == $passCheck)  && (!$this->ModelRegKorisnik->exists($data=['username'=>$username])) &&
+                preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,12}$/', $password)) {
                 $return['registerSucc'] = true;
         }
         else {
 
             $return['registerSucc'] = false;
-            if ($password != $passCheck) {
+            if (!preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,12}$/', $password)) {
+                $return['error'] = 'Neispravan obrazac sifre';
+            }
+            else if ($password != $passCheck) {
                 $return['error'] = 'Ne poklapaju se sifre';
             }
             else {
