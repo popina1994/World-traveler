@@ -19,7 +19,22 @@ class ModelRegKorisnik extends CI_Model {
 		if($user!=null) return true;
 		else return false;
     }
-		
+	
+	function checkType($data){
+		$username = $data ['username'];
+		$users = $this->doctrine->em->getRepository ( 'RegKorisnik' )->findBy ( array (
+				'username' => $username,
+		) );
+		if (count ( $users ) == 1){
+			if (count($this->doctrine->em->find ( "Takmicar", $users [0]->getIdkor () ))==1) return 'Takmicar';
+			if (count($this->doctrine->em->find ( "Moderator", $users [0]->getIdkor () ))==1) return 'Moderator';
+			if (count($this->doctrine->em->find ( "Administrator", $users [0]->getIdkor () ))==1) return 'Administrator';
+		}
+		else
+			return null;
+	}
+	
+	
 	function canLogIn($data) {
 		$username = $data ['username'];
 		$password = $data ['password'];
