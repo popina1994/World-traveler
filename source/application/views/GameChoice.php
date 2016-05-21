@@ -6,6 +6,6 @@
 <body>
 
 <p>Game </p>
-
+<?php echo anchor() ?>
 </body>
 </html>

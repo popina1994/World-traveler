@@ -4,15 +4,35 @@
  include APPPATH.'models/entities/Moderator.php';    
 class Main extends CI_Controller {
     public function index() {
-        $this->load->view('Main');
+        // If the user is logged in.
+        //
+        $this->load->model('proxies/ModelRegKorisnik');
+        if ($this->session->username) {
+            $type = $this->ModelRegKorisnik->checkType(['username'=>$this->session->username]);
+            switch ($type) {
+                case "Moderator":
+                    $this->load->view('Moderator');
+                    break;
+                case "Administrator":
+                    $this->load->view('Admin');
+                    break;
+                case "Takmicar" :
+                    $this->load->view('GameChoice');
+                    break;
+                default:
+                    $this->load->view('Main');
+                    break;
+            }
+        }
+        
     }
     
-    public function login() {
-			
+    public function login() {			
 			
         /* Set validation rule for name field in the form */ 
         $this->form_validation->set_rules('nameLogin', 'Name', 'required'); 
         $this->form_validation->set_rules('passLogin', 'Password', 'required|md5|callback_loginValidationPHP');		
+        
         if ($this->form_validation->run() == FALSE) {
             // In case JS is disableed.
             // But in future I won't mind about this.
@@ -23,21 +43,27 @@ class Main extends CI_Controller {
         else {
             // redirect to appropriate page
             //
+            
+            
 
-           $username = $this->input->post('nameLogin');
-           $password = $this->input->post("passLogin");
-           $this->load->model('proxies/ModelAdministrator');
-           $this->load->model('proxies/ModelModerator');
-           if ($this->ModelAdministrator->canLogIn($data = array('username'=>$username, 'password'=>$password)))
-           {
-               $this->load->view('Admin');
-           }
-           else if ($this->ModelModerator->canLogIn($data = array('username'=>$username, 'password'=>$password))) {
-               $this->load->view('Moderator');
-           }
-           else {
-               $this->load->view('Game');
-           }
+            $username = $this->input->post('nameLogin');
+            $password = $this->input->post("passLogin");
+            
+            $this->session->username = $username;
+            
+            $this->load->model('proxies/ModelAdministrator');
+            $this->load->model('proxies/ModelModerator');
+            
+            if ($this->ModelAdministrator->canLogIn($data = array('username'=>$username, 'password'=>$password)))
+            {
+                $this->load->view('Admin');
+            }
+            else if ($this->ModelModerator->canLogIn($data = array('username'=>$username, 'password'=>$password))) {
+                $this->load->view('Moderator');
+            }
+            else {
+                $this->load->view('GameChoice');
+            }
         }
     }
     
@@ -53,9 +79,10 @@ class Main extends CI_Controller {
     }
     
     public function registerValidation() {
-        $return['registerSucc'] = true;
         $username = $this->input->post('userNameRegister');
         $password = $this->input->post('passRegister');
+        $name = $this->input->post('nameRegister');
+        $surName = $this->input->post('surNameRegister');
         $passCheck = $this->input->post('repeatPass');
         
         $this->load->model('proxies/ModelRegKorisnik');
@@ -63,23 +90,28 @@ class Main extends CI_Controller {
         // In future regex will be used for pass creation.
         //
         $return['error'] = "";
-    
-        if ( ($password == $passCheck)  && (!$this->ModelRegKorisnik->exists($data=['username'=>$username])) &&
-                preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,12}$/', $password)) {
-                $return['registerSucc'] = true;
+
+        $return['registerSucc'] = false;
+        if ($name == '') {
+            $return['error'] = 'Ime nednostaje';
+        }
+        else if ($surName == '') {
+            $return['error'] = 'Prezime nedostaje';
+        }
+        else if ($username == '') {
+            $return['error'] = 'Nepravilno korisnickko ime';
+        }
+        else if (!preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,12}$/', $password)) {
+            $return['error'] = 'Neispravan obrazac sifre';
+        }
+        else if ($password != $passCheck) {
+            $return['error'] = 'Ne poklapaju se sifre';
+        }
+        else if ($this->ModelRegKorisnik->exists($data=['username'=>$username])){
+            $return['error'] = "Korisnicko ime $username vec postoji";
         }
         else {
-
-            $return['registerSucc'] = false;
-            if (!preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,12}$/', $password)) {
-                $return['error'] = 'Neispravan obrazac sifre';
-            }
-            else if ($password != $passCheck) {
-                $return['error'] = 'Ne poklapaju se sifre';
-            }
-            else {
-                $return['error'] = "Korisnicko ime $username vec postoji";
-            }
+            $return['registerSucc'] = true;
         }
         echo json_encode($return);
         
@@ -89,13 +121,11 @@ class Main extends CI_Controller {
     // But for now I'll leave it like this.
     //
     public function loginValidationPHP() {
-    if (!isset($_POST['nameLogin'])) {
-            die();
-    }
         
         $username = $this->input->post('nameLogin');
         $password = $this->input->post("passLogin");
         $this->load->model('proxies/ModelRegKorisnik');
+        
         if ($this->ModelRegKorisnik->canLogIn($data = ['username'=>$username, 'password'=>$password])) 
                    return true;
         return false;
