@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>403 Forbidden</title>
+	<title>Game</title>
 </head>
 <body>
 
-<p>Directory access is forbidden.</p>
+<p>Game </p>
 
 </body>
 </html>
