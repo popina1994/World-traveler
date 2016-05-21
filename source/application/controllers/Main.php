@@ -2,6 +2,14 @@
  include APPPATH.'models/entities/RegKorisnik.php';
  include APPPATH.'models/entities/Administrator.php';
  include APPPATH.'models/entities/Moderator.php';    
+ include APPPATH.'models/entities/Takmicar.php';
+ 
+ function console_log( $data ){
+  echo '<script>';
+  echo 'console.log('. json_encode( $data ) .')';
+  echo '</script>';
+}
+
 class Main extends CI_Controller {
     public function index() {
         // If the user is logged in.
@@ -36,7 +44,7 @@ class Main extends CI_Controller {
 			
         /* Set validation rule for name field in the form */ 
         $this->form_validation->set_rules('nameLogin', 'Name', 'required'); 
-        $this->form_validation->set_rules('passLogin', 'Password', 'required|md5|callback_loginValidationPHP');		
+        $this->form_validation->set_rules('passLogin', 'Password', 'required|callback_loginValidationPHP');		
         
         if ($this->form_validation->run() == FALSE) {
             // In case JS is disableed.
@@ -59,11 +67,14 @@ class Main extends CI_Controller {
             $this->load->model('proxies/ModelAdministrator');
             $this->load->model('proxies/ModelModerator');
             
-            if ($this->ModelAdministrator->canLogIn($data = array('username'=>$username, 'password'=>$password)))
+            console_log(['username'=>$username, 'password'=>$password]);
+            
+            if ($this->ModelAdministrator->canLogIn(['username'=>$username, 'password'=>$password]))
             {
                 $this->load->view('Admin');
             }
-            else if ($this->ModelModerator->canLogIn($data = array('username'=>$username, 'password'=>$password))) {
+            else if ($this->ModelModerator->canLogIn($data = array('username'=>$username, 'password'=>$password))) 
+             {
                 $this->load->view('Moderator');
             }
             else {

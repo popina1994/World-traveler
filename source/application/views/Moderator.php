@@ -4,7 +4,7 @@
 </head>
 <body>
 
-<p>Game </p>
+<p>Moderator </p>
 
 </body>
 </html>
