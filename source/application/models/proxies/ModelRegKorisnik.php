@@ -13,6 +13,13 @@ class ModelRegKorisnik extends CI_Model {
 		$this->em = $this->doctrine->em;
 	}
 	
+	function exists($data) {
+		$user = $data ['username'];
+		$user =  $this->em->getRepository('RegKorisnik')->findBy(array('username' => $user ));
+		if($user!=null) return true;
+		else return false;
+    }
+		
 	function canLogIn($data) {
 		$username = $data ['username'];
 		$password = $data ['password'];
@@ -25,5 +32,6 @@ class ModelRegKorisnik extends CI_Model {
 		else
 			return false;
 	}
+
 	
 }
