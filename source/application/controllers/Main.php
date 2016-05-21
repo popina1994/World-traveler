@@ -20,9 +20,14 @@ class Main extends CI_Controller {
                     $this->load->view('GameChoice');
                     break;
                 default:
+                    // User is deleted in meanwhile.
+                    //
                     $this->load->view('Main');
                     break;
             }
+        }
+        else {
+            $this->load->view('Main');
         }
         
     }
