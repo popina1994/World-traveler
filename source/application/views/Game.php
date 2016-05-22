@@ -46,14 +46,16 @@
           <h4 class="modal-title">Tekstualno pitanje</h4>
         </div>
         <div class="modal-body">
-          <?php $attrubutesRegister = ['name'=>'pitanje', 'id'=>'pitanje', 'class'=>'form-horizontal'];
-            echo form_open(); ?>
+          <?php $attrubutesRegister = ['name'=>'textQuestion', 'id'=>'textQuestion', 'class'=>'form-horizontal'];
+            echo form_open('game/conquered', $attrubutesRegister); ?>
            <p id="naslov">PITANJE</p>
-           <input type="radio" name="odgovor" id="prvo">Prvo<br/>
-           <input type="radio" name="odgovor" id="prvo">Drugo<br/>
-           <input type="radio" name="odgovor" id="prvo">Trece<br/>
-           <input type="radio" name="odgovor" id="prvo">Cetvrto<br/>
+           
+           <input type="radio" name="radioText" id="a">Prvo<br/>
+           <input type="radio" name="radioText" id="b">Drugo<br/>
+           <input type="radio" name="radioText" id="c">Trece<br/>
+           <input type="radio" name="radioText" id="d">Cetvrto<br/>
            <?php echo form_close(); ?>
+           
            <button type="button" class="btn btn-default" data-dismiss="modal"><?php
             $image_properties = array(
                 'src' => 'img/next.png',

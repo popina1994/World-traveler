@@ -20,6 +20,15 @@ class Game extends BaseController {
     }
     
     public function index() {
-        $this->Redirect(['view'=>'GameChoice']);
+        $this->Redirect(['view'=>'Game']);
+    }
+    
+    // Redirects to mapp of appropriate level.
+    //
+    public function gameChice() {
+    
+    }
+    public function conquered() {
+        console_log('to');
     }
 }
