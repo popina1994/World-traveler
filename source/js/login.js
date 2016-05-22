@@ -16,7 +16,8 @@ $(document).ready(function(){
                 type: "POST",
                 url: BASE_URL + "index.php/main/loginValidation/",
                 data : {nameLogin : $("#nameLogin").val(),
-                        passLogin : $("#passLogin").val()},
+                        passLogin : $("#passLogin").val(),
+                        secret : true},
                 dataType: "json", 
                 success:function(data){
                    //$("#ime").text.html(data);

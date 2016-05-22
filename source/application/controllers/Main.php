@@ -4,60 +4,48 @@
  include APPPATH.'models/entities/Moderator.php';    
  include APPPATH.'models/entities/Takmicar.php';
  
- function console_log( $data ){
-  echo '<script>';
-  echo 'console.log('. json_encode( $data ) .')';
-  echo '</script>';
-}
+ require_once APPPATH.'controllers/BaseController.php';
 
-class Main extends CI_Controller {
+class Main extends BaseController {
+    
+    public function __construct() {
+        parent::__construct("Main");
+    }
     public function index() {
         // If the user is logged in.
-        //
-        $this->load->model('proxies/ModelRegKorisnik');
-        if ($this->session->username) {
-            $type = $this->ModelRegKorisnik->checkType(['username'=>$this->session->username]);
-            switch ($type) {
-                case "Moderator":
-                    $this->load->view('Moderator');
-                    break;
-                case "Administrator":
-                    $this->load->view('Admin');
-                    break;
-                case "Takmicar" :
-                    $this->load->view('GameChoice');
-                    break;
-                default:
-                    // User is deleted in meanwhile.
-                    //
-                    $this->load->view('Main');
-                    break;
-            }
-        }
-        else {
-            $this->load->view('Main');
-        }
+        // You always need to add $this because the load->view cannot find who is calling, and it'll be one
+        // from base class, and it'll make some errors.
+        $this->Redirect(['view'=>'Main']);
         
+        
+    }
+    // Bad code, but for now I've not seen better solution, maybe some arguments, etc.
+    // But for now I'll leave it like this.
+    //
+    private function loginValidationPHP() {
+        
+        $username = $this->input->post('nameLogin');
+        $password = $this->input->post("passLogin");
+        $this->load->model('proxies/ModelRegKorisnik');
+        
+        if ($this->ModelRegKorisnik->canLogIn($data = ['username'=>$username, 'password'=>$password])) 
+                   return true;
+        return false;
     }
     
     public function login() {			
 			
-        /* Set validation rule for name field in the form */ 
-        $this->form_validation->set_rules('nameLogin', 'Name', 'required'); 
-        $this->form_validation->set_rules('passLogin', 'Password', 'required|callback_loginValidationPHP');		
+        /* Set validation rule for name field in the form */ 	
         
-        if ($this->form_validation->run() == FALSE) {
-            // In case JS is disableed.
-            // But in future I won't mind about this.
+        if ( !$this->loginValidationPHP()) {
+            // Should pass some kind of error to view.
             //
-           $this->load->view('Login'); 
+           $this->Redirect(['pageView' => 'login']);
 
         } 
         else {
             // redirect to appropriate page
             //
-            
-            
 
             $username = $this->input->post('nameLogin');
             $password = $this->input->post("passLogin");
@@ -67,34 +55,35 @@ class Main extends CI_Controller {
             $this->load->model('proxies/ModelAdministrator');
             $this->load->model('proxies/ModelModerator');
             
-            console_log(['username'=>$username, 'password'=>$password]);
-            
-            if ($this->ModelAdministrator->canLogIn(['username'=>$username, 'password'=>$password]))
-            {
-                $this->load->view('Admin');
-            }
-            else if ($this->ModelModerator->canLogIn($data = array('username'=>$username, 'password'=>$password))) 
-             {
-                $this->load->view('Moderator');
-            }
-            else {
-                $this->load->view('GameChoice');
-            }
+            Redirect();
         }
     }
     
     public function register() {
         $this->load->model('proxies/ModelTakmicar');
+        
         $username = $this->input->post('userNameRegister');
         $password = $this->input->post("passRegister");
         $ime = $this->input->post("nameRegister");
         $prezime = $this->input->post("surNameRegister");
-        $this->ModelTakmicar->createTakmicar($data = [ 'username' =>$username, 'password' =>$password,
-            'ime' =>$ime, 'prezime'=>$prezime]);
-        $this->load->view('login');
+        if ($username) {
+            $this->ModelTakmicar->createTakmicar($data = [ 'username' =>$username, 'password' =>$password,
+                'ime' =>$ime, 'prezime'=>$prezime]);
+            $this->Redirect(['view'=>'login']);
+        }
+        else {
+            Redirect();
+        }
     }
     
     public function registerValidation() {
+        
+        // Protect from unauthorized access.
+        //
+        $secret = $this->input->post('secret');
+        if (!$secret)
+            Redirect();
+        
         $username = $this->input->post('userNameRegister');
         $password = $this->input->post('passRegister');
         $name = $this->input->post('nameRegister');
@@ -133,25 +122,15 @@ class Main extends CI_Controller {
         
     }
     
-    // Bad code, but for now I've not seen better solution, maybe some arguments, etc.
-    // But for now I'll leave it like this.
-    //
-    public function loginValidationPHP() {
-        
-        $username = $this->input->post('nameLogin');
-        $password = $this->input->post("passLogin");
-        $this->load->model('proxies/ModelRegKorisnik');
-        
-        if ($this->ModelRegKorisnik->canLogIn($data = ['username'=>$username, 'password'=>$password])) 
-                   return true;
-        return false;
-    }
+ 
     
     public function loginValidation() {
-        // This should not happen.
+                
+        // Protect from unauthorized access.
         //
-         if (!isset($_POST['nameLogin']))
-            return false;
+        $secret = $this->input->post('secret');
+        if (!$secret)
+            Redirect();
         
         $username = $this->input->post('nameLogin');
         $password = $this->input->post("passLogin");

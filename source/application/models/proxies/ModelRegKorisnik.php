@@ -22,6 +22,8 @@ class ModelRegKorisnik extends CI_Model {
 	
 	function checkType($data){
 		$username = $data ['username'];
+                if (!$username)
+                    return null;
 		$users = $this->doctrine->em->getRepository ( 'RegKorisnik' )->findBy ( array (
 				'username' => $username,
 		) );

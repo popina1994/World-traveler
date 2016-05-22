@@ -16,7 +16,8 @@ $(document).ready(function(){
                     passRegister : $("#passRegister").val(),
                     repeatPass : $("#repeatPass").val(),
                     nameRegister : $("#nameRegister").val(),
-                    surNameRegister : $("#surNameRegister").val()
+                    surNameRegister : $("#surNameRegister").val(),
+                    secret : true
                 },
 
             dataType: "json", 
