@@ -50,10 +50,10 @@
             echo form_open('game/conquered', $attrubutesRegister); ?>
            <p id="naslov">PITANJE</p>
            
-           <input type="radio" name="radioText" id="a">Prvo<br/>
-           <input type="radio" name="radioText" id="b">Drugo<br/>
-           <input type="radio" name="radioText" id="c">Trece<br/>
-           <input type="radio" name="radioText" id="d">Cetvrto<br/>
+           <input type="radio" name="radioText" id="a">Prvo<br/><input type="text" id="answer1" hidden><br/>
+           <input type="radio" name="radioText" id="b">Drugo<br/><input type="text" id="answer2" hidden><br/>
+           <input type="radio" name="radioText" id="c">Trece<br/><input type="text" id="answer3" hidden><br/>
+           <input type="radio" name="radioText" id="d">Cetvrto<br/><input type="text" id="answer4" hidden><br/>
            <?php echo form_close(); ?>
            
            <button type="button" class="btn btn-default" data-dismiss="modal"><?php
