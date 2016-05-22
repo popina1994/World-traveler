@@ -16,8 +16,10 @@ class Main extends BaseController {
         // You always need to add $this because the load->view cannot find who is calling, and it'll be one
         // from base class, and it'll make some errors.
       
-        $this->Redirect(['view'=>'Main']);
+       $this->Redirect(['view'=>'Main']);
          //$this->Redirect(['view'=>'Game']);
+        //$this->Redirect(['view'=>'LevelChoice']);
+       //$this->Redirect(['view'=>'GameChoice']);
         
         
     }
