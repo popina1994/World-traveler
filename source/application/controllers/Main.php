@@ -15,6 +15,7 @@ class Main extends BaseController {
         // If the user is logged in.
         // You always need to add $this because the load->view cannot find who is calling, and it'll be one
         // from base class, and it'll make some errors.
+      
         $this->Redirect(['view'=>'Main']);
         
         
