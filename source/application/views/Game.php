@@ -25,7 +25,7 @@
        
           echo  img($image_properties); ?>
              <map name="Map" id="Map">
-                        <area  id="area" data-target="#myModal" data-toggle="modal" title="kina" 
+                        <area  class="areaMap" id="china" data-target="#myModal" data-toggle="modal" title="kina" 
                                href="#" shape="poly" coords="1121,389,1109,406,1100,418,1087,431,1073,438,1067,444,1077,463,1082,478,1089,482,1096,490,1104,490,1104,501,1101,518,1106,525,1116,530,1153,551,1171,548,1182,537,1195,529,1203,534,1211,535,1216,542,1214,553,1213,560,1234,552,1243,547,1248,553,1258,560,1267,558,1304,538,1322,495,1314,471,1308,459,1322,451,1300,438,1292,425" />
      
                  </map>
@@ -57,7 +57,7 @@
            <input type="radio" name="radioText" id="d">Cetvrto<br/><input type="text" id="answer4" hidden><br/>
            <?php echo form_close(); ?>
            
-           <button type="button" class="btn btn-default" data-dismiss="modal"><?php
+           <button type="button" class="btn btn-default" data-dismiss="modal" name="txtSubmit"><?php
             $image_properties = array(
                 'src' => 'img/next.png',
                 'id' => 'next',
