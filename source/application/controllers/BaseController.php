@@ -61,7 +61,7 @@ class BaseController extends CI_Controller{
                     default:
                         // User is deleted in meanwhile. in future to test.
                         //
-                        $this->session->ses_destroy();
+                        $this->session->sess_destroy();
                         redirect('Main');
                         break;
                 }

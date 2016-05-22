@@ -144,7 +144,13 @@ class Main extends BaseController {
         echo json_encode($return);
     }
     
+    public function logOut() {
+        $this->session->sess_destroy();
+        $this->Redirect();
+    }
+    
     public function test() {
+        console_log('Izlogovan');
         $this->load->view('test');
         
     }
