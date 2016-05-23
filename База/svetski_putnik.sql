@@ -104,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `nivo_tezine` (
 
 INSERT INTO `nivo_tezine` (`IDNiv`, `Naziv`) VALUES
 (1, 'Beba'),
-(2, 'Skolarac'),
+(2, 'Å kolarac'),
 (3, 'Svetstki putnik');
 
 -- --------------------------------------------------------
