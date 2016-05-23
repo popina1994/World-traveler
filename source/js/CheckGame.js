@@ -62,8 +62,7 @@ $(document).ready(function(){
                     form.submit();
                 }
                 else {
-                    alert('Nastavak igre pocinje');
-                    form.submit();
+                    alert('Igra ne postoji');
                 }
             }
 
