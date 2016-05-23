@@ -28,3 +28,18 @@
  
 }
 
+#mapa{
+    width: 1350px;
+    height: 650px;
+    align-items: center;
+    align-content: center;
+    
+}
+
+body{
+   background-color: black; 
+   align-items: center;
+    align-content: center;
+    padding: 5px;
+}
+
