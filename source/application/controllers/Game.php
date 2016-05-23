@@ -33,13 +33,32 @@ class Game extends BaseController {
     // Returns true/false if old game exists.
     //
     public function checkOldGame() {
+        // Protect from unauthorized access.
+        //
+        $secret = $this->input->post('secret');
+        if (!$secret)
+            Redirect();
         
+        $username = $this->userName;
+        
+        
+        // Dragana's part. of checking.
+        //
+        $this->load->model('proxies/ModelRegKorisnik');
+        if (...)) {
+                   $this->session->deleteData = true;
+                   $return['dataExists'] = true ;
+        }
+             else  {
+                 $return['dataExists'] = false;
+             }
+        echo json_encode($return);
     }
     
     public function newGame() {
         // From ajax is Passed existsOld.
         //         
-        if (existsOld) 
+        if ($this->session->deleteData) 
             DeleteOld($userName);
         $this->Redirect(['view'=>'LevelChoice']);
     }
@@ -52,7 +71,10 @@ class Game extends BaseController {
     }
     
     public function oldGame() {
-        Redirect();
+        // Protect from unauthorized access.
+        //
+        Redirect('validation' <=$this->input->post('secret'));
+        $this->session->deleteData = true;
     }
     
     public function conquered() {
@@ -63,7 +85,8 @@ class Game extends BaseController {
     // In session it will be remembered on which question user stopped.
     // 
     public function getAnswer() {
-        if (!$this->input->post('secret'))
+        $secret = $this->input->post('secret');
+        if (!$secret)
             Redirect();
     }
     
@@ -71,7 +94,8 @@ class Game extends BaseController {
     // If the user is not authorized to attack the appropriate area, it will return user a warning.
     //
     public function getQuestion() {
-        if (!$this->input->post('secret'))
+        $secret = $this->input->post('secret');
+        if (!$secret)
             Redirect();
         $country = $this->input->post('country');
         $this->load->model('proxies/ModelOblast');
