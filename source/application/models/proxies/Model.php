@@ -351,4 +351,31 @@ class Model extends CI_Model {
 		}
 		return true;
 	}
+	
+	
+	/*
+	  primer koriscenja:
+	  $data = Array('nivo'=>'Beba');
+	  $list = $this->Model->scores($data);
+	  foreach($list as $res)
+		  foreach($res as $r) echo $r;
+	 */
+	function scores($data){
+		$nivo = $this->doctrine->em->getRepository ( 'NivoTezine' )->findBy ( array (
+				'naziv' => $data ['nivo'] 
+		) );
+		if($nivo==null) return null;
+		$res = array();
+		$igre = $this->doctrine->em->getRepository ( 'Igra' )->findBy ( array (
+				'idniv' => $nivo[0]->getIdniv()
+		), array('poeni' => 'DESC'));
+		
+		foreach ($igre as $igra){
+			$r = array('takmicar'=>$igra->getIdkor()->getIdkor()->getUsername(), 'poeni'=>$igra->getPoeni());
+			array_push($res,$r);
+		}
+		
+	
+		return $res;
+	}
 }
