@@ -38,7 +38,7 @@ class Game extends BaseController {
         //
         $secret = $this->input->post('secret');
         if (!$secret)
-            Redirect();
+            $this->Redirect();
         
         $return['dataExists'] = false;
         $return['name'] = $this->session->username;
@@ -57,10 +57,8 @@ class Game extends BaseController {
     public function newGame() {
         // From ajax is Passed existsOld.
         //
-        if (isset($_POST['btNew'])) {
-            $this->load->model('proxies/ModelIgra');
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($this->session->oldIgra)  {
-                $this->load->model('proxies/Model');
                 $this->Model->finishUnfinishedIgra(['igra' => $this->session->oldIgra]);
                 $this->session->unset_userdata('oldIgra');
             }
@@ -71,7 +69,7 @@ class Game extends BaseController {
             $this->Redirect(['view'=>'levelChoice']);
         }
         else {
-            Redirect();
+            $this->Redirect(['view' => 'test']);
         }
        
     }
@@ -126,7 +124,7 @@ class Game extends BaseController {
     public function getAnswer() {
         $secret = $this->input->post('secret');
         if (!$secret)
-            Redirect();
+            $this->Redirect();
     }
     
     // It will only set appropriate fields which are going to be used in jquery for setting parts of form.
@@ -135,7 +133,7 @@ class Game extends BaseController {
     public function getQuestion() {
         $secret = $this->input->post('secret');
         if (!$secret)
-            Redirect();
+           $this->Redirect();
         $country = $this->input->post('country');
         $this->load->model('proxies/ModelOblast');
         

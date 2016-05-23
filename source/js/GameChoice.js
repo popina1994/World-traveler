@@ -16,7 +16,7 @@ $(document).ready(function(){
             dataType: "json", 
             success:function(data){
                 alert('Podaci primljeni');
-
+                
                 if (data.dataExists === true) {
                     var deleteOld = confirm('Zelite li da obrisete staru igru?');
                     if (!deleteOld) {
