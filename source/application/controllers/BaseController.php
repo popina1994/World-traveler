@@ -32,6 +32,7 @@ class BaseController extends CI_Controller{
     protected function Redirect($data) {
         
         $this->load->model('proxies/ModelRegKorisnik');
+        
         if (isset($data['view']))
             $pageView = $data['view'];
         else 
@@ -41,6 +42,14 @@ class BaseController extends CI_Controller{
             $redirect = $data['redirect'];
         else
             $redirect = false;
+        
+        // In case of an unauthorized acess to the page.
+//        /
+        $validation = $this->input->post('secret');
+        
+        if ($validation)
+            return;
+        
         // This is not stored in some cookie, because when the user is deleted,
         // he can still access.
         //
