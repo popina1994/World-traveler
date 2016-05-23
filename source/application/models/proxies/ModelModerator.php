@@ -83,29 +83,32 @@ class ModelModerator extends CI_Model {
             return $usernames;
             }
 	
-           
+          
         function deleteModerator($data){
             $username=$data['username'];
             
             $users = $this->em->getRepository ( 'RegKorisnik' )->findBy ( array (
 				'username' => $username 
 		) );
-	    if ($users != null)
-			return false;
+	    //if ($users != null)
+		//	return false;
             $user1=$users[0];
             $user2=$this->doctrine->em->find("Moderator", $user1->getIdkor());
             $ID=$users[0]->getIdkor();
-            $this->doctrine->em->remove('RegKorisnik', array('idKor' => $ID));
-            $this->doctrine->em->remove('Moderator', array('idKor' => $ID));
             
-            try {
-			
-			$this->em->flush ();
-		} catch ( Exception $err ) {
-			die ( $err->getMessage () );
-		}
-            
-            
+            try{
+                  $entity = $this->em->getPartialReference("Moderator", $ID);
+                  $this->em->remove($entity);
+                  $entity = $this->em->getPartialReference("RegKorisnik", $ID);
+                  $this->em->remove($entity);
+                  $this->em->flush();
+                  return true;
+            }
+            catch(Exception $err)
+            {
+                  return false;
+            }
+                                  
             return true;
         }            
 }

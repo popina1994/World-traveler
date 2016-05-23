@@ -44,7 +44,7 @@
          echo form_close(); 
           $i++;
     }
-    //potrebno: Kako napraviti niz dugmića
+    
     
     ?>
     
