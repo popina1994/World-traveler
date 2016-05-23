@@ -1,4 +1,30 @@
+#row {
+    white-space: nowrap; /* important */
+    overflow: auto;
+    background-color: #E5DADA;
+}
 
+.modal-body{
+     background-color: #E5DADA;
+}
 
+.modal-header, h4, .close {
+      background-color:  #BD420E;
+      color:white !important;
+      text-align: center;
+      font-size: 30px;
+      margin: 0px;
+      padding: 5px;
+  }
+  
+  .next{
+      background-color:#E5DADA;
+      margin-left: 200px;
+  }
 
+.block {
+    display: inline-block;
+    margin-right: 60px;
+ 
+}
 
