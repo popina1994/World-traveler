@@ -38,8 +38,6 @@ $(document).ready(function(){
 }); 
 
 
-
-
 $(document).ready(function(){   
     $('#oldGameForm').submit( function(event) {
 
@@ -52,28 +50,20 @@ $(document).ready(function(){
             url: BASE_URL + "index.php/game/checkOldGame/",
 
             data : {
-                    userNameRegister : $("#userNameRegister").val(),
-                    passRegister : $("#passRegister").val(),
-                    repeatPass : $("#repeatPass").val(),
-                    nameRegister : $("#nameRegister").val(),
-                    surNameRegister : $("#surNameRegister").val(),
                     secret : true
                 },
 
             dataType: "json", 
             success:function(data){
-                //$("#ime").text.html(data);
                 alert('Podaci primljeni');
 
                 if (data.dataExists === true) {
-                    confirm...
-                            if..
-                            else...
-                    alert("Uspesno registrovanje, sad cete biti preusmereni na stranicu za prijavljivanje");
+                    alert('Igra se nastavlja');
                     form.submit();
                 }
                 else {
-                    alert('Nova igra pocinje');
+                    alert('Nastavak igre pocinje');
+                    form.submit();
                 }
             }
 

@@ -44,37 +44,74 @@ class Game extends BaseController {
         
         // Dragana's part. of checking.
         //
-        $this->load->model('proxies/ModelRegKorisnik');
-        if (...)) {
-                   $this->session->deleteData = true;
+        $this->load->model('proxies/Model');
+        if ($igra = $this->Model->existsUnfinishedIgra(['username' <= $this->session->username] ) ) {
+                   $this->session->oldIgra = $igra;
                    $return['dataExists'] = true ;
         }
-             else  {
-                 $return['dataExists'] = false;
-             }
+        else  {
+            $return['dataExists'] = false;
+        }
         echo json_encode($return);
     }
     
     public function newGame() {
         // From ajax is Passed existsOld.
-        //         
-        if ($this->session->deleteData) 
-            DeleteOld($userName);
-        $this->Redirect(['view'=>'LevelChoice']);
+        //
+        if ($this->input->post->btNew) {
+            $this->load->model('proxies/Model');
+            if ($this->session->oldIgra) {
+                $this->load->model('proxies/Model');
+                $this->Model->finishUnfinishedIgra(['igra' <= $this->session->oldIgra]);
+                $this->session->unset_userdata('oldIgra');
+            }
+            // Redirect on LevelChoice page.
+            //
+            $this->Redirect(['view'=>'LevelChoice', 'redirect'=>true]);
+        }
+        else {
+            Redirect();
+        }
+       
     }
     
     // Redirects to mapp of appropriate level.
     //
-    public function gameChoice() {
-        switchGame();
-        redirect();
+    public function levelChoice() {
+            $this->load->model('proxies/Model');
+            // Redirect on LevelChoice page.
+            //
+
+            if ($this->input->post('beba')) {
+                $this->session->level = 'beba';
+            } else if ($this->input->post('knjiga')) {
+                $this->session->level = 'Skolarac';
+            }
+            else if ($this->input->post('kofer')) { 
+                $this->session->level = 'Svetski putnik';
+            }
+            else {
+                $this->Redirect();
+            }
+            $this->session->gameStarted = true;
+            
+            $this->Redirect(['view'=>'game', 'redirect'=>true]);
     }
     
     public function oldGame() {
         // Protect from unauthorized access.
         //
-        Redirect('validation' <=$this->input->post('secret'));
-        $this->session->deleteData = true;
+        if ($this->input->post('btOld')) {
+            // Ucitaj mapu na osnovu potrebnih podataka. Moracu Jelici da prosledim php kojim se 
+            // azurirati potrebne stvari na mapi.
+            //
+            $this->sesion->gameStarted = true;
+            $this->Redirect('view' <='game', 'redirect' <= true);
+        }
+        else {
+            Redirect();
+        }
+       
     }
     
     public function conquered() {

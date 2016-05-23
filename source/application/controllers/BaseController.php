@@ -45,10 +45,7 @@ class BaseController extends CI_Controller{
         
         // In case of an unauthorized acess to the page.
 //        /
-        $validation = $this->input->post('secret');
-        
-        if ($validation)
-            return;
+
         
         // This is not stored in some cookie, because when the user is deleted,
         // he can still access.
@@ -78,7 +75,10 @@ class BaseController extends CI_Controller{
                         redirect('AdministratorController');
                         break;
                     case "Takmicar" :
-                        redirect('Game');
+                        if ($this->session->gameStarted)
+                            redirect('Game');
+                        else 
+                            redirect('Game/newGame');
                             
                         
                         break;

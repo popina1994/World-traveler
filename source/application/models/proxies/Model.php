@@ -351,4 +351,22 @@ class Model extends CI_Model {
 		}
 		return true;
 	}
+        
+        // Vraca osvajanje ako postoji, null ako ne postoji osvajanje.
+        //
+        public function existsOsvajanje($data) {
+            return null;
+        }
+        
+        // Vraca igru ako postoji koju nije korisnik zavrsio. Inace null.
+        //
+        public function existsUnfinishedIgra($data) {
+            return null;
+        }
+        
+        // Zavrsava igru koja je prosledjena.
+        //
+        public function finishUnfinishedIgra($data) {
+            
+        }
 }

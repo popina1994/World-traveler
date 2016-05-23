@@ -37,9 +37,9 @@
                     'id'=>'oldGameForm', 'method'=>'post');
                 echo form_open('game/oldGame', $attrubutes); ?>
     
-		<button class="b1" id ="btNew" name = "btNew">NOVA IGRA</button>
+		<button class="b1" id ="btOld" name = "btOld">NASTAVI IGRU</button>
                 
-                <?php echo form_close('game/newGame'); ?>
+                <?php echo form_close('game/oldGame'); ?>
                 
 	</div>
     <div id="footer">
