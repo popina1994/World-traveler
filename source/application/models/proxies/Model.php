@@ -1,11 +1,4 @@
 <?php
-require_once(APPPATH."models/entities/NivoTezine.php");
-require_once(APPPATH."models/entities/VrediPutnika.php");
-require_once(APPPATH."models/entities/SlikaPitanje.php");
-require_once(APPPATH."models/entities/TekstPitanje.php");
-require_once(APPPATH."models/entities/Pitanje.php");
-require_once(APPPATH."models/entities/LicnostPitanje.php");
-require_once(APPPATH."models/entities/Igra.php");
 
 class Model extends CI_Model {
 	 

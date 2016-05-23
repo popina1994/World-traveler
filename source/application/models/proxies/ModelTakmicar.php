@@ -1,5 +1,5 @@
 <?php
-require_once (APPPATH . "models/entities/Takmicar.php");
+
 class ModelTakmicar extends CI_Model {
 	
 	/**

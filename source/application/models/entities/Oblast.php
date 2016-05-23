@@ -1,8 +1,5 @@
 <?php
 
-include_once 'igra.php';
-
-
 use Doctrine\ORM\Mapping as ORM;
 
 /**

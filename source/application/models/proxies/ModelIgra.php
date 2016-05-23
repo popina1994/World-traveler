@@ -1,5 +1,5 @@
 <?php
-require_once (APPPATH . "models/entities/Igra.php");
+
 class ModelIgra extends CI_Model {
 	
 	/**

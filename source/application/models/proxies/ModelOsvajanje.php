@@ -1,5 +1,5 @@
 <?php
-require_once (APPPATH . "models/entities/Osvajanje.php");
+
 class ModelOsvajanje extends CI_Model {
 	
 	/**

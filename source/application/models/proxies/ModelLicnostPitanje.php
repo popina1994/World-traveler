@@ -1,5 +1,5 @@
 <?php
-require_once (APPPATH . "models/entities/LicnostPitanje.php");
+
 class ModelLicnostPitanje extends CI_Model{
 	
 	/**
