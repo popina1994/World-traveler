@@ -19,7 +19,10 @@
   
   .next{
       background-color:#E5DADA;
-      margin-left: 200px;
+      margin-left:90px;
+      padding-left: 0px;
+      margin-right: 0px;
+      padding-right: 0px;
   }
 
 .block {
@@ -34,6 +37,17 @@
     align-items: center;
     align-content: center;
     
+}
+
+label{
+    margin: 5px;
+    
+    padding: 5px;
+}
+
+#f1{
+    margin-top: 0px;
+    padding-top: 0px;
 }
 
 body{

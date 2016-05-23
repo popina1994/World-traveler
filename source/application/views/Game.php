@@ -173,8 +173,65 @@
 
                 </div>
             </div>-->
+           
+        <!--Modal licnost
+          <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
 
-        </div>
+                    
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Pitanje licnost</h4>
+                        </div>
+                        <div class="modal-body">
+                            <?php $attrubutesRegister = ['name' => 'textQuestion', 'id' => 'textQuestion', 'class' => 'form-horizontal'];
+                            echo form_open('game/conquered', $attrubutesRegister);
+                            ?>
+                            <div id="row">
+                                <p id="naslov">PITANJE_LICNOST</p>
+                                <div class="block" >
+                                    <?php
+                                    $image_properties = array(
+                                        'src' => 'img/tesla.jpg',
+                                        'id' => 'next',
+                                        'width' => '300px',
+                                        'height' => '300px',
+                                    );
+                                    echo img($image_properties);
+                                    ?>
+                                    <br/><br/><br/><br/>
+                                </div>
+                                <div class="block">
+                                    <label id="f1">fact 1</label><br/>
+                                    <label id="f2">fact 2</label><br/>
+                                    <label id="f2">fact 3</label><br/>
+                                    <label id="f4">fact 4</label><br/>
+                                    <label id="f5">fact 5</label><br/>
+                                    <br/><br/><br/><br/><br/><br/><br/>
+                                    <button type="button" class="next" data-dismiss="modal" name="txtSubmit"><?php
+                                        $image_properties = array(
+                                            'src' => 'img/next.png',
+                                            'id' => 'next',
+                                            'width' => '40px',
+                                            'height' => '40px',
+                                        );
+
+                                        echo img($image_properties);
+                                        ?></button>
+                                    <?php echo form_close(); ?>
+                                </div>
+                           </div>
+                            <p>&nbsp;&nbsp;_ _ _ _ _ _ &nbsp;&nbsp;&nbsp;&nbsp; _ _ _ _ _
+                                &nbsp;&nbsp;&nbsp;&nbsp; <input type="number" size="2">
+                            </p> 
+                        </div>
+                    </div>
+
+                </div>
+            </div>-->
+
+        </div> <!--kraj-->
 
     </body>
 </html>
