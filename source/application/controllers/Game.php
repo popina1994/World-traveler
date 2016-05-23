@@ -42,7 +42,8 @@ class Game extends BaseController {
         
         $return['dataExists'] = false;
         $return['name'] = $this->session->username;
-        $igra = $this->ModelIgra->existsUnfinishedIgra($data = ['userName' => $this->session->username] );
+        //$igra = $this->ModelIgra->existsUnfinishedIgra($data = ['userName' => $this->session->username] );
+        $igra = null;
         if ($igra) {
                    $this->session->oldIgra = $igra;
                    $return['dataExists'] = true ;

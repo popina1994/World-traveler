@@ -51,9 +51,9 @@ class ModelIgra extends CI_Model {
 	}
 	
 	//Vraca zapocetu igru korisnika ciji je username $data['userName']
-	public function existsUnfinishedIgra($data){
-                
-                $user = $this->doctrine->em->getRepository ( 'RegKorisnik' )->findBy ( array (
+	function existsUnfinishedIgra($data){
+		$user = $data['userName'];
+		$user = $this->doctrine->em->getRepository ( 'RegKorisnik' )->findBy ( array (
 				'username' => $data ['userName']
 		) );
 		if($user==null) return null;
@@ -69,10 +69,5 @@ class ModelIgra extends CI_Model {
 		return null;
 		
 	}
-        
-        public function test() {
-            return null;
-        }
-        
 	
 }
