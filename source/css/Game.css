@@ -1,0 +1,59 @@
+#row {
+    white-space: nowrap; /* important */
+    overflow: auto;
+    background-color: #E5DADA;
+}
+
+.modal-body{
+     background-color: #E5DADA;
+}
+
+.modal-header, h4, .close {
+      background-color:  #BD420E;
+      color:white !important;
+      text-align: center;
+      font-size: 30px;
+      margin: 0px;
+      padding: 5px;
+  }
+  
+  .next{
+      background-color:#E5DADA;
+      margin-left:90px;
+      padding-left: 0px;
+      margin-right: 0px;
+      padding-right: 0px;
+  }
+
+.block {
+    display: inline-block;
+    margin-right: 60px;
+ 
+}
+
+#mapa{
+    width: 1350px;
+    height: 650px;
+    align-items: center;
+    align-content: center;
+    
+}
+
+label{
+    margin: 5px;
+    
+    padding: 5px;
+}
+
+#f1{
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+body{
+   background-color: black; 
+   align-items: center;
+    align-content: center;
+    padding: 5px;
+}
+

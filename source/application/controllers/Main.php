@@ -16,7 +16,10 @@ class Main extends BaseController {
         // You always need to add $this because the load->view cannot find who is calling, and it'll be one
         // from base class, and it'll make some errors.
       
-        $this->Redirect(['view'=>'Main']);
+       $this->Redirect(['view'=>'Main']);
+         //$this->Redirect(['view'=>'Game']);
+        //$this->Redirect(['view'=>'LevelChoice']);
+       //$this->Redirect(['view'=>'GameChoice']);
         
      
     }
@@ -70,6 +73,9 @@ class Main extends BaseController {
         if ($username) {
             $this->ModelTakmicar->createTakmicar($data = [ 'username' =>$username, 'password' =>$password,
                 'ime' =>$ime, 'prezime'=>$prezime]);
+            // In future there should be centralized login.
+            // But for now it is solved sloppy.
+            //
             $this->Redirect(['view'=>'login']);
         }
         else {
