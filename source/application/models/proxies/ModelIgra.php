@@ -17,11 +17,17 @@ class ModelIgra extends CI_Model {
 	
 		$igra = new Igra();
 		$igra->setPoeni(0);
-		$igra->setPutnici($data['putnici']); //zadat pocetni broj
+		if (array_key_exists ( 'putnici', $data ))
+			$igra->setPutnici($data['putnici']); //zadat pocetni broj
+		else $igra->setPutnici(0);
 		$igra->setStatus('t'); //tekuca igra, igra u toku 
-	
-		$igra->setIdkor($data['idkor']);
-		$igra->setIdniv($data['idniv']);
+
+		$user =  $this->doctrine->em->getRepository('RegKorisnik')->findBy(array('username' => $data['username']))[0];
+		$user =  $this->doctrine->em->find("Takmicar", $user->getIdkor());
+		$igra->setIdkor($user);
+		
+		$nivo =  $this->doctrine->em->getRepository('NivoTezine')->findBy(array('naziv' => $data['nivo']))[0];
+		$igra->setIdniv($nivo);
 	
 		try {
 			//save to database
