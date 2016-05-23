@@ -42,7 +42,7 @@ class BaseController extends CI_Controller{
             // If user tries to access main page, he will be redirected to the appropriate page.
 
              if ($pageView && ( ($typeCookie === $this->type))) {
-                $this->load->view($pageView);
+                $this->load->view($pageView, $data);
             }
             else {
                 switch ($typeCookie) {

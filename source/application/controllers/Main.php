@@ -18,7 +18,7 @@ class Main extends BaseController {
       
         $this->Redirect(['view'=>'Main']);
         
-        
+     
     }
     // Bad code, but for now I've not seen better solution, maybe some arguments, etc.
     // But for now I'll leave it like this.
