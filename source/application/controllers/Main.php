@@ -73,6 +73,9 @@ class Main extends BaseController {
         if ($username) {
             $this->ModelTakmicar->createTakmicar($data = [ 'username' =>$username, 'password' =>$password,
                 'ime' =>$ime, 'prezime'=>$prezime]);
+            // In future there should be centralized login.
+            // But for now it is solved sloppy.
+            //
             $this->Redirect(['view'=>'login']);
         }
         else {

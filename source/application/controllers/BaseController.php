@@ -32,7 +32,18 @@ class BaseController extends CI_Controller{
     protected function Redirect($data) {
         
         $this->load->model('proxies/ModelRegKorisnik');
-        $pageView = $data['view'];
+        if (isset($data['view']))
+            $pageView = $data['view'];
+        else 
+            $pageView = null;
+        
+        if (isset($data['redirect']))
+            $redirect = $data['redirect'];
+        else
+            $redirect = false;
+        // This is not stored in some cookie, because when the user is deleted,
+        // he can still access.
+        //
         $typeCookie = $this->ModelRegKorisnik->checkType(['username'=>$this->session->username]);
         
         console_log('pageView '. $pageView);
@@ -42,7 +53,12 @@ class BaseController extends CI_Controller{
             // If user tries to access main page, he will be redirected to the appropriate page.
 
              if ($pageView && ( ($typeCookie === $this->type))) {
-                $this->load->view($pageView, $data);
+               if ($redirect) {
+                    redirect($pageView);
+                }
+                else {
+                    $this->load->view($pageView, $data);
+                }
             }
             else {
                 switch ($typeCookie) {
@@ -54,6 +70,7 @@ class BaseController extends CI_Controller{
                         break;
                     case "Takmicar" :
                         redirect('Game');
+                            
                         
                         break;
                     // Not registered.
@@ -72,7 +89,12 @@ class BaseController extends CI_Controller{
             // In future there should be added Unregister game, for this.
             //
             if ($pageView && ($this->type == 'Main') )
-                $this->load->view($pageView, $data);
+                 if ($redirect) {
+                    redirect($pageView);
+                }
+                else {
+                    $this->load->view($pageView, $data);
+                }
             else
                 // The unauthorized access is tried.
                 //

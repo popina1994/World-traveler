@@ -22,8 +22,25 @@
 </head>
 <body>
 <div id="wrapper">
-		<button class="b1">NOVA IGRA</button>
-		<button class="b1">STARA IGRA</button>
+                <?php 
+                $attrubutes = array('name'=>'newGameForm', 'class'=>'form-horizontal',
+                    'id'=>'newGameForm', 'method'=>'post');
+                echo form_open('game/newGame', $attrubutes); ?>
+    
+		<button class="b1" id ="btNew" name = "btNew">NOVA IGRA</button>
+                
+                <?php echo form_close('game/newGame'); ?>
+                
+                
+		<?php 
+                $attrubutes = array('name'=>'oldGameForm', 'class'=>'form-horizontal',
+                    'id'=>'oldGameForm', 'method'=>'post');
+                echo form_open('game/oldGame', $attrubutes); ?>
+    
+		<button class="b1" id ="btNew" name = "btNew">NOVA IGRA</button>
+                
+                <?php echo form_close('game/newGame'); ?>
+                
 	</div>
     <div id="footer">
         <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
