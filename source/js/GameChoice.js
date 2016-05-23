@@ -63,6 +63,7 @@ $(document).ready(function(){
                 }
                 else {
                     alert('Igra ne postoji');
+                    alert(data.name);
                 }
             }
 

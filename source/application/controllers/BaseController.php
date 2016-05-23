@@ -52,20 +52,20 @@ class BaseController extends CI_Controller{
         //
         $typeCookie = $this->ModelRegKorisnik->checkType(['username'=>$this->session->username]);
         
-        console_log('pageView '. $pageView);
-        console_log('typeCookie '. $typeCookie);
-        console_log('ThisType '. $this->type);
         if ($typeCookie) { 
             // If user tries to access main page, he will be redirected to the appropriate page.
 
              if ($pageView && ( ($typeCookie === $this->type))) {
 
-                $this->load->view($pageView, $data);
-
                if ($redirect) {
                     redirect($pageView);
                 }
                 else {
+                    if ($pageView === 'game') {
+                        // pass the data to jelica to initialize map.
+                        //
+                        console_log('fuck');
+                    }
                     $this->load->view($pageView, $data);
                 }
 
@@ -79,12 +79,7 @@ class BaseController extends CI_Controller{
                         redirect('AdministratorController');
                         break;
                     case "Takmicar" :
-                        if ($this->session->gameStarted)
-                            redirect('Game');
-                        else 
-                            redirect('Game/newGame');
-                            
-                        
+                        redirect("game");
                         break;
                     // Not registered.
                     //

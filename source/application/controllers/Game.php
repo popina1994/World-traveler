@@ -1,8 +1,9 @@
 <?php
 
 require_once APPPATH.'controllers/BaseController.php';
-/*
- * To change this license header, choose License Headers in Project Properties.
+ include APPPATH.'models/entities/Igra.php';
+ /*
+* To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -39,41 +40,42 @@ class Game extends BaseController {
         if (!$secret)
             Redirect();
         
-        $username = $this->userName;
-        
-        
-        // Dragana's part. of checking.
-        //
-        $this->load->model('proxies/Model');
-        if ($igra = $this->Model->existsUnfinishedIgra(['username' <= $this->session->username] ) ) {
+        $return['dataExists'] = false;
+        $return['name'] = $this->session->username;
+        $igra = $this->ModelIgra->existsUnfinishedIgra($data = ['userName' => $this->session->username] );
+        if ($igra) {
                    $this->session->oldIgra = $igra;
                    $return['dataExists'] = true ;
         }
         else  {
             $return['dataExists'] = false;
         }
+         
         echo json_encode($return);
     }
     
     public function newGame() {
         // From ajax is Passed existsOld.
         //
-        if ($this->input->post->btNew) {
-            $this->load->model('proxies/Model');
-            if ($this->session->oldIgra) {
+        if (isset($_POST['btNew'])) {
+            $this->load->model('proxies/ModelIgra');
+            if ($this->session->oldIgra)  {
                 $this->load->model('proxies/Model');
-                $this->Model->finishUnfinishedIgra(['igra' <= $this->session->oldIgra]);
+                $this->Model->finishUnfinishedIgra(['igra' => $this->session->oldIgra]);
                 $this->session->unset_userdata('oldIgra');
             }
             // Redirect on LevelChoice page.
             //
-            $this->Redirect(['view'=>'LevelChoice', 'redirect'=>true]);
+            
+            console_log('Uslo');
+            $this->Redirect(['view'=>'levelChoice']);
         }
         else {
             Redirect();
         }
        
     }
+    
     
     // Redirects to mapp of appropriate level.
     //
@@ -82,31 +84,31 @@ class Game extends BaseController {
             // Redirect on LevelChoice page.
             //
 
-            if ($this->input->post('beba')) {
+            if (isset($_POST['beba'])) {
                 $this->session->level = 'beba';
-            } else if ($this->input->post('knjiga')) {
+            } else if (isset($_POST['knjiga'])) {
                 $this->session->level = 'Skolarac';
             }
-            else if ($this->input->post('kofer')) { 
+            else if (isset($_POST['kofer'])) { 
                 $this->session->level = 'Svetski putnik';
             }
             else {
-                $this->Redirect();
+                $this->Redirect(['view' =>'test']);
             }
             $this->session->gameStarted = true;
             
-            $this->Redirect(['view'=>'game', 'redirect'=>true]);
+            $this->Redirect(['view'=>'game', 'redirect' =>true]);
     }
     
     public function oldGame() {
         // Protect from unauthorized access.
         //
-        if ($this->input->post('btOld')) {
+        if (isset($_POST['btOld'])) {
             // Ucitaj mapu na osnovu potrebnih podataka. Moracu Jelici da prosledim php kojim se 
             // azurirati potrebne stvari na mapi.
             //
             $this->sesion->gameStarted = true;
-            $this->Redirect('view' <='game', 'redirect' <= true);
+            $this->Redirect(['view' =>'game', 'redirect' => true]);
         }
         else {
             Redirect();
@@ -137,7 +139,7 @@ class Game extends BaseController {
         $country = $this->input->post('country');
         $this->load->model('proxies/ModelOblast');
         
-        $this->ModelRegKorisnik->exists(['name'<=$country]);
+        $this->ModelRegKorisnik->exists(['name'=>$country]);
         
         
         // pass the $level, $

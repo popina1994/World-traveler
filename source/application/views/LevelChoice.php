@@ -19,7 +19,7 @@
                             </tr>
                             <tr>
                                     <td>
-                                        <button id="beba" class="button"><?php
+                                        <button id="beba" name="beba" class="button"><?php
                                                     $image_properties = array(
                                                         'src' => 'img/beba.jpg',
                                                         'id' => 'beba',
@@ -35,7 +35,7 @@
                                             <p>BEBA</p>
                                     </td>
                                     <td>
-                                        <button id="knjiga" class="button"><?php
+                                        <button id="knjiga" name="knjiga" class="button"><?php
                                                     $image_properties = array(
                                                         'src' => 'img/knjiga.jpg',
                                                         'id' => 'knjiga',
@@ -51,7 +51,7 @@
                                             <p>ŠKOLARAC</p>
                                     </td>
                                     <td>
-                                        <button id="kofer" class="button"><?php
+                                        <button id="kofer" name="kofer" class="button"><?php
                                                     $image_properties = array(
                                                         'src' => 'img/kofer.jpg',
                                                         'id' => 'kofer',
