@@ -32,6 +32,7 @@ class BaseController extends CI_Controller{
     protected function Redirect($data) {
         
         $this->load->model('proxies/ModelRegKorisnik');
+        
         if (isset($data['view']))
             $pageView = $data['view'];
         else 
@@ -41,6 +42,11 @@ class BaseController extends CI_Controller{
             $redirect = $data['redirect'];
         else
             $redirect = false;
+        
+        // In case of an unauthorized acess to the page.
+//        /
+
+        
         // This is not stored in some cookie, because when the user is deleted,
         // he can still access.
         //
@@ -53,12 +59,16 @@ class BaseController extends CI_Controller{
             // If user tries to access main page, he will be redirected to the appropriate page.
 
              if ($pageView && ( ($typeCookie === $this->type))) {
+
+                $this->load->view($pageView, $data);
+
                if ($redirect) {
                     redirect($pageView);
                 }
                 else {
                     $this->load->view($pageView, $data);
                 }
+
             }
             else {
                 switch ($typeCookie) {
@@ -69,7 +79,10 @@ class BaseController extends CI_Controller{
                         redirect('AdministratorController');
                         break;
                     case "Takmicar" :
-                        redirect('Game');
+                        if ($this->session->gameStarted)
+                            redirect('Game');
+                        else 
+                            redirect('Game/newGame');
                             
                         
                         break;

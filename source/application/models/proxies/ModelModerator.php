@@ -1,5 +1,6 @@
 <?php
 require_once (APPPATH . "models/entities/Moderator.php");
+
 class ModelModerator extends CI_Model {
 	
 	/**
@@ -68,5 +69,46 @@ class ModelModerator extends CI_Model {
 		else
 			return null;
 	}
+        //Return usernames of all Moderators
+        //BAD algorithm
+        function allModeratorsUserName(){
+            $users=$this->doctrine->em->getRepository ( 'RegKorisnik')->findAll();
+            $i=0; 
+            foreach($users as $user){
+                if($this->doctrine->em->find("Moderator", $user->getIdkor())){
+                  $usernames[$i]= $user->getUsername(); $i++;  
+                }
+            }
+          
+            return $usernames;
+            }
 	
+          
+        function deleteModerator($data){
+            $username=$data['username'];
+            
+            $users = $this->em->getRepository ( 'RegKorisnik' )->findBy ( array (
+				'username' => $username 
+		) );
+	    //if ($users != null)
+		//	return false;
+            $user1=$users[0];
+            $user2=$this->doctrine->em->find("Moderator", $user1->getIdkor());
+            $ID=$users[0]->getIdkor();
+            
+            try{
+                  $entity = $this->em->getPartialReference("Moderator", $ID);
+                  $this->em->remove($entity);
+                  $entity = $this->em->getPartialReference("RegKorisnik", $ID);
+                  $this->em->remove($entity);
+                  $this->em->flush();
+                  return true;
+            }
+            catch(Exception $err)
+            {
+                  return false;
+            }
+                                  
+            return true;
+        }            
 }
