@@ -18,8 +18,17 @@ class ModeratorController extends BaseController {
         parent::__construct("Moderator");
     }
     
+   // $this->load->model('proxies/ModelModerator');
+        $usernames=$this->ModelModerator->allModeratorsUserName();
+        if($usernames==null)$usernames=array();
+        $this->Redirect(['view'=>'Administrator', 'moderators'=>$usernames]);
+        
     public function index() {
         //$this->load->view('Administrator');
-        $this->Redirect(['view'=>'Moderator']);
+        $this->load->model('proxies/ModelPitanje');
+        $questions=$this->ModelModerator->allModeratorsUserName();
+        
+        
+       // $this->Redirect(['view'=>'Moderator']);
     }
 }

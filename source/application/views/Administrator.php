@@ -111,12 +111,13 @@
           <h4>  UKLONI MODERATORA</h4>
         </div>
         <div class="modal-body">
-        <?php 
-            $attrubutesRegister = ['name'=>'registerFormModerator', 'id'=>'registerFormModerator', 'class'=>'form-horizontal'];
-            echo form_open('administratorcontroller/register', $attrubutesRegister); ?>
+        
             <table id="t2">
                     <?php
-                        $i=0;
+                        if(count($moderators)==0){
+                            echo "Nema moderatora";
+                        }
+                        else{
                         foreach($moderators as $p){?>
                             <tr>
                                 <td>
@@ -125,27 +126,22 @@
                                         da ne zna sta je moderators
                                         
                                     -->
-                                    
-                                    <?php echo "$p"."      ";
+                                  
+                                      <?php echo "$p"."      "; 
+                                      
+                                                $i=0;
 
-                                                $pod=array('name'=> 'button',
-                                                            'id'=> 'button'.$i,
-                                                            'value'=>'true',
-                                                            'type'=>'reset',
-                                                            'content'=>'Obriši',
-                                                            'action'=>"administratorcontroller/deleteModerator/$i"
-                                                    );
-
-
-                                                    $attrubutesRegister = ['name'=>'obrisiDugme'.$i, 'id'=>'obrisiDugme'.$i, 'class'=>'form-horizontal'];
-                                                    echo form_open("administratorcontroller/deleteModerator/$i", $attrubutesRegister); 
-                                                  echo "<button class="."'button2'"."  id="."'button'.$i".">OBRIŠI</button>";
+                                                $attrubutesRegister = ['name'=>'obrisiDugme'.$i, 'id'=>'obrisiDugme'.$i, 'class'=>'form-horizontal'];
+                                                
+                                                echo form_open("administratorcontroller/deleteModerator/$i", $attrubutesRegister); 
+                                                echo "<button class="."'button2'"."  id="."'button'.$i".">OBRIŠI</button>";
                                               
-                                                 echo form_close(); 
+                                                echo form_close(); 
                                                   $i++;
                                             }
-
-                                    ?>
+                        }                   
+                                      ?>
+                                  
                                 </td>
                             </tr>       
                         
@@ -153,7 +149,7 @@
 
                      
             </table>
-        <?php echo form_close(); ?>
+        
       </div>
       </div>
     </div>
