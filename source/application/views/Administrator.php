@@ -2,56 +2,32 @@
 <html>
 <head>
 	<title>Game</title>
-         <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        <script type="text/javascript">
-    var BASE_URL = '<?= base_url(); ?>'
-    </script>
-      <link rel = "stylesheet" type = "text/css" 
-    href = "<?php echo base_url(); ?>css/Svetski_putnik.css">
-    
-      
+          <script  src = "http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+            <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-      
-      
+             <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+            <script type="text/javascript">
+            var BASE_URL = '<?= base_url(); ?>';
+            </script>
+
+              <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel = "stylesheet" type = "text/css" 
+    href = "<?php echo base_url(); ?>css/Administrator.css">
+
     <title>Svetski putnik</title>
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+   <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
 </head>
 
 <body>
-    <?php
-    $i=0;
-    foreach($moderators as $p){
-        echo "$p"."      ";
-       
-        $pod=array('name'=> 'button',
-                    'id'=> 'button'.$i,
-                    'value'=>'true',
-                    'type'=>'reset',
-                    'content'=>'Obriši',
-                    'action'=>"administratorcontroller/deleteModerator/$i"
-            );
-        
-         
-            $attrubutesRegister = ['name'=>'obrisiDugme'.$i, 'id'=>'obrisiDugme'.$i, 'class'=>'form-horizontal'];
-            echo form_open("administratorcontroller/deleteModerator/$i", $attrubutesRegister); 
-          echo "<button class="."'button2'"."  id="."'button'.$i".">OBRIŠI</button>";
-       // echo form_button($pod);
-         echo "</br>";
-         
-         echo form_close(); 
-          $i++;
-    }
-    
-    
-    ?>
-    
-    <button class="button1" id="b11" data-toggle="modal" data-target="#myModal3">KREIRAJ MODERATORA</button>
-    
-    
-    <div class="modal" id="myModal3" role="dialog" data-backdrop=""   tabindex="-1">
+   
+    <div>
+        <button class="button1" id="b11" data-toggle="modal" data-target="#myModal3">KREIRAJ MODERATORA</button>
+        <button class="button1" id="b11" data-toggle="modal" data-target="#myModal4">UKLONI MODERATORA</button>
+    </div>
+    <div class="modal" id="myModal3" role="dialog" data-backdrop=""  aria-labelledby="myModalLabel" tabindex="-1">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
         <div class="modal-header" >
@@ -125,6 +101,63 @@
       </div>
     </div>
     </div>
+    
+    <!--Modal ukloni-->
+    <div class="modal" id="myModal4" role="dialog" data-backdrop=""  aria-labelledby="myModalLabel" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header" >
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4>  UKLONI MODERATORA</h4>
+        </div>
+        <div class="modal-body">
+        <?php 
+            $attrubutesRegister = ['name'=>'registerFormModerator', 'id'=>'registerFormModerator', 'class'=>'form-horizontal'];
+            echo form_open('administratorcontroller/register', $attrubutesRegister); ?>
+            <table id="t2">
+                    <?php
+                        $i=0;
+                        foreach($moderators as $p){?>
+                            <tr>
+                                <td>
+                                    <!--
+                                        OVDE TREBA DA NAPISES ELEMENT LISTE I DUGME, ovde kaze
+                                        da ne zna sta je moderators
+                                        
+                                    -->
+                                    
+                                    <?php echo "$p"."      ";
+
+                                                $pod=array('name'=> 'button',
+                                                            'id'=> 'button'.$i,
+                                                            'value'=>'true',
+                                                            'type'=>'reset',
+                                                            'content'=>'Obriši',
+                                                            'action'=>"administratorcontroller/deleteModerator/$i"
+                                                    );
+
+
+                                                    $attrubutesRegister = ['name'=>'obrisiDugme'.$i, 'id'=>'obrisiDugme'.$i, 'class'=>'form-horizontal'];
+                                                    echo form_open("administratorcontroller/deleteModerator/$i", $attrubutesRegister); 
+                                                  echo "<button class="."'button2'"."  id="."'button'.$i".">OBRIŠI</button>";
+                                              
+                                                 echo form_close(); 
+                                                  $i++;
+                                            }
+
+                                    ?>
+                                </td>
+                            </tr>       
+                        
+
+
+                     
+            </table>
+        <?php echo form_close(); ?>
+      </div>
+      </div>
+    </div>
+    </div>
 
 
     
@@ -132,8 +165,8 @@
     
     
     
-<p>Gameeeeeeeeeeeeeeeeeeeeeeeeeee </p>
-<p>Log-out icon on a button:
+
+<p> <br/><br/><br/><br/><br/><br/><br/>
         <?php 
             $attrubutesRegister = ['name'=>'logOutForm', 'id'=>'logOutForm', 'class'=>'form-horizontal'];
             echo form_open('main/logOut', $attrubutesRegister); ?>
