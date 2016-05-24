@@ -25,7 +25,8 @@ class AdministratorController extends BaseController {
     
     public function index() {
         $this->load->model('proxies/ModelModerator');
-        $usernames=$this->ModelModerator->allModeratorsUserName();       
+        $usernames=$this->ModelModerator->allModeratorsUserName();
+        if($usernames==null)$usernames=array();
         $this->Redirect(['view'=>'Administrator', 'moderators'=>$usernames]);
     }
     
