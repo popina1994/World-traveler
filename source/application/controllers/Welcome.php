@@ -31,9 +31,10 @@ class Welcome extends CI_Controller {
 	{
 		
 		$this->load->library('doctrine');
-
-		$data = Array('username'=>'ddmm', 'nivo'=>'Beba');
-		$this->ModelIgra->createIgra($data);
+		
+		foreach ($this->ModelPitanje->getPitanja() as $p) {
+			echo $p->getIdobl()->getNaziv();
+		}
 		
 		
 		
