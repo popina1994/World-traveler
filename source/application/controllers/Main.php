@@ -20,6 +20,7 @@ class Main extends BaseController {
          //$this->Redirect(['view'=>'Game']);
         //$this->Redirect(['view'=>'LevelChoice']);
        //$this->Redirect(['view'=>'GameChoice']);
+        //$this->Redirect(['view'=>'Administrator']);
         
      
     }
