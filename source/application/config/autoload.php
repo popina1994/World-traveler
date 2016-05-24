@@ -138,5 +138,5 @@ $autoload['language'] = array();
 |	$autoload['model'] = array('first_model' => 'first');
 */
 
-$autoload['model'] = array('proxies/Model','proxies/ModelAdministrator','proxies/ModelIgra','proxies/ModelLicnostPitanje','proxies/ModelModerator','proxies/ModelOblast','proxies/ModelOsvajanje','proxies/ModelRegKorisnik','proxies/ModelSlikaPitanje','proxies/ModelTakmicar','proxies/ModelTekstPitanje','entities/Administrator','entities/Igra','entities/LicnostPitanje','entities/Moderator','entities/NivoTezine','entities/Oblast','entities/Osvajanje','entities/Pitanje','entities/RegKorisnik','entities/SlikaPitanje','entities/Takmicar','entities/TekstPitanje','entities/VrediPutnika');
+$autoload['model'] = array('proxies/Model','proxies/ModelAdministrator','proxies/ModelIgra','proxies/ModelPitanje','proxies/ModelLicnostPitanje','proxies/ModelModerator','proxies/ModelOblast','proxies/ModelOsvajanje','proxies/ModelRegKorisnik','proxies/ModelSlikaPitanje','proxies/ModelTakmicar','proxies/ModelTekstPitanje','entities/Administrator','entities/Igra','entities/LicnostPitanje','entities/Moderator','entities/NivoTezine','entities/Oblast','entities/Osvajanje','entities/Pitanje','entities/RegKorisnik','entities/SlikaPitanje','entities/Takmicar','entities/TekstPitanje','entities/VrediPutnika');
 
