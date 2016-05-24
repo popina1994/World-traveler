@@ -37,7 +37,7 @@ class ModelIgra extends CI_Model {
 		catch(Exception $err){
 			die($err->getMessage());
 		}
-		return true;
+		return $igra->getIdigr();
 	
 	}
 	
