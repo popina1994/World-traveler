@@ -1,8 +1,8 @@
 <?php
 
 require_once APPPATH.'controllers/BaseController.php';
-/*
- * To change this license header, choose License Headers in Project Properties.
+ /*
+* To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -37,44 +37,81 @@ class Game extends BaseController {
         //
         $secret = $this->input->post('secret');
         if (!$secret)
-            Redirect();
+            $this->Redirect();
         
-        $username = $this->userName;
+        $return['dataExists'] = false;
+        $return['name'] = $this->session->username;
         
-        
-        // Dragana's part. of checking.
-        //
-        $this->load->model('proxies/ModelRegKorisnik');
-        if (...)) {
-                   $this->session->deleteData = true;
-                   $return['dataExists'] = true ;
+        $igra = $this->ModelIgra->existsUnfinishedIgra($data = ['userName' => $this->session->username] );
+        if ($igra) {
+            $this->session->set_userdata('oldIgraId', $igra->getIdigr());
+            $return['dataExists'] = true ;
         }
-             else  {
-                 $return['dataExists'] = false;
-             }
+        else  {
+            $return['dataExists'] = false;
+        }
+         
         echo json_encode($return);
     }
     
     public function newGame() {
         // From ajax is Passed existsOld.
-        //         
-        if ($this->session->deleteData) 
-            DeleteOld($userName);
-        $this->Redirect(['view'=>'LevelChoice']);
+        //
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $oldIgraId = $this->session->oldIgraId;
+            if ($oldIgraId)  {
+                $this->ModelIgra->finishUnfinishedIgra(['igraID' => $oldIgraId]);
+                $this->session->unset_userdata('oldIgraId');
+                
+            }
+
+            $this->Redirect(['view'=>'levelChoice']);
+        }
+        else {
+            $this->Redirect();
+        }
+       
     }
+    
     
     // Redirects to mapp of appropriate level.
     //
-    public function gameChoice() {
-        switchGame();
-        redirect();
+    public function levelChoice() {
+            $this->load->model('proxies/Model');
+            // Redirect on LevelChoice page.
+            //
+            if (isset($_POST['beba'])) {
+                $this->session->set_userdata('level', 'Beba');
+            } else if (isset($_POST['knjiga'])) {
+                $this->session->set_userdata('level', 'Skolarac');
+            }
+            else if (isset($_POST['kofer'])) { 
+                 $this->session->set_userdata('level', 'Svetstki putnik');
+            }
+            else {
+                $this->Redirect();
+            }
+            $this->session->set_userdata('gameStarted', true);
+            $this->ModelIgra->createIgra(['username'=> $this->session->username, 'naziv'=>$this->session->level]);
+            
+            $this->Redirect(['view'=>'game', 'redirect' =>true]);
     }
     
     public function oldGame() {
         // Protect from unauthorized access.
         //
-        Redirect('validation' <=$this->input->post('secret'));
-        $this->session->deleteData = true;
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            // Ucitaj mapu na osnovu potrebnih podataka. Moracu Jelici da prosledim php kojim se 
+            // azurirati potrebne stvari na mapi.
+            //
+            $this->session->set_userdata('gameStarted', true);
+            $this->Redirect(['view'=>'test']);
+            //$this->Redirect(['view' =>'game', 'redirect' => true]);
+        }
+        else {
+           //Redirect();
+        }
+       
     }
     
     public function conquered() {
@@ -87,7 +124,7 @@ class Game extends BaseController {
     public function getAnswer() {
         $secret = $this->input->post('secret');
         if (!$secret)
-            Redirect();
+            $this->Redirect();
     }
     
     // It will only set appropriate fields which are going to be used in jquery for setting parts of form.
@@ -96,11 +133,14 @@ class Game extends BaseController {
     public function getQuestion() {
         $secret = $this->input->post('secret');
         if (!$secret)
-            Redirect();
-        $country = $this->input->post('country');
-        $this->load->model('proxies/ModelOblast');
+           $this->Redirect();
         
-        $this->ModelRegKorisnik->exists(['name'<=$country]);
+        $country = $this->input->post('country');
+        
+        $return['country'] = $country;
+        $return['canAttack'] = true;
+        
+        echo json_encode($return);
         
         
         // pass the $level, $

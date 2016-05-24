@@ -45,30 +45,27 @@ class BaseController extends CI_Controller{
         
         // In case of an unauthorized acess to the page.
 //        /
-        $validation = $this->input->post('secret');
-        
-        if ($validation)
-            return;
+
         
         // This is not stored in some cookie, because when the user is deleted,
         // he can still access.
         //
         $typeCookie = $this->ModelRegKorisnik->checkType(['username'=>$this->session->username]);
-        
-        console_log('pageView '. $pageView);
-        console_log('typeCookie '. $typeCookie);
-        console_log('ThisType '. $this->type);
+//        
         if ($typeCookie) { 
             // If user tries to access main page, he will be redirected to the appropriate page.
 
              if ($pageView && ( ($typeCookie === $this->type))) {
 
-                $this->load->view($pageView, $data);
-
                if ($redirect) {
                     redirect($pageView);
                 }
                 else {
+                    if ($pageView === 'game') {
+                        // pass the data to jelica to initialize map.
+                        //
+                        console_log('fuck');
+                    }
                     $this->load->view($pageView, $data);
                 }
 
@@ -82,9 +79,7 @@ class BaseController extends CI_Controller{
                         redirect('AdministratorController');
                         break;
                     case "Takmicar" :
-                        redirect('Game');
-                            
-                        
+                        redirect("game");
                         break;
                     // Not registered.
                     //

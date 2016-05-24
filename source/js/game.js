@@ -7,16 +7,13 @@
 
 
 
-$('.clear').bind('click', clear_click);
 
-function clear_click()  {
-  alert(this.id);
-}
 
 $(document).ready(function(){   
     $('.areaMap').click( function(event) {
 
         alert("Trazi pitanje iz baze");
+        event.preventDefault();
         $.ajax({
 
             type: "POST",
@@ -30,25 +27,31 @@ $(document).ready(function(){
             dataType: "json", 
             success:function(data){
                 //$("#ime").text.html(data);
+                alert('Podaci stigli');
                 if (data.canAttack) {
                     alert('Sad sledi pitanje');
+                    alert(data.country);
                     // Load the question.
                     //
                 }
                 else {
                     alert('Ne mozes da napadnes');
                 }
-                alert('Podaci primljeni');
-            }
+            },
+             error:function(data){alert(data);}
+           
 
         }); 
     });
 }); 
 
+
+
+
 $(document).ready(function(){   
-    $('#btnClick').click( function(event) {
+    $('#btnNextText').click( function(event) {
         
-        alert("Proverava da li su dobri podaci");
+        alert("Proverava da li je dobar odgovor");
         $.ajax({
 
             type: "POST",
@@ -64,10 +67,9 @@ $(document).ready(function(){
             dataType: "json", 
             success:function(data){
                 //$("#ime").text.html(data);
-                alert('Podaci primljeni');
                 // Set appropriate question answer.
                 //
-                if (data.answer) {
+                if (data.correct) {
                 
                 }
                 else {

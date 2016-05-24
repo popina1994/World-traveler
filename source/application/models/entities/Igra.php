@@ -1,9 +1,5 @@
 <?php
 
-include_once 'takmicar.php';
-include_once 'osvajanje.php';
-include_once 'nivotezine.php';
-
 use Doctrine\ORM\Mapping as ORM;
 
 /**

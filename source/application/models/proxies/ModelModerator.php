@@ -1,5 +1,4 @@
 <?php
-require_once (APPPATH . "models/entities/Moderator.php");
 
 class ModelModerator extends CI_Model {
 	

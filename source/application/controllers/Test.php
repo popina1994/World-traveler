@@ -6,3 +6,8 @@
  * and open the template in the editor.
  */
 
+class BaseController extends CI_Controller {
+    public function index() {
+        $this->load->view('test');
+    }
+}

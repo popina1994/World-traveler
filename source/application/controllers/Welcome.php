@@ -31,8 +31,10 @@ class Welcome extends CI_Controller {
 	{
 		
 		$this->load->library('doctrine');
-		$this->load->model('proxies/Model');
-                $this->load->view('game');
+
+		$data = Array('username'=>'ddmm', 'nivo'=>'Beba');
+		$this->ModelIgra->createIgra($data);
+		
 		
 		
 		//opcija1 za INSERT - napravila gotove funkcije

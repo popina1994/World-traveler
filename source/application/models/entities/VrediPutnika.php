@@ -1,8 +1,5 @@
 <?php
 
-include_once 'oblast.php';
-include_once 'nivotezine.php';
-
 use Doctrine\ORM\Mapping as ORM;
 
 /**

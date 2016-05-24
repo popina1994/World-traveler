@@ -1,5 +1,6 @@
 <?php
 
+require_once (APPPATH . "models/entities/RegKorisnik.php");
 
 
 use Doctrine\ORM\Mapping as ORM;

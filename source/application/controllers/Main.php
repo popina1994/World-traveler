@@ -15,8 +15,8 @@ class Main extends BaseController {
         // If the user is logged in.
         // You always need to add $this because the load->view cannot find who is calling, and it'll be one
         // from base class, and it'll make some errors.
-      
-       $this->Redirect(['view'=>'Main']);
+       
+     $this->Redirect(['view'=>'Main']);
          //$this->Redirect(['view'=>'Game']);
         //$this->Redirect(['view'=>'LevelChoice']);
        //$this->Redirect(['view'=>'GameChoice']);
@@ -54,7 +54,7 @@ class Main extends BaseController {
             $username = $this->input->post('nameLogin');
             $password = $this->input->post("passLogin");
             
-            $this->session->username = $username;
+            $this->session->set_userdata('username', $username);
             
             $this->load->model('proxies/ModelAdministrator');
             $this->load->model('proxies/ModelModerator');

@@ -1,5 +1,5 @@
 <?php
-require_once (APPPATH . "models/entities/RegKorisnik.php");
+
 class ModelRegKorisnik extends CI_Model {
 	
 	/**

@@ -1,8 +1,5 @@
 <?php
 
-
-include_once 'regkorisnik.php';
-
 use Doctrine\ORM\Mapping as ORM;
 
 /**

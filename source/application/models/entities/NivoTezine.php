@@ -1,7 +1,5 @@
 <?php
 
-include_once 'oblast.php';
-
 use Doctrine\ORM\Mapping as ORM;
 
 /**

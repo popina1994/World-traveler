@@ -1,5 +1,5 @@
 <?php
-require_once (APPPATH . "models/entities/Administrator.php");
+
 class ModelAdministrator extends CI_Model {
 	
 	/**
