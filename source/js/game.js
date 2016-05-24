@@ -8,11 +8,9 @@
 
 
 
-
 $(document).ready(function(){   
     $('.areaMap').click( function(event) {
-
-        alert("Trazi pitanje iz baze");
+        
         event.preventDefault();
         $.ajax({
 
@@ -26,12 +24,18 @@ $(document).ready(function(){
 
             dataType: "json", 
             success:function(data){
-                //$("#ime").text.html(data);
-                alert('Podaci stigli');
+                
+                //alert('Podaci stigli');
+                $("#myModal").modal("show");
+                
+                
                 if (data.canAttack) {
-                    alert('Sad sledi pitanje');
-                    alert(data.country);
-                    // Load the question.
+                    //alert('Sad sledi pitanje');
+                    
+                    //alert(data.country);
+                    //$("#myModal").modal("hide");
+// 
+// Load the question.
                     //
                 }
                 else {
