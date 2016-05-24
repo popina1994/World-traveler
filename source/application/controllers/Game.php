@@ -62,7 +62,6 @@ class Game extends BaseController {
             if ($oldIgraId)  {
                 $this->ModelIgra->finishUnfinishedIgra(['igraID' => $oldIgraId]);
                 $this->session->unset_userdata('oldIgraId');
-                
             }
 
             $this->Redirect(['view'=>'levelChoice']);
@@ -92,24 +91,27 @@ class Game extends BaseController {
                 $this->Redirect();
             }
             $this->session->set_userdata('gameStarted', true);
-            $this->ModelIgra->createIgra(['username'=> $this->session->username, 'naziv'=>$this->session->level]);
             
+            $this->ModelIgra->createIgra(['username'=> $this->session->username, 'naziv'=>$this->session->level]);
+            $this->session->set_userdata('curGame', $this->session->oldIgraId);
             $this->Redirect(['view'=>'game', 'redirect' =>true]);
     }
     
     public function oldGame() {
         // Protect from unauthorized access.
+        // Ajax will only submit this method.
         //
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Ucitaj mapu na osnovu potrebnih podataka. Moracu Jelici da prosledim php kojim se 
             // azurirati potrebne stvari na mapi.
             //
             $this->session->set_userdata('gameStarted', true);
-            $this->Redirect(['view'=>'test']);
-            //$this->Redirect(['view' =>'game', 'redirect' => true]);
+            $this->session->set_userdata('curGame', $this->session->oldIgraId);
+            $this->Redirect(['view'=>'game','redirect'=>true]);
+            
         }
         else {
-           //Redirect();
+           Redirect();
         }
        
     }

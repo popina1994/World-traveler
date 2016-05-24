@@ -35,7 +35,10 @@ $(document).ready(function(){
                     //
                 }
                 else {
-                    alert('Ne mozes da napadnes');
+                    if (data.unfinished)
+                        alert('Niste zavrsili napad na:' + data.country);
+                    else 
+                        alert('Vec ste osvojili ovu zemlju');
                 }
             },
              error:function(data){alert(data);}
