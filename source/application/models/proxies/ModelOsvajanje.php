@@ -70,9 +70,38 @@ class ModelOsvajanje extends CI_Model {
 	
 	}
 	
-	// Vraca zapoceto osvajanje u okkviru zadate igre ako postoji 
+	//nakon neuspesnog osvajanja oblasti
+	//dobija id igre i naziv oblasti
+	function neuspehOsvajanje($data){
+	
+		$igra = $this->doctrine->em->find("Igra", $data['idigr']);
+		$oblast = $this->doctrine->em->getRepository('Oblast')->findBy(array('naziv'=>$data['oblast']))[0];
+	
+		$osvajanje = $this->doctrine->em->getRepository('Osvajanje')->findBy(array('idigr'=>$igra->getIdigr(), 'idobl'=>$oblast->getIdobl()))[0];
+	
+	
+		$vp = $this->doctrine->em->getRepository('VrediPutnika')->findBy(array('idniv'=>$igra->getIdniv()->getIdniv(), 'idobl'=>$oblast->getIdobl()))[0];
+		$igra->setPutnici($igra->getPutnici()-$vp->getBrminus());
+		$igra->removeIdosv($osvajanje);
+		
+		try {
+			$this->em->persist($igra);
+			$this->em->flush();
+			
+			$this->em->remove($osvajanje);
+			$this->em->flush();
+		}
+		catch(Exception $err){
+			die($err->getMessage());
+		}
+		return true;
+	
+	}
+	
+	// Vraca zapoceto osvajanje u okviru zadate igre ako postoji 
 	function existsOsvajanje($data) {
-		$osvajanja = $data['igra']->getIdosv();
+		$igra = $this->doctrine->em->find("Igra", $data['idigr']);
+		$osvajanja = $igra->getIdosv();
 		foreach ($osvajanja as $osv){
 			if($osv->getStatus()=='z')
 				return $osv;
