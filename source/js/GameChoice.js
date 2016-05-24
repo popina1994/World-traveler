@@ -23,7 +23,7 @@ $(document).ready(function(){
                         alert('Nista');
                     }
                     else {
-                        alert('Nova igra pocinje');
+                        alert('Nova igra pocinje brisanje');
                         form.submit();
                     }
                 }
@@ -63,7 +63,6 @@ $(document).ready(function(){
                 }
                 else {
                     alert('Igra ne postoji');
-                    alert(data.name);
                 }
             }
 

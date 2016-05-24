@@ -7,6 +7,10 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
+        <script type="text/javascript">
+        var BASE_URL = '<?= base_url(); ?>';
+        </script>
+        
         <script type = 'text/javascript' src = "<?php echo base_url(); ?>js/game.js"></script>
 
         <link rel = "stylesheet" type = "text/css" href = "<?php echo base_url(); ?>css/Game.css">
@@ -96,7 +100,8 @@
                                      <input type="radio" name="radioText" id="d">Cetvrto<br/><input type="text" id="answer4" hidden><br/>
                             <?php echo form_close(); ?>
                      
-                             <button type="button" class="next" data-dismiss="modal" name="txtSubmit"><?php
+                             <button type="button" class="next"  id = "btnNextText" name="btnNextText">
+                                 <?php
                                         $image_properties = array(
                                             'src' => 'img/next.png',
                                             'id' => 'next',

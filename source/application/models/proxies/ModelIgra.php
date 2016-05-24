@@ -26,7 +26,7 @@ class ModelIgra extends CI_Model {
 		$user =  $this->doctrine->em->find("Takmicar", $user->getIdkor());
 		$igra->setIdkor($user);
 		
-		$nivo =  $this->doctrine->em->getRepository('NivoTezine')->findBy(array('naziv' => $data['nivo']))[0];
+		$nivo =  $this->doctrine->em->getRepository('NivoTezine')->findBy(array('naziv' => $data['naziv']))[0];
 		$igra->setIdniv($nivo);
 	
 		try {
@@ -43,7 +43,8 @@ class ModelIgra extends CI_Model {
 	
 	//Zavrsava igru $data['igra'];
 	function finishUnfinishedIgra($data){
-		$igra = $data['igra'];
+		$igraID = $data['igraID'];
+                $igra = $this->doctrine->em->getRepository('Igra')->find($igraID);
 		$igra->setStatus('f'); 
 		try {
 			//save to database
@@ -62,11 +63,14 @@ class ModelIgra extends CI_Model {
 		$user = $this->doctrine->em->getRepository ( 'RegKorisnik' )->findBy ( array (
 				'username' => $data ['userName']
 		) );
+                
 		if($user==null) return null;
 		$igra = $this->doctrine->em->getRepository ( 'Igra' )->findBy ( array (
 				'idkor' => $user[0]->getIdkor()
 		) );
+                
 		if($igra==null) return null;
+                
 		foreach($igra as $i){
 			if($i->getStatus()=='t')
 				return $i;

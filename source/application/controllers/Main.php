@@ -54,7 +54,7 @@ class Main extends BaseController {
             $username = $this->input->post('nameLogin');
             $password = $this->input->post("passLogin");
             
-            $this->session->username = $username;
+            $this->session->set_userdata('username', $username);
             
             $this->load->model('proxies/ModelAdministrator');
             $this->load->model('proxies/ModelModerator');

@@ -51,7 +51,7 @@ class BaseController extends CI_Controller{
         // he can still access.
         //
         $typeCookie = $this->ModelRegKorisnik->checkType(['username'=>$this->session->username]);
-        
+//        
         if ($typeCookie) { 
             // If user tries to access main page, he will be redirected to the appropriate page.
 
