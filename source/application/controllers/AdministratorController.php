@@ -47,7 +47,6 @@ class AdministratorController extends BaseController {
         $this->load->model('proxies/ModelModerator');
         $users=$this->ModelModerator->allModeratorsUserName();
         $username = $users[$i];
-       // $password = "SIFRA123";
         if ($username) {
             $this->ModelModerator->deleteModerator($data = [ 'username' =>$username]);
             $this->Redirect();

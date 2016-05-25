@@ -18,9 +18,9 @@ class ModelModerator extends CI_Model {
 		$users = $this->em->getRepository ( 'RegKorisnik' )->findBy ( array (
 				'username' => $user 
 		) );
-		if ($users != null)
+		if ($users != null){
 			return false;
-		
+                }
 		$korisnik = new RegKorisnik ();
 		$korisnik->setUsername ( $data ['username'] );
 		$korisnik->setPassword ( $data ['password'] );
@@ -70,12 +70,16 @@ class ModelModerator extends CI_Model {
 	}
         //Return usernames of all Moderators
         //BAD algorithm
+        //PREVARA od funkcije, zapravo vraca samo on koji nisu banovani od strane admina.
         function allModeratorsUserName(){
             $users=$this->doctrine->em->getRepository ( 'RegKorisnik')->findAll();
             $i=0; $usernames=array();
             foreach($users as $user){
-                if($this->doctrine->em->find("Moderator", $user->getIdkor())){
-                  $usernames[$i]= $user->getUsername(); $i++;  
+                $us=$this->doctrine->em->find("Moderator", $user->getIdkor());
+                if($us){
+                    if($user->getPassword()!="admindelete"){
+                    $usernames[$i]= $user->getUsername(); $i++; 
+                    }
                 }
             }
             if(count($usernames)>0){
@@ -85,32 +89,17 @@ class ModelModerator extends CI_Model {
             return null;
             }
 	
-          
+          //PREVARA od funkcije, ne brise moderatora, nego ga samo  onemogucuje da dalje radi
         function deleteModerator($data){
             $username=$data['username'];
             
             $users = $this->em->getRepository ( 'RegKorisnik' )->findBy ( array (
 				'username' => $username 
 		) );
-	    //if ($users != null)
-		//	return false;
-            //$user1=$users[0];
-           // $user2=$this->doctrine->em->find("Moderator", $user1->getIdkor());
-            $ID=$users[0]->getIdkor();
-            
-            try{
-                  $entity = $this->em->getPartialReference("Moderator", $ID);
-                  $this->em->remove($entity);
-                  $entity = $this->em->getPartialReference("RegKorisnik", $ID);
-                  $this->em->remove($entity);
-                  $this->em->flush();
-                  return true;
-            }
-            catch(Exception $err)
-            {
-                  return false;
-            }
-                                  
+	    
+            $users[0]->setPassword('admindelete');
+            $this->em->flush();
+                     
             return true;
-        }            
+        }
 }

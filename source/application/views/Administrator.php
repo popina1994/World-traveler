@@ -10,6 +10,9 @@
             <script type="text/javascript">
             var BASE_URL = '<?= base_url(); ?>';
             </script>
+            
+            <script type = 'text/javascript' src = "<?php echo base_url(); 
+            ?>js/registermoderator.js"></script>
 
               <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel = "stylesheet" type = "text/css" 
@@ -121,11 +124,7 @@
                         foreach($moderators as $p){?>
                             <tr>
                                 <td>
-                                    <!--
-                                        OVDE TREBA DA NAPISES ELEMENT LISTE I DUGME, ovde kaze
-                                        da ne zna sta je moderators
-                                        
-                                    -->
+                                    
                                   
                                       <?php echo "$p"."      "; 
                                       
@@ -134,17 +133,18 @@
                                                 $attrubutesRegister = ['name'=>'obrisiDugme'.$i, 'id'=>'obrisiDugme'.$i, 'class'=>'form-horizontal'];
                                                 
                                                 echo form_open("administratorcontroller/deleteModerator/$i", $attrubutesRegister); 
-                                                echo "<button class="."'button2'"."  id="."'button'.$i".">OBRIŠI</button>";
+                                                $str='button'.$i;
+                                                echo "<button class="."'button2'"."  id=".$str.">OBRIŠI</button>";
                                               
                                                 echo form_close(); 
                                                   $i++;
                                             }
-                        }                   
+                                           
                                       ?>
                                   
                                 </td>
                             </tr>       
-                        
+                        <?php } ?>
 
 
                      
