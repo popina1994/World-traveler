@@ -24,19 +24,13 @@ $(document).ready(function(){
 
             dataType: "json", 
             success:function(data){
-                
-                //alert('Podaci stigli');
-                $("#myModal").modal("show");
-                
-                
                 if (data.canAttack) {
-                    //alert('Sad sledi pitanje');
-                    
-                    //alert(data.country);
-                    //$("#myModal").modal("hide");
-// 
-// Load the question.
-                    //
+                    $('label[for=text').html(data.text);
+                    $('label[for=a]').html(data.a);
+                    $('label[for=b]').html(data.b);
+                    $('label[for=c]').html(data.c);
+                    $('label[for=d]').html(data.d);
+                    $("#myModal").modal("show");
                 }
                 else {
                     if (data.unfinished)
@@ -56,36 +50,53 @@ $(document).ready(function(){
 
 
 $(document).ready(function(){   
+    var clicks = 0;
     $('#btnNextText').click( function(event) {
         
-        alert("Proverava da li je dobar odgovor");
-        $.ajax({
+        
+        // first click
+        //
+        if (clicks % 2 == 0) {
 
-            type: "POST",
-            url: BASE_URL + "index.php/game/getAnswer/",
+            var val = $("input[class=radioText]:checked").val();
+            $.ajax({
 
-            data : {
-                    letter : $('input[name=radioText]:checked').val(), 
-                    secret : true
-                    // first time will be set user answer
+                type: "POST",
+                url: BASE_URL + "index.php/game/getAnswer/",
+
+                data : {
+                        letter : val, 
+                        secret : true
+                        // first time will be set user answer
+                        //
+                    },
+
+                dataType: "json", 
+                success:function(data){
+                    // Set appropriate question answer.
                     //
-                },
-
-            dataType: "json", 
-            success:function(data){
-                //$("#ime").text.html(data);
-                // Set appropriate question answer.
-                //
-                if (data.correct) {
-                
+                    if (data.correct) {
+                        $('label[for=note]').html("Tacan odgovor");
+                    }
+                    else {
+                        $('label[for=note').html("Netacan odgovor");
+                    }
+                     $('label[for=answerA]').html('&#10007');
+                    $('label[for=answerB]').html('&#10007');
+                    $('label[for=answerC]').html('&#10007');
+                    $('label[for=answerD]').html('&#10007');
+                    $('label[for=answer'+data.letter + ']').html('&#10004');
+                    
+                    
                 }
-                else {
-                    // Appear picture question.
-                    //
-                }
-            }
 
-        }); 
+            }); 
+        }
+        else {
+            $('label[for=answerB]').html('&#10004');
+            $("#myModal").modal("hide");
+        }
+        clicks++;
     });
 }); 
 
