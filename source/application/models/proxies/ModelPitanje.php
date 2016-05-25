@@ -12,10 +12,20 @@ class ModelPitanje extends CI_Model {
 		parent::__construct ();
 		$this->em = $this->doctrine->em;
 	}
-
+        
 	function getPitanja(){
-		return $this->doctrine->em->getRepository('Pitanje')->findBy(array());
-		
+		$questions= $this->doctrine->em->getRepository('Pitanje')->findAll();
+		 $i=0; $strings=array();
+               foreach($questions as $q){
+                   $strings[$i]=array(
+                       'idPitanja' => $q->getIdpit(),
+                       'nivo'=> $q->getIdniv()->getNaziv(),
+                       'oblast' => $q->getIdobl()->getNaziv() 
+                    );
+                   $i++;
+               }
+               return $strings;
+                
 	}
 	
 }
