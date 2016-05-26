@@ -39,9 +39,10 @@ body{
     padding:0px;
 }
 .modal-body{
-      margin:0px;
+    margin:0px;
     padding:0px;
     align-items: center;
+   
 }
 
 
@@ -126,6 +127,7 @@ h4{
   margin: 30px;
   margin-top: 10px;
   align-items: center;
+  padding-left: 300px;
 }
 
 
@@ -225,3 +227,4 @@ label{
   border-radius: 10px;
   border: 2px solid black;
 }
+
