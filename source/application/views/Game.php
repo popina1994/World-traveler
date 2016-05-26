@@ -89,42 +89,89 @@
                     <div class="modal-header">                  
                         <h4 class="textQuestion"  id ="textQuestion">Tekstualno pitanje</h4>
                     </div>
-                        <div class="modal-body">
-                            <?php $attrubutesRegister = ['name' => 'textQuestion', 'id' => 'textQuestion', 'class' => 'form-horizontal'];
-                            echo form_open('game/conquered', $attrubutesRegister);
-                            ?>
-                                     <p id="naslov"><label for="text"></label></p>
+                      
+                    <div class="modal-body">
+                        <?php $attrubutesRegister = ['name' => 'textQuestion', 'id' => 'textQuestion', 'class' => 'form-horizontal'];
+                        echo form_open('game/conquered', $attrubutesRegister);
+                        ?>
+                                 <p id="naslov"><label for="text"></label></p>
 
-                                    <label for="answerA"></label> <input type="radio" name = "radioText"class="radioText" value="a"/> <label for="a"></label>  <br/>
-                                    <label for="answerB"></label> <input type="radio" name = "radioText"class="radioText" value="b"/> <label for="b"></label> <br/> 
-                                    <label for="answerC"></label> <input type="radio" name = "radioText"class="radioText" value="c"/> <label for="c"></label> <br/>
-                                    <label for="answerD"></label> <input type="radio" name = "radioText"class="radioText" value="d"/> <label for="d"></label>  <br/>
-                                    <label for="note"></label>
-                            <?php echo form_close(); ?>
+                                <label for="markTextA"></label> <input type="radio" name = "radioText"class="radioText" value="a"/> <label for="answerTextA"></label>  <br/>
+                                <label for="markTextB"></label> <input type="radio" name = "radioText"class="radioText" value="b"/> <label for="answerTextB"></label> <br/> 
+                                <label for="markTextC"></label> <input type="radio" name = "radioText"class="radioText" value="c"/> <label for="answerTextC"></label> <br/>
+                                <label for="markTextD"></label> <input type="radio" name = "radioText"class="radioText" value="d"/> <label for="answerTextD"></label>  <br/>
+                                <label for="noteText"></label>
+                        <?php echo form_close(); ?>
 
-                             <button type="button" class="next"  id = "btnNextText" name="btnNextText">
-                                 <?php
-                                        $image_properties = array(
-                                            'src' => 'img/next.png',
-                                            'id' => 'next',
-                                            'width' => '40px',
-                                            'height' => '40px',
-                                        );
+                         <button type="button" class="next"  id = "btnNextText" name="btnNextText">
+                             <?php
+                                    $image_properties = array(
+                                        'src' => 'img/next.png',
+                                        'id' => 'next',
+                                        'width' => '40px',
+                                        'height' => '40px',
+                                    );
 
-                                        echo img($image_properties);
-                            ?></button>
+                                    echo img($image_properties);
+                        ?></button>
 
-                         </div>
+                     </div>
 
                   </div>
       
     </div>
   </div>
-           
-            <div id="modalPicture" class="modal">
-            <img class="img-thumbnail" id="img01">
-            <div id="caption"></div>
+           <!-- Modal Picture -->
+        <div class="modal fade" id="modalPicture" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">                  
+                    <h4 class="pictureQuestion"  id ="pictureQuestion">Slikovno pitanje</h4>
+                </div>
+                  
+                <div class="modal-body">
+                    <?php
+                                $image_properties = array(
+                                    'src' => 'img/user.png',
+                                    'id' => 'picturePictureQuestion',
+                                    'width' => '100px',
+                                    'height' => '100px',
+                                );
+
+                                echo img($image_properties);
+                    ?>
+                    <?php $attrubutesRegister = ['name' => 'PictureQuestion', 'id' => 'PictureQuestion', 'class' => 'form-horizontal'];
+                    echo form_open('game/conquered', $attrubutesRegister);
+                    ?>
+                             <p id="naslov"><label for="Picture"></label></p>
+
+                            <label for="markPictureA"></label> <input type="radio" name = "radioPicture"class="radioPicture" value="a"/> <label for="answerPictureA"></label>  <br/>
+                            <label for="markPictureB"></label> <input type="radio" name = "radioPicture"class="radioPicture" value="b"/> <label for="answerPictureB"></label> <br/> 
+                            <label for="markPictureC"></label> <input type="radio" name = "radioPicture"class="radioPicture" value="c"/> <label for="answerPictureC"></label> <br/>
+                            <label for="markPictureD"></label> <input type="radio" name = "radioPicture"class="radioPicture" value="d"/> <label for="answerPictureD"></label>  <br/>
+                            <label for="notePicture"></label>
+                    <?php echo form_close(); ?>
+
+                     <button type="button" class="next"  id = "btnNextPicture" name="btnNextPicture">
+                         <?php
+                                $image_properties = array(
+                                    'src' => 'img/next.png',
+                                    'id' => 'next',
+                                    'width' => '40px',
+                                    'height' => '40px',
+                                );
+
+                                echo img($image_properties);
+                    ?></button>
+
+                 </div>
+
+              </div>
+      
             </div>
+        </div>
            
         <!--Modal licnost
           <div class="modal fade" id="myModal" role="dialog">
