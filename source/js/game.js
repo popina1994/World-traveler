@@ -42,6 +42,30 @@ $(document).ready(function(){
 
         }); 
     });
+     $("#settings").click(function(){
+        $('#myModalprofil').modal('show');
+        
+        document.getElementById("settings").disabled=true;
+        document.getElementById("rang").disabled=true;
+    });
+    $("#zatvaram").click(function(){
+        $('#myModalprofil').modal('hide');
+        
+        document.getElementById("settings").disabled=false;
+        document.getElementById("rang").disabled=false;
+    });
+     $("#rang").click(function(){
+        $('#myModalrang').modal('show');
+        
+        document.getElementById("settings").disabled=true;
+        document.getElementById("rang").disabled=true;
+    });
+    $("#zatvaramrang").click(function(){
+        $('#myModalrang').modal('hide');
+        
+        document.getElementById("settings").disabled=false;
+        document.getElementById("rang").disabled=false;
+    });
 }); 
 
 

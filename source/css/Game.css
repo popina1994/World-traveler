@@ -8,14 +8,7 @@
      background-color: #E5DADA;
 }
 
-.modal-header, h4, .close {
-      background-color:  #BD420E;
-      color:white !important;
-      text-align: center;
-      font-size: 30px;
-      margin: 0px;
-      padding: 5px;
-  }
+
   
   .next{
       background-color:#E5DADA;
@@ -36,7 +29,10 @@
     height: 650px;
     align-items: center;
     align-content: center;
-    
+   margin: 0px;
+   padding: 0px;
+   position: absolute;
+   z-index: 10;
 }
 
 label{
@@ -55,5 +51,105 @@ body{
    align-items: center;
     align-content: center;
     padding: 5px;
+   
+    z-index: 1;
 }
+
+#sidebar{
+   
+    
+    padding: 15px;
+    border-radius: 15px 50px 30px 5px;
+    border: 4px solid black;
+    text-align: center;
+    align-content: center;
+   
+    z-index:999999;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    
+}
+
+p{
+    color: white;
+    font-size: 15px;
+}
+
+#poeni{
+    background-color: lightgreen;
+    text-align: center;
+}
+
+#settings{
+    background: none;
+    
+    border: none;
+    
+}
+
+#rang{
+    background: none;
+    
+    border: none;
+    
+}
+
+#dugmici{
+  padding-top: 15px;
+  text-align: center;
+  margin-top: 5px;
+  padding-bottom: 10px;
+}
+
+
+#myModalprofil{
+    margin-top: 100px;
+    margin-left: 70px;
+    position: absolute;
+    z-index: 50;
+}
+
+#myModalrang{
+    margin-top: 150px;
+    margin-left: 70px;
+    position: absolute;
+    z-index: 50;
+}
+
+#scroll{
+    margin:0px;
+    padding:0px;
+    align-items: center;
+    text-align: center;
+    overflow-y: scroll;
+    height: 250px;
+}
+
+#rangheader, h4,.close{
+     background-color:  darkslategrey;
+      color:white !important;
+      text-align: center;
+      font-size: 30px;
+      margin: 0px;
+      padding: 5px;
+}
+
+.modal-body{
+    margin:0px;
+    padding:0px;
+    align-items: center;
+    text-align: center;
+    margin-left: 100px;
+    background-color: white;
+}
+#t2{
+  padding: 15px;
+  font-size: 20px;
+  background-color: white;
+  margin-top: 10px;
+  text-align: center;
+  padding-left: 300px;
+}
+
 
