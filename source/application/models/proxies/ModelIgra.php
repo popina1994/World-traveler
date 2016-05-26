@@ -80,4 +80,28 @@ class ModelIgra extends CI_Model {
 		
 	}
 	
+	//proverava da li je dozvoljen napad
+	function canAttack($data){
+		$igra = $this->doctrine->em->getRepository('Igra')->find($data['igraID']);
+		$osvajanja = $igra->getIdosv();
+	 	if(count($osvajanja)==0) return "prvi napad";
+		$oblast = $this->doctrine->em->getRepository ( 'Oblast' )->findBy ( array (
+				'naziv' => $data['oblast']
+		) )[0];
+		
+		$osvojene = array();
+		foreach($osvajanja as $osv)
+			array_push($osvojene,$osv->getIdobl());
+		
+		if (in_array($oblast, $osvojene)) return "vec osvojeno";
+		
+		$granice = $oblast->getIdobl2();
+		foreach($granice as $obl1){
+			if (in_array($obl1, $osvojene))
+				return "ok";
+		}
+		return "ne granici se";
+		
+	}
+	
 }
