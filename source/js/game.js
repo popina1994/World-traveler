@@ -31,12 +31,10 @@ $(document).ready(function(){
                     $('label[for=answerTextC]').html(data.c);
                     $('label[for=answerTextD]').html(data.d);
                     $("#modalText").modal("show");
+                    
                 }
                 else {
-                    if (data.unfinished)
-                        alert('Niste zavrsili napad na:' + data.country);
-                    else 
-                        alert('Vec ste osvojili ovu zemlju');
+                    alert(data.error);
                 }
             },
              error:function(data){alert(data);}
@@ -51,6 +49,7 @@ $(document).ready(function(){
 
 $(document).ready(function(){   
     var clicksText = 0;
+    var correct = false;
     $('#btnNextText').click( function(event) {
         
         
@@ -75,6 +74,7 @@ $(document).ready(function(){
                 success:function(data){
                     // Set appropriate question answerText.
                     //
+                    correct = data.correct;
                     if (data.correct) {
                         $('label[for=noteText]').html("Tacan odgovor");
                     }
@@ -85,7 +85,7 @@ $(document).ready(function(){
                     $('label[for=markTextB]').html('&#10007');
                     $('label[for=markTextC]').html('&#10007');
                     $('label[for=markTextD]').html('&#10007');
-                    $('label[for=markText'+data.letter.toUpperCase() + ']').html('&#10004');
+                    $('label[for=markText'+data.letterCorrect.toUpperCase() + ']').html('&#10004');
                     
                     
                 }
@@ -102,33 +102,34 @@ $(document).ready(function(){
             $('label[for=noteText]').html("");
             $("#modalText").modal("hide");
             $('input[class=radioText]').prop('checked', false);
-            
-            $.ajax({
+            if (correct) {
+                $.ajax({
 
-            type: "POST",
-            url: BASE_URL + "index.php/game/getPictureQuestion/",
+                type: "POST",
+                url: BASE_URL + "index.php/game/getPictureQuestion/",
 
-            data : {
-                    secret : true
+                data : {
+                        secret : true
+                    },
+
+                dataType: "json", 
+                success:function(data){
+                    if (data.canAttack) {
+                        $('h4.pictureQuestion').text(data.text);
+                        $('label[for=answerPictureA]').html(data.a);
+                        $('label[for=answerPictureB]').html(data.b);
+                        $('label[for=answerPictureC]').html(data.c);
+                        $('label[for=answerPictureD]').html(data.d);
+                        $('#picturePictureQuestion').attr('src',BASE_URL + '/img/' + data.picture);
+                        $("#modalPicture").modal("show");
+                    }
                 },
+                 error:function(data){alert(data);}
 
-            dataType: "json", 
-            success:function(data){
-                if (data.canAttack) {
-                    $('h4.pictureQuestion').text(data.text);
-                    $('label[for=answerPictureA]').html(data.a);
-                    $('label[for=answerPictureB]').html(data.b);
-                    $('label[for=answerPictureC]').html(data.c);
-                    $('label[for=answerPictureD]').html(data.d);
-                    $('#picturePictureQuestion').attr('src',BASE_URL + '/img/' + data.picture);
-                    $("#modalPicture").modal("show");
-                }
-            },
-             error:function(data){alert(data);}
-           
 
-        }); 
-        }
+            }); 
+            }
+    }
         clicksText++;
     });
 }); 
@@ -171,7 +172,7 @@ $(document).ready(function(){
                     $('label[for=markPictureB]').html('&#10007');
                     $('label[for=markPictureC]').html('&#10007');
                     $('label[for=markPictureD]').html('&#10007');
-                    $('label[for=markPicture'+data.letter.toUpperCase() + ']').html('&#10004');
+                    $('label[for=markPicture'+data.letterCorrect.toUpperCase() + ']').html('&#10004');
                     
                     
                 }

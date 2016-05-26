@@ -45,12 +45,17 @@ class Game extends BaseController {
         $igra = $this->ModelIgra->existsUnfinishedIgra($data = ['userName' => $this->session->username] );
         if ($igra) {
             $this->session->set_userdata('oldIgraId', $igra->getIdigr());
+            
+            $nivo = $igra->getIdniv()->getNaziv();
+            $this->session->set_userData('level', $nivo);
             $return['dataExists'] = true ;
+            $reutrn['nivo'] = $nivo;
         }
         else  {
             $return['dataExists'] = false;
         }
          
+        
         echo json_encode($return);
     }
     
@@ -92,8 +97,8 @@ class Game extends BaseController {
             }
             $this->session->set_userdata('gameStarted', true);
             
-            $this->ModelIgra->createIgra(['username'=> $this->session->username, 'naziv'=>$this->session->level]);
-            $this->session->set_userdata('curGame', $this->session->oldIgraId);
+            $idIgra = $this->ModelIgra->createIgra(['username'=> $this->session->username, 'naziv'=>$this->session->level]);
+            $this->session->set_userdata('curGame', $idIgra);
             $this->Redirect(['view'=>'game', 'redirect' =>true]);
     }
     
@@ -116,10 +121,18 @@ class Game extends BaseController {
        
     }
     
-    public function conquered() {
-        console_log('to');
+
+    private function finishedConquering($data){
+        if ($data['success']) {
+            $this->ModelOsvajanje->uspehOsvajanje(['idigr' => $this->session->curGame, 'oblast'=>$this->session->country ]);
+        }
+        else {
+            $this->ModelOsvajanje->neuspehOsvajanje(['idigr'=> $this->session->curGame, 'oblast'=>$this->session->country ]);
+        }
+        $this->session->unset_userdata('country');
+        $this->session->unset_userdata('correctAnswer');
+        
     }
-    
     
     // It will only set appropriate fields which are going to be used in jquery for setting parts of form.
     // If the user is not authorized to attack the appropriate area, it will return user a warning.
@@ -129,18 +142,44 @@ class Game extends BaseController {
         if (!$secret)
            $this->Redirect();
         
-        // !!!! TO DO: !!!
-        // Check if user can attack this teritory is needed.
-        //
+        $return['canAttack'] = false;
 
         
+        $idIgra = $this->session->curGame;
         $country = $this->input->post('country');
-        // !!! TO DO !!! 
-        // I need to add that user is curently attacking this country in database.
-        // This will help me in next question generation.
-        //
         
+        $osv = $this->ModelOsvajanje->existsOsvajanje(['idigr' => $idIgra]);
+        
+        // In case of unfinished attack;
+        //
+        if ($osv != null) {
+            if ($osv->getIdobl()->getNaziv() != $country) {
+                $return['error'] = "Morate da napadnete ".$osv->getIdobl()->getNaziv()." oblast";
+                goto exitFun;
+            }
+            else { // good}}
+            }
+        }
+        else{
+            $canAttack = $this->ModelIgra->canAttack(['igraID' => $this->session->curGame, 'oblast' => $country]);
+            if ($canAttack['success'] === true) {
+                $this->ModelOsvajanje->createOsvajanje(['idigr'=>$idIgra, 'idobl'=> $country]);
+            }
+            else {
+                $return['error'] = $canAttack['error'];
+                goto exitFun;
+            }
+            $osv = $this->ModelOsvajanje->existsOsvajanje(['idigr' => $idIgra]);
+
+         }
         $textQuestion = $this->ModelTekstPitanje->getTekstPitanje(['nivo'=>$this->session->level, 'oblast'=> $country]);
+        if ($textQuestion == null) 
+        {
+            $return['error'] = 'Moderatori nisu dodali pitanja za ovu bazu';
+            goto exitFun;
+            
+        }
+        
         $return['a'] = $textQuestion->getOdgovor1();
         $return['b'] = $textQuestion->getOdgovor2();
         $return['c'] = $textQuestion->getOdgovor3();
@@ -151,7 +190,7 @@ class Game extends BaseController {
         $return['text'] = $textQuestion->getPostavka();
         
         $return['canAttack'] = true;
-        
+     exitFun:
         echo json_encode($return);
     }
     
@@ -165,14 +204,15 @@ class Game extends BaseController {
         
         $answer = ord($this->input->post('letter')) - ord('a') + 1;
         
+        $return['letterCorrect'] = chr($this->session->correctAnswer - 1 + ord('A'));
+        
         if ($answer == $this->session->correctAnswer) {
             $return['correct'] = true;
         }
         else {
+            $this->finishedConquering(['success'=>false]);
             $return['correct'] = false;
         }
-        $return['letter'] = chr($this->session->correctAnswer - 1 + ord('A'));
-        
         echo json_encode($return);
     }
     
@@ -182,17 +222,7 @@ class Game extends BaseController {
         if (!$secret)
            $this->Redirect();
         
-        // !!!! TO DO: !!!
-        // Check if user can attack this teritory is needed.
-        //
-
-        
         $country = $this->session->country;
-        // !!! TO DO !!! 
-        // I need to add that user is curently attacking this country in database.
-        // This will help me in next question generation.
-        //
-        
         $pictureQuestion = $this->ModelSlikaPitanje->getSlikaPitanje(['nivo'=>$this->session->level, 'oblast'=> $country]);
         $return['a'] = $pictureQuestion->getOdgovor1();
         $return['b'] = $pictureQuestion->getOdgovor2();
@@ -205,10 +235,8 @@ class Game extends BaseController {
         $return['picture'] = $pictureQuestion->getSlika();
         $return['canAttack'] = true;
         
+        
         echo json_encode($return);
-        
-        
-        // pass the $level, $
     }
     
     public function getPictureAnswer() {
@@ -221,14 +249,16 @@ class Game extends BaseController {
         
         $answer = ord($this->input->post('letter')) - ord('a') + 1;
         
+        $return['letterCorrect'] = chr($this->session->correctAnswer - 1 + ord('A'));
+        
         if ($answer == $this->session->correctAnswer) {
+            $this->finishedConquering(['success'=>true]);
             $return['correct'] = true;
         }
         else {
+            $this->finishedConquering(['success'=>false]);
             $return['correct'] = false;
         }
-        $return['letter'] = chr($this->session->correctAnswer - 1 + ord('A'));
-        
         echo json_encode($return);
     }
 }

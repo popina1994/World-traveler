@@ -20,9 +20,9 @@ class ModelOsvajanje extends CI_Model {
 	
 		$osvajanje = new Osvajanje();
 		$osvajanje->setStatus('z'); //zapoceto osvajanje
-	
-		$igra = $data['idigr'];
-		$oblast = $data['idobl'];
+                
+                $igra = $this->doctrine->em->find("Igra", $data['idigr']);
+		$oblast = $this->ModelOblast->getCountry($data);
 	
 		$osvajanje->setIdigr($igra);
 		$osvajanje->setIdobl($oblast);
