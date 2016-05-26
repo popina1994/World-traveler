@@ -12,7 +12,7 @@
 
               <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel = "stylesheet" type = "text/css" 
-    href = "<?php echo base_url(); ?>css/Administrator.css">
+    href = "<?php echo base_url(); ?>css/Moderator.css">
 
     <title>Svetski putnik</title>
    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
@@ -20,12 +20,51 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
 </head>
 <body>
+    <div>
+        <button class="button1" id="b11" data-toggle="modal" data-target="#myModaldodaj">DODAJ PITANJE</button>
+        <button class="button1" id="b11" data-toggle="modal" data-target="#myModalizmobr">IZMENI/OBRISI PITANJE</button>
+    </div>
+    
+    <p> <br/><br/><br/><br/><br/><br/><br/>
+        <?php 
+            $attrubutesRegister = ['name'=>'logOutForm', 'id'=>'logOutForm', 'class'=>'form-horizontal'];
+            echo form_open('main/logOut', $attrubutesRegister); ?>
+                <button  class="btn btn-default btn-sm" id ="btnLogOut" name="btnLogOut">
+                  <span class="glyphicon glyphicon-log-out"></span> Log out
+                </button>
+            <?php echo form_close(); ?>
+      </p>
 
-<p>Moderator </p>
+    
+    <div class="modal" id="myModaldodaj" role="dialog" data-backdrop=""   tabindex="-1">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4> Izaberite tip pitanja </h4>
+                </div>
+                <div class="modal-body">
+                    <div id="izbor">
+                                <input type="radio"  name="vrsta">Tekstualno</input><br/>
 
 
+                                <input type="radio"  name="vrsta">Slika</input><br/>
 
-    <!--Modal ukloni-->
+
+                                <input type="radio"  name="vrsta">Licnost</input><br/><br/>
+                                
+                                <button class="button2"  id="dod2">OK</button>
+                    </div>
+                       
+                        <!--<button onclick="bla()" type="reset">OTKAZI</button>-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+        
+        
+        <!--Modal ukloni-->
     <div class="modal" id="myModal4" role="dialog" data-backdrop=""  aria-labelledby="myModalLabel" tabindex="-1">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -57,8 +96,8 @@
                                     <!--
                                         OVDE TREBA DA NAPISES ELEMENT LISTE I DUGME, ovde kaze
                                         da ne zna sta je moderators
-                                        
-                                    -->
+                                        -->
+                                  
                                   
                                       <?php echo $p['nivo']; 
                                             echo $p['oblast']; 
@@ -100,19 +139,9 @@
     </div>
     </div>
 
+    
 
 
 
-
-
-<p> <br/><br/><br/><br/><br/><br/><br/>
-        <?php 
-            $attrubutesRegister = ['name'=>'logOutForm', 'id'=>'logOutForm', 'class'=>'form-horizontal'];
-            echo form_open('main/logOut', $attrubutesRegister); ?>
-        <button  class="btn btn-default btn-sm" id ="btnLogOut" name="btnLogOut">
-          <span class="glyphicon glyphicon-log-out"></span> Log out
-        </button>
-    <?php echo form_close(); ?>
-      </p>
 </body>
 </html>
