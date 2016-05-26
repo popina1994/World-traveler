@@ -36,7 +36,7 @@ class Welcome extends CI_Controller {
 			echo $p->getIdobl()->getNaziv();
 		}
                 
-                /*$data = Array('username'=>'user', 'password'=>'pass' );
+                /*$data = Array('username'=>'admin', 'password'=>'admin' );
                 $this->ModelAdministrator->createAdministrator($data);*/
 		
 		//opcija1 za INSERT - napravila gotove funkcije

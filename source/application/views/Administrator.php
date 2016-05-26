@@ -91,7 +91,7 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4>  UKLONI MODERATORA</h4>
         </div>
-        <div class="modal-body">
+            <div class="modal-body"  id="scroll">
         
             <table id="t2">
                     <?php
@@ -99,27 +99,31 @@
                             echo "Nema moderatora";
                         }
                         else{
+                        $i=0;
                         foreach($moderators as $p){?>
                             <tr>
                                 <td>
+                                    <?php
                                     
-                                  
-                                      <?php echo "$p"."      "; 
+                                       $pr=$i+1;
+                                       echo $str1="$pr."."&nbsp;&nbsp;"."$p"."&nbsp;&nbsp;&nbsp;&nbsp;"; ?>
                                       
-                                                $i=0;
-
-                                                $attrubutesRegister = ['name'=>'obrisiDugme'.$i, 'id'=>'obrisiDugme'.$i, 'class'=>'form-horizontal'];
+                                        
+                                  
+                                </td>
+                                <td>
+                                    <?php
+                                            
+                                                $attrubutesRegister = ['name'=>'obrisiDugme'."$i", 'id'=>'obrisiDugme'."$i", 'class'=>'form-horizontal'];
                                                 
                                                 echo form_open("administratorcontroller/deleteModerator/$i", $attrubutesRegister); 
-                                                $str='button'.$i;
-                                                echo "<button class="."'button2'"."  id=".$str.">OBRIŠI</button>";
+                                                //$str='button'.$i;
+                                                echo "<button class="."'button3'>OBRIŠI</button>";
                                               
                                                 echo form_close(); 
                                                   $i++;
-                                            }
-                                           
-                                      ?>
-                                  
+                        }
+                                    ?>
                                 </td>
                             </tr>       
                         <?php } ?>
