@@ -3,11 +3,36 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Sites/Svetskiputnik/js/register.js</file>
-            <file>file:/D:/Sites/Svetskiputnik/js/login.js</file>
-            <file>file:/D:/Sites/Svetskiputnik/application/views/Main.php</file>
-            <file>file:/D:/Sites/Svetskiputnik/application/controllers/Main.php</file>
-            <file>file:/D:/Sites/Svetskiputnik/index.php</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/models/entities/Oblast.php</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/models/proxies/ModelTakmicar.php</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/models/proxies/ModelOsvajanje.php</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/models/proxies/ModelSlikaPitanje.php</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/models/entities/RegKorisnik.php</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/js/GameChoice.js</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/controllers/BaseController.php</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/controllers/DodajSlikaPitanje.php</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/views/Administrator.php</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/views/Main.php</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/js/Main.js</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/models/proxies/ModelAdministrator.php</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/controllers/AdministratorController.php</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/models/proxies/ModelRegKorisnik.php</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/models/proxies/ModelModerator.php</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/controllers/ModeratorController.php</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/models/entities/NivoTezine.php</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/views/Game.php</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/models/proxies/ModelTekstPitanje.php</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/controllers/DodajGranice.php</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/js/Administrator.js</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/js/registerModerator.js</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/views/Moderator.php</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/models/proxies/Model.php</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/models/proxies/ModelPitanje.php</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/models/entities/Administrator.php</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/css/Administrator.css</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/models/proxies/ModelLicnostPitanje.php</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/controllers/Test.php</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/controllers/Game.php</file>
         </group>
     </open-files>
 </project-private>

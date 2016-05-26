@@ -127,6 +127,18 @@ class Game extends BaseController {
         $secret = $this->input->post('secret');
         if (!$secret)
             $this->Redirect();
+        
+        $answer = ord($this->input->post('letter')) - ord('a') + 1;
+        
+        if ($answer == $this->session->correctAnswer) {
+            $return['correct'] = true;
+        }
+        else {
+            $return['correct'] = false;
+        }
+        $return['letter'] = chr($this->session->correctAnswer - 1 + ord('A'));
+        
+        echo json_encode($return);
     }
     
     // It will only set appropriate fields which are going to be used in jquery for setting parts of form.
@@ -137,9 +149,26 @@ class Game extends BaseController {
         if (!$secret)
            $this->Redirect();
         
-        $country = $this->input->post('country');
+        // !!!! TO DO: !!!
+        // Check if user can attack this teritory is needed.
+        //
+
         
-        $return['country'] = $country;
+        $country = $this->input->post('country');
+        // !!! TO DO !!! 
+        // I need to add that user is curently attacking this country in database.
+        // This will help me in next question generation.
+        //
+        
+        $textQuestion = $this->ModelTekstPitanje->getTekstPitanje(['nivo'=>$this->session->level, 'oblast'=> $country]);
+        $return['a'] = $textQuestion->getOdgovor1();
+        $return['b'] = $textQuestion->getOdgovor2();
+        $return['c'] = $textQuestion->getOdgovor3();
+        $return['d'] = $textQuestion->getOdgovor4();
+        
+        $this->session->set_userdata('correctAnswer', $textQuestion->getTacanodgovor());
+        $return['text'] = $textQuestion->getPostavka();
+        
         $return['canAttack'] = true;
         
         echo json_encode($return);

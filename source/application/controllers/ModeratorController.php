@@ -1,5 +1,14 @@
 <?php
 
+ include APPPATH.'models/entities/Pitanje.php';
+  include APPPATH.'models/entities/RegKorisnik.php';
+ include APPPATH.'models/entities/Oblast.php';
+ include APPPATH.'models/entities/Moderator.php';    
+ include APPPATH.'models/entities/Takmicar.php';
+  include APPPATH.'models/entities/NivoTezine.php';
+ 
+ 
+ require_once APPPATH.'controllers/BaseController.php';
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -17,17 +26,13 @@ class ModeratorController extends BaseController {
      public function __construct() {
         parent::__construct("Moderator");
     }
-    
-   // $this->load->model('proxies/ModelModerator');
-        $usernames=$this->ModelModerator->allModeratorsUserName();
-        if($usernames==null)$usernames=array();
-        $this->Redirect(['view'=>'Administrator', 'moderators'=>$usernames]);
-        
+
     public function index() {
         //$this->load->view('Administrator');
         $this->load->model('proxies/ModelPitanje');
-        $questions=$this->ModelModerator->allModeratorsUserName();
-        
+        $questions=$this->ModelPitanje->getPitanja();
+       
+        $this->Redirect(['view'=>'Moderator', 'questions' => $questions]); 
         
        // $this->Redirect(['view'=>'Moderator']);
     }

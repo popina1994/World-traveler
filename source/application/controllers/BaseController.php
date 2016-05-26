@@ -73,7 +73,7 @@ class BaseController extends CI_Controller{
             else {
                 switch ($typeCookie) {
                     case "Moderator":
-                        redirect('Moderator');
+                        redirect('ModeratorController');
                         break;
                     case "Administrator":
                         redirect('AdministratorController');
