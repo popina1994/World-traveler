@@ -25,12 +25,13 @@ $(document).ready(function(){
             dataType: "json", 
             success:function(data){
                 if (data.canAttack) {
-                    $('label[for=text').html(data.text);
+                    //$('label[for=text').html(data.text);
+                    $('h4.textQuestion').text(data.text);
                     $('label[for=a]').html(data.a);
                     $('label[for=b]').html(data.b);
                     $('label[for=c]').html(data.c);
                     $('label[for=d]').html(data.d);
-                    $("#myModal").modal("show");
+                    $("#modalText").modal("show");
                 }
                 else {
                     if (data.unfinished)
@@ -98,7 +99,7 @@ $(document).ready(function(){
             $('label[for=answerC]').html('');
             $('label[for=answerD]').html('');
              $('label[for=note]').html("");
-            $("#myModal").modal("hide");
+            $("#modalText").modal("hide");
             $('input[class=radioText]').prop('checked', false);
         }
         clicks++;

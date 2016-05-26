@@ -81,13 +81,13 @@
         <div class="container">
 
            <!-- Modal text-->
-            <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal fade" id="modalText" role="dialog">
                 <div class="modal-dialog">
 
                   <!-- Modal content-->
                   <div class="modal-content">
                     <div class="modal-header">                  
-                        <h4 class="modal-title">Tekstualno pitanje</h4>
+                        <h4 class="textQuestion"  id ="textQuestion">Tekstualno pitanje</h4>
                     </div>
                         <div class="modal-body">
                             <?php $attrubutesRegister = ['name' => 'textQuestion', 'id' => 'textQuestion', 'class' => 'form-horizontal'];
@@ -120,66 +120,11 @@
       
     </div>
   </div>
-
-           <!--Modal Image
-            <div class="modal fade" id="myModal" role="dialog">
-                <div class="modal-dialog">
-
-                    
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Slikovno pitanje</h4>
-                        </div>
-                        <div class="modal-body">
-                            <?php $attrubutesRegister = ['name' => 'textQuestion', 'id' => 'textQuestion', 'class' => 'form-horizontal'];
-                            echo form_open('game/conquered', $attrubutesRegister);
-                            ?>
-                            <div id="row">
-                                <p id="naslov">PITANJE_SLIKA</p>
-                                <div class="block" >
-                                    <?php
-                                    $image_properties = array(
-                                        'src' => 'img/pariz.jpg',
-                                        'id' => 'next',
-                                        'width' => '300px',
-                                        'height' => '300px',
-                                    );
-                                    echo img($image_properties);
-                                    ?>
-                                    <br/><br/><br/>
-                                </div>
-                                <div class="block">
-                                    <input type="radio" name="radioText" id="a">  Prvo<br/><input type="text" id="answer1" hidden><br/>
-                                    <input type="radio" name="radioText" id="b">  Drugo<br/><input type="text" id="answer2" hidden><br/>
-                                    <input type="radio" name="radioText" id="c">  Trece<br/><input type="text" id="answer3" hidden><br/>
-                                    <input type="radio" name="radioText" id="d">  Cetvrto<br/><input type="text" id="answer4" hidden><br/>
-
-                                    <br/><br/><br/><br/>
-                                    <button type="button" class="next" data-dismiss="modal" name="txtSubmit"><?php
-                                        $image_properties = array(
-                                            'src' => 'img/next.png',
-                                            'id' => 'next',
-                                            'width' => '40px',
-                                            'height' => '40px',
-                                        );
-
-                                        echo img($image_properties);
-                                        ?></button>
-                                    <?php echo form_close(); ?>
-                                </div>
-
-
-                            </div>
-
-
-
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>-->
+           
+            <div id="modalPicture" class="modal">
+            <img class="img-thumbnail" id="img01">
+            <div id="caption"></div>
+            </div>
            
         <!--Modal licnost
           <div class="modal fade" id="myModal" role="dialog">
