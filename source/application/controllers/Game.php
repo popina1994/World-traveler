@@ -97,8 +97,8 @@ class Game extends BaseController {
             }
             $this->session->set_userdata('gameStarted', true);
             
-            $this->ModelIgra->createIgra(['username'=> $this->session->username, 'naziv'=>$this->session->level]);
-            $this->session->set_userdata('curGame', $this->session->oldIgraId);
+            $idIgra = $this->ModelIgra->createIgra(['username'=> $this->session->username, 'naziv'=>$this->session->level]);
+            $this->session->set_userdata('curGame', $idIgra);
             $this->Redirect(['view'=>'game', 'redirect' =>true]);
     }
     
@@ -121,19 +121,7 @@ class Game extends BaseController {
        
     }
     
-    public function conquered() {
-        
-    }
-    
-    
-    // Unsets all data which is valid when user has mistaken question.
-    // Or when he conquered area. And change status of conquering area in database.
-    //
-    private function failiureConquringArea() {
-        
-        
-    }
-    
+
     private function finishedConquering($data){
         if ($data['success']) {
             $this->ModelOsvajanje->uspehOsvajanje(['idigr' => $this->session->curGame, 'oblast'=>$this->session->country ]);
@@ -155,37 +143,43 @@ class Game extends BaseController {
            $this->Redirect();
         
         $return['canAttack'] = false;
-        // !!!! TO DO: !!!
-        // Check if user can attack this teritory is needed.
-        // $error not adjacent country.
-        //
+
         
         $idIgra = $this->session->curGame;
         $country = $this->input->post('country');
         
         $osv = $this->ModelOsvajanje->existsOsvajanje(['idigr' => $idIgra]);
-        if ($osv && $osv->getIdobl()->getNaziv() != $country) {
-            $return['error'] = "Morate da napadnete $country oblast";
-            // In case of unfinished attack;
-            goto exitFun;
-        }
-        // Dragana's check.
+        
+        // In case of unfinished attack;
         //
-        if ($osv == null && true) {
-            $this->ModelOsvajanje->createOsvajanje(['idigr'=>$idIgra, 'idobl'=> $country]);
+        if ($osv != null) {
+            if ($osv->getIdobl()->getNaziv() != $country) {
+                $return['error'] = "Morate da napadnete ".$osv->getIdobl()->getNaziv()." oblast";
+                goto exitFun;
+            }
+            else { // good}}
+            }
+        }
+        else{
+            $canAttack = $this->ModelIgra->canAttack(['igraID' => $this->session->curGame, 'oblast' => $country]);
+            if ($canAttack['success'] === true) {
+                $this->ModelOsvajanje->createOsvajanje(['idigr'=>$idIgra, 'idobl'=> $country]);
+            }
+            else {
+                $return['error'] = $canAttack['error'];
+                goto exitFun;
+            }
             $osv = $this->ModelOsvajanje->existsOsvajanje(['idigr' => $idIgra]);
-        }    
-        else {
+
+         }
+        $textQuestion = $this->ModelTekstPitanje->getTekstPitanje(['nivo'=>$this->session->level, 'oblast'=> $country]);
+        if ($textQuestion == null) 
+        {
+            $return['error'] = 'Moderatori nisu dodali pitanja za ovu bazu';
+            goto exitFun;
             
         }
         
-        
-        // !!! TO DO !!! 
-        // I need to add that user is curently attacking this country in database.
-        // This will help me in next question generation.
-        //
-        
-        $textQuestion = $this->ModelTekstPitanje->getTekstPitanje(['nivo'=>$this->session->level, 'oblast'=> $country]);
         $return['a'] = $textQuestion->getOdgovor1();
         $return['b'] = $textQuestion->getOdgovor2();
         $return['c'] = $textQuestion->getOdgovor3();
@@ -219,8 +213,6 @@ class Game extends BaseController {
             $this->finishedConquering(['success'=>false]);
             $return['correct'] = false;
         }
-        
-        
         echo json_encode($return);
     }
     
@@ -230,17 +222,7 @@ class Game extends BaseController {
         if (!$secret)
            $this->Redirect();
         
-        // !!!! TO DO: !!!
-        // Check if user can attack this teritory is needed.
-        //
-
-        
         $country = $this->session->country;
-        // !!! TO DO !!! 
-        // I need to add that user is curently attacking this country in database.
-        // This will help me in next question generation.
-        //
-        
         $pictureQuestion = $this->ModelSlikaPitanje->getSlikaPitanje(['nivo'=>$this->session->level, 'oblast'=> $country]);
         $return['a'] = $pictureQuestion->getOdgovor1();
         $return['b'] = $pictureQuestion->getOdgovor2();
@@ -255,15 +237,28 @@ class Game extends BaseController {
         
         
         echo json_encode($return);
-        
-        
-        // pass the $level, $
     }
     
     public function getPictureAnswer() {
         // TO DO: Unset oblast attack in case of wrong answer
         //  and all set session variables.
         //
-        $this->getTextAnswer();
+        $secret = $this->input->post('secret');
+        if (!$secret)
+            $this->Redirect();
+        
+        $answer = ord($this->input->post('letter')) - ord('a') + 1;
+        
+        $return['letterCorrect'] = chr($this->session->correctAnswer - 1 + ord('A'));
+        
+        if ($answer == $this->session->correctAnswer) {
+            $this->finishedConquering(['success'=>true]);
+            $return['correct'] = true;
+        }
+        else {
+            $this->finishedConquering(['success'=>false]);
+            $return['correct'] = false;
+        }
+        echo json_encode($return);
     }
 }
