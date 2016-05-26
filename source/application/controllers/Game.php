@@ -120,31 +120,11 @@ class Game extends BaseController {
         console_log('to');
     }
     
-    // When this function is called for the second time, it will only generate pass on the next question.
-    // In session it will be remembered on which question user stopped.
-    // 
-    public function getAnswer() {
-        $secret = $this->input->post('secret');
-        if (!$secret)
-            $this->Redirect();
-        
-        $answer = ord($this->input->post('letter')) - ord('a') + 1;
-        
-        if ($answer == $this->session->correctAnswer) {
-            $return['correct'] = true;
-        }
-        else {
-            $return['correct'] = false;
-        }
-        $return['letter'] = chr($this->session->correctAnswer - 1 + ord('A'));
-        
-        echo json_encode($return);
-    }
     
     // It will only set appropriate fields which are going to be used in jquery for setting parts of form.
     // If the user is not authorized to attack the appropriate area, it will return user a warning.
     //
-    public function getQuestion() {
+    public function getTextQuestion() {
         $secret = $this->input->post('secret');
         if (!$secret)
            $this->Redirect();
@@ -167,13 +147,88 @@ class Game extends BaseController {
         $return['d'] = $textQuestion->getOdgovor4();
         
         $this->session->set_userdata('correctAnswer', $textQuestion->getTacanodgovor());
+        $this->session->set_userdata('country', $country);
         $return['text'] = $textQuestion->getPostavka();
         
+        $return['canAttack'] = true;
+        
+        echo json_encode($return);
+    }
+    
+    public function getTextAnswer() {
+        // TO DO: Unset oblast attack in case of wrong answer
+        //  and all set session variables.
+        //
+        $secret = $this->input->post('secret');
+        if (!$secret)
+            $this->Redirect();
+        
+        $answer = ord($this->input->post('letter')) - ord('a') + 1;
+        
+        if ($answer == $this->session->correctAnswer) {
+            $return['correct'] = true;
+        }
+        else {
+            $return['correct'] = false;
+        }
+        $return['letter'] = chr($this->session->correctAnswer - 1 + ord('A'));
+        
+        echo json_encode($return);
+    }
+    
+    
+     public function getPictureQuestion() {
+        $secret = $this->input->post('secret');
+        if (!$secret)
+           $this->Redirect();
+        
+        // !!!! TO DO: !!!
+        // Check if user can attack this teritory is needed.
+        //
+
+        
+        $country = $this->session->country;
+        // !!! TO DO !!! 
+        // I need to add that user is curently attacking this country in database.
+        // This will help me in next question generation.
+        //
+        
+        $pictureQuestion = $this->ModelSlikaPitanje->getSlikaPitanje(['nivo'=>$this->session->level, 'oblast'=> $country]);
+        $return['a'] = $pictureQuestion->getOdgovor1();
+        $return['b'] = $pictureQuestion->getOdgovor2();
+        $return['c'] = $pictureQuestion->getOdgovor3();
+        $return['d'] = $pictureQuestion->getOdgovor4();
+        
+        $this->session->set_userdata('correctAnswer', $pictureQuestion->getTacanodgovor());
+        $this->session->set_userdata('country', $country);
+        $return['text'] = $pictureQuestion->getPostavka();
+        $return['picture'] = $pictureQuestion->getSlika();
         $return['canAttack'] = true;
         
         echo json_encode($return);
         
         
         // pass the $level, $
+    }
+    
+    public function getPictureAnswer() {
+        // TO DO: Unset oblast attack in case of wrong answer
+        //  and all set session variables.
+        //
+        $secret = $this->input->post('secret');
+        if (!$secret)
+            $this->Redirect();
+        
+        $answer = ord($this->input->post('letter')) - ord('a') + 1;
+        
+        if ($answer == $this->session->correctAnswer) {
+            $return['correct'] = true;
+        }
+        else {
+            $return['correct'] = false;
+        }
+        $return['letter'] = chr($this->session->correctAnswer - 1 + ord('A'));
+        
+        echo json_encode($return);
     }
 }

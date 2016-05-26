@@ -15,7 +15,7 @@ $(document).ready(function(){
         $.ajax({
 
             type: "POST",
-            url: BASE_URL + "index.php/game/getQuestion/",
+            url: BASE_URL + "index.php/game/getTextQuestion/",
 
             data : {
                     country : this.id,
@@ -25,12 +25,11 @@ $(document).ready(function(){
             dataType: "json", 
             success:function(data){
                 if (data.canAttack) {
-                    //$('label[for=text').html(data.text);
                     $('h4.textQuestion').text(data.text);
-                    $('label[for=a]').html(data.a);
-                    $('label[for=b]').html(data.b);
-                    $('label[for=c]').html(data.c);
-                    $('label[for=d]').html(data.d);
+                    $('label[for=answerTextA]').html(data.a);
+                    $('label[for=answerTextB]').html(data.b);
+                    $('label[for=answerTextC]').html(data.c);
+                    $('label[for=answerTextD]').html(data.d);
                     $("#modalText").modal("show");
                 }
                 else {
@@ -51,42 +50,42 @@ $(document).ready(function(){
 
 
 $(document).ready(function(){   
-    var clicks = 0;
+    var clicksText = 0;
     $('#btnNextText').click( function(event) {
         
         
         // first click
         //
-        if (clicks % 2 == 0) {
+        if (clicksText % 2 == 0) {
 
             var val = $("input[class=radioText]:checked").val();
             $.ajax({
 
                 type: "POST",
-                url: BASE_URL + "index.php/game/getAnswer/",
+                url: BASE_URL + "index.php/game/getTextAnswer/",
 
                 data : {
                         letter : val, 
                         secret : true
-                        // first time will be set user answer
+                        // first time will be set user answerText
                         //
                     },
 
                 dataType: "json", 
                 success:function(data){
-                    // Set appropriate question answer.
+                    // Set appropriate question answerText.
                     //
                     if (data.correct) {
-                        $('label[for=note]').html("Tacan odgovor");
+                        $('label[for=noteText]').html("Tacan odgovor");
                     }
                     else {
-                        $('label[for=note').html("Netacan odgovor");
+                        $('label[for=noteText').html("Netacan odgovor");
                     }
-                     $('label[for=answerA]').html('&#10007');
-                    $('label[for=answerB]').html('&#10007');
-                    $('label[for=answerC]').html('&#10007');
-                    $('label[for=answerD]').html('&#10007');
-                    $('label[for=answer'+data.letter + ']').html('&#10004');
+                     $('label[for=markTextA]').html('&#10007');
+                    $('label[for=markTextB]').html('&#10007');
+                    $('label[for=markTextC]').html('&#10007');
+                    $('label[for=markTextD]').html('&#10007');
+                    $('label[for=markText'+data.letter.toUpperCase() + ']').html('&#10004');
                     
                     
                 }
@@ -94,19 +93,109 @@ $(document).ready(function(){
             }); 
         }
         else {
-            $('label[for=answerA]').html('');
-            $('label[for=answerB]').html('');
-            $('label[for=answerC]').html('');
-            $('label[for=answerD]').html('');
-             $('label[for=note]').html("");
+            // clear modal text
+            //
+            $('label[for=markTextA]').html('');
+            $('label[for=markTextB]').html('');
+            $('label[for=markTextC]').html('');
+            $('label[for=markTextD]').html('');
+            $('label[for=noteText]').html("");
             $("#modalText").modal("hide");
             $('input[class=radioText]').prop('checked', false);
+            
+            $.ajax({
+
+            type: "POST",
+            url: BASE_URL + "index.php/game/getPictureQuestion/",
+
+            data : {
+                    secret : true
+                },
+
+            dataType: "json", 
+            success:function(data){
+                if (data.canAttack) {
+                    $('h4.pictureQuestion').text(data.text);
+                    $('label[for=answerPictureA]').html(data.a);
+                    $('label[for=answerPictureB]').html(data.b);
+                    $('label[for=answerPictureC]').html(data.c);
+                    $('label[for=answerPictureD]').html(data.d);
+                    $('#picturePictureQuestion').attr('src',BASE_URL + '/img/' + data.picture);
+                    $("#modalPicture").modal("show");
+                }
+            },
+             error:function(data){alert(data);}
+           
+
+        }); 
         }
-        clicks++;
+        clicksText++;
     });
 }); 
 
 // Same for the picture question as for textual.
+
+
+$(document).ready(function(){   
+    var clicksPicture = 0;
+    $('#btnNextPicture').click( function(event) {
+        
+        
+        // first click
+        //
+        if (clicksPicture % 2 == 0) {
+
+            var val = $("input[class=radioPicture]:checked").val();
+            $.ajax({
+                type: "POST",
+                url: BASE_URL + "index.php/game/getPictureAnswer/",
+
+                data : {
+                        letter : val, 
+                        secret : true
+                        // first time will be set user answerPicture
+                        //
+                    },
+
+                dataType: "json", 
+                success:function(data){
+                    // Set appropriate question answerPicture.
+                    //
+                    if (data.correct) {
+                        $('label[for=notePicture]').html("Tacan odgovor");
+                    }
+                    else {
+                        $('label[for=notePicture').html("Netacan odgovor");
+                    }
+                     $('label[for=markPictureA]').html('&#10007');
+                    $('label[for=markPictureB]').html('&#10007');
+                    $('label[for=markPictureC]').html('&#10007');
+                    $('label[for=markPictureD]').html('&#10007');
+                    $('label[for=markPicture'+data.letter.toUpperCase() + ']').html('&#10004');
+                    
+                    
+                }
+
+            }); 
+        }
+        else {
+            $('label[for=markPictureA]').html('');
+            $('label[for=markPictureB]').html('');
+            $('label[for=markPictureC]').html('');
+            $('label[for=markPictureD]').html('');
+            $('label[for=notePicture]').html("");
+            $("#modalPicture").modal("hide");
+            $('input[class=radioPicture]').prop('checked', false);
+            $("#modalEnigma").modal("show");
+        }
+        clicksPicture++;
+    });
+}); 
+
+// Same for the picture question as for pictureual.
+
+
+
 
 
 
