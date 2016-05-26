@@ -155,6 +155,10 @@ class Game extends BaseController {
 
         
         $country = $this->input->post('country');
+        // !!! TO DO !!! 
+        // I need to add that user is curently attacking this country in database.
+        // This will help me in next question generation.
+        //
         
         $textQuestion = $this->ModelTekstPitanje->getTekstPitanje(['nivo'=>$this->session->level, 'oblast'=> $country]);
         $return['a'] = $textQuestion->getOdgovor1();

@@ -93,8 +93,13 @@ $(document).ready(function(){
             }); 
         }
         else {
-            $('label[for=answerB]').html('&#10004');
+            $('label[for=answerA]').html('');
+            $('label[for=answerB]').html('');
+            $('label[for=answerC]').html('');
+            $('label[for=answerD]').html('');
+             $('label[for=note]').html("");
             $("#myModal").modal("hide");
+            $('input[class=radioText]').prop('checked', false);
         }
         clicks++;
     });
