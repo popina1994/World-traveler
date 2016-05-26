@@ -38,6 +38,7 @@ class ModelRegKorisnik extends CI_Model {
 	
 	
 	function canLogIn($data) {
+                //return false;
 		$username = $data ['username'];
 		$password = $data ['password'];
 		$users = $this->doctrine->em->getRepository ( 'RegKorisnik' )->findBy ( array (

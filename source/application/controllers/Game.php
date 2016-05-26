@@ -45,12 +45,17 @@ class Game extends BaseController {
         $igra = $this->ModelIgra->existsUnfinishedIgra($data = ['userName' => $this->session->username] );
         if ($igra) {
             $this->session->set_userdata('oldIgraId', $igra->getIdigr());
+            
+            $nivo = $igra->getIdniv()->getNaziv();
+            $this->session->set_userData('level', $nivo);
             $return['dataExists'] = true ;
+            $reutrn['nivo'] = $nivo;
         }
         else  {
             $return['dataExists'] = false;
         }
          
+        
         echo json_encode($return);
     }
     
@@ -92,8 +97,8 @@ class Game extends BaseController {
             }
             $this->session->set_userdata('gameStarted', true);
             
-            $this->ModelIgra->createIgra(['username'=> $this->session->username, 'naziv'=>$this->session->level]);
-            $this->session->set_userdata('curGame', $this->session->oldIgraId);
+            $idIgra = $this->ModelIgra->createIgra(['username'=> $this->session->username, 'naziv'=>$this->session->level]);
+            $this->session->set_userdata('curGame', $idIgra);
             $this->Redirect(['view'=>'game', 'redirect' =>true]);
     }
     
@@ -116,35 +121,144 @@ class Game extends BaseController {
        
     }
     
-    public function conquered() {
-        console_log('to');
-    }
-    
-    // When this function is called for the second time, it will only generate pass on the next question.
-    // In session it will be remembered on which question user stopped.
-    // 
-    public function getAnswer() {
-        $secret = $this->input->post('secret');
-        if (!$secret)
-            $this->Redirect();
+
+    private function finishedConquering($data){
+        if ($data['success']) {
+            $this->ModelOsvajanje->uspehOsvajanje(['idigr' => $this->session->curGame, 'oblast'=>$this->session->country ]);
+        }
+        else {
+            $this->ModelOsvajanje->neuspehOsvajanje(['idigr'=> $this->session->curGame, 'oblast'=>$this->session->country ]);
+        }
+        $this->session->unset_userdata('country');
+        $this->session->unset_userdata('correctAnswer');
+        
     }
     
     // It will only set appropriate fields which are going to be used in jquery for setting parts of form.
     // If the user is not authorized to attack the appropriate area, it will return user a warning.
     //
-    public function getQuestion() {
+    public function getTextQuestion() {
         $secret = $this->input->post('secret');
         if (!$secret)
            $this->Redirect();
         
+        $return['canAttack'] = false;
+
+        
+        $idIgra = $this->session->curGame;
         $country = $this->input->post('country');
         
-        $return['country'] = $country;
+        $osv = $this->ModelOsvajanje->existsOsvajanje(['idigr' => $idIgra]);
+        
+        // In case of unfinished attack;
+        //
+        if ($osv != null) {
+            if ($osv->getIdobl()->getNaziv() != $country) {
+                $return['error'] = "Morate da napadnete ".$osv->getIdobl()->getNaziv()." oblast";
+                goto exitFun;
+            }
+            else { // good}}
+            }
+        }
+        else{
+            $canAttack = $this->ModelIgra->canAttack(['igraID' => $this->session->curGame, 'oblast' => $country]);
+            if ($canAttack['success'] === true) {
+                $this->ModelOsvajanje->createOsvajanje(['idigr'=>$idIgra, 'idobl'=> $country]);
+            }
+            else {
+                $return['error'] = $canAttack['error'];
+                goto exitFun;
+            }
+            $osv = $this->ModelOsvajanje->existsOsvajanje(['idigr' => $idIgra]);
+
+         }
+        $textQuestion = $this->ModelTekstPitanje->getTekstPitanje(['nivo'=>$this->session->level, 'oblast'=> $country]);
+        if ($textQuestion == null) 
+        {
+            $return['error'] = 'Moderatori nisu dodali pitanja za ovu bazu';
+            goto exitFun;
+            
+        }
+        
+        $return['a'] = $textQuestion->getOdgovor1();
+        $return['b'] = $textQuestion->getOdgovor2();
+        $return['c'] = $textQuestion->getOdgovor3();
+        $return['d'] = $textQuestion->getOdgovor4();
+        
+        $this->session->set_userdata('correctAnswer', $textQuestion->getTacanodgovor());
+        $this->session->set_userdata('country', $country);
+        $return['text'] = $textQuestion->getPostavka();
+        
+        $return['canAttack'] = true;
+     exitFun:
+        echo json_encode($return);
+    }
+    
+    public function getTextAnswer() {
+        // TO DO: Unset oblast attack in case of wrong answer
+        //  and all set session variables.
+        //
+        $secret = $this->input->post('secret');
+        if (!$secret)
+            $this->Redirect();
+        
+        $answer = ord($this->input->post('letter')) - ord('a') + 1;
+        
+        $return['letterCorrect'] = chr($this->session->correctAnswer - 1 + ord('A'));
+        
+        if ($answer == $this->session->correctAnswer) {
+            $return['correct'] = true;
+        }
+        else {
+            $this->finishedConquering(['success'=>false]);
+            $return['correct'] = false;
+        }
+        echo json_encode($return);
+    }
+    
+    
+     public function getPictureQuestion() {
+        $secret = $this->input->post('secret');
+        if (!$secret)
+           $this->Redirect();
+        
+        $country = $this->session->country;
+        $pictureQuestion = $this->ModelSlikaPitanje->getSlikaPitanje(['nivo'=>$this->session->level, 'oblast'=> $country]);
+        $return['a'] = $pictureQuestion->getOdgovor1();
+        $return['b'] = $pictureQuestion->getOdgovor2();
+        $return['c'] = $pictureQuestion->getOdgovor3();
+        $return['d'] = $pictureQuestion->getOdgovor4();
+        
+        $this->session->set_userdata('correctAnswer', $pictureQuestion->getTacanodgovor());
+        $this->session->set_userdata('country', $country);
+        $return['text'] = $pictureQuestion->getPostavka();
+        $return['picture'] = $pictureQuestion->getSlika();
         $return['canAttack'] = true;
         
+        
         echo json_encode($return);
+    }
+    
+    public function getPictureAnswer() {
+        // TO DO: Unset oblast attack in case of wrong answer
+        //  and all set session variables.
+        //
+        $secret = $this->input->post('secret');
+        if (!$secret)
+            $this->Redirect();
         
+        $answer = ord($this->input->post('letter')) - ord('a') + 1;
         
-        // pass the $level, $
+        $return['letterCorrect'] = chr($this->session->correctAnswer - 1 + ord('A'));
+        
+        if ($answer == $this->session->correctAnswer) {
+            $this->finishedConquering(['success'=>true]);
+            $return['correct'] = true;
+        }
+        else {
+            $this->finishedConquering(['success'=>false]);
+            $return['correct'] = false;
+        }
+        echo json_encode($return);
     }
 }

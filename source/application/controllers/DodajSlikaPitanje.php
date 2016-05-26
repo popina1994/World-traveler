@@ -75,7 +75,7 @@ class DodajSlikaPitanje extends CI_Controller {
 			if ($check !== false) $uploadOk = 1;
 			else $uploadOk = 0;
 			
-			$target_dir = "images/pitanja/";
+			$target_dir = "img/";
 			$target_file = $target_dir . basename ( $_FILES ["fileToUpload"] ["name"] );
 			$uploadOk = 1;
 			$imageFileType = pathinfo ( $target_file, PATHINFO_EXTENSION );
@@ -124,7 +124,7 @@ class DodajSlikaPitanje extends CI_Controller {
 			$o3 = $_POST['o3'];
 			$o4 = $_POST['o4'];
 			$data = Array (
-					'slika' => $target_file,
+					'slika' => basename ( $_FILES ["fileToUpload"] ["name"] ),
 					'idniv' => $nivo,
 					'idobl' => $oblast,
 					'idkor' => $autor,
@@ -136,7 +136,7 @@ class DodajSlikaPitanje extends CI_Controller {
 					'tacan' => $tacan 
 			);
 			
-			$this->Model->createSlikaPitanje ( $data );
+			$this->ModelSlikaPitanje->createSlikaPitanje ( $data );
 			echo "Dodato";
 		
 		}

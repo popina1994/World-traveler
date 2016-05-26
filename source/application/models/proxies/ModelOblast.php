@@ -20,12 +20,12 @@ class ModelOblast extends CI_Model{
 	}
         
         function getCountry($data) {
-		$name = $data ['name'];
+		$name = $data ['idobl'];
 		$countries = $this->doctrine->em->getRepository ( 'Oblast' )->findBy ( array (
-				'Naziv' => $name,
+				'naziv' => $name,
 		) );
 		if (count ( $countries ) == 1)
-			return $this->doctrine->em->find ( "Oblast", $countries [0]->getIdkor () );
+			return $this->doctrine->em->find ( "Oblast", $countries [0]->getIdobl () );
 		else
 			return null;
 	}

@@ -42,13 +42,13 @@ body{
     margin:0px;
     padding:0px;
     align-items: center;
-    text-align: center;
+   
 }
 
 
-#myModal3{
+#myModaldodaj{
     margin-top: 100px;
-    margin-left: 400px;
+    margin-left: 550px;
  
 }
 
@@ -58,16 +58,11 @@ body{
  
 }
 
-#scroll{
-    margin:0px;
-    padding:0px;
-    align-items: center;
+#izbor{
+    padding: 20px;
+    margin: 0px;
     text-align: center;
-    overflow-y: scroll;
-    height: 300px;
 }
-
-
 
 
 .button1{
@@ -80,7 +75,7 @@ body{
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 35px;
+    font-size: 34px;
     cursor: pointer;
     float: left;
     margin-right: 10px;
@@ -88,23 +83,14 @@ body{
     border-radius: 12px;
     font-weight: bold;
     font-family: Verdana;
-    width: 310px;
+    width: 320px;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     margin-bottom: 25px;
 
 }
 
 .button2{
-    background-color: black;
-}
-
-.button3{
-    background-color: darkseagreen;
-    color:black;
-    border: 2px black solid;
-    margin: 0px;
-    text-align: center;
-    font-size: 25px;
+    background-color: darkolivegreen;
 }
 #dod2{
   color: white;
@@ -124,8 +110,6 @@ form{
   text-align: center;
   vertical-align: center;
   margin: 20px;
-  display: inline-block; 
-
 }
 
 h4{
@@ -139,7 +123,7 @@ h4{
   font-size: 25px;
   margin: 30px;
   margin-top: 10px;
-  text-align: left;
+  align-items: center;
   padding-left: 300px;
 }
 
@@ -150,10 +134,8 @@ h4{
   margin-top: 5px;
 }
 
-
-
 .modal-header, h4, .close {
-      background-color:  darkslategrey;
+      background-color:  #2A5D0F;
       color:white !important;
       text-align: center;
       font-size: 30px;
