@@ -36,8 +36,6 @@ class Welcome extends CI_Controller {
 			echo $p->getIdobl()->getNaziv();
 		}
 		
-		
-		
 		//opcija1 za INSERT - napravila gotove funkcije
 		//$data = Array('username'=>'Djordje', 'password'=>'Dj1234' );
 		//$this->Model->createModerator($data);
