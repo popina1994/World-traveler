@@ -25,7 +25,7 @@
 
 
 
-    <!--Modal ukloni-->
+    <!--Modal ukloni
     <div class="modal" id="myModal4" role="dialog" data-backdrop=""  aria-labelledby="myModalLabel" tabindex="-1">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -34,7 +34,7 @@
           <h4> Baza pitanja </h4>
         </div>
         <div class="modal-body">
-        
+        -->
             <table id="t2">
                 <!--
                         U ovu tabelu treba ubaciti kolone za tezinu pitnaja, oblast pitanja  i id pitanja
@@ -45,9 +45,42 @@
                                         
                 -->
                 
+                sjsssssssssssssssssssssss
                 
+                
+                <button class="button1" id="b23" data-toggle="modal" data-target="#myModal">Dodaj Pitanje</button>
+                <div>
+                    <select id="pitanje">
+                         <option value="tekst">Tekstualno</option>
+                         <option value="licnost">Licnost</option>
+                         <option value="slika">Slikovno</option>
+            
+                    </select>
+                    <?php 
+                    echo form_open("moderatorcontroller/dodajpitanje/")
+                    
+                    ?>
+                     <button class="button1" id="dalje" data-toggle="modal" data-target="#myModal">Dalje</button>
+                    
+                     <button class="button1" id="prekini" data-toggle="modal" data-target="#myModal">Prekini</button>
+
+                </div>
+                
+                <?php  
+                $attrubutesRegister = ['name'=>'izmeniDugme', 'id'=>'izmeniDugme', 'class'=>'form-horizontal'];
+                                                
+                    echo form_open("moderatorcontroller/izmeniPitanje/", $attrubutesRegister); 
+                   
+                    echo "<button class="."'button3'"."  id="."'button'".">IZMENI</button>";
+                                              
+                    echo form_close();
+                
+                ?>
                     <?php
-                        if(count($questions)==0){
+                        if($questions==null){
+                            echo "Nema pitanja";
+                        }
+                        else if(count($questions)==0){
                             echo "Nema pitanja";
                         }
                         else{ echo "IMA pitanja";
@@ -68,16 +101,16 @@
 
                                                 $attrubutesRegister = ['name'=>'izmeniDugme'.$p['idPitanja'], 'id'=>'izmeniDugme'.$p['idPitanja'], 'class'=>'form-horizontal'];
                                                 
-                                                echo form_open("administratorcontroller/izmeniPitanje/".$p['idPitanja'], $attrubutesRegister); 
+                                                echo form_open("moderatorcontroller/izmeniPitanje/".$p['idPitanja'], $attrubutesRegister); 
                                                 $strp=$p['idPitanja'];
-                                                echo "<button class="."'button2'"."  id="."'button'.$strp".">IZMENI</button>";
+                                                echo "<button class="."'button3'"."  id="."'button'.$strp".">IZMENI</button>";
                                               
                                                 echo form_close(); 
                                                 $attrubutesRegister = ['name'=>'brisiDugme'.$p['idPitanja'], 'id'=>'brisiDugme'.$p['idPitanja'], 'class'=>'form-horizontal'];
 
-                                                echo form_open("administratorcontroller/deletePitanje/".$p['idPitanja'], $attrubutesRegister); 
+                                                echo form_open("moderatorcontroller/deletePitanje/".$p['idPitanja'], $attrubutesRegister); 
                                                 $strp=$p['idPitanja'];
-                                                echo "<button class="."'button2'"."  id="."$strp.'button'".">BRIŠI</button>";
+                                                echo "<button class="."'button3'"."  id="."$strp.'button'".">BRIŠI</button>";
                                               
                                                 echo form_close(); 
                                                 
@@ -94,12 +127,12 @@
 
                      
             </table>
-        
+        <!--
       </div>
       </div>
     </div>
     </div>
-
+-->
 
 
 
