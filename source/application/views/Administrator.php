@@ -37,43 +37,21 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4>  NOVI MODERATOR</h4>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" >
         <?php 
             $attrubutesRegister = ['name'=>'registerFormModerator', 'id'=>'registerFormModerator', 'class'=>'form-horizontal'];
             echo form_open('administratorcontroller/register', $attrubutesRegister); ?>
-            <table id="t2">
+            <table id="t3" align="center">
                   
                     <tr>
-                        <td rowspan="3"  align="center"><?php echo img('img/256.png'); ?>
-                            </td>
-                            <td>
-                                    Ime:
-                                    <br>
-                                    <input type="text" id="nameRegister" name="nameRegister">
-                            </td>
-
-                    </tr>
-                    <tr>
-                            <td>
-                                    Prezime:
-                                    <br>
-                                    <input type="text" id ="surNameRegister" name ="surNameRegister" >
-                            </td>
-
-                    </tr>
-                    <tr>
-                            <td>
+                            <td >
                                     Korisničko ime:
                                     <br>
                                     <input type="text" id ="userNameRegister" name ="userNameRegister">
                             </td>
                     </tr>
                     <tr>
-                            <td valign="bottom" align="center">
-
-                                    <button disabled>Dodaj sliku</button>
-                            </td>
-                            <td>
+                         <td>
                                     Loznika:
                                     <br>
                                     <input type="password" id ="passRegister" name = "passRegister">
@@ -81,7 +59,7 @@
 
                     </tr>
                     <tr>
-                            <td>&nbsp;</td>
+                            
                             <td>
                                     Potvrda lozinke:
                                     <br>
