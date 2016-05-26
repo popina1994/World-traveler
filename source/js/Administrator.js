@@ -10,3 +10,23 @@ function close3(){
 	document.getElementById("b11").disabled=false;
 
 }
+
+$(document).ready(function(){ 
+    $("#ukloni").click(function(){
+        $('#myModal4').modal('show');
+        
+        document.getElementById("b11").disabled=true;
+    });
+    $("#zatvaram").click(function(){
+        $('#myModal4').modal('hide');
+       
+        document.getElementById("b11").disabled=false;
+    });
+   
+});
+
+
+
+/*function fja(){
+    $('myModal4').modal('show');
+}*/

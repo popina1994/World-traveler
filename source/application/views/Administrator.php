@@ -13,6 +13,9 @@
             
             <script type = 'text/javascript' src = "<?php echo base_url(); 
             ?>js/registermoderator.js"></script>
+            
+            <script type = 'text/javascript' src = "<?php echo base_url(); 
+            ?>js/Administrator.js"></script>
 
               <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel = "stylesheet" type = "text/css" 
@@ -24,11 +27,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
 </head>
 
-<body>
+<body id="bodyadmin">
    
     <div>
         <button class="button1" id="b11" data-toggle="modal" data-target="#myModal3">KREIRAJ MODERATORA</button>
-        <button class="button1" id="b11" data-toggle="modal" data-target="#myModal4">UKLONI MODERATORA</button>
+        <button class="button1" id="ukloni" >UKLONI MODERATORA</button>
     </div>
     <div class="modal" id="myModal3" role="dialog" data-backdrop=""  aria-labelledby="myModalLabel" tabindex="-1">
     <div class="modal-dialog" role="document">
@@ -84,11 +87,11 @@
     </div>
     
     <!--Modal ukloni-->
-    <div class="modal" id="myModal4" role="dialog" data-backdrop=""  aria-labelledby="myModalLabel" tabindex="-1">
+    <div class="modal" id="myModal4" role="dialog"  data-backdrop=""  data-keyboard="false" aria-labelledby="myModalLabel" tabindex="-1">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
         <div class="modal-header" >
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <button type="button" class="close" id="zatvaram">&times;</button>
           <h4>  UKLONI MODERATORA</h4>
         </div>
             <div class="modal-body"  id="scroll">
