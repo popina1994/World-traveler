@@ -44,6 +44,7 @@ class ModelOsvajanje extends CI_Model {
 	
 	//nakon osvajanja oblasti
 	//dobija id igre i naziv oblasti
+	//vraca true ako je sve osvojeno
 	function uspehOsvajanje($data){
 		
 		$igra = $this->doctrine->em->find("Igra", $data['idigr']);
@@ -66,12 +67,19 @@ class ModelOsvajanje extends CI_Model {
 		catch(Exception $err){
 			die($err->getMessage());
 		}
-		return true;
+		
+		$query = $this->em->createQuery('SELECT COUNT(o.idobl) FROM Oblast o');
+		$countobl = $query->getSingleScalarResult();
+		
+		if($countobl == count($igra->getIdosv())) 
+			return true;
+		return false;
 	
 	}
 	
 	//nakon neuspesnog osvajanja oblasti
 	//dobija id igre i naziv oblasti
+	//vraca true ako je izgubljena igra -> putnici<=0
 	function neuspehOsvajanje($data){
 	
 		$igra = $this->doctrine->em->find("Igra", $data['idigr']);
@@ -94,7 +102,9 @@ class ModelOsvajanje extends CI_Model {
 		catch(Exception $err){
 			die($err->getMessage());
 		}
-		return true;
+		if($igra->getPutnici()<=0)
+			return true;
+		return false;
 	
 	}
 	
