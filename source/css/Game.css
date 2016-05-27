@@ -154,9 +154,10 @@ p{
 
 #btnLogOut{
     margin-left: 1250px;
-    bottom: 0;
+    top: 0;
     padding-bottom: 5px;
     margin-bottom: 15px;
+    margin-top: 10px;
     z-index: 60;
     position: absolute;
 }

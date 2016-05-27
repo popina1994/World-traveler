@@ -12,8 +12,7 @@ $(document).ready(function(){
          $('#loginForm').submit( function(event) {
 
             var form = this;
-            
-                       
+                                            
             event.preventDefault();
             $.ajax({
                 type: "POST",
@@ -24,14 +23,14 @@ $(document).ready(function(){
                 dataType: "json", 
                 success:function(data){
                    //$("#ime").text.html(data);
-                  alert("Provera da li su dobro ime i sifra");
+                  alertify.log("Provera da li su dobro ime i sifra");
                    if (data.userExists === true) {
-
-                      alert("Uspesno logovanje");
-                       form.submit();
+                     
+                      alertify.success("Uspesno logovanje"); 
+                      form.submit();
                    }
                    else {
-                      alert("Neuspesno logovanje");
+                     alertify.error("Neuspesno logovanje");
                    }
                 }
 

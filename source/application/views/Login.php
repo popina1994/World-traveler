@@ -5,8 +5,23 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/Svetski_putnik.css">
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
         
+         <link rel = "stylesheet" type = "text/css" 
+    href = "<?php echo base_url(); ?>css/alertify.bootstrap.css">
+  <link rel = "stylesheet" type = "text/css" 
+    href = "<?php echo base_url(); ?>css/alertify.core.css">
+    <link rel = "stylesheet" type = "text/css" 
+    href = "<?php echo base_url(); ?>css/alertify.default.css">
+ 
+  <script type = 'text/javascript' src = "<?php echo base_url(); 
+        ?>js/alertify.min.js"></script>
+       
+        
+        <script type = 'text/javascript' src = "<?php echo base_url(); 
+        ?>js/alertify.js"></script>
+        
 </head>
 <body>
+    <div id="prijava_forma">
         <?php 
           $attrubutes = array('name'=>'loginForm', 'class'=>'form-horizontal',
               'id'=>'loginForm', 'mehtod'=>'post');
@@ -20,11 +35,11 @@
 
                   <tr>
                       <td>
-                          <label class="control-label">Korisnicko ime</label>
+                          <label class="control-label">Korisničko ime</label>
                       </td>
                       <td>
                      <div class="controls">
-                          <input  type="text" name="nameLogin" id="nameLogin" required>
+                          <input  type="text" name="nameLogin" id="nameLogin" >
                       <p class="help-block"></p>
                      </div>
                       </td>
@@ -37,26 +52,27 @@
                          <label class="control-label">Lozinka</label>
                       </td>
                       <td>
-                      <div class="controls">
-                          <input type="password" name="passLogin" id="passLogin" required >
-                        <p class="help-block"></p>
-                       </div>
+                      <br/>
+                          <input type="password" name="passLogin" id="passLogin"  >
+                        
+                       
                       </td>
 
                   </tr>
 
                   <tr>
-                      <td colspan="2">
-                          <div id="dugmici">
-                              <button class="button2"  id="saljem">OK</button>
-                              <button class="button2" type ="button" onclick="close1();">OTKAŽI</button>
-                          </div>
+                      <td colspan="2" align="center">
+                         <br/> 
+                              <button class="button4"  id="saljem">OK</button>
+                              
+                         
 
                       </td>
                   </tr>
 
               </table>
              
-<?php echo form_close(); ?>			
+<?php echo form_close(); ?>
+        </div>
 </body>
 </html>

@@ -20,6 +20,19 @@
               <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel = "stylesheet" type = "text/css" 
     href = "<?php echo base_url(); ?>css/Administrator.css">
+        
+         <link rel = "stylesheet" type = "text/css" 
+    href = "<?php echo base_url(); ?>css/alertify.bootstrap.css">
+  <link rel = "stylesheet" type = "text/css" 
+    href = "<?php echo base_url(); ?>css/alertify.core.css">
+    <link rel = "stylesheet" type = "text/css" 
+    href = "<?php echo base_url(); ?>css/alertify.default.css">
+ 
+  <script type = 'text/javascript' src = "<?php echo base_url(); 
+        ?>js/alertify.min.js"></script>
+        
+        <script type = 'text/javascript' src = "<?php echo base_url(); 
+        ?>js/alertify.js"></script>
 
     <title>Svetski putnik</title>
    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">

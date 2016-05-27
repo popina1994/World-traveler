@@ -14,15 +14,23 @@
     
     <script type = 'text/javascript' src = "<?php echo base_url(); 
         ?>js/login.js"></script>
-        
-      <script type = 'text/javascript' src = "<?php echo base_url(); 
-        ?>js/sweetalert2.min.js"></script>
+ 
+  <script type = 'text/javascript' src = "<?php echo base_url(); 
+        ?>js/alertify.min.js"></script>
         
         <script type = 'text/javascript' src = "<?php echo base_url(); 
-        ?>js/sweetalert2.js"></script>
+        ?>js/alertify.js"></script>
+        
+
 
   <link rel = "stylesheet" type = "text/css" 
-    href = "<?php echo base_url(); ?>css/sweetalert2.css">
+    href = "<?php echo base_url(); ?>css/alertify.bootstrap.css">
+  <link rel = "stylesheet" type = "text/css" 
+    href = "<?php echo base_url(); ?>css/alertify.core.css">
+    <link rel = "stylesheet" type = "text/css" 
+    href = "<?php echo base_url(); ?>css/alertify.default.css">
+
+  
   
     
     <script type = 'text/javascript' src = "<?php echo base_url(); 

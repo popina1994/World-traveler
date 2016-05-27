@@ -34,10 +34,10 @@ $(document).ready(function(){
                     
                 }
                 else {
-                    alert(data.error);
+                    alertify.error(data.error);
                 }
             },
-             error:function(data){alert(data);}
+             error:function(data){alertify.error(data);}
            
 
         }); 
@@ -148,7 +148,9 @@ $(document).ready(function(){
                         $("#modalPicture").modal("show");
                     }
                 },
-                 error:function(data){alert(data);}
+                 error:function(data){
+                     
+                     alertify.error(data);}
 
 
             }); 

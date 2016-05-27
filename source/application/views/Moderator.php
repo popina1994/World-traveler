@@ -21,6 +21,19 @@
    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     
     <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+    
+     <link rel = "stylesheet" type = "text/css" 
+    href = "<?php echo base_url(); ?>css/alertify.bootstrap.css">
+  <link rel = "stylesheet" type = "text/css" 
+    href = "<?php echo base_url(); ?>css/alertify.core.css">
+    <link rel = "stylesheet" type = "text/css" 
+    href = "<?php echo base_url(); ?>css/alertify.default.css">
+ 
+  <script type = 'text/javascript' src = "<?php echo base_url(); 
+        ?>js/alertify.min.js"></script>
+        
+        <script type = 'text/javascript' src = "<?php echo base_url(); 
+        ?>js/alertify.js"></script>
 </head>
 <body>
     <div>
