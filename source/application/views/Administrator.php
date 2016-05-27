@@ -30,14 +30,14 @@
 <body id="bodyadmin">
    
     <div>
-        <button class="button1" id="b11" data-toggle="modal" data-target="#myModal3">KREIRAJ MODERATORA</button>
+        <button class="button1" id="kreiraj" >KREIRAJ MODERATORA</button>
         <button class="button1" id="ukloni" >UKLONI MODERATORA</button>
     </div>
     <div class="modal" id="myModal3" role="dialog" data-backdrop=""  aria-labelledby="myModalLabel" tabindex="-1">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
         <div class="modal-header" >
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <button type="button" class="close" id="zatvaram1">&times;</button>
           <h4>  NOVI MODERATOR</h4>
         </div>
         <div class="modal-body" >
@@ -91,7 +91,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
         <div class="modal-header" >
-          <button type="button" class="close" id="zatvaram">&times;</button>
+            <button type="button" class="close" id="zatvaram2">&times;</button>
           <h4>  UKLONI MODERATORA</h4>
         </div>
             <div class="modal-body"  id="scroll">

@@ -78,6 +78,13 @@
             </map>
 
         </div>
+        <?php 
+            $attrubutesRegister = ['name'=>'logOutForm', 'id'=>'logOutForm', 'class'=>'form-horizontal'];
+            echo form_open('main/logOut', $attrubutesRegister); ?>
+        <button  class="btn btn-default btn-sm" id ="btnLogOut" name="btnLogOut">
+          <span class="glyphicon glyphicon-log-out"></span> Log out
+        </button>
+    <?php echo form_close(); ?>
         <div id="sidebar">
             <?php
             $image_properties = array(
@@ -310,5 +317,6 @@
 
         </div> <!--kraj-->
 
+     
     </body>
 </html>

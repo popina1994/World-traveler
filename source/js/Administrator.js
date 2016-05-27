@@ -14,13 +14,23 @@ function close3(){
 $(document).ready(function(){ 
     $("#ukloni").click(function(){
         $('#myModal4').modal('show');
-        
-        document.getElementById("b11").disabled=true;
+        document.getElementById("ukloni").disabled=true;
+        document.getElementById("kreiraj").disabled=true;
     });
-    $("#zatvaram").click(function(){
+    $("#zatvaram2").click(function(){
         $('#myModal4').modal('hide');
-       
-        document.getElementById("b11").disabled=false;
+       document.getElementById("ukloni").disabled=false;
+        document.getElementById("kreiraj").disabled=false;
+    });
+    $("#kreiraj").click(function(){
+        $('#myModal3').modal('show');
+        document.getElementById("ukloni").disabled=true;
+        document.getElementById("kreiraj").disabled=true;
+    });
+    $("#zatvaram1").click(function(){
+        $('#myModal3').modal('hide');
+       document.getElementById("ukloni").disabled=false;
+        document.getElementById("kreiraj").disabled=false;
     });
    
 });

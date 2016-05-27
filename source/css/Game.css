@@ -152,4 +152,12 @@ p{
   padding-left: 300px;
 }
 
+#btnLogOut{
+    margin-left: 1250px;
+    bottom: 0;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    z-index: 60;
+    position: absolute;
+}
 
