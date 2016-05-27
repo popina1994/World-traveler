@@ -230,6 +230,16 @@ p{
   cursor: default;
 }
 
+#prijava:disabled{
+  color: #500C0C;
+  cursor: default;
+}
+
+#registracija:disabled{
+  color: #500C0C;
+  cursor: default;
+}
+
 #d2{
 
   width: 400px;

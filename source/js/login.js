@@ -6,11 +6,14 @@
 
 
 
+
+
 $(document).ready(function(){   
          $('#loginForm').submit( function(event) {
 
             var form = this;
-            alert("fuck");
+            
+                       
             event.preventDefault();
             $.ajax({
                 type: "POST",
@@ -21,17 +24,19 @@ $(document).ready(function(){
                 dataType: "json", 
                 success:function(data){
                    //$("#ime").text.html(data);
-                   alert("Provera da li su dobro ime i sifra");
+                  alert("Provera da li su dobro ime i sifra");
                    if (data.userExists === true) {
 
-                       alert("Uspesno logovanje");
+                      alert("Uspesno logovanje");
                        form.submit();
                    }
                    else {
-                       alert("Neuspesno logovanje");
+                      alert("Neuspesno logovanje");
                    }
                 }
 
             }); 
+                   
+            
         });
 });

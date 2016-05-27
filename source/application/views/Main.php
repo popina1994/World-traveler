@@ -15,6 +15,14 @@
     <script type = 'text/javascript' src = "<?php echo base_url(); 
         ?>js/login.js"></script>
         
+      <script type = 'text/javascript' src = "<?php echo base_url(); 
+        ?>js/sweetalert2.min.js"></script>
+        
+        <script type = 'text/javascript' src = "<?php echo base_url(); 
+        ?>js/sweetalert2.js"></script>
+
+  <link rel = "stylesheet" type = "text/css" 
+    href = "<?php echo base_url(); ?>css/sweetalert2.css">
   
     
     <script type = 'text/javascript' src = "<?php echo base_url(); 
@@ -35,12 +43,12 @@
             
       
 <body>
-
+    
    <button class="button" onclick="f()">START</button>		
     <div>
    
-            <button class="button1" id="b11" data-toggle="modal" data-target="#myModal">PRIJAVI SE</button>
-            <button class="button1" data-toggle="modal" data-target="#myModal2" id="b12">REGISTRUJ SE</button>
+            <button class="button1" id="prijava" >PRIJAVI SE</button>
+            <button class="button1" id="registracija">REGISTRUJ SE</button>
           
     </div>
     
@@ -49,7 +57,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
         <div class="modal-header" >
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <button type="button" class="close" id="zatv_prij">&times;</button>
           <h4><span class="glyphicon glyphicon-lock"></span>  PRIJAVA</h4>
         </div>
         <div class="modal-body">
@@ -68,11 +76,11 @@
                                              <label class="control-label"><span class="glyphicon glyphicon-user"></span> Korisnicko ime: </label>
                                     </td>
                                     <td>
-                                        <div class="controls">
-                                            <input type="text" name="nameLogin" id="nameLogin" required  oninvalid="this.setCustomValidity('Morate uneti ovo polje')">
+                                        <!--<div class="controls">-->
+                                            <input type="text" name="nameLogin" id="nameLogin"   oninvalid="this.setCustomValidity('Morate uneti ovo polje')">
 
-                                            <p class="help-block"></p>
-                                        </div>
+                                           <!-- <p class="help-block"></p>-->
+                                       <!-- </div>-->
                                     </td>
 
                             </tr>
@@ -81,10 +89,10 @@
                                             <label class="control-label"><span class="glyphicon glyphicon-eye-open"></span> Lozinka: </label>
                                     </td>
                                     <td>
-                                        <div class="controls">
-                                            <input type="password" name="passLogin" id="passLogin" required oninvalid="this.setCustomValidity('Morate uneti ovo polje')" >
-                                            <p class="help-block"></p>
-                                        </div>
+                                        <!--<div class="controls"> -->
+                                            <input type="password" name="passLogin" id="passLogin"  oninvalid="this.setCustomValidity('Morate uneti ovo polje')" >
+                                            <!-- <p class="help-block"></p> -->
+                                         <!--</div> -->
                                     </td>
 
                             </tr>
@@ -112,50 +120,11 @@
     </div>
     
     
-    
- 
-  <!-- Modal 
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-
-      <!-- Modal content
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 style="color:red;"><span class="glyphicon glyphicon-lock"></span> Login</h4>
-        </div>
-        <div class="modal-body">
-          <form role="form">
-            <div class="form-group">
-              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
-              <input type="text" class="form-control" id="usrname" placeholder="Enter email">
-            </div>
-            <div class="form-group">
-              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-              <input type="text" class="form-control" id="psw" placeholder="Enter password">
-            </div>
-            <div class="checkbox">
-              <label><input type="checkbox" value="" checked>Remember me</label>
-            </div>
-            <button type="submit" class="btn btn-default btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-default btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-          <p>Not a member? <a href="#">Sign Up</a></p>
-          <p>Forgot <a href="#">Password?</a></p>
-        </div>
-      </div>
-    </div>
-  </div> 
-</div>
-    -->
-    
     <div class="modal" id="myModal2" role="dialog" data-backdrop=""   tabindex="-1">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
         <div class="modal-header" >
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <button type="button" class="close" id="zatv_reg">&times;</button>
           <h4>  REGISTRACIJA</h4>
         </div>
         <div class="modal-body">
