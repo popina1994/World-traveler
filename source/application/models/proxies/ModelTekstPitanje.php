@@ -49,6 +49,7 @@ class ModelTekstPitanje extends CI_Model {
 		$nivo = $this->doctrine->em->getRepository ( 'NivoTezine' )->findBy ( array (
 				'naziv' => $data ['nivo'] 
 		) );
+
 		if (count ( $nivo ) == 0) return null;
 		$nivo=$nivo[0];
 		$oblast = $this->doctrine->em->getRepository ( 'Oblast' )->findBy ( array (
@@ -56,21 +57,38 @@ class ModelTekstPitanje extends CI_Model {
 		) );
 		if (count ( $oblast ) == 0) return null;
 		$oblast=$oblast[0];
-		
+
 		$q = $this->doctrine->em->getRepository ( 'Pitanje' )->findBy ( array (
 				'idobl' => $oblast->getIdobl(),
 				'idniv' => $nivo->getIdniv() 
 		) );
 
-		if (count ( $q ) == 0) return null;
-		$tekst=array();
-		foreach ($q as $res){
-			$tp = $this->doctrine->em->find ( "TekstPitanje", $res->getIdpit () );
-			if($tp)
-				array_push($tekst,$tp);
+		if (count ( $q ) != 0) {
+			$tekst=array();
+			foreach ($q as $res){
+				$tp = $this->doctrine->em->find ( "TekstPitanje", $res->getIdpit () );
+				if($tp)
+					array_push($tekst,$tp);
+			}
+			if(count($tekst)!=0)
+			return $tekst[array_rand($tekst)];
 		}
-		if(count($tekst)==0) return null;
-		return $tekst[array_rand($tekst)];
+		
+		$pit = new Pitanje();
+		$pit->setBrnetacno(0);
+		$pit->setBrtacno(0);
+		$pit->setIdniv($nivo);
+		$pit->setIdobl($oblast);
+			
+		$tp = new TekstPitanje();
+		$tp->setIdpit($pit);
+		$tp->setOdgovor1('Netačan odgovor');
+		$tp->setOdgovor2("Netačan odgovor");
+		$tp->setOdgovor3("Tačan odgovor");
+		$tp->setOdgovor4("Netačan odgovor");
+		$tp->setPostavka('Bonus pitanje! Odabirom tačnog odgovora uspešno se nastavlja osvajanje!');
+		$tp->setTacanodgovor(3);
+		return $tp;
 			
 	}
 	

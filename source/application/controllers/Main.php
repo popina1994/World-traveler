@@ -26,6 +26,12 @@ class Main extends BaseController {
         
      
     }
+    
+    public function  startUnregistered() {
+        $this->session->username = "guest";
+        $this->Redirect(['view'=>'Main']);
+        
+    }
     // Bad code, but for now I've not seen better solution, maybe some arguments, etc.
     // But for now I'll leave it like this.
     //
@@ -33,12 +39,12 @@ class Main extends BaseController {
         
         $username = $this->input->post('nameLogin');
         $password = $this->input->post("passLogin");
-        $this->load->model('proxies/ModelRegKorisnik');
         
         if ($this->ModelRegKorisnik->canLogIn($data = ['username'=>$username, 'password'=>$password])) 
                    return true;
         return false;
     }
+    
     
     public function login() {			
 			
@@ -58,9 +64,6 @@ class Main extends BaseController {
             $password = $this->input->post("passLogin");
             
             $this->session->set_userdata('username', $username);
-            
-            $this->load->model('proxies/ModelAdministrator');
-            $this->load->model('proxies/ModelModerator');
             
             Redirect();
         }
@@ -116,7 +119,7 @@ class Main extends BaseController {
         else if ($username == '') {
             $return['error'] = 'Nepravilno korisnickko ime';
         }
-        else if (!preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,12}$/', $password)) {
+        else if (!preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,16}$/', $password)) {
             $return['error'] = 'Neispravan obrazac sifre';
         }
         else if ($password != $passCheck) {

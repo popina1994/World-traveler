@@ -17,9 +17,6 @@ class ModelIgra extends CI_Model {
 	
 		$igra = new Igra();
 		$igra->setPoeni(0);
-		if (array_key_exists ( 'putnici', $data ))
-			$igra->setPutnici($data['putnici']); //zadat pocetni broj
-		else $igra->setPutnici(0);
 		$igra->setStatus('t'); //tekuca igra, igra u toku 
 
 		$user =  $this->doctrine->em->getRepository('RegKorisnik')->findBy(array('username' => $data['username']))[0];
@@ -28,7 +25,14 @@ class ModelIgra extends CI_Model {
 		
 		$nivo =  $this->doctrine->em->getRepository('NivoTezine')->findBy(array('naziv' => $data['naziv']))[0];
 		$igra->setIdniv($nivo);
-	
+		if (array_key_exists ( 'putnici', $data ))
+			$igra->setPutnici($data['putnici']); //zadat pocetni broj
+		else {
+			$nivo=$nivo->getIdniv();
+			if($nivo==1) $igra->setPutnici(9);
+			else if($nivo==2) $igra->setPutnici(6);
+			else if($nivo==3) $igra->setPutnici(4);
+		}
 		try {
 			//save to database
 			$this->em->persist($igra);
@@ -45,7 +49,7 @@ class ModelIgra extends CI_Model {
 	function finishUnfinishedIgra($data){
 		$igraID = $data['igraID'];
                 $igra = $this->doctrine->em->getRepository('Igra')->find($igraID);
-		$igra->setStatus('f'); 
+		$igra->setStatus('u'); //unfinished, unistena
 		try {
 			//save to database
 			$this->em->persist($igra);
@@ -120,6 +124,14 @@ class ModelIgra extends CI_Model {
 	}
 	function getPutnici($data){
 		return $this->doctrine->em->getRepository('Igra')->find($data['igraID'])->getPutnici();
+	}
+	
+	//t tekuca
+	//i izgubljena
+	//o osvojena
+	//u unistena
+	function getStatus($data){
+		return $this->doctrine->em->getRepository('Igra')->find($data['igraID'])->getStatus();
 	}
 	
 }

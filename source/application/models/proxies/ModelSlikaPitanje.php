@@ -63,15 +63,33 @@ class ModelSlikaPitanje extends CI_Model {
 				'idniv' => $nivo->getIdniv() 
 		) );
 
-		if (count ( $q ) == 0) return null;
-		$slika=array();
-		foreach ($q as $res){
-			$sp = $this->doctrine->em->find ( "SlikaPitanje", $res->getIdpit () );
-			if($sp)
-				array_push($slika,$sp);
+		if (count ( $q ) != 0) {
+			$slika=array();
+			foreach ($q as $res){
+				$sp = $this->doctrine->em->find ( "SlikaPitanje", $res->getIdpit () );
+				if($sp)
+					array_push($slika,$sp);
+			}
+			if(count($slika)!=0) 
+				return $slika[array_rand($slika)];
 		}
-		if(count($slika)==0) return null;
-		return $slika[array_rand($slika)];
+		
+		$pit = new Pitanje();
+		$pit->setBrnetacno(0);
+		$pit->setBrtacno(0);
+		$pit->setIdniv($nivo);
+		$pit->setIdobl($oblast);
+			
+		$sp = new SlikaPitanje();
+		$sp->setIdpit($pit);
+		$sp->setSlika("pehar.png");
+		$sp->setOdgovor1('Netačan odgovor');
+		$sp->setOdgovor2("Netačan odgovor");
+		$sp->setOdgovor3("Tačan odgovor");
+		$sp->setOdgovor4("Netačan odgovor");
+		$sp->setPostavka('Bonus pitanje! Odabirom tačnog odgovora uspešno se nastavlja osvajanje!');
+		$sp->setTacanodgovor(3);
+		return $sp;
 			
 	}
 	

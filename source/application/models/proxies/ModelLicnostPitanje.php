@@ -65,16 +65,36 @@ class ModelLicnostPitanje extends CI_Model{
 				'idniv' => $nivo->getIdniv() 
 		) );
 
-		if (count ( $q ) == 0) return null;
-		$licnost=array();
-		foreach ($q as $res){
-			$lp = $this->doctrine->em->find ( "LicnostPitanje", $res->getIdpit () );
-			if($lp)
-				array_push($licnost,$lp);
+		if (count ( $q ) != 0) {
+			$licnost=array();
+			foreach ($q as $res){
+				$lp = $this->doctrine->em->find ( "LicnostPitanje", $res->getIdpit () );
+				if($lp)
+					array_push($licnost,$lp);
+			}
+			if(count($licnost)!=0) 
+				return $licnost[array_rand($licnost)];
 		}
-		if(count($licnost)==0) return null;
-		return $licnost[array_rand($licnost)];
-			
+		
+		$pit = new Pitanje();
+		$pit->setBrnetacno(0);
+		$pit->setBrtacno(0);
+		$pit->setIdniv($nivo);
+		$pit->setIdobl($oblast);
+		
+		$lp = new LicnostPitanje();
+		$lp->setIdpit($pit);
+		$lp->setLicnost("osoba");
+		$lp->setSlika("user.png");
+		
+		$lp->setPodatak1('Bonus pitanje! Slova su u nastavku...');
+		$lp->setPodatak2('o');
+		$lp->setPodatak3('s');
+		$lp->setPodatak4('o');
+		$lp->setPodatak5('b');
+		$lp->setPodatak6('a');
+		return $lp;
+		
 	}
 	
 }

@@ -111,8 +111,10 @@
             echo img($image_properties);
             ?>
             <p id="userName"> <?php echo $username ?></p>
-            <input type="text" id="poeni" size="3" value="453" >
+            <label for="points"> <?php echo $points ?></label>
             <p >Poeni</p>
+            <label for="passengers"> <?php echo $passengers ?></label>
+            <p >Putnici</p>
             <button id="settings"><?php
             $image_properties = array(
                 'src' => 'img/sett.png',
@@ -256,7 +258,7 @@
                                 ?>
                             <?php
                             $attrubutesRegister = ['name' => 'EnigmaQuestion', 'id' => 'EnigmaQuestion', 'class' => 'form-horizontal'];
-                            echo form_open('game/conquered', $attrubutesRegister);
+                            echo form_open('game/conqured', $attrubutesRegister);
                             ?>
                             <p id="naslov"><label for="Enigma"></label></p>
 
