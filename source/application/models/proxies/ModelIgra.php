@@ -115,4 +115,11 @@ class ModelIgra extends CI_Model {
 		
 	}
 	
+	function getPoeni($data){
+		return $this->doctrine->em->getRepository('Igra')->find($data['igraID'])->getPoeni();
+	}
+	function getPutnici($data){
+		return $this->doctrine->em->getRepository('Igra')->find($data['igraID'])->getPutnici();
+	}
+	
 }
