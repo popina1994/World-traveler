@@ -185,6 +185,7 @@ class Game extends BaseController {
             $return['canAttack'] = false;
             $return['error'] = "Igra je zavrsena";
             $return['error'] .= ' jer ste pobedili, krenite novu';
+            goto exitFun;
         }
         else if ($status === 'i') {
             $return['canAttack'] = false;
@@ -341,11 +342,11 @@ class Game extends BaseController {
             $this->session->set_userdata('podatak6', $enigmaQuestion->getPodatak6());
             $this->session->set_userdata('correctAnswer', $enigmaQuestion->getLicnost());
             
-            if ($this->session->level === 'Svetstki putnik' ) {
+            if ($this->session->level === 'Svetski putnik' ) {
                 $numTries = 2;
             }
             else { 
-                $numTries = 2;
+                $numTries = 4;
             }
             
             $this->session->set_userdata('numTries', $numTries);
