@@ -137,7 +137,7 @@ class Game extends BaseController {
     
 
     private function finishedConquering($data){
-        if ($data['success'] === true) {
+        if ($data['success'] == true) {
             $this->ModelOsvajanje->uspehOsvajanje(['idigr' => $this->session->curGame, 'oblast'=>$this->session->country ]);
         }
         else {
@@ -370,6 +370,14 @@ class Game extends BaseController {
                 $zagonetna[$idx] = $letter;
             }
         
+        if (!$return['letterExists']) {
+            $this->session->numTries = $this->session->numTries  - 1;
+            if ($this->session->numTries === 0) {
+                $return['faliure'] = true;
+                $this->finishedConquering( ['success' =>'false']);
+                }
+        }    
+            
          // Check if user guesed.
          //
         $return['success'] = true;
@@ -378,25 +386,21 @@ class Game extends BaseController {
                $return['success'] = false;
                
         }
+        $this->session->zagonetna = $zagonetna;
+        $return['text'] = $zagonetna;
         
         if ($return['success'] == true) {
             $this->finishedConquering(['success' =>'true']);
+            goto exitFun;
         }
         
-        $return['failiure'] = false;
+        $return['failiure'] = false;    
+
+            
         
-            
-        if (!$return['letterExists']) {
-            $this->session->numTries = $this->session->numTries  - 1;
-            if ($this->session->numTries === 0) {
-                $return['faliure'] = true;
-                $this->finishedConquering( ['success' =>'false']);
-            }
-        }
-            
-        $this->session->zagonetna = $zagonetna;
-        $return['text'] = $zagonetna;
+        
         $return['numTries'] = $this->session->numTries;
+ exitFun:
           
         echo json_encode($return);
     }
