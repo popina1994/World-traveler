@@ -45,7 +45,7 @@ class ModelIgra extends CI_Model {
 	function finishUnfinishedIgra($data){
 		$igraID = $data['igraID'];
                 $igra = $this->doctrine->em->getRepository('Igra')->find($igraID);
-		$igra->setStatus('f'); 
+		$igra->setStatus('u'); //unfinished, unistena
 		try {
 			//save to database
 			$this->em->persist($igra);
@@ -120,6 +120,14 @@ class ModelIgra extends CI_Model {
 	}
 	function getPutnici($data){
 		return $this->doctrine->em->getRepository('Igra')->find($data['igraID'])->getPutnici();
+	}
+	
+	//t tekuca
+	//i izgubljena
+	//o osvojena
+	//u unistena
+	function getStatus($data){
+		return $this->doctrine->em->getRepository('Igra')->find($data['igraID'])->getStatus();
 	}
 	
 }

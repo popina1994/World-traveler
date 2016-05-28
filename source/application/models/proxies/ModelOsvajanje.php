@@ -72,7 +72,7 @@ class ModelOsvajanje extends CI_Model {
 		$countobl = $query->getSingleScalarResult();
 		
 		if($countobl == count($igra->getIdosv())) 
-			return true;
+			{ return true; $igra->setStatus('o');} //osvojena
 		return false;
 	
 	}
@@ -103,7 +103,7 @@ class ModelOsvajanje extends CI_Model {
 			die($err->getMessage());
 		}
 		if($igra->getPutnici()<=0)
-			return true;
+			{ return true; $igra->setStatus('i');} //izgubljena
 		return false;
 	
 	}
