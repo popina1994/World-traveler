@@ -32,9 +32,20 @@ class Welcome extends CI_Controller {
 		
 		$this->load->library('doctrine');
 		
-		foreach ($this->ModelPitanje->getPitanja() as $p) {
-			echo $p->getIdobl()->getNaziv();
+		
+		$obl =  $this->doctrine->em->getRepository('Oblast')->findAll();
+		
+		$data =Array();
+		$data['idigr']=1;
+		foreach($obl as $o){
+			if($o->getIdobl()!=1){
+				$data ['idobl'] = $o->getNaziv();
+				$data ['oblast'] = $o->getNaziv();
+				$this->ModelOsvajanje->createOsvajanje($data);
+				$this->ModelOsvajanje->uspehOsvajanje($data);
+			}
 		}
+			
                 
                 /*$data = Array('username'=>'admin', 'password'=>'admin' );
                 $this->ModelAdministrator->createAdministrator($data);*/

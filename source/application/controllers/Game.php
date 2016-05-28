@@ -99,7 +99,7 @@ class Game extends BaseController {
                 $this->session->set_userdata('level', 'Školarac');
             }
             else if (isset($_POST['kofer'])) { 
-                 $this->session->set_userdata('level', 'Svetstki putnik');
+                 $this->session->set_userdata('level', 'Svetski putnik');
             }
             else {
                 $this->Redirect();
