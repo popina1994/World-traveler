@@ -22,8 +22,14 @@ class Game extends BaseController {
     public function index() {
         // Used when the user accidently closes the window.
         //
-        if ($this->session->gameStarted)
-            $this->Redirect(['view'=>'Game', 'username'=>$this->session->username]);
+        if ($this->session->gameStarted) {
+            $points = $this->ModelIgra->getPoeni(['igraID'=>$this->session->curGame]);
+            $passengers = $this->ModelIgra->getPutnici(['igraID'=>$this->session->curGame]);
+            $this->Redirect(['view'=>'Game', 'username'=>$this->session->username, 
+        'points' => $points, 'passengers' => $passengers]);
+            
+        }
+        
         else {
             $this->Redirect(['view'=>'GameChoice']);
         }
@@ -227,6 +233,8 @@ class Game extends BaseController {
         else {
             $this->finishedConquering(['success'=>false]);
             $return['correct'] = false;
+            $return['points'] = $this->ModelIgra->getPoeni(['igraID'=>$this->session->curGame]);
+            $return['passengers'] = $this->ModelIgra->getPutnici(['igraID'=>$this->session->curGame]);
         }
         echo json_encode($return);
     }
@@ -277,6 +285,8 @@ class Game extends BaseController {
         else {
             $this->finishedConquering(['success'=>false]);
             $return['correct'] = false;
+             $return['points'] = $this->ModelIgra->getPoeni(['igraID'=>$this->session->curGame]);
+            $return['passengers'] = $this->ModelIgra->getPutnici(['igraID'=>$this->session->curGame]);
         }
         echo json_encode($return);
     }
@@ -314,7 +324,6 @@ class Game extends BaseController {
             $numTries = 3;
             $this->session->set_userdata('numTries', $numTries);
             $zagonetna = "";
-            $return['duzina'] = strlen($enigmaQuestion->getLicnost());
             for($idx=0; $idx < strlen($enigmaQuestion->getLicnost()); $idx++)
                 $zagonetna[$idx] = '*';
             $this->session->set_userdata('zagonetna', $zagonetna);
@@ -345,8 +354,8 @@ class Game extends BaseController {
             }
             $this->session->cntPod = $this->session->cntPod + 1;
         }
-        $return['val'] = $this->session->cntPod;
         $return['numTries'] = $this->session->numTries;
+        $return['next'] = $this->session->cntPod;
         
         echo json_encode($return);
     }
@@ -364,20 +373,36 @@ class Game extends BaseController {
         $return['letterExists'] = false;
         // Add warning if letter does not exists.
         //
-        for($idx=0; $idx < strlen($correctAnswer); $idx++) 
-            if ($letter === $correctAnswer[$idx]) {
-                $return['letterExists'] = true;
-                $zagonetna[$idx] = $letter;
+        for($idx=0; $idx < strlen($correctAnswer); $idx++) {
+            if ( ( ord($letter) <= ord('z') ) && (ord($letter) >= ord('a')   ) ) {
+                $letter = chr(ord($letter) - ord('a') + ord('A'));
             }
-        
+            $corLetter = $correctAnswer[$idx];
+            if (  (ord($corLetter) <=ord('z') ) && (ord($corLetter) >= ord('a')) )  {
+                $corLetter = chr(ord($corLetter) - ord('a') + ord('A'));
+            }
+
+            if ($letter === $corLetter) {
+                $return['letterExists'] = true;
+                $zagonetna[$idx] = $correctAnswer[$idx];
+            }
+        }
+        $return['failiure'] = false;
         if (!$return['letterExists']) {
             $this->session->numTries = $this->session->numTries  - 1;
+            $return['numTries'] = $this->session->numTries;
             if ($this->session->numTries === 0) {
                 $return['faliure'] = true;
-                $this->finishedConquering( ['success' =>'false']);
-                }
+                $zagonetna = $this->session->correctAnswer;
+                $this->finishedConquering(['success'=>false]);
+                $return['points'] = $this->ModelIgra->getPoeni(['igraID'=>$this->session->curGame]);
+                $return['passengers'] = $this->ModelIgra->getPutnici(['igraID'=>$this->session->curGame]);
+                
+                goto exitFun;
+                
+            }
         }    
-        $return['failiure'] = false;
+        
             
          // Check if user guesed.
          //
@@ -388,10 +413,15 @@ class Game extends BaseController {
                
         }
         $this->session->zagonetna = $zagonetna;
-        $return['text'] = $zagonetna;
+        
+        
+        // Sredi ovaj deo.
+        //
         
         if ($return['success'] == true) {
-            $this->finishedConquering(['success' =>'true']);
+            $this->finishedConquering(['success' =>true]);
+            $return['points'] = $this->ModelIgra->getPoeni(['igraID'=>$this->session->curGame]);
+            $return['passengers'] = $this->ModelIgra->getPutnici(['igraID'=>$this->session->curGame]);
             goto exitFun;
         }
         
@@ -400,9 +430,9 @@ class Game extends BaseController {
             
         
         
-        $return['numTries'] = $this->session->numTries;
+        
  exitFun:
-          
+        $return['text'] = $zagonetna;  
         echo json_encode($return);
     }
 }

@@ -61,11 +61,6 @@ class BaseController extends CI_Controller{
                     redirect($pageView);
                 }
                 else {
-                    if ($pageView === 'game') {
-                        // pass the data to jelica to initialize map.
-                        //
-                        console_log('fuck');
-                    }
                     $this->load->view($pageView, $data);
                 }
 
