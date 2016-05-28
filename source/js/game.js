@@ -25,6 +25,7 @@ $(document).ready(function(){
             dataType: "json", 
             success:function(data){
                 if (data.canAttack) {
+                    
                     $('h4.textQuestion').text(data.text);
                     $('label[for=answerTextA]').html(data.a);
                     $('label[for=answerTextB]').html(data.b);
@@ -75,7 +76,7 @@ $(document).ready(function(){
     var clicksText = 0;
     var correct = false;
     $('#btnNextText').click( function(event) {
-        
+        event.preventDefault();
         
         // first click
         //
@@ -146,6 +147,7 @@ $(document).ready(function(){
                         $('label[for=answerPictureD]').html(data.d);
                         $('#picturePictureQuestion').attr('src',BASE_URL + '/img/' + data.picture);
                         $("#modalPicture").modal("show");
+                       
                     }
                 },
                  error:function(data){
@@ -165,9 +167,10 @@ $(document).ready(function(){
 
 $(document).ready(function(){   
     var clicksPicture = 0;
+    var correct = false;
     $('#btnNextPicture').click( function(event) {
         
-        
+        event.preventDefault();
         // first click
         //
         if (clicksPicture % 2 == 0) {
@@ -188,6 +191,7 @@ $(document).ready(function(){
                 success:function(data){
                     // Set appropriate question answerPicture.
                     //
+                    correct = data.correct;
                     if (data.correct) {
                         $('label[for=notePicture]').html("Tacan odgovor");
                     }
@@ -213,13 +217,129 @@ $(document).ready(function(){
             $('label[for=notePicture]').html("");
             $("#modalPicture").modal("hide");
             $('input[class=radioPicture]').prop('checked', false);
-            $("#modalEnigma").modal("show");
+            if (correct) {
+                $.ajax({
+
+                type: "POST",
+                url: BASE_URL + "index.php/game/getEnigmaQuestion/",
+
+                data : {
+                        secret : true
+                    },
+
+                dataType: "json", 
+                success:function(data){
+                    if (data.canAttack) {
+                        $('label[for=numTries]').html(data.numTries);
+                        $('h4.enigmaQuestion').text(data.text);
+                        $('label[for=answerEnigma1]').html(data.podatak);
+                        $('#pictureEnigmaQuestion').attr('src',BASE_URL + '/img/' + data.picture);
+                        $('label[for=noteEnigma]').html(data.zagonetna);
+                        $("#modalEnigma").modal("show");
+                    }
+                },
+                 error:function(data){
+                     
+                     alertify.error(data);}
+
+
+            }); 
+            }
+            
         }
         clicksPicture++;
     });
 }); 
 
 // Same for the picture question as for pictureual.
+
+
+
+$(document).ready(function(){   
+    var clicksEnigma = 0;
+    $('#btnNextEnigma').click( function(event) {
+        event.preventDefault();
+        
+        // first click
+        //
+        if (clicksEnigma <= 4) {
+            $.ajax({
+                type: "POST",
+                url: BASE_URL + "index.php/game/getEnigmaQuestion/",
+
+                data : { 
+                        secret : true
+                        // first time will be set user answerEnigma
+                        //
+                    },
+
+                dataType: "json", 
+                success:function(data){
+                    // Set appropriate question answerEnigma.
+                    //
+                    if (data.canAttack) {
+                        next = clicksEnigma + 1
+                        $('label[for=answerEnigma' + next + ']').html(data.podatak);
+                    }
+                    
+                    
+                }
+
+            }); 
+        }
+        clicksEnigma++;
+        
+    });
+}); 
+
+
+$(document).ready(function(){   
+    var finished = false;
+    $('#btnSend').click( function(event) {
+        
+        event.preventDefault();
+        // first click
+        //
+        var val = $('#letter').val();
+        if (!finished) {
+            $.ajax({
+                type: "POST",
+                url: BASE_URL + "index.php/game/getEnigmaAnswer/",
+
+                data : { 
+                        secret : true,
+                        letter : val
+                        // first time will be set user answerEnigma
+                        //
+                    },
+
+                dataType: "json", 
+                success:function(data){
+                    // Set appropriate question answerEnigma.
+                    //
+                    if (data.success) {
+                         $('label[for=Finish]').html('Pogodili ste, bravo!');
+                         finished = true;
+                    }
+                    $('label[for=numTries]').html(data.numTries);
+                    if (data.letterExists) {
+                        $('label[for=noteEnigma]').html(data.text);
+                    }
+                    
+                    if (data.faliure    ) {
+                        finished = true;
+                         $('label[for=Finish    ]').html('Nemate vise pokusaja!');
+                    }
+                }
+            });   
+        } 
+        else {
+            $("#modalEnigma").modal("hide");
+            $('label[for=Finish    ]').html('');
+            $('label[for=noteEnigma]').html('');
+        }
+    });
+}); 
 
 
 

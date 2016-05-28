@@ -110,7 +110,7 @@
 
             echo img($image_properties);
             ?>
-            <p id="userName">Korisničko ime</p>
+            <p id="userName"> <?php echo $username ?></p>
             <input type="text" id="poeni" size="3" value="453" >
             <p >Poeni</p>
             <button id="settings"><?php
@@ -232,7 +232,79 @@
 
                 </div>
             </div>
+            
+            
+              <div class="modal fade" id="modalEnigma" role="dialog"data-backdrop="static" data-keyboard="false">
+                <div class="modal-dialog">
 
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">                  
+                            <h4 class="enigmaQuestion"  id ="enigmaQuestion">Zagonetna licnost</h4>
+                        </div>
+
+                        <div class="modal-body">
+                                <?php
+                                $image_properties = array(
+                                    'src' => 'img/user.png',
+                                    'id' => 'pictureEnigmaQuestion',
+                                    'width' => '100px',
+                                    'height' => '100px',
+                                );
+
+                                echo img($image_properties);
+                                ?>
+                            <?php
+                            $attrubutesRegister = ['name' => 'EnigmaQuestion', 'id' => 'EnigmaQuestion', 'class' => 'form-horizontal'];
+                            echo form_open('game/conquered', $attrubutesRegister);
+                            ?>
+                            <p id="naslov"><label for="Enigma"></label></p>
+
+                            <label for="markEnigma1">1   </label>  <label for="answerEnigma1"></label>  <br/>
+                            <label for="markEnigma2">2   </label>  <label for="answerEnigma2"></label> <br/> 
+                            <label for="markEnigma3">3   </label>  <label for="answerEnigma3"></label> <br/>
+                            <label for="markEnigma4">4   </label> <label for="answerEnigma4"></label>  <br/>
+                            <label for="markEnigma5">5.  </label> <label for="answerEnigma5"></label>  <br/>
+                            <label for="markEnigma6">6.  </label> <label for="answerEnigma6"></label>  <br/>
+                            <label for="Broj pokusaja">Broj pokusaja  </label> <label for="numTries"></label>  <br/>
+                            <input type="text" maxlength="1" minlength="1" name="letter" id="letter" placeholder="Guess a letter" /> <br/>
+                            <label for="Finish"></label>  <br/>
+                            
+                            <label for="noteEnigma"></label>
+                            <?php echo form_close(); ?>
+
+                            <button type="button" class="next"  id = "btnNextEnigma" name="btnNextEnigma">
+                                <?php
+                                $image_properties = array(
+                                    'src' => 'img/next.png',
+                                    'id' => 'next',
+                                    'width' => '40px',
+                                    'height' => '40px',
+                                );
+
+                                echo img($image_properties);
+                                ?></button>
+                            
+                            <button type="button" class="next"  id = "btnSend" name="btnSend">
+                                <?php
+                                $image_properties = array(
+                                    'src' => 'img/pariz.jpg',
+                                    'id' => 'next',
+                                    'width' => '40px',
+                                    'height' => '40px',
+                                );
+
+                                echo img($image_properties);
+                                ?></button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            
+            
             <div class="modal" id="myModalprofil" role="dialog" data-backdrop=""   tabindex="-1">
                 <div class="modal-dialog " role="document">
                     <div class="modal-content">
