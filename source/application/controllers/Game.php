@@ -377,6 +377,7 @@ class Game extends BaseController {
                 $this->finishedConquering( ['success' =>'false']);
                 }
         }    
+        $return['failiure'] = false;
             
          // Check if user guesed.
          //
@@ -394,7 +395,7 @@ class Game extends BaseController {
             goto exitFun;
         }
         
-        $return['failiure'] = false;    
+            
 
             
         
