@@ -56,6 +56,12 @@ class ModelOsvajanje extends CI_Model {
 		$vp = $this->doctrine->em->getRepository('VrediPutnika')->findBy(array('idniv'=>$igra->getIdniv()->getIdniv(), 'idobl'=>$oblast->getIdobl()))[0];
 		$igra->setPutnici($igra->getPutnici()+$vp->getBrplus());
 		$igra->setPoeni($igra->getPoeni()+$vp->getBrplus()*POENI);
+		
+		$query = $this->em->createQuery('SELECT COUNT(o.idobl) FROM Oblast o');
+		$countobl = $query->getSingleScalarResult();
+		if($countobl == count($igra->getIdosv()))
+			$igra->setStatus('o'); //osvojena
+		
 		try {
 			//save to database
 			$this->em->persist($osvajanje);
@@ -68,11 +74,8 @@ class ModelOsvajanje extends CI_Model {
 			die($err->getMessage());
 		}
 		
-		$query = $this->em->createQuery('SELECT COUNT(o.idobl) FROM Oblast o');
-		$countobl = $query->getSingleScalarResult();
-		
 		if($countobl == count($igra->getIdosv())) 
-			return true;
+			 return true; //osvojena
 		return false;
 	
 	}
@@ -92,6 +95,9 @@ class ModelOsvajanje extends CI_Model {
                 $igra->setPutnici($igra->getPutnici()-$vp->getBrminus());
 		$igra->removeIdosv($osvajanje);
 		
+		if($igra->getPutnici()<=0)
+			$igra->setStatus('i'); //izgubljena
+		
 		try {
 			$this->em->persist($igra);
 			$this->em->flush();
@@ -103,7 +109,7 @@ class ModelOsvajanje extends CI_Model {
 			die($err->getMessage());
 		}
 		if($igra->getPutnici()<=0)
-			return true;
+			return true;  
 		return false;
 	
 	}
