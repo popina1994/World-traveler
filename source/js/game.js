@@ -306,7 +306,7 @@ $(document).ready(function(){
         // first click
         //
         var val = $('#letter').val();
-        if (!finished) {
+        if (finished === false) {
             $.ajax({
                 type: "POST",
                 url: BASE_URL + "index.php/game/getEnigmaAnswer/",

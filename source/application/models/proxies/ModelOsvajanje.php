@@ -89,7 +89,7 @@ class ModelOsvajanje extends CI_Model {
 	
 	
 		$vp = $this->doctrine->em->getRepository('VrediPutnika')->findBy(array('idniv'=>$igra->getIdniv()->getIdniv(), 'idobl'=>$oblast->getIdobl()))[0];
-		$igra->setPutnici($igra->getPutnici()-$vp->getBrminus());
+                $igra->setPutnici($igra->getPutnici()-$vp->getBrminus());
 		$igra->removeIdosv($osvajanje);
 		
 		try {
