@@ -102,7 +102,8 @@ class Game extends BaseController {
                 $this->Redirect();
             }
             $this->session->set_userdata('gameStarted', true);
-            
+            $this->session->set_userdata('gameFinished', false);
+            $this->session->set_userdata('gameResult', true);
             $idIgra = $this->ModelIgra->createIgra(['username'=> $this->session->username, 'naziv'=>$this->session->level]);
             $this->session->set_userdata('curGame', $idIgra);
             $this->Redirect(['view'=>'game', 'redirect' =>true]);
@@ -144,10 +145,19 @@ class Game extends BaseController {
 
     private function finishedConquering($data){
         if ($data['success'] == true) {
-            $this->ModelOsvajanje->uspehOsvajanje(['idigr' => $this->session->curGame, 'oblast'=>$this->session->country ]);
+            $krajIgre = $this->ModelOsvajanje->uspehOsvajanje(['idigr' => $this->session->curGame, 'oblast'=>$this->session->country ]);
+            if ($krajIgre === true) {
+                $this->session->gameFinished = true;
+                $this->session->gameResult = true;
+            }
         }
         else {
-            $this->ModelOsvajanje->neuspehOsvajanje(['idigr'=> $this->session->curGame, 'oblast'=>$this->session->country ]);
+            $krajIgre = $this->ModelOsvajanje->neuspehOsvajanje(['idigr'=> $this->session->curGame, 'oblast'=>$this->session->country ]);
+            if ($krajIgre === true) {
+                $this->session->gameFinished = true;
+                $this->session->gameResult = false;
+            }
+            
         }
         $this->session->unset_userdata('country');
         $this->session->unset_userdata('correctAnswer');
@@ -165,6 +175,18 @@ class Game extends BaseController {
         
         $return['canAttack'] = false;
         $this->unSetPodaci();
+        
+        if ($this->session->gameFinished === true) {
+            $return['error'] = "Igra je zavrsena";
+            if ($this->session->gameResult === true) {
+                $return['error'] .= 'jer ste pobedili, krenite novu';
+            }
+            else {
+                $return['error'] .= 'jer ste izgubili, krenite novu';
+            }
+            $return['canAttack'] = false;
+            goto exitFun;
+        }
         
         $idIgra = $this->session->curGame;
         $country = $this->input->post('country');
@@ -194,12 +216,6 @@ class Game extends BaseController {
 
          }
         $textQuestion = $this->ModelTekstPitanje->getTekstPitanje(['nivo'=>$this->session->level, 'oblast'=> $country]);
-        if ($textQuestion == null) 
-        {
-            $return['error'] = 'Moderatori nisu dodali pitanja za ovu bazu';
-            goto exitFun;
-            
-        }
         
         $return['a'] = $textQuestion->getOdgovor1();
         $return['b'] = $textQuestion->getOdgovor2();
@@ -285,7 +301,7 @@ class Game extends BaseController {
         else {
             $this->finishedConquering(['success'=>false]);
             $return['correct'] = false;
-             $return['points'] = $this->ModelIgra->getPoeni(['igraID'=>$this->session->curGame]);
+            $return['points'] = $this->ModelIgra->getPoeni(['igraID'=>$this->session->curGame]);
             $return['passengers'] = $this->ModelIgra->getPutnici(['igraID'=>$this->session->curGame]);
         }
         echo json_encode($return);
