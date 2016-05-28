@@ -51,8 +51,12 @@
             
       
 <body>
-    
-   <button class="button" onclick="f()">START</button>		
+    <?php 
+                $attrubutes = array('name'=>'startForm', 'class'=>'form-horizontal',
+                    'id'=>'startForm', 'method'=>'post');
+                echo form_open('main/startUnregistered', $attrubutes); ?>
+   <button class="button">START</button>	
+   <?php echo form_close(); ?>
     <div>
    
             <button class="button1" id="prijava" >PRIJAVI SE</button>

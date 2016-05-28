@@ -25,6 +25,7 @@ class Game extends BaseController {
         if ($this->session->gameStarted) {
             $points = $this->ModelIgra->getPoeni(['igraID'=>$this->session->curGame]);
             $passengers = $this->ModelIgra->getPutnici(['igraID'=>$this->session->curGame]);
+            
             $this->Redirect(['view'=>'Game', 'username'=>$this->session->username, 
         'points' => $points, 'passengers' => $passengers]);
             
@@ -48,6 +49,9 @@ class Game extends BaseController {
         $return['dataExists'] = false;
         $return['name'] = $this->session->username;
         
+        // Check unregistered. Return false.
+        //
+        
         $igra = $this->ModelIgra->existsUnfinishedIgra($data = ['userName' => $this->session->username] );
         if ($igra) {
             $this->session->set_userdata('oldIgraId', $igra->getIdigr());
@@ -55,7 +59,6 @@ class Game extends BaseController {
             $nivo = $igra->getIdniv()->getNaziv();
             $this->session->set_userData('level', $nivo);
             $return['dataExists'] = true ;
-            $reutrn['nivo'] = $nivo;
         }
         else  {
             $return['dataExists'] = false;
@@ -84,7 +87,7 @@ class Game extends BaseController {
     }
     
     
-    // Redirects to mapp of appropriate level.
+    // Redirects to map of appropriate level.
     //
     public function levelChoice() {
             $this->load->model('proxies/Model');
@@ -114,9 +117,7 @@ class Game extends BaseController {
         // Ajax will only submit this method.
         //
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            // Ucitaj mapu na osnovu potrebnih podataka. Moracu Jelici da prosledim php kojim se 
-            // azurirati potrebne stvari na mapi.
-            //
+
             $this->session->set_userdata('gameStarted', true);
             $this->session->set_userdata('curGame', $this->session->oldIgraId);
             $this->Redirect(['view'=>'game','redirect'=>true]);

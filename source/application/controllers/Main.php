@@ -26,6 +26,10 @@ class Main extends BaseController {
         
      
     }
+    
+    public function  startUnregistered() {
+        // $this->Redirect(['view'=>'Main']);
+    }
     // Bad code, but for now I've not seen better solution, maybe some arguments, etc.
     // But for now I'll leave it like this.
     //
@@ -39,6 +43,7 @@ class Main extends BaseController {
                    return true;
         return false;
     }
+    
     
     public function login() {			
 			
