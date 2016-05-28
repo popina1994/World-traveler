@@ -106,7 +106,7 @@ $(document).ready(function(){
                     }
                     else {
                         $('label[for=noteText').html("Netacan odgovor");
-                        $('label[for=points]').html(data.points.toString());
+                        $('label[for=points]').html(data.points);
                         $('label[for=passengers]').html(data.passengers.toString());
                     }
                      $('label[for=markTextA]').html('&#10007');

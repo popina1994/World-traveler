@@ -23,15 +23,22 @@ class Game extends BaseController {
         // Used when the user accidently closes the window.
         //
         if ($this->session->gameStarted) {
-            $points = $this->ModelIgra->getPoeni(['igraID'=>$this->session->curGame]);
-            $passengers = $this->ModelIgra->getPutnici(['igraID'=>$this->session->curGame]);
-            
+            if ($this->session->username === 'guest') {
+                $points = $this->session->points = 0;
+                $passengers = $this->session->passengers = 3;
+            }
+            else {
+                $points = $this->ModelIgra->getPoeni(['igraID'=>$this->session->curGame]);
+                $passengers = $this->ModelIgra->getPutnici(['igraID'=>$this->session->curGame]);
+            }
             $this->Redirect(['view'=>'Game', 'username'=>$this->session->username, 
         'points' => $points, 'passengers' => $passengers]);
             
         }
         
         else {
+            if ( ($this->session->username === 'guest') && ($this->session->gameFinished) )
+                $this->Redirect(['redirect'=>true, 'view' =>'main/logout']);
             $this->Redirect(['view'=>'GameChoice']);
         }
         
@@ -46,8 +53,12 @@ class Game extends BaseController {
         if (!$secret)
             $this->Redirect();
         
+        
+        
         $return['dataExists'] = false;
-        $return['name'] = $this->session->username;
+        if ($this->session->username === 'guest') {
+            goto exitFun;
+        }
         
         // Check unregistered. Return false.
         //
@@ -64,12 +75,12 @@ class Game extends BaseController {
             $return['dataExists'] = false;
         }
          
-        
+        exitFun:
         echo json_encode($return);
     }
     
     public function newGame() {
-        // From ajax is Passed existsOld.
+        // In ajax existsOld is set.
         //
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $oldIgraId = $this->session->oldIgraId;
@@ -90,7 +101,6 @@ class Game extends BaseController {
     // Redirects to map of appropriate level.
     //
     public function levelChoice() {
-            $this->load->model('proxies/Model');
             // Redirect on LevelChoice page.
             //
             if (isset($_POST['beba'])) {
@@ -107,8 +117,13 @@ class Game extends BaseController {
             $this->session->set_userdata('gameStarted', true);
             $this->session->set_userdata('gameFinished', false);
             $this->session->set_userdata('gameResult', true);
-            $idIgra = $this->ModelIgra->createIgra(['username'=> $this->session->username, 'naziv'=>$this->session->level]);
-            $this->session->set_userdata('curGame', $idIgra);
+            
+            // Unregistered user.
+            //
+            if ($this->session->username !== 'guest') {
+                $idIgra = $this->ModelIgra->createIgra(['username'=> $this->session->username, 'naziv'=>$this->session->level]);
+                $this->session->set_userdata('curGame', $idIgra);
+            }
             $this->Redirect(['view'=>'game', 'redirect' =>true]);
     }
     
@@ -180,47 +195,58 @@ class Game extends BaseController {
         
         // Dragana's function  which will check status of game.
         //
-        $status = $this->ModelIgra->getStatus(['igraID'=>$this->session->curGame]);
-        if ($status === 'o') { 
-            $return['canAttack'] = false;
-            $return['error'] = "Igra je zavrsena";
-            $return['error'] .= ' jer ste pobedili, krenite novu refresh-ovanjem stranice';
-            $this->session->gameStarted = false;
-            goto exitFun;
+        if ($this->session->username === 'guest') {
+            if (!$this->session->gameStarted) {
+                $return['error'] = 'Nemate vise prava da igrate kliknite logout da biste bili prebaceni na stanicu za logovanje';
+                goto exitFun;
+            }
+            
         }
-        else if ($status === 'i') {
-            $return['canAttack'] = false;
-            $return['error'] = "Igra je zavrsena";
-            $return['error'] .= ' jer ste izgubili, krenite novu refresh-ovanjme stranice';
-            $this->session->gameStarted = false;
-            goto exitFun;
+        else {
+            $status = $this->ModelIgra->getStatus(['igraID'=>$this->session->curGame]);
+            if ($status === 'o') { 
+                $return['canAttack'] = false;
+                $return['error'] = "Igra je zavrsena";
+                $return['error'] .= ' jer ste pobedili, krenite novu refresh-ovanjem stranice';
+                $this->session->gameStarted = false;
+                goto exitFun;
+            }
+            else if ($status === 'i') {
+                $return['canAttack'] = false;
+                $return['error'] = "Igra je zavrsena";
+                $return['error'] .= ' jer ste izgubili, krenite novu refresh-ovanjme stranice';
+                $this->session->gameStarted = false;
+                goto exitFun;
+            }
         }
         
         $idIgra = $this->session->curGame;
         $country = $this->input->post('country');
         
-        $osv = $this->ModelOsvajanje->existsOsvajanje(['idigr' => $idIgra]);
-        
-        // In case of unfinished attack;
-        //
-        if ($osv != null) {
-            if ($osv->getIdobl()->getNaziv() != $country) {
-                $return['error'] = "Morate da zavrsite napad na ".$osv->getIdobl()->getNaziv()." oblast";
-                goto exitFun;
-            }
-        }
-        else{
-            $canAttack = $this->ModelIgra->canAttack(['igraID' => $this->session->curGame, 'oblast' => $country]);
-            if ($canAttack['success'] === true) {
-                $this->ModelOsvajanje->createOsvajanje(['idigr'=>$idIgra, 'idobl'=> $country]);
-            }
-            else {
-                $return['error'] = $canAttack['error'];
-                goto exitFun;
-            }
+        if ($this->session->username !== 'guest') {
             $osv = $this->ModelOsvajanje->existsOsvajanje(['idigr' => $idIgra]);
 
-         }
+            // In case of unfinished attack;
+            //
+            if ($osv != null) {
+                if ($osv->getIdobl()->getNaziv() != $country) {
+                    $return['error'] = "Morate da zavrsite napad na ".$osv->getIdobl()->getNaziv()." oblast";
+                    goto exitFun;
+                }
+            }
+            else{
+                $canAttack = $this->ModelIgra->canAttack(['igraID' => $this->session->curGame, 'oblast' => $country]);
+                if ($canAttack['success'] === true) {
+                    $this->ModelOsvajanje->createOsvajanje(['idigr'=>$idIgra, 'idobl'=> $country]);
+                }
+                else {
+                    $return['error'] = $canAttack['error'];
+                    goto exitFun;
+                }
+                $osv = $this->ModelOsvajanje->existsOsvajanje(['idigr' => $idIgra]);
+
+             }
+        }
         $textQuestion = $this->ModelTekstPitanje->getTekstPitanje(['nivo'=>$this->session->level, 'oblast'=> $country]);
         
         $return['a'] = $textQuestion->getOdgovor1();
@@ -253,10 +279,18 @@ class Game extends BaseController {
             $return['correct'] = true;
         }
         else {
-            $this->finishedConquering(['success'=>false]);
-            $return['correct'] = false;
-            $return['points'] = $this->ModelIgra->getPoeni(['igraID'=>$this->session->curGame]);
-            $return['passengers'] = $this->ModelIgra->getPutnici(['igraID'=>$this->session->curGame]);
+            if ($this->session->username !== 'guest') {
+                
+                $this->finishedConquering(['success'=>false]);
+                $return['correct'] = false;
+                $return['points'] = $this->ModelIgra->getPoeni(['igraID'=>$this->session->curGame]);
+                $return['passengers'] = $this->ModelIgra->getPutnici(['igraID'=>$this->session->curGame]);
+            }
+            else {
+                $return['passengers'] = 0;
+                $this->session->set_userdata('gameFinished', true);
+                $this->session->gameStarted = false;
+            }
         }
         echo json_encode($return);
     }
@@ -299,19 +333,39 @@ class Game extends BaseController {
         
         $return['little'] = false;
         if ($answer == $this->session->correctAnswer) {
-            $return['correct'] = true;
-            if ( ($this->session->level === 'Beba')) {
-                $this->finishedConquering(['success'=>true]);
+            if ( ($this->session->username === 'guest') && ($this->session->level === 'Beba')) {
+                $return['passengers'] = 6;
+                $return['points'] = 30;
+                $this->session->set_userdata('gameFinished', true);
+                $this->session->gameStarted = false;
                 $return['little'] = true;
             }
+            else {
+                
+                if ( ($this->session->level === 'Beba')) {
+                    $this->finishedConquering(['success'=>true]);
+                    $return['little'] = true;
+                }
+            }
+            $return['correct'] = true;
         }
         else {
-            $this->finishedConquering(['success'=>false]);
+            if ($this->session->username === 'guest') {
+                $return['passengers'] = 0;
+                $return['points'] = 0;
+                $this->session->set_userdata('gameFinished', true);
+                $this->session->gameStarted = false;
+            }
+            else {
+                $this->finishedConquering(['success'=>false]);
+            }
             $return['correct'] = false;
         }
         
-        $return['points'] = $this->ModelIgra->getPoeni(['igraID'=>$this->session->curGame]);
-        $return['passengers'] = $this->ModelIgra->getPutnici(['igraID'=>$this->session->curGame]);
+        if ($this->session->username !== 'guest') {
+            $return['points'] = $this->ModelIgra->getPoeni(['igraID'=>$this->session->curGame]);
+            $return['passengers'] = $this->ModelIgra->getPutnici(['igraID'=>$this->session->curGame]);
+        }
         echo json_encode($return);
     }
     
@@ -432,12 +486,20 @@ class Game extends BaseController {
                 //
                 $return['faliure'] = true;
                 $zagonetna = $this->session->correctAnswer;
-                $this->finishedConquering(['success'=>false]);
-                
-                // Update points.
-                //
-                $return['points'] = $this->ModelIgra->getPoeni(['igraID'=>$this->session->curGame]);
-                $return['passengers'] = $this->ModelIgra->getPutnici(['igraID'=>$this->session->curGame]);
+                if ($this->session->username !== 'guest') {
+                    $this->finishedConquering(['success'=>false]);
+
+                    // Update points.
+                    //
+                    $return['points'] = $this->ModelIgra->getPoeni(['igraID'=>$this->session->curGame]);
+                    $return['passengers'] = $this->ModelIgra->getPutnici(['igraID'=>$this->session->curGame]);
+                }
+                else {
+                    $return['passengers'] = 0;
+                    $return['points'] = 0;
+                    $this->session->set_userdata('gameFinished', true);
+                    $this->session->gameStarted = false;
+                }
                 goto exitFun;
                 
             }
@@ -456,9 +518,18 @@ class Game extends BaseController {
         
         
         if ($return['success'] === true) {
-            $this->finishedConquering(['success' =>true]);
-            $return['points'] = $this->ModelIgra->getPoeni(['igraID'=>$this->session->curGame]);
-            $return['passengers'] = $this->ModelIgra->getPutnici(['igraID'=>$this->session->curGame]);
+            if ($this->session->username === 'guest') {
+                $return['passengers'] = 6;
+                $return['points'] = 30;
+                $this->session->set_userdata('gameFinished', true);
+                $this->session->gameStarted = false;
+            }
+            else {
+                $this->finishedConquering(['success' =>true]);
+                $return['points'] = $this->ModelIgra->getPoeni(['igraID'=>$this->session->curGame]);
+                $return['passengers'] = $this->ModelIgra->getPutnici(['igraID'=>$this->session->curGame]);
+            }
+            
         }
  exitFun:
         $return['text'] = $zagonetna;  
