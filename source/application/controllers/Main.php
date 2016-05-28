@@ -116,7 +116,7 @@ class Main extends BaseController {
         else if ($username == '') {
             $return['error'] = 'Nepravilno korisnickko ime';
         }
-        else if (!preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,12}$/', $password)) {
+        else if (!preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,16}$/', $password)) {
             $return['error'] = 'Neispravan obrazac sifre';
         }
         else if ($password != $passCheck) {

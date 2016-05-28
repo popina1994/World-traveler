@@ -179,15 +179,16 @@ class Game extends BaseController {
         
         // Dragana's function  which will check status of game.
         //
-        if ($this->session->gameFinished === true) {
-            $return['error'] = "Igra je zavrsena";
-            if ($this->session->gameResult === true) {
-                $return['error'] .= ' jer ste pobedili, krenite novu';
-            }
-            else {
-                $return['error'] .= ' jer ste izgubili, krenite novu';
-            }
+        $status = $this->ModelIgra->getStatus(['igraID'=>$this->session->curGame]);
+        if ($status === 'o') { 
             $return['canAttack'] = false;
+            $return['error'] = "Igra je zavrsena";
+            $return['error'] .= ' jer ste pobedili, krenite novu';
+        }
+        else if ($status === 'i') {
+            $return['canAttack'] = false;
+            $return['error'] = "Igra je zavrsena";
+            $return['error'] .= ' jer ste izgubili, krenite novu';
             goto exitFun;
         }
         
@@ -295,7 +296,7 @@ class Game extends BaseController {
         $return['little'] = false;
         if ($answer == $this->session->correctAnswer) {
             $return['correct'] = true;
-            if ( ($this->session->level === 'Beba') || ($this->session->level === 'Školarac') ) {
+            if ( ($this->session->level === 'Beba')) {
                 $this->finishedConquering(['success'=>true]);
                 $return['little'] = true;
             }
@@ -323,6 +324,7 @@ class Game extends BaseController {
         $return['canAttack'] = true;
         if ($this->session->cntPod == null) {
             $enigmaQuestion = $this->ModelLicnostPitanje->getLicnostPitanje(['nivo'=>$this->session->level, 'oblast'=> $country]);
+            
             $return['podatak'] = $enigmaQuestion->getPodatak1();
             $return['text'] = "Ko je licnost na slici?";
             $return['picture'] = $enigmaQuestion->getSlika();
@@ -338,10 +340,16 @@ class Game extends BaseController {
             $this->session->set_userdata('podatak6', $enigmaQuestion->getPodatak6());
             $this->session->set_userdata('correctAnswer', $enigmaQuestion->getLicnost());
             
-            // In future from level dependence.
-            //
-            $numTries = 3;
+            if ($this->session->level === 'Svetstki putnik' ) {
+                $numTries = 2;
+            }
+            else { 
+                $numTries = 2;
+            }
+            
             $this->session->set_userdata('numTries', $numTries);
+            // Setting zagonetna string.
+            //
             $zagonetna = "";
             for($idx=0; $idx < strlen($enigmaQuestion->getLicnost()); $idx++)
                 $zagonetna[$idx] = '*';
@@ -349,7 +357,6 @@ class Game extends BaseController {
             
             
             $return['zagonetna'] = $this->session->zagonetna;
-            
         }
         else {
             switch ($this->session->cntPod) {
@@ -390,9 +397,12 @@ class Game extends BaseController {
         $letter = $this->input->post('letter');
         
         $return['letterExists'] = false;
+        
         // Add warning if letter does not exists.
         //
         for($idx=0; $idx < strlen($correctAnswer); $idx++) {
+            // Converting to uppercase.
+            //
             if ( ( ord($letter) <= ord('z') ) && (ord($letter) >= ord('a')   ) ) {
                 $letter = chr(ord($letter) - ord('a') + ord('A'));
             }
@@ -406,24 +416,32 @@ class Game extends BaseController {
                 $zagonetna[$idx] = $correctAnswer[$idx];
             }
         }
+        
+        // Denotes, that user cannot guess anymore.
+        //
         $return['failiure'] = false;
         if (!$return['letterExists']) {
             $this->session->numTries = $this->session->numTries  - 1;
             $return['numTries'] = $this->session->numTries;
             if ($this->session->numTries === 0) {
+                // He didn't succeed
+                //
                 $return['faliure'] = true;
                 $zagonetna = $this->session->correctAnswer;
                 $this->finishedConquering(['success'=>false]);
+                
+                // Update points.
+                //
                 $return['points'] = $this->ModelIgra->getPoeni(['igraID'=>$this->session->curGame]);
                 $return['passengers'] = $this->ModelIgra->getPutnici(['igraID'=>$this->session->curGame]);
-                
                 goto exitFun;
                 
             }
         }    
+        $this->session->zagonetna = $zagonetna;
         
             
-         // Check if user guesed.
+         // Check if user guesed enigma.
          //
         $return['success'] = true;
         for($idx=0; $idx < count($zagonetna); $idx++)  {
@@ -431,25 +449,13 @@ class Game extends BaseController {
                $return['success'] = false;
                
         }
-        $this->session->zagonetna = $zagonetna;
         
         
-        // Sredi ovaj deo.
-        //
-        
-        if ($return['success'] == true) {
+        if ($return['success'] === true) {
             $this->finishedConquering(['success' =>true]);
             $return['points'] = $this->ModelIgra->getPoeni(['igraID'=>$this->session->curGame]);
             $return['passengers'] = $this->ModelIgra->getPutnici(['igraID'=>$this->session->curGame]);
-            goto exitFun;
         }
-        
-            
-
-            
-        
-        
-        
  exitFun:
         $return['text'] = $zagonetna;  
         echo json_encode($return);
