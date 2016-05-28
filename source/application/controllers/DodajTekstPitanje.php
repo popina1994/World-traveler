@@ -15,7 +15,7 @@ class DodajTekstPitanje extends CI_Controller {
 <!DOCTYPE html>
 <html>
 <body>
-<form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>
+<form action="moderatorcontroller/createtekstpitanje"
 		method="post" enctype="multipart/form-data">
 		Postavka:<br/><textarea name="postavka" id="postavka" cols="50"></textarea><br />
 		Odgovor1: <input type="text" name="o1" id="o1"><br />
@@ -70,7 +70,7 @@ class DodajTekstPitanje extends CI_Controller {
 		
 			
 			$this->load->library ( 'doctrine' );
-			$this->load->model ( 'proxies/Model' );
+			$this->load->model ( 'proxies/ModelTekstPitanje' );
 			
 			$nivo =  $this->doctrine->em->getRepository('NivoTezine')->findBy(array('naziv' => $_POST['nivo']))[0];
 			$oblast = $this->doctrine->em->getRepository('Oblast')->findBy(array('naziv' => $_POST['oblast']))[0];
@@ -95,7 +95,7 @@ class DodajTekstPitanje extends CI_Controller {
 					'tacan' => $tacan 
 			);
 			
-			$this->Model->createTekstPitanje ( $data );
+			$this->ModelTekstPitanje->createTekstPitanje ( $data );
 			echo "Dodato!";
 		}
 	}

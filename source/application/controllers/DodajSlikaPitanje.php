@@ -18,8 +18,8 @@ class DodajSlikaPitanje extends CI_Controller {
 <html>
 <body>
 
-	<form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>
-		method="post" enctype="multipart/form-data">
+    <form action="moderatorcontroller/createslikapitanje" 
+		method="post" enctype="multipart/form-data" name='userfile'>
 		Postavka:<br/><textarea name="postavka" id="postavka" cols="50"></textarea><br />
 		Odgovor1: <input type="text" name="o1" id="o1"><br />
 		Odgovor2: <input type="text" name="o2" id="o2"><br />
@@ -58,10 +58,13 @@ class DodajSlikaPitanje extends CI_Controller {
 		?>
 		</select>
 		<br/>
+                
+                
 		
-		Slika:<input type="file" name="fileToUpload" id="fileToUpload"><br /><br/>
+		Slika:<input type="file" name="userfile" id="slikaMoja"><br /><br/>
 		
 		<input type="submit" value="Dodaj pitanje" name="submit">
+               
 	</form>
 
 </body>
@@ -110,7 +113,7 @@ class DodajSlikaPitanje extends CI_Controller {
 			}
 			
 			
-			$this->load->model ( 'proxies/Model' );
+			$this->load->model ( 'proxies/ModelSlikaPitanje' );
 			
 			$nivo =  $this->doctrine->em->getRepository('NivoTezine')->findBy(array('naziv' => $_POST['nivo']))[0];
 			$oblast = $this->doctrine->em->getRepository('Oblast')->findBy(array('naziv' => $_POST['oblast']))[0];

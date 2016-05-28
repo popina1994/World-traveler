@@ -13,7 +13,7 @@ class ModelTekstPitanje extends CI_Model {
 		$this->em = $this->doctrine->em;
 	}
 	
-	function createTekstPitanje($data){
+	public function createTekstPitanje($data){
 	
 		$pit = new Pitanje();
 		$pit->setBrnetacno(0);

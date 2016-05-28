@@ -160,12 +160,11 @@
         
         
         <!--Modal ukloni-->
-<<<<<<< HEAD
->>>>>>> e6d48e69faacf5cd7c53e8bf2ff0ab7fd426ba82
+
     <div class="modal" id="myModal4" role="dialog" data-backdrop=""  aria-labelledby="myModalLabel" tabindex="-1">
-=======
+
     <div class="modal" id="myModalizmena" role="dialog" data-backdrop=""  aria-labelledby="myModalLabel" tabindex="-1">
->>>>>>> a4df5304410749f1b9e846053e515563b3cf5def
+
     <div class="modal-dialog" role="document">
         <div class="modal-content">
         <div class="modal-header" >
@@ -173,7 +172,7 @@
           <h4> Izmena/Brisanje pitanja </h4>
         </div>
         <div class="modal-body">
-        -->
+        
             <table id="t2">
                 
                 <!--
@@ -253,15 +252,15 @@
 
                                                 $attrubutesRegister = ['name'=>'izmeniDugme'.$p['idPitanja'], 'id'=>'izmeniDugme'.$p['idPitanja'], 'class'=>'form-horizontal'];
                                                 
-<<<<<<< HEAD
+
                                                 echo form_open("moderatorcontroller/izmeniPitanje/".$p['idPitanja'], $attrubutesRegister); 
                                                 $strp=$p['idPitanja'];
                                                 echo "<button class="."'button3'"."  id="."'button'.$strp".">IZMENI</button>";
-=======
+
                                                 echo form_open("administratorcontroller/izmeniPitanje/".$p['idPitanja'], $attrubutesRegister); 
                                                  $strp=$p['idPitanja'];
                                                 echo "<button class="."'button2'"."  id="."'button'.$strp".">IZMENI</button>";
->>>>>>> a4df5304410749f1b9e846053e515563b3cf5def
+
                                               
                                                 echo form_close(); ?></td> <td><?php
                                                 $attrubutesRegister = ['name'=>'brisiDugme'.$p['idPitanja'], 'id'=>'brisiDugme'.$p['idPitanja'], 'class'=>'form-horizontal'];
@@ -292,10 +291,10 @@
     </div>
 <<<<<<< HEAD
 -->
-=======
+
 
     
->>>>>>> e6d48e69faacf5cd7c53e8bf2ff0ab7fd426ba82
+
 
 
 
