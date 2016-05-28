@@ -3,7 +3,8 @@ $(document).ready(function(){
 
         var form = this;
         event.preventDefault();
-        alert("Proverava da li postojii igra");
+      
+        alertify.log("Proverava da li postoji igra");
         $.ajax({
 
             type: "POST",
@@ -15,20 +16,25 @@ $(document).ready(function(){
 
             dataType: "json", 
             success:function(data){
-                alert('Podaci primljeni');
+                alertify.success('Podaci primljeni');
                 
                 if (data.dataExists === true) {
-                    var deleteOld = confirm('Zelite li da obrisete staru igru?');
-                    if (!deleteOld) {
-                        alert('Nista');
-                    }
-                    else {
-                        alert('Nova igra pocinje brisanje');
+                    
+                    alertify.confirm("Zelite li da obrisete staru igru?",function(e){
+                        if(e) {
+                           
+                        alertify.success('Nova igra pocinje brisanje');
                         form.submit();
-                    }
+                        } else {
+                             alertify.log('Nista');
+                         
+                        }
+
+                    });
+                    
                 }
                 else {
-                    alert('Nova igra pocinje');
+                    alertify.success('Nova igra pocinje');
                     form.submit();
                 }
             }
@@ -43,7 +49,7 @@ $(document).ready(function(){
 
         var form = this;
         event.preventDefault();
-        alert("Proverava da li postojii igra");
+        alertify.log("Proverava da li postojii igra");
         $.ajax({
 
             type: "POST",
@@ -55,14 +61,14 @@ $(document).ready(function(){
 
             dataType: "json", 
             success:function(data){
-                alert('Podaci primljeni');
+                alertify.success('Podaci primljeni');
 
                 if (data.dataExists === true) {
-                    alert('Igra se nastavlja');
+                    alertify.success('Igra se nastavlja');
                     form.submit();
                 }
                 else {
-                    alert('Igra ne postoji');
+                    alertify.error('Igra ne postoji');
                 }
             }
 

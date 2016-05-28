@@ -70,7 +70,7 @@ class ModelLicnostPitanje extends CI_Model{
 		foreach ($q as $res){
 			$lp = $this->doctrine->em->find ( "LicnostPitanje", $res->getIdpit () );
 			if($lp)
-				array_push($liscnost,$lp);
+				array_push($licnost,$lp);
 		}
 		if(count($licnost)==0) return null;
 		return $licnost[array_rand($licnost)];

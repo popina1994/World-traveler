@@ -4,31 +4,49 @@ function f() {
 };
 
 
-function show1(){
-	document.getElementById("d1").style.display='inline-block';
-	document.getElementById("b11").disabled=true;
-	document.getElementById("b12").disabled=true;
-
-}
-
-function show2(){
-	document.getElementById("d2").style.display='inline-block';
-	document.getElementById("b11").disabled=true;
-	document.getElementById("b12").disabled=true;
-
-}
-
-function close1(){
-	document.getElementById("d1").style.display='none';
-	document.getElementById("b11").disabled=false;
-	document.getElementById("b12").disabled=false;
-}
-
-function close2(){
-	document.getElementById("d2").style.display='none';
-	document.getElementById("b11").disabled=false;
-	document.getElementById("b12").disabled=false;
-}
+$(document).ready(function(){ 
+     $("#prijava").click(function(){
+         document.getElementById("nameLogin").value="";
+        document.getElementById("passLogin").value="";
+        $('#myModal').modal('show');
+        
+        document.getElementById("prijava").disabled=true;
+        document.getElementById("registracija").disabled=true;
+        
+    });
+    $("#registracija").click(function(){
+        document.getElementById("nameRegister").value="";
+        document.getElementById("surNameRegister").value="";
+        document.getElementById("userNameRegister").value="";
+        document.getElementById("passRegister").value="";
+        document.getElementById("repeatPass").value="";
+        $('#myModal2').modal('show');
+        
+        document.getElementById("prijava").disabled=true;
+        document.getElementById("registracija").disabled=true;
+    });
+     $("#zatv_prij").click(function(){
+        $('#myModal').modal('hide');
+        //$('#vrsta')[0].reset();
+        document.getElementById("prijava").disabled=false;
+        document.getElementById("registracija").disabled=false;
+        
+        //resetovanje forme
+        document.getElementById("nameLogin").value="";
+        document.getElementById("passLogin").value="";
+    });
+    $("#zatv_reg").click(function(){
+        $('#myModal2').modal('hide');
+        //$('#vrsta')[0].reset();
+        document.getElementById("prijava").disabled=false;
+        document.getElementById("registracija").disabled=false;
+        document.getElementById("nameRegister").value="";
+        document.getElementById("surNameRegister").value="";
+        document.getElementById("userNameRegister").value="";
+        document.getElementById("passRegister").value="";
+        document.getElementById("repeatPass").value="";
+    });
+});
 
 
 

@@ -45,14 +45,26 @@ body{
    
 }
 
+#formaa{
+    padding: 20px;
+    margin: 0px;
+    text-align: center;
+}
+
 
 #myModaldodaj{
-    margin-top: 100px;
+    margin-top: 200px;
     margin-left: 550px;
  
 }
 
-#myModal4{
+#myModalforma{
+    margin-top: 130px;
+    margin-left: 400px;
+ 
+}
+
+#myModalizmena{
     margin-top: 100px;
     margin-left: 400px;
  
@@ -91,6 +103,7 @@ body{
 
 .button2{
     background-color: darkolivegreen;
+    color: white;
 }
 #dod2{
   color: white;

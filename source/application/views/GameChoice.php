@@ -15,12 +15,22 @@
       <script type = 'text/javascript' src = "<?php echo base_url(); ?>js/GameChoice.js"></script>
     
       
-
+         <link rel = "stylesheet" type = "text/css" 
+    href = "<?php echo base_url(); ?>css/alertify.bootstrap.css">
+  <link rel = "stylesheet" type = "text/css" 
+    href = "<?php echo base_url(); ?>css/alertify.core.css">
+    <link rel = "stylesheet" type = "text/css" 
+    href = "<?php echo base_url(); ?>css/alertify.default.css">
+ 
+  <script type = 'text/javascript' src = "<?php echo base_url(); 
+        ?>js/alertify.min.js"></script>
+        
+        <script type = 'text/javascript' src = "<?php echo base_url(); 
+        ?>js/alertify.js"></script>
       
       
     <title>Svetski putnik</title>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-</head>
 </head>
 <body>
 <div id="wrapper">
@@ -33,6 +43,8 @@
                 
                 <?php echo form_close(); ?>
                 
+        
+                
                 
 		<?php 
                 $attrubutes = array('name'=>'oldGameForm', 'class'=>'form-horizontal',
@@ -44,7 +56,7 @@
                 <?php echo form_close(); ?>
                 
 	</div>
-    <div id="footer">
+    
         <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
         <?php 
             $attrubutesRegister = ['name'=>'logOutForm', 'id'=>'logOutForm', 'class'=>'form-horizontal'];
@@ -53,6 +65,6 @@
           <span class="glyphicon glyphicon-log-out"></span> Log out
         </button>
     <?php echo form_close(); ?>
-      </div>
+      
 </body>
 </html>

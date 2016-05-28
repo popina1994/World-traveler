@@ -5,7 +5,7 @@ $(document).ready(function(){
 
         var form = this;
         event.preventDefault();
-        alert("Proverava da li su dobri podaci");
+        alertify.log("Proverava da li su dobri podaci");
         $.ajax({
 
             type: "POST",
@@ -23,15 +23,15 @@ $(document).ready(function(){
             dataType: "json", 
             success:function(data){
                 //$("#ime").text.html(data);
-                alert('Podaci primljeni');
+                alertify.log('Podaci primljeni');
 
                 if (data.registerSucc === true) {
 
-                    alert("Uspesno registrovanje, sad cete biti preusmereni na stranicu za prijavljivanje");
+                    alertify.success("Uspesno registrovanje, sad cete biti preusmereni na stranicu za prijavljivanje");
                     form.submit();
                 }
                 else {
-                    alert(data.error );
+                    alertify.error(data.error );
                 }
             }
 
