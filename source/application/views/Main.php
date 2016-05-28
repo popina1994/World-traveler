@@ -52,7 +52,7 @@
       
 <body>
     <?php 
-                $attrubutes = array('name'=>'startForm', 'class'=>'form-horizontal',
+                $attrubutes = array('name'=>'startForm', 
                     'id'=>'startForm', 'method'=>'post');
                 echo form_open('main/startUnregistered', $attrubutes); ?>
    <button class="button">START</button>	

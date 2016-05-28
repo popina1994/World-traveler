@@ -9,6 +9,7 @@
 
 
 $(document).ready(function(){   
+    var warning = 0;
     $('.areaMap').click( function(event) {
         
         event.preventDefault();

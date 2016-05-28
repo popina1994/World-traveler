@@ -258,7 +258,7 @@
                                 ?>
                             <?php
                             $attrubutesRegister = ['name' => 'EnigmaQuestion', 'id' => 'EnigmaQuestion', 'class' => 'form-horizontal'];
-                            echo form_open('game/conquered', $attrubutesRegister);
+                            echo form_open('game/index', $attrubutesRegister);
                             ?>
                             <p id="naslov"><label for="Enigma"></label></p>
 

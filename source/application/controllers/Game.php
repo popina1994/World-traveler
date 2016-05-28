@@ -184,13 +184,15 @@ class Game extends BaseController {
         if ($status === 'o') { 
             $return['canAttack'] = false;
             $return['error'] = "Igra je zavrsena";
-            $return['error'] .= ' jer ste pobedili, krenite novu';
+            $return['error'] .= ' jer ste pobedili, krenite novu refresh-ovanjem stranice';
+            $this->session->gameStarted = false;
             goto exitFun;
         }
         else if ($status === 'i') {
             $return['canAttack'] = false;
             $return['error'] = "Igra je zavrsena";
-            $return['error'] .= ' jer ste izgubili, krenite novu';
+            $return['error'] .= ' jer ste izgubili, krenite novu refresh-ovanjme stranice';
+            $this->session->gameStarted = false;
             goto exitFun;
         }
         
