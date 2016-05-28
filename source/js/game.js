@@ -105,6 +105,8 @@ $(document).ready(function(){
                     }
                     else {
                         $('label[for=noteText').html("Netacan odgovor");
+                        $('label[for=points]').html(data.points.toString());
+                        $('label[for=passengers]').html(data.passengers.toString());
                     }
                      $('label[for=markTextA]').html('&#10007');
                     $('label[for=markTextB]').html('&#10007');
@@ -194,8 +196,13 @@ $(document).ready(function(){
                     correct = data.correct;
                     if (data.correct) {
                         $('label[for=notePicture]').html("Tacan odgovor");
+                        $('label[for=points]').html(data.points);
+                        $('label[for=passengers]').html(data.passengers);
                     }
                     else {
+                        
+                        $('label[for=points]').html(data.points);
+                        $('label[for=passengers]').html(data.passengers);
                         $('label[for=notePicture').html("Netacan odgovor");
                     }
                      $('label[for=markPictureA]').html('&#10007');
@@ -235,6 +242,7 @@ $(document).ready(function(){
                         $('label[for=answerEnigma1]').html(data.podatak);
                         $('#pictureEnigmaQuestion').attr('src',BASE_URL + '/img/' + data.picture);
                         $('label[for=noteEnigma]').html(data.zagonetna);
+                        $('#btnNextEnigma').prop('disabled', false);
                         $("#modalEnigma").modal("show");
                     }
                 },
@@ -256,38 +264,35 @@ $(document).ready(function(){
 
 
 $(document).ready(function(){   
-    var clicksEnigma = 0;
     $('#btnNextEnigma').click( function(event) {
         event.preventDefault();
         
         // first click
         //
-        if (clicksEnigma <= 4) {
-            $.ajax({
-                type: "POST",
-                url: BASE_URL + "index.php/game/getEnigmaQuestion/",
+        $.ajax({
+            type: "POST",
+            url: BASE_URL + "index.php/game/getEnigmaQuestion/",
 
-                data : { 
-                        secret : true
-                        // first time will be set user answerEnigma
-                        //
-                    },
-
-                dataType: "json", 
-                success:function(data){
-                    // Set appropriate question answerEnigma.
+            data : { 
+                    secret : true
+                    // first time will be set user answerEnigma
                     //
-                    if (data.canAttack) {
-                        next = clicksEnigma + 1
-                        $('label[for=answerEnigma' + next + ']').html(data.podatak);
-                    }
-                    
-                    
+                },
+
+            dataType: "json", 
+            success:function(data){
+                // Set appropriate question answerEnigma.
+                //
+                if (data.canAttack) {
+                    $('label[for=answerEnigma' + data.next + ']').html(data.podatak);
                 }
 
-            }); 
-        }
-        clicksEnigma++;
+
+            }
+
+        }); 
+
+        
         
     });
 }); 
@@ -319,6 +324,10 @@ $(document).ready(function(){
                     //
                     if (data.success) {
                          $('label[for=Finish]').html('Pogodili ste, bravo!');
+                                                 
+                        $('label[for=points]').html(data.points);
+                        $('label[for=passengers]').html(data.passengers);
+                        $('#btnNextEnigma').prop('disabled', true);
                          finished = true;
                     }
                     $('label[for=numTries]').html(data.numTries);
@@ -326,17 +335,30 @@ $(document).ready(function(){
                         $('label[for=noteEnigma]').html(data.text);
                     }
                     
-                    if (data.faliure    ) {
+                    if (data.faliure) {
+                        $('#btnNextEnigma').prop('disabled', true);
+                        $('label[for=noteEnigma]').html(data.text);
                         finished = true;
                          $('label[for=Finish    ]').html('Nemate vise pokusaja!');
+                                                 
+                        $('label[for=points]').html(data.points);
+                        $('label[for=passengers]').html(data.passengers);
                     }
                 }
             });   
         } 
         else {
-            $("#modalEnigma").modal("hide");
+            finished = false;
+            $('label[for=answerEnigma1]').html('');
+            $('label[for=answerEnigma2]').html('');
+            $('label[for=answerEnigma3]').html('');
+            $('label[for=answerEnigma4]').html('');
+            $('label[for=answerEnigma5]').html('');
+            $('label[for=answerEnigma6]').html('');
             $('label[for=Finish    ]').html('');
             $('label[for=noteEnigma]').html('');
+            $("#modalEnigma").modal("hide");
+            
         }
     });
 }); 
