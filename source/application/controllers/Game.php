@@ -176,13 +176,16 @@ class Game extends BaseController {
         $return['canAttack'] = false;
         $this->unSetPodaci();
         
+        
+        // Dragana's function  which will check status of game.
+        //
         if ($this->session->gameFinished === true) {
             $return['error'] = "Igra je zavrsena";
             if ($this->session->gameResult === true) {
-                $return['error'] .= 'jer ste pobedili, krenite novu';
+                $return['error'] .= ' jer ste pobedili, krenite novu';
             }
             else {
-                $return['error'] .= 'jer ste izgubili, krenite novu';
+                $return['error'] .= ' jer ste izgubili, krenite novu';
             }
             $return['canAttack'] = false;
             goto exitFun;
@@ -197,10 +200,8 @@ class Game extends BaseController {
         //
         if ($osv != null) {
             if ($osv->getIdobl()->getNaziv() != $country) {
-                $return['error'] = "Morate da napadnete ".$osv->getIdobl()->getNaziv()." oblast";
+                $return['error'] = "Morate da zavrsite napad na ".$osv->getIdobl()->getNaziv()." oblast";
                 goto exitFun;
-            }
-            else { // good}}
             }
         }
         else{
@@ -269,7 +270,6 @@ class Game extends BaseController {
         $return['d'] = $pictureQuestion->getOdgovor4();
         
         $this->session->set_userdata('correctAnswer', $pictureQuestion->getTacanodgovor());
-        $this->session->set_userdata('country', $country);
         $return['text'] = $pictureQuestion->getPostavka();
         $return['picture'] = $pictureQuestion->getSlika();
         $return['canAttack'] = true;
@@ -292,18 +292,21 @@ class Game extends BaseController {
         
         $return['letterCorrect'] = chr($this->session->correctAnswer - 1 + ord('A'));
         
+        $return['little'] = false;
         if ($answer == $this->session->correctAnswer) {
-        // TO DO: beba i skolarac ovde zavrsvaju
-        // 
-//$this->finishedConquering(['success'=>true]);
             $return['correct'] = true;
+            if ( ($this->session->level === 'Beba') || ($this->session->level === 'Školarac') ) {
+                $this->finishedConquering(['success'=>true]);
+                $return['little'] = true;
+            }
         }
         else {
             $this->finishedConquering(['success'=>false]);
             $return['correct'] = false;
-            $return['points'] = $this->ModelIgra->getPoeni(['igraID'=>$this->session->curGame]);
-            $return['passengers'] = $this->ModelIgra->getPutnici(['igraID'=>$this->session->curGame]);
         }
+        
+        $return['points'] = $this->ModelIgra->getPoeni(['igraID'=>$this->session->curGame]);
+        $return['passengers'] = $this->ModelIgra->getPutnici(['igraID'=>$this->session->curGame]);
         echo json_encode($return);
     }
     

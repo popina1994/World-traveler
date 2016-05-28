@@ -170,6 +170,7 @@ $(document).ready(function(){
 $(document).ready(function(){   
     var clicksPicture = 0;
     var correct = false;
+    var little = false;
     $('#btnNextPicture').click( function(event) {
         
         event.preventDefault();
@@ -194,6 +195,7 @@ $(document).ready(function(){
                     // Set appropriate question answerPicture.
                     //
                     correct = data.correct;
+                    little = data.little;
                     if (data.correct) {
                         $('label[for=notePicture]').html("Tacan odgovor");
                         $('label[for=points]').html(data.points);
@@ -224,7 +226,7 @@ $(document).ready(function(){
             $('label[for=notePicture]').html("");
             $("#modalPicture").modal("hide");
             $('input[class=radioPicture]').prop('checked', false);
-            if (correct) {
+            if (correct && !little) {
                 $.ajax({
 
                 type: "POST",
@@ -248,7 +250,7 @@ $(document).ready(function(){
                 },
                  error:function(data){
                      
-                     alertify.error(data);}
+                     }
 
 
             }); 
