@@ -38,13 +38,14 @@ class ModelLicnostPitanje extends CI_Model{
 			//save to database
 			$this->em->persist($pit);
 			$this->em->flush();
+                        $ID=$pit->getIdpit();
 			$this->em->persist($lp);
 			$this->em->flush();
 		}
 		catch(Exception $err){
 			die($err->getMessage());
 		}
-		return true;
+		return $ID;
 	}
 	
 	function getLicnostPitanje($data) {

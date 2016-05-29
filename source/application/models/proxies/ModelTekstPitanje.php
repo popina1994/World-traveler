@@ -43,6 +43,13 @@ class ModelTekstPitanje extends CI_Model {
 		}
 		return true;
 	}
+        
+        
+        public function updateTekstPitanje($data){
+            
+            
+            
+        }
 	
 	function getTekstPitanje($data) {
 

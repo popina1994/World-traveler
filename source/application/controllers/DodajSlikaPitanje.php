@@ -61,7 +61,7 @@ class DodajSlikaPitanje extends CI_Controller {
                 
                 
 		
-		Slika:<input type="file" name="userfile" id="slikaMoja"><br /><br/>
+		Slika:<input type="file" name="userfile" id="userfile"><br /><br/>
 		
 		<input type="submit" value="Dodaj pitanje" name="submit">
                

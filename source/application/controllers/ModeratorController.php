@@ -35,7 +35,7 @@ class ModeratorController extends BaseController {
         $this->load->model('proxies/ModelPitanje');
         $questions=$this->ModelPitanje->getPitanja();
        
-        $this->Redirect(['view'=>'Moderator', 'questions' => $questions]); 
+        $this->Redirect(['view'=>'Moderator', 'pitanje' => $questions]); 
         
        // $this->Redirect(['view'=>'Moderator']);
     }
@@ -47,22 +47,51 @@ class ModeratorController extends BaseController {
         Redirect();
         
     }
-    
-    
+
+    private function uploadSlika($novoImeSlike){
+                /*Cuvanje slike:*/
+        $this->load->helper('form');
+        $this->load->helper('html');
+        $this->load->helper('path');
+        $this->load->helper(array('form', 'url'));
+       // $image_path = realpath(APPPATH.'img/');
+        
+        $image_path =  APPPATH;
+        $pom=strpos($image_path,"application");
+        $image_path=substr($image_path, 0, $pom);
+        $image_path=$image_path."img";
+        //echo  $image_path;
+        
+		$config['upload_path'] = "".$image_path;
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']	= '100000';
+		$config['max_width']  = '10000';
+		$config['max_height']  = '10000';
+                //$config['encrypt_name'] = TRUE;
+                $config['file_name'] = $novoImeSlike;
+		$this->load->library('upload', $config);
+                
+                $this->upload->do_upload();
+
+       $upload_data = $this->upload->data(); 
+        return $upload_data['file_name'];
+        
+    }
     //
     public function createTekstPitanje(){
         //dio pitanja koji ima svako pitanje
         $idniv=$this->input->post('nivo');
         $idobl=$this->input->post('oblast');
-        /*$idkor=$this->session->get_userdata('username');
+        $idkor=$this->session->all_userdata();
+        //if(count($idkor)==0){echo "praznoo";}
+        echo $idkor['username'];
         $this->load->model('proxies/ModelModerator');
         
-        $users=$this->doctrine->em->getRepository ( 'Moderator' )->findBy ( array (
-				'username' => $idkor
+        $users=$this->doctrine->em->getRepository ( 'RegKorisnik' )->findBy ( array (
+				'username' => $idkor['username']
 		) );
         $idkor= $users[0]->getIdkor();
-        */
-        $idkor=583;
+        
         
          //dio pitanja specifican za tip pitanja
         $postavka = $this->input->post('postavka');
@@ -95,20 +124,27 @@ class ModeratorController extends BaseController {
             ]);
         
     }
+    
+    //potrebno ograniciti fino velicinu slike..
+    //potrebno napraviti js fajlove za proveru unetih podataka
+    //potrebno dodati ekstenziju na ime slike
     public function createSlikaPitanje(){
         $idniv=$this->input->post('nivo');
         $idobl=$this->input->post('oblast');
+        //OVO TREBA UNCOMMENTOVATI KADA SE NAPRAVI HTML
       //kod za dohvatanje id-a moderatora
-        /*
-        $idkor=$this->session->get_userdata('username');
+        
+        $idkor=$this->session->all_userdata();
+        //if(count($idkor)==0){echo "praznoo";}
+        echo $idkor['username'];
         $this->load->model('proxies/ModelModerator');
         
-        $users=$this->doctrine->em->getRepository ( 'Moderator' )->findBy ( array (
-				'username' => $idkor
+        $users=$this->doctrine->em->getRepository ( 'RegKorisnik' )->findBy ( array (
+				'username' => $idkor['username']
 		) );
         $idkor= $users[0]->getIdkor();
-        */
-        $idkor= 583;//slaleM
+        
+       // $idkor= 583;//slaleM
         
         $postavka=$this->input->post('postavka');
         $odgovor1=$this->input->post('o1');
@@ -117,42 +153,18 @@ class ModeratorController extends BaseController {
         $odgovor4=$this->input->post('o4');
         $tacan=$this->input->post('tacan');
         
+
         $idniv =  $this->doctrine->em->getRepository('NivoTezine')->findBy(array('naziv' => $idniv))[0];
-        $idobl = $this->doctrine->em->getRepository('Oblast')->findBy(array('naziv' => $idobl))[0];		
+        $idobl = $this->doctrine->em->getRepository('Oblast')->findBy(array('naziv' => $idobl))[0];
 	$idkor = $this->doctrine->em->find ( "Moderator", $idkor );
         
-        /*kod vezan za cuvanje slike*/
-        $this->load->helper('form');
-        $this->load->helper('html');
-        
-
-        $this->load->helper(array('form', 'url'));
-        $image_path = realpath(APPPATH.'../img');
-        
-		$config['upload_path'] = $image_path;
-		$config['allowed_types'] = 'gif|jpg|png';
-		$config['max_size']	= '100000';
-		$config['max_width']  = '1024';
-		$config['max_height']  = '1024';
-                //$config['encrypt_name'] = TRUE;
-               // $config['file_name'] = '583';
-		$this->load->library('upload', $config);
-                
-                $this->upload->do_upload();
-
-       $upload_data = $this->upload->data(); 
-        $slika =   $upload_data['file_name'];
-
-        echo $slika;
- 
-        $slika =   $upload_data['file_name'];
         
         
         $this->load->model('proxies/ModelSlikaPitanje');
-        $this->ModelSlikaPitanje->createSlikaPitanje(['idniv' => $idniv, 
+        $ID=$this->ModelSlikaPitanje->createSlikaPitanje(['idniv' => $idniv, 
                             'idobl' => $idobl,
                             'idkor' => $idkor,
-                            'slika' => $slika,
+                            'slika' => "",
                             'postavka' => $postavka,
                             'odgovor1' => $odgovor1,
                             'odgovor2' => $odgovor2,
@@ -160,49 +172,126 @@ class ModeratorController extends BaseController {
                             'odgovor4' => $odgovor4,
                             'tacan' => $tacan
             ]);
-          Redirect();
+        
+        //Dohvatanje ID-a tek sacuvanog pitanja:
+        $novoImeSlike=$ID;
+        
+         /*Cuvanje slike:*/
+        $this->load->helper('form');
+        $this->load->helper('html');
+        $this->load->helper('path');
+        $this->load->helper(array('form', 'url'));
+       // $image_path = realpath(APPPATH.'img/');
+        
+        $image_path =  APPPATH;
+        $pom=strpos($image_path,"application");
+        $image_path=substr($image_path, 0, $pom);
+        $image_path=$image_path."img";
+        //echo  $image_path;
+        
+		$config['upload_path'] = "".$image_path;
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']	= '100000';
+		$config['max_width']  = '10000';
+		$config['max_height']  = '10000';
+                //$config['encrypt_name'] = TRUE;
+                $config['file_name'] = $novoImeSlike;
+		$this->load->library('upload', $config);
+                
+                $this->upload->do_upload();
+
+         $upload_data = $this->upload->data(); 
+         $slika= $upload_data['file_name'];
+
+        //echo $slika;
+        
+        
+         $users = $this->doctrine->em->getRepository ( 'Pitanje' )->findBy ( array (
+				'idpit' => $ID
+		) );
+         $user= $this->doctrine->em->find ( "SlikaPitanje", $users[0]->getIdpit() );
+         
+	    
+            $user->setSlika($novoImeSlike);
+            $this->doctrine->em->flush();
+        
+          Redirect();     
     }
-    public function createLicnostPitanje(){
-       $idniv=$this->input->post('nivo');
+    
+    public function createLicnostPitanje(){ 
+        $idniv=$this->input->post('nivo');
         $idobl=$this->input->post('oblast');
+        //OVO TREBA UNCOMMENTOVATI KADA SE NAPRAVI HTML
       //kod za dohvatanje id-a moderatora
-        /*
-        $idkor=$this->session->get_userdata('username');
+        
+         $idkor=$this->session->all_userdata();
+        //if(count($idkor)==0){echo "praznoo";}
+        echo $idkor['username'];
         $this->load->model('proxies/ModelModerator');
         
-        $users=$this->doctrine->em->getRepository ( 'Moderator' )->findBy ( array (
-				'username' => $idkor
+        $users=$this->doctrine->em->getRepository ( 'RegKorisnik' )->findBy ( array (
+				'username' => $idkor['username']
 		) );
         $idkor= $users[0]->getIdkor();
-        */
-        $idkor= 583;//slaleM
         
-        $postavka=$this->input->post('postavka');
-        $odgovor1=$this->input->post('o1');
-        $odgovor2=$this->input->post('o2');
-        $odgovor3=$this->input->post('o3');
-        $odgovor4=$this->input->post('o4');
-        $tacan=$this->input->post('tacan');
+        
+        
+        
+        
+        //$idkor= 583;//slaleM
+        
+        $stavka1=$this->input->post('s1');
+        $stavka2=$this->input->post('s2');
+        $stavka3=$this->input->post('s3');
+        $stavka4=$this->input->post('s4');
+        $stavka5=$this->input->post('s5');
+        $stavka6=$this->input->post('s6');
+        $licnost=$this->input->post('licnost');
         
         $idniv =  $this->doctrine->em->getRepository('NivoTezine')->findBy(array('naziv' => $idniv))[0];
         $idobl = $this->doctrine->em->getRepository('Oblast')->findBy(array('naziv' => $idobl))[0];		
 	$idkor = $this->doctrine->em->find ( "Moderator", $idkor );
         
-        /*kod vezan za cuvanje slike*/
-        $this->load->helper('form');
-        $this->load->helper('html');
+        $this->load->model('proxies/ModelLicnostPitanje');
+        $ID=$this->ModelLicnostPitanje->createLicnostPitanje(['idniv' => $idniv, 
+                            'idobl' => $idobl,
+                            'idkor' => $idkor,
+                            'slika' => "",
+                            'licnost' => $licnost,
+                            'podatak1' => $stavka1,
+                            'podatak2' => $stavka2,
+                            'podatak3' => $stavka3,
+                            'podatak4' => $stavka4,
+                            'podatak5' => $stavka5,
+                            'podatak6' => $stavka6
+            
+            ]);
+        //Dohvatanje ID-a tek sacuvanog pitanja:
+        $novoImeSlike=$ID;
+        
+        
         
 
+        /*Cuvanje slike*/
+        $this->load->helper('form');
+        $this->load->helper('html');
+        $this->load->helper('path');
         $this->load->helper(array('form', 'url'));
-        $image_path = realpath(APPPATH.'../img');
+
         
-		$config['upload_path'] = $image_path;
+        $image_path =  APPPATH;
+        $pom=strpos($image_path,"application" );
+        $image_path=substr($image_path, 0, $pom);
+        $image_path=$image_path."img";
+        //echo  $image_path;
+        //prava adresa: 'C:\wamp64\www\SvetskiPutnik\source\img'
+                $config['upload_path'] = "".$image_path;
 		$config['allowed_types'] = 'gif|jpg|png';
-		$config['max_size']	= '100000';
-		$config['max_width']  = '1024';
-		$config['max_height']  = '1024';
+		$config['max_size']	= '1000000';
+		$config['max_width']  = '100000';
+		$config['max_height']  = '100000';
                 //$config['encrypt_name'] = TRUE;
-               // $config['file_name'] = '583';
+                $config['file_name'] = $novoImeSlike;
 		$this->load->library('upload', $config);
                 
                 $this->upload->do_upload();
@@ -210,16 +299,50 @@ class ModeratorController extends BaseController {
        $upload_data = $this->upload->data(); 
         $slika =   $upload_data['file_name'];
 
-        echo $slika;
- 
-        $slika =   $upload_data['file_name'];
+        //echo $slika;
         
+        $users = $this->doctrine->em->getRepository ( 'Pitanje' )->findBy ( array (
+				'idpit' => $ID
+		) );
+        $user= $this->doctrine->em->find ( "LicnostPitanje", $users[0]->getIdpit() );
+         
+	    
+        $user->setSlika($novoImeSlike);
+        $this->doctrine->em->flush();
+
+        Redirect();
+    }
         
-        $this->load->model('proxies/ModelSlikaPitanje');
-        $this->ModelSlikaPitanje->createSlikaPitanje(['idniv' => $idniv, 
+    public function izmeniTekstPitanje($id){
+        
+        $idniv=$this->input->post('nivo');
+        $idobl=$this->input->post('oblast');
+        $postavka = $this->input->post('postavka');
+        $odgovor1=$this->input->post('o1');
+        $odgovor2=$this->input->post('o2');
+        $odgovor3=$this->input->post('o3');
+        $odgovor4=$this->input->post('o4');
+        $tacan=$this->input->post('tacan');
+                $idkor=$this->session->all_userdata();
+        //if(count($idkor)==0){echo "praznoo";}
+        echo $idkor['username'];
+        $this->load->model('proxies/ModelModerator');
+        
+        $users=$this->doctrine->em->getRepository ( 'RegKorisnik' )->findBy ( array (
+				'username' => $idkor['username']
+		) );
+        $idkor= $users[0]->getIdkor();
+        
+        $idniv =  $this->doctrine->em->getRepository('NivoTezine')->findBy(array('naziv' => $idniv))[0];
+        $idobl = $this->doctrine->em->getRepository('Oblast')->findBy(array('naziv' => $idobl))[0];		
+	$idkor = $this->doctrine->em->find ( "Moderator", $idkor );
+        
+       $this->load->model('proxies/ModelTekstPitanje');
+       $this->ModelTekstPitanje->updateTekstPitanje([
+ /*id pitanja za izmenu*/   'id'=>$id,
+                            'idniv' => $idniv, 
                             'idobl' => $idobl,
                             'idkor' => $idkor,
-                            'slika' => $slika,
                             'postavka' => $postavka,
                             'odgovor1' => $odgovor1,
                             'odgovor2' => $odgovor2,
@@ -228,11 +351,38 @@ class ModeratorController extends BaseController {
                             'tacan' => $tacan
             ]);
         
+        //vidi posle gdje treba da vrati ovaj controller  
+    }    
+        
+    public function izmeniSlikaPitanje($id){
+
+        $idniv=$this->input->post('nivo');
+        $idobl=$this->input->post('oblast');
+        $postavka=$this->input->post('postavka');
+        $odgovor1=$this->input->post('o1');
+        $odgovor2=$this->input->post('o2');
+        $odgovor3=$this->input->post('o3');
+        $odgovor4=$this->input->post('o4');
+        $tacan=$this->input->post('tacan');
+                
+        $idkor=$this->session->all_userdata();
+        //if(count($idkor)==0){echo "praznoo";}
+        echo $idkor['username'];
+        $this->load->model('proxies/ModelModerator');
+        
+        $users=$this->doctrine->em->getRepository ( 'RegKorisnik' )->findBy ( array (
+				'username' => $idkor['username']
+		) );
+        $idkor= $users[0]->getIdkor();
+        
+
+        $idniv =  $this->doctrine->em->getRepository('NivoTezine')->findBy(array('naziv' => $idniv))[0];
+        $idobl = $this->doctrine->em->getRepository('Oblast')->findBy(array('naziv' => $idobl))[0];
+	$idkor = $this->doctrine->em->find ( "Moderator", $idkor );
         
     }
     
-    
-    public function TextValidation() {
+    public function inputValidationTekstPitanje() {
         
         // Protect from unauthorized access.
         //
@@ -249,6 +399,7 @@ class ModeratorController extends BaseController {
         $odgovor3=$this->input->post('o3');
         $odgovor4=$this->input->post('o4');
         $tacan=$this->input->post('tacan');
+        
         
         //$this->load->model('proxies/ModelRegKorisnik');
         
@@ -270,5 +421,88 @@ class ModeratorController extends BaseController {
         echo json_encode($return);
         
     }
+    
+    public function inputValidationSlikaPitanje() {
+        
+        // Protect from unauthorized access.
+        //
+        $secret = $this->input->post('secret');
+        if (!$secret)
+            Redirect();
+        
+ 
+        
+        $postavka=$this->input->post('postavka');
+        $odgovor1=$this->input->post('o1');
+        $odgovor2=$this->input->post('o2');
+        $odgovor3=$this->input->post('o3');
+        $odgovor4=$this->input->post('o4');
+        $tacan=$this->input->post('tacan');
+        $idniv=$this->input->post('nivo');
+        $idobl=$this->input->post('oblast');
+        $slika=$this->input->post('userfile');
+   
+
+        
+        $this->load->model('proxies/ModelRegKorisnik');
+        
+        // In future regex will be used for pass creation.
+        //
+        $return['error'] = "";
+
+        $return['registerSucc'] = false;
+       if ($odgovor1 == '' || $odgovor2 == '' || $odgovor3 == '' || $odgovor4 == '' || $tacan == '' || $postavka == '' || $idniv == '' || $idobl == ''  ||$slika=='') {
+            $return['error'] = 'Nisu sva polja popunjena';
+        }
+        else {
+            $return['registerSucc'] = true;
+        }
+        echo json_encode($return);
+        
+    }
+    
+    public function inputValidationLicnostPitanje() {
+        
+        // Protect from unauthorized access.
+        //
+        $secret = $this->input->post('secret');
+        if (!$secret)
+            Redirect();
+        
+ 
+        
+        $stavka1=$this->input->post('s1');
+        $stavka2=$this->input->post('s2');
+        $stavka3=$this->input->post('s3');
+        $stavka4=$this->input->post('s4');
+        $stavka5=$this->input->post('s5');
+        $stavka6=$this->input->post('s6');
+        $licnost=$this->input->post('licnost');
+        $idniv=$this->input->post('nivo');
+        $idobl=$this->input->post('oblast');
+        $slika=$this->input->post('userfile');
+   
+
+        
+        $this->load->model('proxies/ModelRegKorisnik');
+        
+        // In future regex will be used for pass creation.
+        //
+        $return['error'] = "";
+
+        $return['registerSucc'] = false;
+       if ($odgovor1 == '' || $odgovor2 == '' || $odgovor3 == '' || $odgovor4 == '' || $tacan == '' || $postavka == '' || $idniv == '' || $idobl == ''  ||$slika=='') {
+            $return['error'] = 'Nisu sva polja popunjena';
+        }
+        else {
+            $return['registerSucc'] = true;
+        }
+        echo json_encode($return);
+        
+    }
+    
+    
+    
+    
          
 }
