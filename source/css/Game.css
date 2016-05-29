@@ -1,21 +1,50 @@
 #row {
     white-space: nowrap; /* important */
     overflow: auto;
-    background-color: #E5DADA;
+    /*background-color: #E5DADA;*/
 }
 
-.modal-body{
-     background-color: #E5DADA;
-}
-
-
-  
+ 
   .next{
-      background-color:#E5DADA;
-      margin-left:90px;
-      padding-left: 0px;
-      margin-right: 0px;
-      padding-right: 0px;
+      background:none;
+      margin-bottom: 10px;
+      margin-top: 10px;
+     
+  }
+ 
+  
+  #slika_slika{
+      float: left;
+      padding: 30px;
+       margin-left: 70px;
+  }
+  
+  #odg_slika{
+      float: left;
+      align-items: left;
+      text-align: left;
+     
+  }
+  
+  #wrapp_slika{
+      align-items: center;
+      align-content: center;
+      align-self: center;
+      text-align: center;
+      
+      height: 250px;
+      
+  }
+  
+  #modalText{
+      margin-top: 100px;
+  }
+  
+  #modalPicture{
+      margin-top: 60px;
+      align-items: center;
+      text-align: center;
+     
   }
 
 .block {
@@ -36,8 +65,6 @@
 }
 
 label{
-    margin: 5px;
-    
     padding: 5px;
 }
 
@@ -124,11 +151,21 @@ p{
     text-align: center;
     overflow-y: scroll;
     height: 250px;
+    background-color: black;
 }
 
-#rangheader, h4,.close{
+
+/*#rangheader, h4,.close{
      background-color:  darkslategrey;
       color:white !important;
+      text-align: center;
+      font-size: 30px;
+      margin: 0px;
+      padding: 5px;
+}*/
+.modal-header, h4,.close{
+     background-color:  #DF9319;
+      color:black !important;
       text-align: center;
       font-size: 30px;
       margin: 0px;
@@ -140,8 +177,9 @@ p{
     padding:0px;
     align-items: center;
     text-align: center;
-    margin-left: 100px;
-    background-color: white;
+    background-color: lightgray;
+    /*margin-left: 100px;*/
+    /*background-color: white;*/
 }
 #t2{
   padding: 15px;
@@ -150,6 +188,11 @@ p{
   margin-top: 10px;
   text-align: center;
   padding-left: 300px;
+  margin-left: 100px;
+}
+
+#prof{
+    background-color: white;
 }
 
 #btnLogOut{

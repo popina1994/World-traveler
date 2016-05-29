@@ -122,9 +122,9 @@
             echo img($image_properties);
             ?>
             <p id="userName"> <?php echo $username ?></p>
-            <label for="points"> <?php echo $points ?></label>
+            <label for="points" style="color: greenyellow"> <?php echo $points ?></label>
             <p >Poeni</p>
-            <label for="passengers"> <?php echo $passengers ?></label>
+            <label for="passengers" style="color: greenyellow;"> <?php echo $passengers ?></label>
             <p >Putnici</p>
             <button id="settings"><?php
             $image_properties = array(
@@ -179,7 +179,7 @@
                         $image_properties = array(
                             'src' => 'img/next.png',
                             'id' => 'next',
-                            'width' => '40px',
+                            'width' => '50px',
                             'height' => '40px',
                         );
 
@@ -203,23 +203,26 @@
                             <h4 class="pictureQuestion"  id ="pictureQuestion">Slikovno pitanje</h4>
                         </div>
 
-                        <div class="modal-body">
+                        <div class="modal-body" id="wrapp_slika">
+                            <div id="slika_slika">
                                 <?php
                                 $image_properties = array(
                                     'src' => 'img/user.png',
                                     'id' => 'picturePictureQuestion',
-                                    'width' => '100px',
-                                    'height' => '100px',
+                                    'width' => '150px',
+                                    'height' => '150px',
+                                   
+                                    
                                 );
 
                                 echo img($image_properties);
-                                ?>
+                                ?></div>
                             <?php
                             $attrubutesRegister = ['name' => 'PictureQuestion', 'id' => 'PictureQuestion', 'class' => 'form-horizontal'];
                             echo form_open('game/conquered', $attrubutesRegister);
                             ?>
                             <p id="naslov"><label for="Picture"></label></p>
-
+                            <div id="odg_slika">
                             <label for="markPictureA"></label> <input type="radio" name = "radioPicture"class="radioPicture" value="a"/> <label for="answerPictureA"></label>  <br/>
                             <label for="markPictureB"></label> <input type="radio" name = "radioPicture"class="radioPicture" value="b"/> <label for="answerPictureB"></label> <br/> 
                             <label for="markPictureC"></label> <input type="radio" name = "radioPicture"class="radioPicture" value="c"/> <label for="answerPictureC"></label> <br/>
@@ -232,12 +235,12 @@
                                 $image_properties = array(
                                     'src' => 'img/next.png',
                                     'id' => 'next',
-                                    'width' => '40px',
+                                    'width' => '50px',
                                     'height' => '40px',
                                 );
 
                                 echo img($image_properties);
-                                ?></button>
+                                ?></button></div>
 
                         </div>
 
@@ -291,7 +294,7 @@
                                 $image_properties = array(
                                     'src' => 'img/next.png',
                                     'id' => 'next',
-                                    'width' => '40px',
+                                    'width' => '50px',
                                     'height' => '40px',
                                 );
 
@@ -303,7 +306,7 @@
                                 $image_properties = array(
                                     'src' => 'img/pariz.jpg',
                                     'id' => 'next',
-                                    'width' => '40px',
+                                    'width' => '50px',
                                     'height' => '40px',
                                 );
 
@@ -325,7 +328,7 @@
                             <button type="button" class="close" id="zatvaram">&times;</button>
                             <h4> Uredjivanje profila </h4>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body" id="prof">
                             <table id="t2">
 
                                 <tr>
@@ -407,7 +410,7 @@
                             <h4> Rang Lista </h4>
                         </div>
                         <div class="modal-body" id="scroll">
-                            <font color="red" size="20px">RANG LISTA</font>
+                            <font color="greenyellow" size="20px">***RANG LISTA***</font>
                             <!--ovde ide php za ubacivanje korisnika iz baze-->
                         </div>
                     </div>
