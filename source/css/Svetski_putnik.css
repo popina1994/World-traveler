@@ -98,7 +98,7 @@ body{
     font-family: Verdana;
     width: 310px;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-    margin-bottom: 25px;
+    margin-bottom: 10px;
 }
 
 .button1:hover{	

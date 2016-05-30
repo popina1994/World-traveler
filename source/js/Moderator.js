@@ -28,12 +28,26 @@ $(document).ready(function(){
          var pitanje=$('input[name=vrsta]:checked', '#myModaldodaj').val(); 
          if(pitanje==="Tekstualno"){
              $('#myModaldodaj').modal('hide');
-            $('#myModalforma').modal('show');
+             $('input[name=vrsta]').prop('checked', false);
+            $('#myModalformaText').modal('show');
             document.getElementById("b11").disabled=true;
             document.getElementById("b12").disabled=true;
          }
-         else
-         alert("Morate uneti koje pitanje zelite");
+         else if(pitanje==="Slika"){
+              $('#myModaldodaj').modal('hide');
+              $('input[name=vrsta]').prop('checked', false);
+            $('#myModalformaPic').modal('show');
+            document.getElementById("b11").disabled=true;
+            document.getElementById("b12").disabled=true;
+         }
+         else if(pitanje==="Licnost"){
+               $('#myModaldodaj').modal('hide');
+               $('input[name=vrsta]').prop('checked', false);
+            $('#myModalformaEnig').modal('show');
+            document.getElementById("b11").disabled=true;
+            document.getElementById("b12").disabled=true;
+         }
+          else   alert("Morate uneti koje pitanje zelite");
        
     });
     $("#zatvaram").click(function(){
@@ -48,8 +62,20 @@ $(document).ready(function(){
         document.getElementById("b11").disabled=false;
         document.getElementById("b12").disabled=false;
     });
-    $("#zatvoriformu").click(function(){
-        $('#myModalforma').modal('hide');
+    $("#zatvoriformuT").click(function(){
+        $('#myModalformaText').modal('hide');
+        //$('#vrsta')[0].reset();
+        document.getElementById("b11").disabled=false;
+        document.getElementById("b12").disabled=false;
+    });
+     $("#zatvoriformuP").click(function(){
+        $('#myModalformaPic').modal('hide');
+        //$('#vrsta')[0].reset();
+        document.getElementById("b11").disabled=false;
+        document.getElementById("b12").disabled=false;
+    });
+    $("#zatvoriformuL").click(function(){
+        $('#myModalformaEnig').modal('hide');
         //$('#vrsta')[0].reset();
         document.getElementById("b11").disabled=false;
         document.getElementById("b12").disabled=false;
