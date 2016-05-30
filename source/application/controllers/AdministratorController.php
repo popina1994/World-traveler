@@ -43,10 +43,14 @@ class AdministratorController extends BaseController {
             Redirect();
         }
     }
-    public function deleteModerator($i){
+    public function deleteModerator(){
+        $this->load->helper('form');
+        $i= $this->input->post('brojmoj');
+        echo $i;
         $this->load->model('proxies/ModelModerator');
         $users=$this->ModelModerator->allModeratorsUserName();
         $username = $users[$i];
+        
         if ($username) {
             $this->ModelModerator->deleteModerator($data = [ 'username' =>$username]);
             $this->Redirect();
@@ -92,6 +96,21 @@ class AdministratorController extends BaseController {
         }
         echo json_encode($return);
         
+    }
+       public function deleteValidation() {
+                
+        // Protect from unauthorized access.
+        //
+        $secret = $this->input->post('secret');
+        if (!$secret)
+            Redirect();
+        
+        //$username = $this->input->post('nameLogin');
+       // $password = $this->input->post("passLogin");
+
+
+        $return ['userExists']=true;
+        echo json_encode($return);
     }
     
 }

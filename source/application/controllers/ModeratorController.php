@@ -48,35 +48,7 @@ class ModeratorController extends BaseController {
         
     }
 
-    private function uploadSlika($novoImeSlike){
-                /*Cuvanje slike:*/
-        $this->load->helper('form');
-        $this->load->helper('html');
-        $this->load->helper('path');
-        $this->load->helper(array('form', 'url'));
-       // $image_path = realpath(APPPATH.'img/');
-        
-        $image_path =  APPPATH;
-        $pom=strpos($image_path,"application");
-        $image_path=substr($image_path, 0, $pom);
-        $image_path=$image_path."img";
-        //echo  $image_path;
-        
-		$config['upload_path'] = "".$image_path;
-		$config['allowed_types'] = 'gif|jpg|png';
-		$config['max_size']	= '100000';
-		$config['max_width']  = '10000';
-		$config['max_height']  = '10000';
-                //$config['encrypt_name'] = TRUE;
-                $config['file_name'] = $novoImeSlike;
-		$this->load->library('upload', $config);
-                
-                $this->upload->do_upload();
 
-       $upload_data = $this->upload->data(); 
-        return $upload_data['file_name'];
-        
-    }
     //
     public function createTekstPitanje(){
         //dio pitanja koji ima svako pitanje
@@ -127,7 +99,7 @@ class ModeratorController extends BaseController {
     
     //potrebno ograniciti fino velicinu slike..
     //potrebno napraviti js fajlove za proveru unetih podataka
-    //potrebno dodati ekstenziju na ime slike
+    //potrebno dodati ekstenziju na ime slike, mozda
     public function createSlikaPitanje(){
         $idniv=$this->input->post('nivo');
         $idobl=$this->input->post('oblast');
@@ -176,32 +148,11 @@ class ModeratorController extends BaseController {
         //Dohvatanje ID-a tek sacuvanog pitanja:
         $novoImeSlike=$ID;
         
-         /*Cuvanje slike:*/
-        $this->load->helper('form');
-        $this->load->helper('html');
-        $this->load->helper('path');
-        $this->load->helper(array('form', 'url'));
-       // $image_path = realpath(APPPATH.'img/');
-        
-        $image_path =  APPPATH;
-        $pom=strpos($image_path,"application");
-        $image_path=substr($image_path, 0, $pom);
-        $image_path=$image_path."img";
-        //echo  $image_path;
-        
-		$config['upload_path'] = "".$image_path;
-		$config['allowed_types'] = 'gif|jpg|png';
-		$config['max_size']	= '100000';
-		$config['max_width']  = '10000';
-		$config['max_height']  = '10000';
-                //$config['encrypt_name'] = TRUE;
-                $config['file_name'] = $novoImeSlike;
-		$this->load->library('upload', $config);
-                
-                $this->upload->do_upload();
 
-         $upload_data = $this->upload->data(); 
-         $slika= $upload_data['file_name'];
+        $this->load->model('proxies/Uploader');
+        $upload_data = $this->Uploader->uploadSlika($novoImeSlike);
+        $slika= $upload_data['file_name'];
+         
 
         //echo $slika;
         
@@ -215,7 +166,9 @@ class ModeratorController extends BaseController {
             $user->setSlika($novoImeSlike);
             $this->doctrine->em->flush();
         
-          Redirect();     
+          Redirect();  
+          
+          //popraviti povratnu adresu
     }
     
     public function createLicnostPitanje(){ 
@@ -269,35 +222,10 @@ class ModeratorController extends BaseController {
         //Dohvatanje ID-a tek sacuvanog pitanja:
         $novoImeSlike=$ID;
         
-        
-        
+        $this->load->model('proxies/Uploader');
+        $upload_data = $this->Uploader->uploadSlika($novoImeSlike);
+        $slika= $upload_data['file_name'];
 
-        /*Cuvanje slike*/
-        $this->load->helper('form');
-        $this->load->helper('html');
-        $this->load->helper('path');
-        $this->load->helper(array('form', 'url'));
-
-        
-        $image_path =  APPPATH;
-        $pom=strpos($image_path,"application" );
-        $image_path=substr($image_path, 0, $pom);
-        $image_path=$image_path."img";
-        //echo  $image_path;
-        //prava adresa: 'C:\wamp64\www\SvetskiPutnik\source\img'
-                $config['upload_path'] = "".$image_path;
-		$config['allowed_types'] = 'gif|jpg|png';
-		$config['max_size']	= '1000000';
-		$config['max_width']  = '100000';
-		$config['max_height']  = '100000';
-                //$config['encrypt_name'] = TRUE;
-                $config['file_name'] = $novoImeSlike;
-		$this->load->library('upload', $config);
-                
-                $this->upload->do_upload();
-
-       $upload_data = $this->upload->data(); 
-        $slika =   $upload_data['file_name'];
 
         //echo $slika;
         
@@ -380,7 +308,90 @@ class ModeratorController extends BaseController {
         $idobl = $this->doctrine->em->getRepository('Oblast')->findBy(array('naziv' => $idobl))[0];
 	$idkor = $this->doctrine->em->find ( "Moderator", $idkor );
         
+        
+        $novoImeSlike=$id;
+        
+
+        $this->load->model('proxies/Uploader');
+        $upload_data = $this->Uploader->uploadSlika($novoImeSlike);
+        $slika= $upload_data['file_name'];
+        
+        
+        $this->load->model('proxies/ModelSlikaPitanje');
+        $this->ModelSlikaPitanje->createSlikaPitanje([
+ /*id pitanja za izmenu*/   'id'=>$id,
+                            'idniv' => $idniv, 
+                            'idobl' => $idobl,
+                            'idkor' => $idkor,
+                            'slika' => $slika,
+                            'postavka' => $postavka,
+                            'odgovor1' => $odgovor1,
+                            'odgovor2' => $odgovor2,
+                            'odgovor3' => $odgovor3,
+                            'odgovor4' => $odgovor4,
+                            'tacan' => $tacan
+            ]);
+        
+           
     }
+    
+    
+     public function izmeniLicnostPitanje($id){
+
+        $idniv=$this->input->post('nivo');
+        $idobl=$this->input->post('oblast');
+        $stavka1=$this->input->post('s1');
+        $stavka2=$this->input->post('s2');
+        $stavka3=$this->input->post('s3');
+        $stavka4=$this->input->post('s4');
+        $stavka5=$this->input->post('s5');
+        $stavka6=$this->input->post('s6');
+        $licnost=$this->input->post('licnost');
+                
+        $idkor=$this->session->all_userdata();
+        //if(count($idkor)==0){echo "praznoo";}
+        echo $idkor['username'];
+        $this->load->model('proxies/ModelModerator');
+        
+        $users=$this->doctrine->em->getRepository ( 'RegKorisnik' )->findBy ( array (
+				'username' => $idkor['username']
+		) );
+        $idkor= $users[0]->getIdkor();
+        
+
+        $idniv =  $this->doctrine->em->getRepository('NivoTezine')->findBy(array('naziv' => $idniv))[0];
+        $idobl = $this->doctrine->em->getRepository('Oblast')->findBy(array('naziv' => $idobl))[0];
+	$idkor = $this->doctrine->em->find ( "Moderator", $idkor );
+        
+        
+        $novoImeSlike=$id;
+        
+
+        $this->load->model('proxies/Uploader');
+        $upload_data = $this->Uploader->uploadSlika($novoImeSlike);
+        $slika= $upload_data['file_name'];
+        
+        
+        $this->load->model('proxies/ModelLicnostPitanje');
+        $this->ModelLicnostPitanje->createLicnostPitanje([
+ /*id pitanja za izmenu*/   'id'=>$id,
+                            'idniv' => $idniv, 
+                            'idobl' => $idobl,
+                            'idkor' => $idkor,
+                            'slika' => $slika,
+                            'licnost' => $licnost,
+                            'podatak1' => $stavka1,
+                            'podatak2' => $stavka2,
+                            'podatak3' => $stavka3,
+                            'podatak4' => $stavka4,
+                            'podatak5' => $stavka5,
+                            'podatak6' => $stavka6
+            ]);
+        //gdje vraca....
+           
+    }
+    
+    
     
     public function inputValidationTekstPitanje() {
         
@@ -499,10 +510,10 @@ class ModeratorController extends BaseController {
         }
         echo json_encode($return);
         
-    }
+    }     
     
     
     
     
-         
+    
 }

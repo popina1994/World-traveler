@@ -47,6 +47,29 @@ class ModelLicnostPitanje extends CI_Model{
 		}
 		return $ID;
 	}
+        
+        
+        
+        public function updateLicnostPitanje($data){
+            $users = $this->doctrine->em->getRepository ( 'Pitanje' )->findBy ( array (
+				'idpit' => $data['$id']
+		) );
+            $user= $this->doctrine->em->find ( "LicnostPitanje", $users[0]->getIdpit() );
+            $user->setLicnost($data['licnost']);
+            $user->setPodatak1($data['podatak1']);
+            $user->setPodatak2($data['podatak2']);
+            $user->setPodatak3($data['podatak3']);
+            $user->setPodatak4($data['podatak4']);
+            $user->setPodatak5($data['podatak5']);
+            $user->setPodatak6($data['podatak6']);
+            $user->setSlika($data['slika']);
+            $users[0]->setIdniv($data['idniv']);
+            $users[0]->setIdobl($data['idobl']);
+            $users[0]->setIdkor($data['idkor']);
+            $this->doctrine->em->flush();
+        }  
+        
+        
 	
 	function getLicnostPitanje($data) {
 
