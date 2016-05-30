@@ -58,10 +58,24 @@ body{
  
 }
 
-#myModalforma{
+#myModalformaText{
     margin-top: 130px;
     margin-left: 400px;
  
+}
+#myModalformaPic{
+    margin-top: 70px;
+    margin-left: 400px;
+ 
+}
+
+#myModalformaEnig{
+    margin-top: 70px;
+    margin-left: 400px;
+ 
+}
+#userfile{
+    margin-left: 170px;
 }
 
 #myModalizmena{
