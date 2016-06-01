@@ -160,7 +160,7 @@
                                     </select>
                                     <p class="help-block"></p><br/>
                                 </div>
-                                <input type="submit" value="Dodaj pitanje" name="submit" class="button2">
+                                <input type="submit" value="Dodaj pitanje" name="submit" class="button2"></form>
                                 </div>
                                 </div>
                                 </div>
