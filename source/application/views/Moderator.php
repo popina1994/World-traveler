@@ -328,9 +328,9 @@
                                                         <button type="button" class="close" id="zatform">&times;</button>
                                                         <h4> Izmena/Brisanje pitanja </h4>
                                                     </div>
-                                                    <div class="modal-body">
+                                                    <div class="modal-body" id="scroll">
 
-                                                        <table id="t2">
+                                                        <table id="t2" border="1">
 
                                                             <!--
                                                                     U ovu tabelu treba ubaciti kolone za tezinu pitnaja, oblast pitanja  i id pitanja
@@ -343,90 +343,59 @@
 
 
 
-                                                            <button class="button1" id="b23" data-toggle="modal" data-target="#myModal">Dodaj Pitanje</button>
-                                                            <div>
-                                                                <select id="pitanje">
-                                                                    <option value="tekst">Tekstualno</option>
-                                                                    <option value="licnost">Licnost</option>
-                                                                    <option value="slika">Slikovno</option>
-
-                                                                </select>
-                                                                <?php
-                                                                echo form_open("moderatorcontroller/dodajpitanje/")
-                                                                ?>
-                                                                <button class="button1" id="dalje" data-toggle="modal" data-target="#myModal">Dalje</button>
-
-                                                                <button class="button1" id="prekini" data-toggle="modal" data-target="#myModal">Prekini</button>
-
-                                                            </div>
-
+                                                          
                                                             <?php
-                                                            $attrubutesRegister = ['name' => 'izmeniDugme', 'id' => 'izmeniDugme', 'class' => 'form-horizontal'];
-
-                                                            echo form_open("moderatorcontroller/izmeniPitanje/", $attrubutesRegister);
-
-                                                            echo "<button class=" . "'button3'" . "  id=" . "'button'" . ">IZMENI</button>";
-
-                                                            echo form_close();
-                                                            ?>
-                                                            <?php
-                                                            if ($questions == null) {
+                                                            if ($pitanje == null) {
                                                                 echo "Nema pitanja";
-                                                            } else if (count($questions) == 0) {
+                                                            } else if (count($pitanje) == 0) {
                                                                 echo "Nema pitanja";
-                                                            } else {
-                                                                echo "IMA pitanja";
+                                                            } 
                                                                 ?>
                                                                 <tr>
                                                                     <td>
-                                                                        Nivo
+                                                                        Br.
                                                                     </td>
                                                                     <td>
+                                                                        Nivo
+                                                                    </td>
+                                                                    <td colspan="2">
                                                                         Teritorija
                                                                     </td>
                                                                     <td>
                                                                         IdPitanja
                                                                     </td>
+                                                                    <td colspan="2">Opcije</td>
+                                                                        
                                                                 </tr>
                                                                 <?php $i = 0;
-                                                                foreach ($questions as $p) {
+                                                                foreach ($pitanje as $p) {
                                                                     ?>
                                                                     <tr>
-                                                                        <td>
-
-                                                                        <?php echo $p['nivo']; ?><td>
-                                                                        <td><?php echo $p['oblast']; ?></td>
-                                                                        <td><?php echo $p['idPitanja']; ?></td>
-                                                                        <td><?php
+                                                                        <td valign="middle">
+                                                                            <?php echo $i+1?> &nbsp;
+                                                                        </td>
+                                                                        <td valign="middle"><?php echo $p['nivo']; ?> &nbsp;<td>
+                                                                        <td valign="middle"><?php echo $p['oblast']; ?> &nbsp;</td>
+                                                                        <td valign="middle"><?php echo $p['idPitanja']; ?> &nbsp;</td>
+                                                                        <td valign="middle"><?php
                                                                             $attrubutesRegister = ['name' => 'izmeniDugme' . $p['idPitanja'], 'id' => 'izmeniDugme' . $p['idPitanja'], 'class' => 'form-horizontal'];
-
-
                                                                             echo form_open("moderatorcontroller/izmeniPitanje/" . $p['idPitanja'], $attrubutesRegister);
                                                                             $strp = $p['idPitanja'];
                                                                             echo "<button class=" . "'button3'" . "  id=" . "'button'.$strp" . ">IZMENI</button>";
-
-                                                                            echo form_open("administratorcontroller/izmeniPitanje/" . $p['idPitanja'], $attrubutesRegister);
-                                                                            $strp = $p['idPitanja'];
-                                                                            echo "<button class=" . "'button2'" . "  id=" . "'button'.$strp" . ">IZMENI</button>";
-
-
                                                                             echo form_close();
-                                                                            ?></td> <td><?php
+                                                                            ?></td> 
+                                                                        <td valign="middle"><?php
                                                                             $attrubutesRegister = ['name' => 'brisiDugme' . $p['idPitanja'], 'id' => 'brisiDugme' . $p['idPitanja'], 'class' => 'form-horizontal'];
-
                                                                             echo form_open("moderatorcontroller/deletePitanje/" . $p['idPitanja'], $attrubutesRegister);
                                                                             $strp = $p['idPitanja'];
                                                                             echo "<button class=" . "'button3'" . "  id=" . "$strp.'button'" . ">BRIŠI</button>";
-
                                                                             echo form_close();
-
-
                                                                             $i++;
-                                                                        }
-                                                                    }
-                                                                    ?>
-
-                                                                </td>
+                                                                          }
+                                                                    
+                                                                            ?>
+                                                                                
+                                                                         </td>
                                                             </tr>       
 
                                                         </table>
