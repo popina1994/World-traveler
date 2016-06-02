@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2016 at 08:50 PM
+-- Generation Time: Jun 02, 2016 at 12:11 PM
 -- Server version: 5.7.9
 -- PHP Version: 5.6.16
 
@@ -119,6 +119,8 @@ INSERT INTO `se_granici_sa` (`IDObl1`, `IDObl2`) VALUES
 (43, 27),
 (27, 28),
 (27, 29),
+(30, 29),
+(29, 30),
 (32, 30),
 (32, 31),
 (27, 32),
