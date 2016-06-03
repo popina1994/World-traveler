@@ -16,7 +16,7 @@ $(document).ready(function(){
             $.ajax({
                 type: "POST",
                 url: BASE_URL + "index.php/administratorcontroller/deletevalidation/",
-                data : {//nameLogin : $("#nameLogin").val(),
+                data : {brojmoj : $("#brojmoj").val(),
                         //passLogin : $("#passLogin").val(),
                         secret : true},
                 dataType: "json", 

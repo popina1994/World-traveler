@@ -163,7 +163,7 @@ class ModeratorController extends BaseController {
          $user= $this->doctrine->em->find ( "SlikaPitanje", $users[0]->getIdpit() );
          
 	    
-            $user->setSlika($novoImeSlike);
+            $user->setSlika($slika);
             $this->doctrine->em->flush();
         
           Redirect();  
@@ -235,7 +235,7 @@ class ModeratorController extends BaseController {
         $user= $this->doctrine->em->find ( "LicnostPitanje", $users[0]->getIdpit() );
          
 	    
-        $user->setSlika($novoImeSlike);
+        $user->setSlika($slika);
         $this->doctrine->em->flush();
 
         Redirect();

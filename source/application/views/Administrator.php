@@ -143,15 +143,15 @@
                                                 $str=$i;
                                                 $str="$str";
                                           
-                                                echo "<button class="."'button3', type="."'submit'".", name='brojmoj', value="."'$str'"." >OBRIŠI</button>";
-                                              
+                                                echo "<button class="."'button3', type="."'submit'".", name='brojmoj', id='brojmoj', value="."'$str'"." >OBRIŠI</button>";
+                                           
                                                 
                                                   $i++;
-                        }
+                        
                                     ?>
                                 </td>
-                            </tr>       
-                        <?php 
+                            </tr>     
+                        <?php }
                         echo form_close(); 
                         }
                         ?>
