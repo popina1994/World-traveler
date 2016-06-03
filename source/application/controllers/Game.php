@@ -7,7 +7,7 @@ require_once APPPATH.'controllers/BaseController.php';
  * and open the template in the editor.
  */
 
-/**
+/*** Djordje Zivanovic 0033/2013
  * Description of Game
  *
  * @author popina
