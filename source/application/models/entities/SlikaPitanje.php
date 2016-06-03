@@ -5,6 +5,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * SlikaPitanje
  *
+ * @author Dragana Milovancevic 2013/0048
+ *
  * @ORM\Table(name="slika_pitanje")
  * @ORM\Entity
  */

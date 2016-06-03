@@ -2,6 +2,11 @@
 
 define("POENI", 10);
 
+/**
+ *
+ * @author Dragana Milovancevic 2013/0048
+ *
+ */
 class ModelOsvajanje extends CI_Model {
 	
 	/**

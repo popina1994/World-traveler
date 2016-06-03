@@ -1,5 +1,10 @@
 <?php
 
+/**
+ *
+ * @author Dragana Milovancevic 2013/0048
+ *
+ */
 class ModelAdministrator extends CI_Model {
 	
 	/**

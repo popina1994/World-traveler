@@ -1,10 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-include APPPATH.'models/entities/NivoTezine.php';
-include APPPATH.'models/entities/Moderator.php';
-include APPPATH.'models/entities/Administrator.php';
-include APPPATH.'models/entities/RegKorisnik.php';
 class Welcome extends CI_Controller {
 
 	
@@ -29,56 +25,10 @@ class Welcome extends CI_Controller {
 	//pregaziti ovo kad se shvati kako funkcionise
 	public function index()
 	{
-		
 		$this->load->library('doctrine');
 		
-		
-		$obl =  $this->doctrine->em->getRepository('Oblast')->findAll();
-		
-		$data =Array();
-		$data['idigr']=1;
-		foreach($obl as $o){
-			if($o->getIdobl()!=1){
-				$data ['idobl'] = $o->getNaziv();
-				$data ['oblast'] = $o->getNaziv();
-				$this->ModelOsvajanje->createOsvajanje($data);
-				$this->ModelOsvajanje->uspehOsvajanje($data);
-			}
-		}
-			
-                
-                /*$data = Array('username'=>'admin', 'password'=>'admin' );
-                $this->ModelAdministrator->createAdministrator($data);*/
-		
-		//opcija1 za INSERT - napravila gotove funkcije
-		//$data = Array('username'=>'Djordje', 'password'=>'Dj1234' );
-		//$this->Model->createModerator($data);
-		
-		//opcija2 za INSERT - rucno
-		/*
-		
-		$nivo = new NivoTezine();
-		$nivo->setNaziv("nivonekii");
-		try {
-			//save to database
-			$this->em->persist($nivo);
-			$this->em->flush();
-		}
-		catch(Exception $err){
-			die($err->getMessage());
-		}
-		 */
-		
-
-		//pretraga po ID
-		//echo $this->doctrine->em->find("RegKorisnik", 2)->getUsername();
-		
-		//specificne pretrage
-		
-		/*
-		$users =  $this->doctrine->em->getRepository('RegKorisnik')->findBy(array('username' => 'dragana'));
-		foreach($users as $user) echo $user->getPassword();
-		*/
+		//echo CI_VERSION;
+		echo phpversion ();
 		
 	}
 	
