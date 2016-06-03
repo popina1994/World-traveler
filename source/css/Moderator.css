@@ -74,6 +74,18 @@ body{
     margin-left: 400px;
  
 }
+
+
+#scroll{
+    margin:0px;
+    padding:0px;
+    align-items: center;
+    text-align: center;
+    overflow-y: scroll;
+    height: 300px;
+     /*width: 700px;*/
+}
+
 #userfile{
     margin-left: 170px;
 }
@@ -81,7 +93,8 @@ body{
 #myModalizmena{
     margin-top: 100px;
     margin-left: 400px;
- 
+    
+   
 }
 
 #izbor{
@@ -115,6 +128,23 @@ body{
 
 }
 
+.button3{
+    background-color: lightgray;
+    border: 2px black solid;
+    color: black;
+    padding: 5px;
+    margin:0px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    cursor: pointer;
+    float: left;  
+    border-radius: 12px;   
+    font-family: Verdana;
+    margin-bottom: 15px;
+}
+
 .button2{
     background-color: darkolivegreen;
     color: white;
@@ -146,12 +176,24 @@ h4{
 }
 
 #t2{
-  padding: 15px;
+  /*padding: 15px;*/
   font-size: 25px;
-  margin: 30px;
-  margin-top: 10px;
+  
+  margin: 5px;
   align-items: center;
-  padding-left: 300px;
+  /*padding-left: 300px;*/
+  border: 2px solid black;
+  text-align: center;
+  vertical-align: middle;
+}
+
+tr{
+    vertical-align: middle;
+    text-align: center;
+}
+td{
+    vertical-align: middle;
+    text-align: center;
 }
 
 

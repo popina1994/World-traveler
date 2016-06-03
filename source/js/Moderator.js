@@ -11,6 +11,30 @@ function close3(){
 
 }*/
 
+function t(){
+    $('#myModalizmena').modal('hide');
+            
+            $('#myModalformaText').modal('show');
+            document.getElementById("b11").disabled=true;
+            document.getElementById("b12").disabled=true;
+}
+
+    function s(){
+        $('#myModalizmena').modal('hide');
+            
+            $('#myModalformaPic').modal('show');
+            document.getElementById("b11").disabled=true;
+            document.getElementById("b12").disabled=true;
+    }
+    
+    function l(){
+        $('#myModalizmena').modal('hide');
+            
+            $('#myModalformaEnig').modal('show');
+            document.getElementById("b11").disabled=true;
+            document.getElementById("b12").disabled=true;
+    }
+
 $(document).ready(function(){ 
     $("#b11").click(function(){
         $('#myModaldodaj').modal('show');

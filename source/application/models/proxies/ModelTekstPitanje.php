@@ -46,9 +46,20 @@ class ModelTekstPitanje extends CI_Model {
         
         
         public function updateTekstPitanje($data){
-            
-            
-            
+            $users = $this->doctrine->em->getRepository ( 'Pitanje' )->findBy ( array (
+				'idpit' => $data['$id']
+		) );
+            $user= $this->doctrine->em->find ( "TekstPitanje", $users[0]->getIdpit() );
+            $user->setPostavka($data['postavka']);
+            $user->setOdgovor1($data['odgovor1']);
+            $user->setOdgovor2($data['odgovor2']);
+            $user->setOdgovor3($data['odgovor3']);
+            $user->setOdgovor4($data['odgovor4']);
+            $user->setTacanodgovor($data['tacan']);
+            $users[0]->setIdniv($data['idniv']);
+            $users[0]->setIdobl($data['idobl']);
+            $users[0]->setIdkor($data['idkor']);
+            $this->doctrine->em->flush();
         }
 	
 	function getTekstPitanje($data) {

@@ -27,6 +27,8 @@
     href = "<?php echo base_url(); ?>css/alertify.core.css">
     <link rel = "stylesheet" type = "text/css" 
     href = "<?php echo base_url(); ?>css/alertify.default.css">
+    
+
  
   <script type = 'text/javascript' src = "<?php echo base_url(); 
         ?>js/alertify.min.js"></script>
@@ -116,8 +118,13 @@
                         }
                         else{
                         $i=0;
+                        $attrubutesRegister = ['name'=>'obrisiDugme', 'id'=>'obrisiDugme', 'class'=>'form-horizontal'];
+                                                
+                        echo form_open("administratorcontroller/deleteModerator", $attrubutesRegister);
                         foreach($moderators as $p){?>
                             <tr>
+                               
+                                
                                 <td>
                                     <?php
                                     
@@ -130,19 +137,24 @@
                                 <td>
                                     <?php
                                             
-                                                $attrubutesRegister = ['name'=>'obrisiDugme'."$i", 'id'=>'obrisiDugme'."$i", 'class'=>'form-horizontal'];
                                                 
-                                                echo form_open("administratorcontroller/deleteModerator/$i", $attrubutesRegister); 
                                                 //$str='button'.$i;
-                                                echo "<button class="."'button3'>OBRIŠI</button>";
-                                              
-                                                echo form_close(); 
+                                                $k=$p;
+                                                $str=$i;
+                                                $str="$str";
+                                          
+                                                echo "<button class="."'button3', type="."'submit'".", name='brojmoj', id='brojmoj', value="."'$str'"." >OBRIŠI</button>";
+                                           
+                                                
                                                   $i++;
-                        }
+                        
                                     ?>
                                 </td>
-                            </tr>       
-                        <?php } ?>
+                            </tr>     
+                        <?php }
+                        echo form_close(); 
+                        }
+                        ?>
 
 
                      
