@@ -259,59 +259,51 @@
                             <h4 class="enigmaQuestion"  id ="enigmaQuestion">Zagonetna licnost</h4>
                         </div>
 
-                        <div class="modal-body">
+                        <div class="modal-body" id="wrapp_slika2">
+                                <div id="slika_slika2">
                                 <?php
                                 $image_properties = array(
-                                    'src' => 'img/user.png',
+                                    'src' => 'img/user_orange.png',
                                     'id' => 'pictureEnigmaQuestion',
-                                    'width' => '100px',
-                                    'height' => '100px',
+                                    'width' => '150px',
+                                    'height' => '150px',
                                 );
 
                                 echo img($image_properties);
-                                ?>
+                                ?></div>
                             <?php
                             $attrubutesRegister = ['name' => 'EnigmaQuestion', 'id' => 'EnigmaQuestion', 'class' => 'form-horizontal'];
                             echo form_open('game/conqured', $attrubutesRegister);
                             ?>
                             <p id="naslov"><label for="Enigma"></label></p>
-
-                            <label for="markEnigma1">1   </label>  <label for="answerEnigma1"></label>  <br/>
-                            <label for="markEnigma2">2   </label>  <label for="answerEnigma2"></label> <br/> 
-                            <label for="markEnigma3">3   </label>  <label for="answerEnigma3"></label> <br/>
-                            <label for="markEnigma4">4   </label> <label for="answerEnigma4"></label>  <br/>
+                        <div id="odg_slika">
+                            <label for="markEnigma1">1.   </label>  <label for="answerEnigma1"></label>  <br/>
+                            <label for="markEnigma2">2.   </label>  <label for="answerEnigma2"></label> <br/> 
+                            <label for="markEnigma3">3.   </label>  <label for="answerEnigma3"></label> <br/>
+                            <label for="markEnigma4">4.   </label> <label for="answerEnigma4"></label>  <br/>
                             <label for="markEnigma5">5.  </label> <label for="answerEnigma5"></label>  <br/>
-                            <label for="markEnigma6">6.  </label> <label for="answerEnigma6"></label>  <br/>
+                            <label for="markEnigma6">6.  </label> <label for="answerEnigma6"></label>  <br/></div>
                             <label for="Broj pokusaja">Broj pokusaja  </label> <label for="numTries"></label>  <br/>
                             <input type="text" maxlength="1" minlength="1" name="letter" id="letter" placeholder="Guess a letter" /> <br/>
                             <label for="Finish"></label>  <br/>
                             
-                            <label for="noteEnigma"></label>
+                            <label for="noteEnigma"></label><br/>
                             <?php echo form_close(); ?>
 
                             <button type="button" class="next"  id = "btnNextEnigma" name="btnNextEnigma">
-                                <?php
+                               <?php
                                 $image_properties = array(
-                                    'src' => 'img/next.png',
+                                    'src' => 'img/hint.png',
                                     'id' => 'next',
-                                    'width' => '50px',
-                                    'height' => '40px',
+                                    'width' => '70px',
+                                    'height' => '60px',
                                 );
 
                                 echo img($image_properties);
                                 ?></button>
                             
                             <button type="button" class="next"  id = "btnSend" name="btnSend">
-                                <?php
-                                $image_properties = array(
-                                    'src' => 'img/pariz.jpg',
-                                    'id' => 'next',
-                                    'width' => '50px',
-                                    'height' => '40px',
-                                );
-
-                                echo img($image_properties);
-                                ?></button>
+                               POGODI</button>
 
                         </div>
 
