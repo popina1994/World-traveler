@@ -109,7 +109,7 @@ $(document).ready(function(){
                         $('label[for=points]').html(data.points);
                         $('label[for=passengers]').html(data.passengers.toString());
                     }
-                     $('label[for=markTextA]').html('&#10007');
+                    $('label[for=markTextA]').html('&#10007');
                     $('label[for=markTextB]').html('&#10007');
                     $('label[for=markTextC]').html('&#10007');
                     $('label[for=markTextD]').html('&#10007');

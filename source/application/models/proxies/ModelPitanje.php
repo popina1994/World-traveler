@@ -17,10 +17,23 @@ class ModelPitanje extends CI_Model {
 		$questions= $this->doctrine->em->getRepository('Pitanje')->findAll();
 		 $i=0; $strings=array();
                foreach($questions as $q){
+                   $tip= $this->em->getRepository('TekstPitanje')->findBy(array('idpit' => $q->getIdpit() ));
+                   if(count($tip)==1){
+                       $tip="tekst";
+                   }else{
+                       $tip= $this->em->getRepository('SlikaPitanje')->findBy(array('idpit' => $q->getIdpit() ));
+                       if(count($tip)==1){
+                           $tip="slika";
+                       }else{
+                           $tip= "licnost";
+                       }
+                           
+                   }
                    $strings[$i]=array(
                        'idPitanja' => $q->getIdpit(),
                        'nivo'=> $q->getIdniv()->getNaziv(),
-                       'oblast' => $q->getIdobl()->getNaziv() 
+                       'oblast' => $q->getIdobl()->getNaziv() ,
+                       'tip' => $tip
                     );
                    $i++;
                }
