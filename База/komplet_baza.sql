@@ -338,7 +338,8 @@ CREATE TABLE IF NOT EXISTS `reg_korisnik` (
 INSERT INTO `reg_korisnik` (`IDKor`, `Username`, `Password`) VALUES
 (1, 'User', 'Pass'),
 (2, 'Takmicar', 'Takmicar'),
-(3, 'Admin', 'Admin');
+(3, 'Admin', 'Admin'),
+(4, 'guest', 'guest');
 
 -- --------------------------------------------------------
 
@@ -575,7 +576,8 @@ CREATE TABLE IF NOT EXISTS `takmicar` (
 --
 
 INSERT INTO `takmicar` (`IDKor`, `Ime`, `Prezime`, `Slika`) VALUES
-(2, 'Tamkicar', 'Takmicar', NULL);
+(2, 'Tamkicar', 'Takmicar', NULL),
+(4, 'guest', 'guest', NULL);
 
 -- --------------------------------------------------------
 
