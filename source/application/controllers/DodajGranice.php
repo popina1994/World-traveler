@@ -1,8 +1,11 @@
 <?php
 defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 
-include APPPATH . 'models/entities/Oblast.php';
-
+/**
+ *
+ * @author Dragana Milovancevic 2013/0048
+ *
+ */
 class DodajGranice extends CI_Controller {
 
 	public function index() {

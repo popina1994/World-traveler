@@ -1,5 +1,10 @@
 <?php
 
+/**
+ *
+ * @author Dragana Milovancevic 2013/0048
+ *
+ */
 class ModelRegKorisnik extends CI_Model {
 	
 	/**

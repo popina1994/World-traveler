@@ -1,4 +1,6 @@
-
+/*
+ * * Djordje Zivanovic 0033/2013
+ */
 
 $(document).ready(function(){   
     $('#registerForm').submit( function(event) {

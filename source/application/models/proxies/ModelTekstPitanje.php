@@ -1,5 +1,10 @@
 <?php
 
+/**
+ *
+ * @author Dragana Milovancevic 2013/0048
+ * @author Slavko Ivanovic 2013/0082
+ */
 class ModelTekstPitanje extends CI_Model {
 	
 	/**

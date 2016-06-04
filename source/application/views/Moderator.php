@@ -315,6 +315,238 @@
                                             </div>
                                         </div>
 
+<!--IZMENE-->
+
+<div class="modal" id="myModalformaTextizmena" role="dialog" data-backdrop=""   tabindex="-1">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" id="zatvoriformuT" >&times;</button>
+                        <h4> Forma za unos tekstualnog pitanja </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="formaa">
+                            <form action="moderatorcontroller/createtekstpitanje"
+                                  method="post" enctype="multipart/form-data">
+                                <label class="control-label">Postavka:</label>
+                                <div class="controls">
+                                    <textarea name="postavka" id="postavka" cols="50"></textarea>
+                                    <p class="help-block"></p><br/>
+                                </div>
+
+                                <div class="controls">
+                                    <label class="control-label">Odgovor1:</label>
+                                    <input type="text" name="o1" id="o1">
+                                    <p class="help-block"></p>
+                                </div>
+                                <div class="controls">
+                                    <label class="control-label">Odgovor2:</label>
+                                    <input type="text" name="o2" id="o2">
+                                    <p class="help-block"></p>
+                                </div>
+                                <div class="controls">
+                                    <label class="control-label">Odgovor3:</label>
+                                    <input type="text" name="o3" id="o3">
+                                    <p class="help-block"></p>
+                                </div>
+                                <div class="controls">
+                                    <label class="control-label">Odgovor4:</label>
+                                    <input type="text" name="o4" id="o4">
+                                    <p class="help-block"></p><br/>
+                                </div>
+                                <div class="controls">
+                                    <label class="control-label">Tacan odgovor</label>
+                                    <select name="tacan">
+                                        <option value="">
+                                            <?php
+                                            for ($i = 1; $i <= 4; $i++)
+                                                echo "<option value='" . $i . "'>$i</option>";
+                                            ?>
+                                    </select>
+                                    <p class="help-block"></p><br/>
+                                </div>
+                                <div class="controls">
+                                    <label class="control-label">Nivo</label>
+                                    <select name="nivo">
+                                        <option value="">Izaberi nivo</option>
+                                        <?php
+                                        $nivo = $this->doctrine->em->getRepository('NivoTezine')->findAll();
+                                        foreach ($nivo as $row) {
+                                            $naziv = $row->getNaziv();
+                                            echo "<option value='" . $naziv . "'>$naziv</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                    <p class="help-block"></p><br/>
+                                </div>
+                                <div class="controls">
+                                    <label class="control-label">Oblast</label>
+                                    <select name="oblast">
+                                        <option value="">Izaberi oblast</option>
+                                        <?php
+                                        $oblast = $this->doctrine->em->getRepository('Oblast')->findAll();
+                                        foreach ($oblast as $row) {
+                                            $naziv = $row->getNaziv();
+                                            echo "<option value='" . $naziv . "'>$naziv</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                    <p class="help-block"></p><br/>
+                                </div>
+                                <input type="submit" value="Potvrdi" name="submit" class="button2"></form>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+
+
+                                <!--Modal slika-->
+
+                                <div class="modal" id="myModalformaPicizmena" role="dialog" data-backdrop=""   tabindex="-1">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" id="zatvoriformuP" >&times;</button>
+                                                <h4> Forma za unos slikovnog pitanja </h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div id="formaa">
+                                                    <form action="moderatorcontroller/createslikapitanje" 
+                                                          method="post" enctype="multipart/form-data" name='userfile'>
+                                                        <label class="control-label">Postavka:</label>
+                                                        <div class="controls">
+                                                            <textarea name="postavka" id="postavka" cols="50"></textarea>
+                                                            <p class="help-block"></p><br/>
+                                                        </div>
+
+                                                        <div class="controls">
+                                                            <label class="control-label">Odgovor1:</label>
+                                                            <input type="text" name="o1" id="o1">
+                                                            <p class="help-block"></p>
+                                                        </div>
+                                                        <div class="controls">
+                                                            <label class="control-label">Odgovor2:</label>
+                                                            <input type="text" name="o2" id="o2">
+                                                            <p class="help-block"></p>
+                                                        </div>
+                                                        <div class="controls">
+                                                            <label class="control-label">Odgovor3:</label>
+                                                            <input type="text" name="o3" id="o3">
+                                                            <p class="help-block"></p>
+                                                        </div>
+                                                        <div class="controls">
+                                                            <label class="control-label">Odgovor4:</label>
+                                                            <input type="text" name="o4" id="o4">
+                                                            <p class="help-block"></p><br/>
+                                                        </div>
+                                                        <div class="controls">
+                                                            <label class="control-label">Tacan odgovor</label>
+                                                            <select name="tacan">
+                                                                <option value="">
+                                                                    <?php
+                                                                    for ($i = 1; $i <= 4; $i++)
+                                                                        echo "<option value='" . $i . "'>$i</option>";
+                                                                    ?>
+                                                            </select>
+                                                            <p class="help-block"></p><br/>
+                                                        </div>
+                                                        <div class="controls">
+                                                            <label class="control-label">Nivo</label>
+                                                            <select name="nivo">
+                                                                <option value="">Izaberi nivo</option>
+                                                                <?php
+                                                                $nivo = $this->doctrine->em->getRepository('NivoTezine')->findAll();
+                                                                foreach ($nivo as $row) {
+                                                                    $naziv = $row->getNaziv();
+                                                                    echo "<option value='" . $naziv . "'>$naziv</option>";
+                                                                }
+                                                                ?>
+                                                            </select>
+                                                            <p class="help-block"></p><br/>
+                                                        </div>
+                                                        <div class="controls">
+                                                            <label class="control-label">Oblast</label>
+                                                            <select name="oblast">
+                                                                <option value="">Izaberi oblast</option>
+                                                                <?php
+                                                                $oblast = $this->doctrine->em->getRepository('Oblast')->findAll();
+                                                                foreach ($oblast as $row) {
+                                                                    $naziv = $row->getNaziv();
+                                                                    echo "<option value='" . $naziv . "'>$naziv</option>";
+                                                                }
+                                                                ?>
+                                                            </select>
+                                                            <p class="help-block"></p><br/>
+                                                        </div>
+                                                        Slika:<input type="file" name="userfile" id="userfile"><br /><br/>
+                                                        <input type="submit" value="Potvrdi" name="submit" class="button2">
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--Modal licnost-->
+
+                                    <div class="modal" id="myModalformaEnigizmena" role="dialog" data-backdrop=""   tabindex="-1">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" id="zatvoriformuL" >&times;</button>
+                                                    <h4> Forma za unos licnosti </h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div id="formaa">
+                                                        <form action="moderatorcontroller/createlicnostpitanje" 
+                                                              method="post" enctype="multipart/form-data" name='userfile'>
+
+                                                            <div class="controls">
+                                                                Stavka broj 1: <input type="text" name="s1" id="s1"><br />
+                                                                Stavka broj 2: <input type="text" name="s2" id="s2"><br />
+                                                                Stavka broj 3: <input type="text" name="s3" id="s3"><br />
+                                                                Stavka broj 4: <input type="text" name="s4" id="s4"><br />
+                                                                Stavka broj 5: <input type="text" name="s5" id="s5"><br />
+                                                                Stavka broj 6: <input type="text" name="s6" id="s6"><br />
+                                                                Ime Licnosti:&nbsp;&nbsp; <input type="text" name="licnost" id="licnost"><br /><br/>
+                                                            </div>
+                                                            <div class="controls">
+                                                                <label class="control-label">Nivo</label>
+                                                                <select name="nivo">
+                                                                    <option value="">Izaberi nivo</option>
+                                                                    <?php
+                                                                    $nivo = $this->doctrine->em->getRepository('NivoTezine')->findAll();
+                                                                    foreach ($nivo as $row) {
+                                                                        $naziv = $row->getNaziv();
+                                                                        echo "<option value='" . $naziv . "'>$naziv</option>";
+                                                                    }
+                                                                    ?>
+                                                                </select>
+                                                                <p class="help-block"></p><br/>
+                                                            </div>
+                                                            <div class="controls">
+                                                                <label class="control-label">Oblast</label>
+                                                                <select name="oblast">
+                                                                    <option value="">Izaberi oblast</option>
+                                                                    <?php
+                                                                    $oblast = $this->doctrine->em->getRepository('Oblast')->findAll();
+                                                                    foreach ($oblast as $row) {
+                                                                        $naziv = $row->getNaziv();
+                                                                        echo "<option value='" . $naziv . "'>$naziv</option>";
+                                                                    }
+                                                                    ?>
+                                                                </select>
+                                                                <p class="help-block"></p><br/>
+                                                            </div>
+                                                            Slika:<input type="file" name="userfile" id="userfile"><br /><br/>
+                                                            <input type="submit" value="Potvrdi" name="submit" class="button2">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                         <!--Modal ukloni-->
 
@@ -399,7 +631,7 @@
                                                                     
                                                                             ?>
                                                         </table>
-
+                                                        
                                                     </div>
                                                 </div>
                                             </div>

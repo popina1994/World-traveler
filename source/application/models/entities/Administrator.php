@@ -5,6 +5,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Administrator
  *
+ * @author Dragana Milovancevic 2013/0048
+ *
  * @ORM\Table(name="administrator")
  * @ORM\Entity
  */

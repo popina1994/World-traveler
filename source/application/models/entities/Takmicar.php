@@ -7,6 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Takmicar
+  *
+ * @author Dragana Milovancevic 2013/0048
  *
  * @ORM\Table(name="takmicar")
  * @ORM\Entity

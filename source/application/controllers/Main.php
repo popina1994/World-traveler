@@ -1,4 +1,9 @@
+
 <?php
+
+/*
+* Djordje Zivanovic 0033/2013
+*/
  include APPPATH.'models/entities/RegKorisnik.php';
  include APPPATH.'models/entities/Administrator.php';
  include APPPATH.'models/entities/Moderator.php';    
