@@ -43,32 +43,29 @@ class ModelPitanje extends CI_Model {
             try{
                 
                 
-               // $entity = $this->em->getPartialReference("Pitanje", $id);
+               
                 $entity= $this->doctrine->em->find ( "Pitanje", $id );
                 $this->em->remove($entity);
-                //$this->em->flush();
                 
+                $this->load->model('proxies/LicnostPitanje');
                 $entity2= $this->doctrine->em->find ( "LicnostPitanje", $id );
-             //   $entity2 = $this->em->getPartialReference("LicnostPitanje", $id);
-                if($entity2!=null){$this->em->remove($entity2);
-               // $this->em->flush();
+                if($entity2!=null){
+                    $this->em->remove($entity2);             
                 }
+                $this->load->model('proxies/SlikaPitanje');
                 $entity3= $this->doctrine->em->find ( "SlikaPitanje", $id );
-               // $entity3 = $this->em->getPartialReference("SlikaPitanje", $id);
-                if($entity3!=null){$this->em->remove($entity3);
-               // $this->em->flush();
-                
+                if($entity3!=null){
+                    $this->em->remove($entity3);               
                 }
+                $this->load->model('proxies/TekstPitanje');
                 $entity4= $this->doctrine->em->find ( "TekstPitanje", $id );
-   
-                if($entity4!=null){$this->em->remove($entity4);
-
-                //$this->em->flush();}
+                if($entity4!=null){
+                    $this->em->remove($entity4);
                 }
                 $this->em->flush();
-                return true;
+               // return true;
             } catch (Exception $err) {
-                return false;
+                //return false;
             }
             
         }

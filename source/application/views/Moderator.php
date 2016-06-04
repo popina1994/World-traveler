@@ -15,7 +15,9 @@
               href = "<?php echo base_url(); ?>css/Moderator.css">
 
         <script type = 'text/javascript' src = "<?php echo base_url();
-?>js/Moderator.js"></script>
+        ?>js/Moderator.js"></script>
+        <script type = 'text/javascript' src = "<?php echo base_url();
+        ?>js/deletePitanje.js"></script>
 
         <title>Svetski putnik</title>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
@@ -315,7 +317,30 @@
                                             </div>
                                         </div>
 
-<!--IZMENE-->
+<!--IZMENE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
 
 <div class="modal" id="myModalformaTextizmena" role="dialog" data-backdrop=""   tabindex="-1">
             <div class="modal-dialog" role="document">
@@ -600,6 +625,11 @@
                                                                         
                                                                 </tr>
                                                                 <?php $i = 0;
+                                                                
+                                                                $attrubutesRegister = ['name'=>'glavnaForma', 'id'=>'glavnaForma', 'class'=>'form-horizontal'];
+                                                
+                                                                echo form_open('moderatorcontroller/', $attrubutesRegister);
+                                                                
                                                                 foreach ($pitanje as $p) {
                                                                     ?>
                                                                     <tr>
@@ -608,27 +638,26 @@
                                                                         </td>
                                                                         <td valign="middle"><?php echo $p['nivo']; ?> &nbsp;<td>
                                                                         <td valign="middle"><?php echo $p['oblast']; ?> &nbsp;</td>
-                                                                        <td valign="middle"><?php echo $p['idPitanja']; ?> &nbsp;</td>
+                                                                        <td valign="middle"><?php echo $p['idPitanja']; ?> </td>
                                                                         <td valign="middle"><?php
-                                                                            $attrubutesRegister = ['name' => 'izmeniDugme' . $p['idPitanja'], 'id' => 'izmeniDugme' . $p['idPitanja'], 'class' => 'form-horizontal'];
-                                                                            echo form_open("moderatorcontroller/izmeniPitanje/" . $p['idPitanja'], $attrubutesRegister);
-                                                                            $strp = $p['idPitanja']; $strp='button'.$strp;
-                                                                            echo "<button class=" . "'button3'" . "  id=" . "'$strp'" . ">IZMENI</button>";
-                                                                            echo form_close();
+                                                                            $pom=$p['idPitanja'];
+                                                                            echo "<button class=" . "'button3'" . "  id=" . "'izmeni'" ." name="."'izmeni'"." value="."'$pom'".">IZMENI</button>";
+                                                                           
                                                                             ?></td> 
                                                                         <td valign="middle"><?php
-                                                                            $attrubutesRegister = ['name' => 'brisiDugme' . $p['idPitanja'], 'id' => 'brisiDugme' . $p['idPitanja'], 'class' => 'form-horizontal'];
-                                                                            echo form_open("moderatorcontroller/deletePitanje/" . $p['idPitanja'], $attrubutesRegister);
-                                                                            $strp = $p['idPitanja'];$strp=$strp.'button';
-                                                                            echo "<button type="."'submit'". "class=" . "'button3'" . "  id=" . "'$strp'" . ">BRIŠI</button>";
-                                                                            echo form_close();
+                                                                            //$attrubutesRegister = ['name' => 'brisiDugme' . $p['idPitanja'], 'id' => 'brisiDugme' . $p['idPitanja'], 'class' => 'form-horizontal'];
+                                                                            //echo form_open("moderatorcontroller/deletePitanje/" . $p['idPitanja'], $attrubutesRegister);
+                                                                            //$strp = $p['idPitanja'];$strp=$strp.'button';
+                                                                            //echo "<button class="."'button3',  id=" . "'obrisi'" ." name="."'obrisi'"." value="."'$pom'".">OBRIŠI</button>";
+                                                                            echo "<button class="."'button3', type="."'submit'".", name='obrisi',"."  value="."'$pom'".",  id="."'$pom'"." >OBRIŠI</button>";
+//echo form_close();
                                                                             $i++;
                                                                           ?>
                                                                                 
                                                                          </td>
-                                                            </tr>       
+                                                                    </tr>       
                                                                         <?php  }
-                                                                    
+                                                                     echo form_close();
                                                                             ?>
                                                         </table>
                                                         

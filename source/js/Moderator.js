@@ -45,8 +45,9 @@ $(document).ready(function(){
     $("#b12").click(function(){
         $('#myModalizmena').modal('show');
         
+        
         document.getElementById("b11").disabled=true;
-        document.getElementById("b12").disabled=true;
+        document.getElementById("b12").disabled=true;  
     });
      $("#dod2").click(function(){
          var pitanje=$('input[name=vrsta]:checked', '#myModaldodaj').val(); 
@@ -104,8 +105,18 @@ $(document).ready(function(){
         document.getElementById("b11").disabled=false;
         document.getElementById("b12").disabled=false;
     });
+
    
 });
+
+
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
 
 
 

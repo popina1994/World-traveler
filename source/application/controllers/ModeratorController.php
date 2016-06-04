@@ -40,14 +40,20 @@ class ModeratorController extends BaseController {
 
     }
     
-    public function deletePitanje($id){
+    public function deletePitanje(){
+        $secret = $this->input->post('secret');
+        $id=$this->input->post('id');
+        if (!$secret){
+        $this->Redirect();
+        }
+        
         $this->load->model('proxies/ModelPitanje');
         $this->ModelPitanje->deletePitanje($id);
-
-        $questions=$this->ModelPitanje->getPitanja();
- 
-        $this->Redirect(['view'=>'Moderator', 'pitanje' => $questions]); 
+            $return['deleted']=$id;
+            $return['succ']=true;
         
+
+        echo json_encode($return);
     }
     //
     public function createTekstPitanje(){
