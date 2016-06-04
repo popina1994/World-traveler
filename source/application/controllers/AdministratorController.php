@@ -29,8 +29,15 @@ class AdministratorController extends BaseController {
         if($usernames==null)$usernames=array();
         $this->Redirect(['view'=>'Administrator', 'moderators'=>$usernames]);
     }
-    
+    public function redirecto(){
+       // echo 8;
+         $this->load->model('proxies/ModelModerator');
+        $usernames=$this->ModelModerator->allModeratorsUserName();
+        if($usernames==null)$usernames=array();
+        $this->Redirect(['view'=>'Administrator', 'moderators'=>$usernames]);
+    }
     public function register() {
+        
         $this->load->model('proxies/ModelModerator');
         
         $username = $this->input->post('userNameRegister');
@@ -102,29 +109,27 @@ class AdministratorController extends BaseController {
                 
         // Protect from unauthorized access.
         //
-        $secret = $this->input->post('secret');
-        if (!$secret)
+        $secret =$this->input->post('secret');
+        if (!$secret){
             Redirect();
-        
+        }
         $i=$this->input->post('brojmoj');
-        
+      
+
         $this->load->model('proxies/ModelModerator');
         $users=$this->ModelModerator->allModeratorsUserName();
         $username = $users[$i];
         
         if ($username) {
             $this->ModelModerator->deleteModerator($data = [ 'username' =>$username]);
-            //$this->Redirect();
+            $return ['deleted']=$username;
+            $return ['userExists']=true;     
         }
         else {
-           // Redirect();
+            $return ['userExists']=false;
+           
         }
         
-        //$username = $this->input->post('nameLogin');
-       // $password = $this->input->post("passLogin");
-
-
-        $return ['userExists']=true;
         echo json_encode($return);
     }
     

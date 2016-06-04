@@ -73,5 +73,28 @@ class ModelTakmicar extends CI_Model {
 		else
 			return null;
 	}
+        function updateTakmicar($data){
+
+            $oldusername=$data['oldusername'];
+            $ime=$data['ime'];
+            $prezime=$data['prezime'];
+            $username=$data['username'];
+            $password=$data['password'];
+            //$reppassword=$data['reppassword'];
+            
+            $users = $this->em->getRepository ( 'RegKorisnik' )->findBy ( array (
+				'username' => $oldusername 
+		) );
+            $idkor= $users[0]->getIdkor();
+            $user= $this->doctrine->em->find ( "Takmicar", $idkor );
+	    
+            $users[0]->setUsername($username);
+            $users[0]->setPassword($password);
+            $user->setIme($ime);
+            $user->setPrezime($prezime);
+            $this->em->flush();
+            
+            return true;
+        }
 	
 }

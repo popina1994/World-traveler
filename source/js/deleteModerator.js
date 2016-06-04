@@ -7,26 +7,38 @@
 
 
 
-$(document).ready(function(){   
-         $('#obrisiDugme').submit( function(event) {
+$(document).ready(function(){  
+    //var form=$("obrisiDugme");
+        // $('.button3').click( function(event) {
+         $('button[name=brojmoj]').click( function(event) {
 
-            var form = this;
-                                            
+            var form=$('#obrisiDugme');
+          // var formData= $('#obrisiDugme').serialize() + '&brojmoj=' + $(this).val();
+         //  formData.push({name: this.name, value: this.value});
+        /*  var len=formData.length;
+           var podaci={};
+           for(i=0;i<len;i++){
+               podaci[formData[i].name]=formData[i].value;
+           }
+             var val=$(this).val();
+             
+             */
             event.preventDefault();
             $.ajax({
                 type: "POST",
                 url: BASE_URL + "index.php/administratorcontroller/deletevalidation/",
-                data : {brojmoj : $("#brojmoj").val(),
-                        //passLogin : $("#passLogin").val(),
+                data : {brojmoj : $(this).val(),
+                        //pipi : $.name(formData),
                         secret : true},
                 dataType: "json", 
                 success:function(data){
                    //$("#ime").text.html(data);
-                  alertify.log("Provera da li su dobro ime i sifra");
+                  alertify.log("Podaci primljeni");
                    if (data.userExists === true) {
-                     
-                      alertify.success("Uspesno obrisan moderator"); 
+
+                      alertify.success("Obrisan moderator: " +data.deleted); 
                       form.submit();
+                      
                    }
                    else {
                      alertify.error("Neuspesno brisanje");
@@ -37,4 +49,6 @@ $(document).ready(function(){
                    
             
         });
+       
+ 
 });

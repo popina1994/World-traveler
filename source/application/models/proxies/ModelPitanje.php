@@ -43,20 +43,28 @@ class ModelPitanje extends CI_Model {
             try{
                 
                 
-                $entity = $this->em->getPartialReference("Pitanje", $id);
+               // $entity = $this->em->getPartialReference("Pitanje", $id);
+                $entity= $this->doctrine->em->find ( "Pitanje", $id );
                 $this->em->remove($entity);
-                $this->em->flush();
-                $entity2 = $this->em->getPartialReference("LicnostPitanje", $id);
-                $this->em->remove($entity2);
-                $this->em->flush();
-                $entity3 = $this->em->getPartialReference("SlikaPitanje", $id);
-                $this->em->remove($entity3);
-                $this->em->flush();
-                $entity4 = $this->em->getPartialReference("TekstPitanje", $id);
-                $this->em->remove($entity4);
+                //$this->em->flush();
                 
+                $entity2= $this->doctrine->em->find ( "LicnostPitanje", $id );
+             //   $entity2 = $this->em->getPartialReference("LicnostPitanje", $id);
+                if($entity2!=null){$this->em->remove($entity2);
+               // $this->em->flush();
+                }
+                $entity3= $this->doctrine->em->find ( "SlikaPitanje", $id );
+               // $entity3 = $this->em->getPartialReference("SlikaPitanje", $id);
+                if($entity3!=null){$this->em->remove($entity3);
+               // $this->em->flush();
                 
-                
+                }
+                $entity4= $this->doctrine->em->find ( "TekstPitanje", $id );
+   
+                if($entity4!=null){$this->em->remove($entity4);
+
+                //$this->em->flush();}
+                }
                 $this->em->flush();
                 return true;
             } catch (Exception $err) {

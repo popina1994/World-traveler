@@ -380,24 +380,24 @@
                                                                         <td valign="middle"><?php
                                                                             $attrubutesRegister = ['name' => 'izmeniDugme' . $p['idPitanja'], 'id' => 'izmeniDugme' . $p['idPitanja'], 'class' => 'form-horizontal'];
                                                                             echo form_open("moderatorcontroller/izmeniPitanje/" . $p['idPitanja'], $attrubutesRegister);
-                                                                            $strp = $p['idPitanja'];
-                                                                            echo "<button class=" . "'button3'" . "  id=" . "'button'.$strp" . ">IZMENI</button>";
+                                                                            $strp = $p['idPitanja']; $strp='button'.$strp;
+                                                                            echo "<button class=" . "'button3'" . "  id=" . "'$strp'" . ">IZMENI</button>";
                                                                             echo form_close();
                                                                             ?></td> 
                                                                         <td valign="middle"><?php
                                                                             $attrubutesRegister = ['name' => 'brisiDugme' . $p['idPitanja'], 'id' => 'brisiDugme' . $p['idPitanja'], 'class' => 'form-horizontal'];
                                                                             echo form_open("moderatorcontroller/deletePitanje/" . $p['idPitanja'], $attrubutesRegister);
-                                                                            $strp = $p['idPitanja'];
-                                                                            echo "<button class=" . "'button3'" . "  id=" . "$strp.'button'" . ">BRIŠI</button>";
+                                                                            $strp = $p['idPitanja'];$strp=$strp.'button';
+                                                                            echo "<button type="."'submit'". "class=" . "'button3'" . "  id=" . "'$strp'" . ">BRIŠI</button>";
                                                                             echo form_close();
                                                                             $i++;
-                                                                          }
-                                                                    
-                                                                            ?>
+                                                                          ?>
                                                                                 
                                                                          </td>
                                                             </tr>       
-
+                                                                        <?php  }
+                                                                    
+                                                                            ?>
                                                         </table>
 
                                                     </div>

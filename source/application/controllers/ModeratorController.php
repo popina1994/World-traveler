@@ -31,24 +31,24 @@ class ModeratorController extends BaseController {
     }
 
     public function index() {
-        //$this->load->view('Administrator');
+
         $this->load->model('proxies/ModelPitanje');
         $questions=$this->ModelPitanje->getPitanja();
-       
+ 
         $this->Redirect(['view'=>'Moderator', 'pitanje' => $questions]); 
         
-       // $this->Redirect(['view'=>'Moderator']);
+
     }
     
     public function deletePitanje($id){
         $this->load->model('proxies/ModelPitanje');
         $this->ModelPitanje->deletePitanje($id);
-        //$this->Redirect(['view'=>'Moderator']);
-        Redirect();
+
+        $questions=$this->ModelPitanje->getPitanja();
+ 
+        $this->Redirect(['view'=>'Moderator', 'pitanje' => $questions]); 
         
     }
-
-
     //
     public function createTekstPitanje(){
         //dio pitanja koji ima svako pitanje
@@ -511,6 +511,21 @@ class ModeratorController extends BaseController {
         echo json_encode($return);
         
     }     
+    
+    public function izmeniTekstAutoFill($id){
+        $secret = $this->input->post('secret');
+        if (!$secret)
+            Redirect();
+        
+        $this->load->model('proxies/ModelTekstPitanje');
+        
+        
+        $data['id']=$id;
+        $pd=$this->ModelTekstPitanje->getTekstPodaci($data);
+        $return['data']=$pd;
+        
+         echo json_encode($return);
+    }
     
     
     

@@ -126,7 +126,10 @@
             <p >Poeni</p>
             <label for="passengers" style="color: greenyellow;"> <?php echo $passengers ?></label>
             <p >Putnici</p>
-            <button id="settings"><?php
+           
+            <?php 
+                $u=$this->session->username;
+            echo"<button id="."'settings' "." value="."'$u'",">";
             $image_properties = array(
                 'src' => 'img/sett.png',
                 'id' => 'user',
@@ -147,6 +150,8 @@
                 echo img($image_properties);
                 ?></button>
         </div>
+        
+
 
 
         <div class="container">
@@ -338,7 +343,7 @@
                                     <td>
                                         Ime:
                                         <br>
-                                        <input type="text" id="nameRegister" name="nameRegister">
+                                        <input type="text" id="nameRegister" name="nameRegister" >
                                     </td>
 
                                 </tr>
@@ -381,7 +386,7 @@
                                 <tr>
                                     <td colspan="2">
                                         <div id="dugmici">
-                                            <button class="button2"  id="dod2">OK</button>
+                                            <button class="button2" name="promeni"  id="promeni">OK</button>
 
                                         </div>
 
@@ -404,6 +409,28 @@
                         <div class="modal-body" id="scroll">
                             <font color="greenyellow" size="20px">***RANG LISTA***</font>
                             <!--ovde ide php za ubacivanje korisnika iz baze-->
+                            <table>
+                            <?php $i = 0;
+                            
+                            
+                                                                foreach ($lista as $p) {
+                                                                    ?>
+                                                                    <tr>
+                                                                        
+                                                                        <td valign="middle"><?php echo $p['nivo']; ?> &nbsp;<td>
+                                                                        <td valign="middle"><?php echo $p['oblast']; ?> &nbsp;</td>
+                                                                        <td valign="middle"><?php echo $p['idPitanja']; ?> &nbsp;</td>
+                                                                        
+                                                                       <?php
+                                                                          }
+                                                                    
+                                                                            ?>
+                                                                                
+                                                                        
+                                                            </tr>  
+                            
+                            </table>
+                            
                         </div>
                     </div>
                 </div>

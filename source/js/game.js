@@ -44,7 +44,42 @@ $(document).ready(function(){
 
         }); 
     });
-     $("#settings").click(function(){
+     $("#settings").click(function(event){
+         
+         event.preventDefault();
+          
+                  $.ajax({
+
+            type: "POST",
+            url: BASE_URL + "index.php/game/getProfil/",
+
+            data : {
+                    username : $("#settings").val(),
+                    secret : true
+                },
+
+            dataType: "json", 
+            success:function(data){
+                
+              
+
+                    //$("#lista")=data.podaci;
+                    alertify.error(data.ime);
+                    $('#nameRegister').val( data.ime);
+                    $('#surNameRegister').val( data.prezime);
+                    $('#userNameRegister').val( data.username);
+                    $('#passRegister').val( data.password);
+                    $('#repeatPass').val( data.password);
+                    
+                //potrebno odraditi i za sliku
+                
+            },
+           
+
+        });
+         
+         
+         
         $('#myModalprofil').modal('show');
         
         document.getElementById("settings").disabled=true;
@@ -56,9 +91,36 @@ $(document).ready(function(){
         document.getElementById("settings").disabled=false;
         document.getElementById("rang").disabled=false;
     });
-     $("#rang").click(function(){
+     $("#rang").click(function(event){
+         
+         event.preventDefault();
+          
+                  $.ajax({
+
+            type: "POST",
+            url: BASE_URL + "index.php/game/getRangList/",
+
+            data : {
+                    secret : true
+                },
+
+            dataType: "json", 
+            success:function(data){
+                
+              
+
+                    //$("#lista")=data.podaci;
+                    alertify.error("fddffd");
+                    
+                
+                
+                   
+                
+            },
+           
+
+        }); 
         $('#myModalrang').modal('show');
-        
         document.getElementById("settings").disabled=true;
         document.getElementById("rang").disabled=true;
     });
@@ -68,6 +130,46 @@ $(document).ready(function(){
         document.getElementById("settings").disabled=false;
         document.getElementById("rang").disabled=false;
     });
+    $("#promeni").click(function(event){
+        
+         event.preventDefault();     
+                  $.ajax({
+
+            type: "POST",
+            url: BASE_URL + "index.php/game/updateProfil/",
+
+            data : {
+                    oldusername : $("#settings").val(),
+                    ime : $("#nameRegister").val(),
+                    prezime : $("#surNameRegister").val(),
+                    username : $("#userNameRegister").val(),
+                    password : $("#passRegister").val(),
+                    reppassword : $("#repeatPass").val(),
+                    secret : true
+                },
+
+            dataType: "json", 
+            success:function(data){
+                   //$("#ime").text.html(data);
+                  alertify.log("Provera da li su dobro ime i sifra");
+                   if (data.updateSucc === true) {
+                     
+                      alertify.success("Uspesno promenjen profil"); 
+                      $('#myModalprofil').modal('hide');
+                      document.getElementById("settings").disabled=false;
+                      document.getElementById("rang").disabled=false;
+                   }
+                   else {
+                     alertify.error(data.error);
+                   }
+                }
+           
+
+        });
+        
+        
+        
+    }); 
 }); 
 
 

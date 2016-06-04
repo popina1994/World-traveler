@@ -535,4 +535,124 @@ class Game extends BaseController {
         $return['text'] = $zagonetna;  
         echo json_encode($return);
     }
+    
+    public function getRangList(){
+        
+        $secret = $this->input->post('secret');
+        if (!$secret)
+        $this->Redirect();
+        
+        
+        
+        $igre= $this->doctrine->em->getRepository('Igra')->findAll();
+        $max=0;
+        $res=array();
+        $sol; $k=0;
+        foreach($igre as $igra){
+            $idkor=$igra->getIdkor()->getIdkor()->getIdkor();
+            echo $idkor;
+            if($idkor>$max){$max=$idkor;}
+            $poeni=$igra->getPoeni();
+            if(count($res)<$poeni){$res[$idkor]=0;}
+            if($res[$idkor]<=$poeni){
+                $res[$idkor]=$poeni;
+            }
+        }
+       reset($res);
+       while(list($id, $poeni)=each($res)){
+           $username= $this->doctrine->em->find ( "RegKorisnik", $id )->getUsername();
+           $sol[$username]=$poeni;
+       }
+       arsort($sol);
+        
+        while(list($username, $poeni)=each($sol)){
+           $ret[$k]['nivo']=$username;
+           $ret[$k]['oblast']=$poeni;   
+           $ret[$k]['idPitanja']=$poeni; 
+           $k++;
+        }
+        //return $ret;
+        $return['podaci'] = $ret;  
+        echo json_encode($return);
+        
+    }
+    
+    public function getProfil(){
+        $secret = $this->input->post('secret');
+        if (!$secret)
+        $this->Redirect();
+        $username=$this->input->post('username');
+        
+        $users=$this->doctrine->em->getRepository ( 'RegKorisnik' )->findBy ( array (
+				'username' => $username
+		) );
+        $idkor= $users[0]->getIdkor();
+        $user= $this->doctrine->em->find ( "Takmicar", $idkor );
+        
+        
+        $return['ime']=$user->getIme();
+        $return['prezime']=$user->getPrezime();
+        $return['username']=$username;
+        $return['password']=$users[0]->getPassword();
+        
+        
+        echo json_encode($return);
+        
+    }
+    
+    public function updateProfil(){
+        $secret = $this->input->post('secret');
+        if (!$secret)
+        $this->Redirect();
+        
+        
+        $oldusername=$this->input->post('oldusername');
+        $ime=$this->input->post('ime');
+        $prezime=$this->input->post('prezime');
+        $username=$this->input->post('username');
+        $password=$this->input->post('password');
+        $reppassword=$this->input->post('reppassword');
+        
+        $m=false;
+        $return['error'] = "";
+        $return['updateSucc'] = false;
+        if ($ime == '') {
+            $return['error'] = 'Ime nednostaje';
+        }
+        else if ($prezime == '') {
+            $return['error'] = 'Prezime nedostaje';
+        }
+        else if ($username == '') {
+            $return['error'] = 'Nepravilno korisnickko ime';
+        }
+        else if (!preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,16}$/', $password)) {
+            $return['error'] = 'Neispravan obrazac sifre';
+        }
+        else if ($password != $reppassword) {
+            $return['error'] = 'Ne poklapaju se sifre';
+        }
+        else if ($username!=$oldusername && $this->ModelRegKorisnik->exists($data=['username'=>$username])){
+            $return['error'] = "Korisnicko ime $username vec postoji";
+        }
+        else {
+            $return['updateSucc'] = true;
+            $m=true;
+        }
+        if($m==true){//update Profil u bazu
+            
+        $this->load->model('proxies/ModelTakmicar');
+        $this->load->model('proxies/ModelRegKorisnik');
+        
+        $this->ModelTakmicar->updateTakmicar([
+                            'oldusername'=> $oldusername,
+                            'ime'=> $ime,
+                            'prezime'=> $prezime,
+                            'username'=> $username,
+                            'password'=> $password
+ 
+            ]);   
+        }
+        
+       echo json_encode($return); 
+    }
 }

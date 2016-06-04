@@ -15,6 +15,9 @@
             ?>js/registermoderator.js"></script>
             
             <script type = 'text/javascript' src = "<?php echo base_url(); 
+            ?>js/deleteModerator.js"></script>
+            
+            <script type = 'text/javascript' src = "<?php echo base_url(); 
             ?>js/Administrator.js"></script>
 
               <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -120,7 +123,7 @@
                         $i=0;
                         $attrubutesRegister = ['name'=>'obrisiDugme', 'id'=>'obrisiDugme', 'class'=>'form-horizontal'];
                                                 
-                        echo form_open("administratorcontroller/deleteModerator", $attrubutesRegister);
+                        echo form_open('administratorcontroller/', $attrubutesRegister);
                         foreach($moderators as $p){?>
                             <tr>
                                
@@ -143,7 +146,7 @@
                                                 $str=$i;
                                                 $str="$str";
                                           
-                                                echo "<button class="."'button3', type="."'submit'".", name='brojmoj', id='brojmoj', value="."'$str'"." >OBRIŠI</button>";
+                                                echo "<button class="."'button3', type="."'submit'".", name='brojmoj',"."  value="."'$str'".",  id="."'$str'"." >OBRIŠI</button>";
                                            
                                                 
                                                   $i++;
