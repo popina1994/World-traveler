@@ -174,7 +174,7 @@ p{
 }
 
 #rangT{
-    width: 280px;
+    width: 297px;
     text-align: center;
 }
 
@@ -189,7 +189,7 @@ td.rangO{
     padding:0px;
     align-items: center;
     text-align: center;
-    overflow-y: scroll;
+    /*overflow-y: scroll;*/
     height: 250px;
     background-color: black;
 }
