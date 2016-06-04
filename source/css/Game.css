@@ -4,6 +4,12 @@
     /*background-color: #E5DADA;*/
 }
 
+td.rangN{
+    color: yellowgreen;
+    font-weight: bold;
+    padding: 5px;
+}
+
  
   .next{
       background:none;
@@ -164,6 +170,18 @@ p{
     margin-left: 70px;
     position: absolute;
     z-index: 50;
+   
+}
+
+#rangT{
+    width: 280px;
+    text-align: center;
+}
+
+td.rangO{
+    color: white;
+    font-weight: bold;
+    padding: 5px;
 }
 
 #scroll{

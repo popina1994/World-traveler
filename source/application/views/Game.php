@@ -411,28 +411,26 @@
                             <h4> Rang Lista </h4>
                         </div>
                         <div class="modal-body" id="scroll">
-                            <font color="greenyellow" size="20px">***RANG LISTA***</font>
+                           
                             <!--ovde ide php za ubacivanje korisnika iz baze-->
-                            <table>
-                            <?php $i = 0;
-                            
-                            
-                                                                foreach ($lista as $p) {
-                                                                    ?>
-                                                                    <tr>
-                                                                        
-                                                                        <td valign="middle"><?php echo $p['nivo']; ?> &nbsp;<td>
-                                                                        <td valign="middle"><?php echo $p['oblast']; ?> &nbsp;</td>
-                                                                        <td valign="middle"><?php echo $p['idPitanja']; ?> &nbsp;</td>
-                                                                        
-                                                                       <?php
-                                                                          }
-                                                                    
-                                                                            ?>
-                                                                                
-                                                                        
-                                                            </tr>  
-                            
+                            <table id="rangT" border="1">
+                                <tr >
+                                    <td class="rangN">BR.</td>
+                                    <td class="rangN">KORISNICKO IME</td>
+                                    <td class="rangN">POENI</td>
+                                </tr>
+                                 <tr >
+                                    <td class="rangO">1.</td>
+                                    <td class="rangO">PERA</td>
+                                    <td class="rangO">432</td>
+                                </tr>
+                                 <tr >
+                                    <td class="rangO">2.</td>
+                                    <td class="rangO">MIKA</td>
+                                    <td class="rangO">431</td>
+                                </tr>
+                                               
+                                                            
                             </table>
                             
                         </div>
