@@ -292,7 +292,7 @@
                             <label for="markEnigma4">4.   </label> <label for="answerEnigma4"></label>  <br/>
                             <label for="markEnigma5">5.  </label> <label for="answerEnigma5"></label>  <br/>
                             <label for="markEnigma6">6.  </label> <label for="answerEnigma6"></label>  <br/></div>
-                            <label for="Broj pokusaja">Broj pokusaja  </label> <label for="numTries"></label>  <br/>
+                            <label for="Broj pokusaja">Broj pokušaja  </label> <label for="numTries"></label>  <br/>
                             <input type="text" maxlength="1" minlength="1" name="letter" id="letter" placeholder="Guess a letter" /> <br/>
                             <label for="Finish"></label>  <br/>
                             
@@ -411,28 +411,26 @@
                             <h4> Rang Lista </h4>
                         </div>
                         <div class="modal-body" id="scroll">
-                            <font color="greenyellow" size="20px">***RANG LISTA***</font>
+                           
                             <!--ovde ide php za ubacivanje korisnika iz baze-->
-                            <table>
-                            <?php $i = 0;
-                            
-                            
-                                                                foreach ($lista as $p) {
-                                                                    ?>
-                                                                    <tr>
-                                                                        
-                                                                        <td valign="middle"><?php echo $p['nivo']; ?> &nbsp;<td>
-                                                                        <td valign="middle"><?php echo $p['oblast']; ?> &nbsp;</td>
-                                                                        <td valign="middle"><?php echo $p['idPitanja']; ?> &nbsp;</td>
-                                                                        
-                                                                       <?php
-                                                                          }
-                                                                    
-                                                                            ?>
-                                                                                
-                                                                        
-                                                            </tr>  
-                            
+                            <table id="rangT" border="1">
+                                <tr >
+                                    <td class="rangN">BR.</td>
+                                    <td class="rangN">KORISNIČKO IME</td>
+                                    <td class="rangN">POENI</td>
+                                </tr>
+                                 <tr >
+                                    <td class="rangO">1.</td>
+                                    <td class="rangO">PERA</td>
+                                    <td class="rangO">432</td>
+                                </tr>
+                                 <tr >
+                                    <td class="rangO">2.</td>
+                                    <td class="rangO">MIKA</td>
+                                    <td class="rangO">431</td>
+                                </tr>
+                                               
+                                                            
                             </table>
                             
                         </div>
