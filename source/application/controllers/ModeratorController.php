@@ -107,8 +107,8 @@ class ModeratorController extends BaseController {
     //potrebno napraviti js fajlove za proveru unetih podataka
     //potrebno dodati ekstenziju na ime slike, mozda
     public function createSlikaPitanje(){
-        $idniv=$this->input->post('nivo');
-        $idobl=$this->input->post('oblast');
+        $idniv=$this->input->post('nivos2');
+        $idobl=$this->input->post('oblasts2');
         //OVO TREBA UNCOMMENTOVATI KADA SE NAPRAVI HTML
       //kod za dohvatanje id-a moderatora
         
@@ -124,12 +124,12 @@ class ModeratorController extends BaseController {
         
        // $idkor= 583;//slaleM
         
-        $postavka=$this->input->post('postavka');
-        $odgovor1=$this->input->post('o1');
-        $odgovor2=$this->input->post('o2');
-        $odgovor3=$this->input->post('o3');
-        $odgovor4=$this->input->post('o4');
-        $tacan=$this->input->post('tacan');
+        $postavka=$this->input->post('postavkas2');
+        $odgovor1=$this->input->post('o1s2');
+        $odgovor2=$this->input->post('o2s2');
+        $odgovor3=$this->input->post('o3s2');
+        $odgovor4=$this->input->post('o4s2');
+        $tacan=$this->input->post('tacans2');
         
 
         $idniv =  $this->doctrine->em->getRepository('NivoTezine')->findBy(array('naziv' => $idniv))[0];
@@ -419,9 +419,14 @@ class ModeratorController extends BaseController {
         
         // Protect from unauthorized access.
         //
+         
+        
         $secret = $this->input->post('secret');
-        if (!$secret)
+  
+        if (!$secret){
             Redirect();
+        }
+        
         
         $idniv=$this->input->post('nivo');
         $idobl=$this->input->post('oblast');
@@ -433,6 +438,8 @@ class ModeratorController extends BaseController {
         $odgovor4=$this->input->post('o4');
         $tacan=$this->input->post('tacan');
         
+                       // $return['idniv']=$idniv;
+                       
         
         //$this->load->model('proxies/ModelRegKorisnik');
         
@@ -440,7 +447,7 @@ class ModeratorController extends BaseController {
         //
         $return['error'] = "";
 
-        $return['registerSucc'] = false;
+        $return['succ'] = false;
         
         if ($odgovor1 == '' || $odgovor2 == '' || $odgovor3 == '' || $odgovor4 == '' || $tacan == '' || $postavka == '' || $idniv == '' || $idobl == '' ) {
             $return['error'] = 'Nisu sva polja popunjena';
@@ -449,11 +456,12 @@ class ModeratorController extends BaseController {
             $return['error'] = 'Neodgovarajuci opseg tacnog odgovora';
         }
         else {
-            $return['registerSucc'] = true;
-        }
-        echo json_encode($return);
+            $return['succ'] = true;
+        }      
         
-    }
+        //$return['succ'] = true;
+        echo json_encode($return);     
+}
     
     public function inputValidationSlikaPitanje() {
         
@@ -477,7 +485,7 @@ class ModeratorController extends BaseController {
         $idniv=$this->input->post('nivo');
         $idobl=$this->input->post('oblast');
         //$slika=$this->input->post('userfile');
-   
+   $return['idniv'] = $idniv;
 
         
         $this->load->model('proxies/ModelRegKorisnik');

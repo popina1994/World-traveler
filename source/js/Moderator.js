@@ -36,6 +36,40 @@ function t(){
     }
 
 $(document).ready(function(){
+    
+        $('button[name=submitt]').click( function(event) {
+         var form=$('#dodajt');
+           
+            event.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: BASE_URL + "index.php/moderatorcontroller/inputValidationTekstPitanje",
+                data : {
+                        /*nivo: $('#nivo').val(),
+                        oblast: $('#oblast').val(),
+                        postavka: $('#postavka').val(),
+                        o1: $('#o1').val(),
+                        o2: $('#o2').val(),
+                        o3: $('#o3').val(),
+                        o4: $('#o4').val(),
+                        tacan: $('#tacan').val(),*/
+                        secret : true},
+                dataType: "json", 
+                success:function(data){
+                    
+                      alertify.error( "datdsfsdf");
+                    if(data.succ===true){
+                        alertify.success("Uspjesno dodato pitanje! ");
+                        form.submit();
+                    }else{
+                        alertify.error( data.error);
+                    }
+                    
+                }
+                });
+    });
+    
+    
     $("#b11").click(function(){
         $('#myModaldodaj').modal('show');
         
@@ -55,6 +89,14 @@ $(document).ready(function(){
              $('#myModaldodaj').modal('hide');
              $('input[name=vrsta]').prop('checked', false);
             $('#myModalformaText').modal('show');
+            document.getElementById("postavka").value="";
+            document.getElementById("o1").value="";
+            document.getElementById("o2").value="";
+            document.getElementById("o3").value="";
+            document.getElementById("o4").value="";
+            document.getElementById("nivo").value="";
+            document.getElementById("tacan").value="";
+            document.getElementById("oblast").value="";
             document.getElementById("b11").disabled=true;
             document.getElementById("b12").disabled=true;
          }
@@ -62,6 +104,14 @@ $(document).ready(function(){
               $('#myModaldodaj').modal('hide');
               $('input[name=vrsta]').prop('checked', false);
             $('#myModalformaPic').modal('show');
+            /*document.getElementById("postavka").value="";
+            document.getElementById("o1").value="";
+            document.getElementById("o2").value="";
+            document.getElementById("o3").value="";
+            document.getElementById("o4").value="";
+            document.getElementById("nivo").value="";
+            document.getElementById("tacan").value="";
+            document.getElementById("oblast").value="";*/
             document.getElementById("b11").disabled=true;
             document.getElementById("b12").disabled=true;
          }
@@ -69,6 +119,14 @@ $(document).ready(function(){
                $('#myModaldodaj').modal('hide');
                $('input[name=vrsta]').prop('checked', false);
             $('#myModalformaEnig').modal('show');
+            /*document.getElementById("postavka").value="";
+            document.getElementById("o1").value="";
+            document.getElementById("o2").value="";
+            document.getElementById("o3").value="";
+            document.getElementById("o4").value="";
+            document.getElementById("nivo").value="";
+            document.getElementById("tacan").value="";
+            document.getElementById("oblast").value="";*/
             document.getElementById("b11").disabled=true;
             document.getElementById("b12").disabled=true;
          }
