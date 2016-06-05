@@ -104,14 +104,14 @@ $(document).ready(function(){
               $('#myModaldodaj').modal('hide');
               $('input[name=vrsta]').prop('checked', false);
             $('#myModalformaPic').modal('show');
-            /*document.getElementById("postavka").value="";
-            document.getElementById("o1").value="";
-            document.getElementById("o2").value="";
-            document.getElementById("o3").value="";
-            document.getElementById("o4").value="";
-            document.getElementById("nivo").value="";
-            document.getElementById("tacan").value="";
-            document.getElementById("oblast").value="";*/
+            document.getElementById("postavkas2").value="";
+            document.getElementById("o1s2").value="";
+            document.getElementById("o2s2").value="";
+            document.getElementById("o3s2").value="";
+            document.getElementById("o4s2").value="";
+            document.getElementById("nivos2").value="";
+            document.getElementById("tacans2").value="";
+            document.getElementById("oblasts2").value="";
             document.getElementById("b11").disabled=true;
             document.getElementById("b12").disabled=true;
          }
@@ -119,14 +119,15 @@ $(document).ready(function(){
                $('#myModaldodaj').modal('hide');
                $('input[name=vrsta]').prop('checked', false);
             $('#myModalformaEnig').modal('show');
-            /*document.getElementById("postavka").value="";
-            document.getElementById("o1").value="";
-            document.getElementById("o2").value="";
-            document.getElementById("o3").value="";
-            document.getElementById("o4").value="";
-            document.getElementById("nivo").value="";
-            document.getElementById("tacan").value="";
-            document.getElementById("oblast").value="";*/
+            document.getElementById("s1l3").value="";
+            document.getElementById("s2l3").value="";
+            document.getElementById("s3l3").value="";
+            document.getElementById("s4l3").value="";
+            document.getElementById("s5l3").value="";
+            document.getElementById("s6l3").value="";
+            document.getElementById("licnostl3").value="";
+            document.getElementById("nivol3").value="";
+            document.getElementById("oblastl3").value="";
             document.getElementById("b11").disabled=true;
             document.getElementById("b12").disabled=true;
          }
