@@ -46,7 +46,7 @@
             <button class="button1" id="b12" >IZMENI/OBRISI PITANJE</button>
         </div>
 
-        <p> <br/><br/><br/><br/>
+        <p> <br/><br/>
             <?php
             $attrubutesRegister = ['name' => 'logOutForm', 'id' => 'logOutForm', 'class' => 'form-horizontal'];
             echo form_open('main/logOut', $attrubutesRegister);

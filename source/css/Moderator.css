@@ -12,6 +12,15 @@ body{
 
 }
 
+#dugmici123{
+    /*padding-top: 150px !important;*/
+    text-align: center !important;
+    align-content: center !important;
+    width: 100% !important;
+   /* background-color: red;*/
+}
+
+
 .modal fade{
     margin:0px;
     padding:0px;
@@ -53,38 +62,38 @@ body{
 
 
 #myModaldodaj{
-    margin-top: 200px;
-    margin-left: 550px;
+    margin-top: -200px;
+   /* margin-left: 550px;*/
  
 }
 
 #myModalformaText{
-    margin-top: 130px;
-    margin-left: 400px;
+    margin-top: -130px;
+    /*margin-left: 400px;*/
  
 }
 #myModalformaPic{
-    margin-top: 70px;
-    margin-left: 400px;
+    margin-top: -70px;
+    /*margin-left: 400px;*/
  
 }
 
 #myModalformaEnig{
-    margin-top: 70px;
-    margin-left: 400px;
+    margin-top: -70px;
+   /* margin-left: 400px;*/
  
 }
-#myModalformaTextizmena{
-      margin-top: 70px;
-    margin-left: 400px;
+#Textizmena{
+      margin-top: -70px;
+    /*margin-left: 400px;*/
 }
-#myModalformaPicizmena{
-    margin-top: 70px;
-    margin-left: 400px;
+#Picizmena{
+    margin-top: -70px;
+    /*margin-left: 400px;*/
 }
-#myModalformaEnigizmena{
-    margin-top: 70px;
-    margin-left: 400px;
+#Enigizmena{
+    margin-top: -70px;
+   /* margin-left: 400px;*/
 }
 
 #scroll{
@@ -102,8 +111,8 @@ body{
 }
 
 #myModalizmena{
-    margin-top: 100px;
-    margin-left: 400px;
+    margin-top: -100px;
+    /*margin-left: 400px;*/
     
    
 }
@@ -113,6 +122,25 @@ body{
     margin: 0px;
     text-align: center;
 }
+.modal {
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) { 
+  .modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
 
 
 .button1{
@@ -127,15 +155,16 @@ body{
     display: inline-block;
     font-size: 34px;
     cursor: pointer;
-    float: left;
-    margin-right: 10px;
-    margin-left: 240px;
+    /*float: left;*/
+    margin-right: 50px;
+    margin-left: 50px;
+    
     border-radius: 12px;
     font-weight: bold;
     font-family: Verdana;
     width: 320px;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-    margin-bottom: 25px;
+    margin-bottom: 10px;
 
 }
 
