@@ -82,8 +82,10 @@ td.rangN{
 }
 
 #mapa{
-    width: 1350px;
-    height: 650px;
+    /*width: 1350px;
+    height: 650px;*/
+    widht:100%;
+    height: 100%;
     align-items: center;
     align-content: center;
    margin: 0px;

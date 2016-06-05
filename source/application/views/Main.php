@@ -62,7 +62,7 @@
                 echo form_open('main/startUnregistered', $attrubutes); ?>
    <button class="button">START</button>	
    <?php echo form_close(); ?>
-    <div>
+   <div id="dugmici123">
    
             <button class="button1" id="prijava" >PRIJAVI SE</button>
             <button class="button1" id="registracija">REGISTRUJ SE</button>

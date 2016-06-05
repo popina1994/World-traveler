@@ -19,6 +19,7 @@
         ?>js/alertify.js"></script>
 </head>
 <body>
+    <div id="mainwrapper">
 	<div id="wrapper">
                        <?php 
                 $attrubutes = array('name'=>'levelChoiceForm', 'class'=>'form-horizontal',
@@ -84,5 +85,6 @@
             
             <?php echo form_close(); ?>
 	</div>
+        </div>
 </body>
 </html>
