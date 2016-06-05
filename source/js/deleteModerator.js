@@ -4,25 +4,11 @@
  * and open the template in the editor.
  */
 
-
-
-
 $(document).ready(function(){  
-    //var form=$("obrisiDugme");
-        // $('.button3').click( function(event) {
          $('button[name=brojmoj]').click( function(event) {
 
             var form=$('#obrisiDugme');
-          // var formData= $('#obrisiDugme').serialize() + '&brojmoj=' + $(this).val();
-         //  formData.push({name: this.name, value: this.value});
-        /*  var len=formData.length;
-           var podaci={};
-           for(i=0;i<len;i++){
-               podaci[formData[i].name]=formData[i].value;
-           }
-             var val=$(this).val();
-             
-             */
+
             event.preventDefault();
             $.ajax({
                 type: "POST",

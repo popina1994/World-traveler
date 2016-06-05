@@ -21,7 +21,8 @@
         ?>js/deletePitanje.js"></script>
         <script type = 'text/javascript' src = "<?php echo base_url();
         ?>js/izmeniPitanje.js"></script>
-
+        <script type = 'text/javascript' src = "<?php echo base_url();
+        ?>js/dodajPitanje.js"></script>
         <title>Svetski putnik</title>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 
@@ -99,7 +100,7 @@
                     <div class="modal-body">
                         <div id="formaa">
                             <form action="moderatorcontroller/createtekstpitanje"
-                                  method="post" enctype="multipart/form-data">
+                                  method="post" enctype="multipart/form-data" name="dodajt" id="dodajt">
                                 <label class="control-label">Postavka:</label>
                                 <div class="controls">
                                     <textarea name="postavka" id="postavka" cols="50"></textarea>
@@ -165,7 +166,10 @@
                                     </select>
                                     <p class="help-block"></p><br/>
                                 </div>
-                                <input type="submit" value="Dodaj pitanje" name="submit" class="button2"></form>
+                                
+                                <button class='button2' type='submit' name='submitt'  value=''  id='submitt' >Dodaj pitanje</button>
+                            
+                            </form>
                                 </div>
                                 </div>
                                 </div>
@@ -185,36 +189,36 @@
                                             <div class="modal-body">
                                                 <div id="formaa">
                                                     <form action="moderatorcontroller/createslikapitanje" 
-                                                          method="post" enctype="multipart/form-data" >
+                                                          method="post" enctype="multipart/form-data" name="dodajs" id="dodajs">
                                                         <label class="control-label">Postavka:</label>
                                                         <div class="controls">
-                                                            <textarea name="postavka" id="postavka" cols="50"></textarea>
+                                                            <textarea name="postavkas2" id="postavkas2" cols="50"></textarea>
                                                             <p class="help-block"></p><br/>
                                                         </div>
 
                                                         <div class="controls">
                                                             <label class="control-label">Odgovor1:</label>
-                                                            <input type="text" name="o1" id="o1">
+                                                            <input type="text" name="o1s2" id="o1s2">
                                                             <p class="help-block"></p>
                                                         </div>
                                                         <div class="controls">
                                                             <label class="control-label">Odgovor2:</label>
-                                                            <input type="text" name="o2" id="o2">
+                                                            <input type="text" name="o2s2" id="o2s2">
                                                             <p class="help-block"></p>
                                                         </div>
                                                         <div class="controls">
                                                             <label class="control-label">Odgovor3:</label>
-                                                            <input type="text" name="o3" id="o3">
+                                                            <input type="text" name="o3s2" id="o3s2">
                                                             <p class="help-block"></p>
                                                         </div>
                                                         <div class="controls">
                                                             <label class="control-label">Odgovor4:</label>
-                                                            <input type="text" name="o4" id="o4">
+                                                            <input type="text" name="o4s2" id="o4s2">
                                                             <p class="help-block"></p><br/>
                                                         </div>
                                                         <div class="controls">
                                                             <label class="control-label">Tacan odgovor</label>
-                                                            <select name="tacan">
+                                                            <select name="tacans2" id="tacans2">
                                                                 <option value="">
                                                                     <?php
                                                                     for ($i = 1; $i <= 4; $i++)
@@ -225,7 +229,7 @@
                                                         </div>
                                                         <div class="controls">
                                                             <label class="control-label">Nivo</label>
-                                                            <select name="nivo">
+                                                            <select name="nivos2" id="nivos2">
                                                                 <option value="">Izaberi nivo</option>
                                                                 <?php
                                                                 $nivo = $this->doctrine->em->getRepository('NivoTezine')->findAll();
@@ -239,7 +243,7 @@
                                                         </div>
                                                         <div class="controls">
                                                             <label class="control-label">Oblast</label>
-                                                            <select name="oblast">
+                                                            <select name="oblasts2" id="oblasts2">
                                                                 <option value="">Izaberi oblast</option>
                                                                 <?php
                                                                 $oblast = $this->doctrine->em->getRepository('Oblast')->findAll();
@@ -252,7 +256,10 @@
                                                             <p class="help-block"></p><br/>
                                                         </div>
                                                         Slika:<input type="file" name="userfile" id="userfile"><br /><br/>
-                                                        <input type="submit" value="Dodaj pitanje" name="submit" class="button2"></form>
+                                                       
+                                                        <button class='button2' type='submit' name='submits'  value=''  id='submits' >Dodaj pitanje</button>
+                                                    
+                                                    </form>
                                                         </div>
                                                     
                                                 </div>
@@ -272,20 +279,20 @@
                                                 <div class="modal-body">
                                                     <div id="formaa">
                                                         <form action="moderatorcontroller/createlicnostpitanje" 
-                                                              method="post" enctype="multipart/form-data" name='userfile'>
+                                                              method="post" enctype="multipart/form-data" name='dodajl' id="dodajl" >
 
                                                             <div class="controls">
-                                                                Stavka broj 1: <input type="text" name="s1" id="s1"><br />
-                                                                Stavka broj 2: <input type="text" name="s2" id="s2"><br />
-                                                                Stavka broj 3: <input type="text" name="s3" id="s3"><br />
-                                                                Stavka broj 4: <input type="text" name="s4" id="s4"><br />
-                                                                Stavka broj 5: <input type="text" name="s5" id="s5"><br />
-                                                                Stavka broj 6: <input type="text" name="s6" id="s6"><br />
-                                                                Ime Licnosti:&nbsp;&nbsp; <input type="text" name="licnost" id="licnost"><br /><br/>
+                                                                Stavka broj 1: <input type="text" name="s1l3" id="s1l3"><br />
+                                                                Stavka broj 2: <input type="text" name="s2l3" id="s2l3"><br />
+                                                                Stavka broj 3: <input type="text" name="s3l3" id="s3l3"><br />
+                                                                Stavka broj 4: <input type="text" name="s4l3" id="s4l3"><br />
+                                                                Stavka broj 5: <input type="text" name="s5l3" id="s5l3"><br />
+                                                                Stavka broj 6: <input type="text" name="s6l3" id="s6l3"><br />
+                                                                Ime Licnosti:&nbsp;&nbsp; <input type="text" name="licnostl3" id="licnostl3"><br /><br/>
                                                             </div>
                                                             <div class="controls">
                                                                 <label class="control-label">Nivo</label>
-                                                                <select name="nivo">
+                                                                <select name="nivol3" id="nivol3">
                                                                     <option value="">Izaberi nivo</option>
                                                                     <?php
                                                                     $nivo = $this->doctrine->em->getRepository('NivoTezine')->findAll();
@@ -299,7 +306,7 @@
                                                             </div>
                                                             <div class="controls">
                                                                 <label class="control-label">Oblast</label>
-                                                                <select name="oblast">
+                                                                <select name="oblastl3" id="oblastl3">
                                                                     <option value="">Izaberi oblast</option>
                                                                     <?php
                                                                     $oblast = $this->doctrine->em->getRepository('Oblast')->findAll();
@@ -312,7 +319,9 @@
                                                                 <p class="help-block"></p><br/>
                                                             </div>
                                                             Slika:<input type="file" name="userfile" id="userfile"><br /><br/>
-                                                            <input type="submit" value="Dodaj pitanje" name="submit" class="button2"> </form>
+                                                            
+                                                            <button class='button2' type='submit' name='submitl'  value=''  id='submitl' >Dodaj pitanje</button>
+                                                        </form>
                                                             </div>
                                                        
                                                     </div>
