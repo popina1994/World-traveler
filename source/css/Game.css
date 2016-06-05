@@ -41,7 +41,11 @@ td.rangN{
       float: left;
       align-items: left;
       text-align: left;
-     
+     width: 300px;
+  }
+  
+  .clear{
+      clear:both;
   }
   
   #wrapp_slika{
@@ -59,8 +63,8 @@ td.rangN{
       align-content: center;
       align-self: center;
       text-align: center;
-      
-      height: 470px;
+      /*width: 600px;*/
+      height: 550px;
       
   }
   
