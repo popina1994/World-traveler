@@ -542,7 +542,7 @@ class Game extends BaseController {
         if (!$secret)
         $this->Redirect();
         
-        
+        /*
         
         $igre= $this->doctrine->em->getRepository('Igra')->findAll();
         $max=0;
@@ -572,7 +572,7 @@ class Game extends BaseController {
            $k++;
         }
         //return $ret;
-        $return['podaci'] = $ret;  
+        $return['podaci'] = $ret;  */
         echo json_encode($return);
         
     }

@@ -56,10 +56,11 @@ class ModelLicnostPitanje extends CI_Model{
         
         
         public function updateLicnostPitanje($data){
-            $users = $this->doctrine->em->getRepository ( 'Pitanje' )->findBy ( array (
+            /*$users = $this->doctrine->em->getRepository ( 'Pitanje' )->findBy ( array (
 				'idpit' => $data['$id']
-		) );
-            $user= $this->doctrine->em->find ( "LicnostPitanje", $users[0]->getIdpit() );
+		) );*/
+            $users=  $this->doctrine->em->find ( "Pitanje", $data['id'] );
+            $user= $this->doctrine->em->find ( "LicnostPitanje", $users->getIdpit() );
             $user->setLicnost($data['licnost']);
             $user->setPodatak1($data['podatak1']);
             $user->setPodatak2($data['podatak2']);
@@ -68,12 +69,29 @@ class ModelLicnostPitanje extends CI_Model{
             $user->setPodatak5($data['podatak5']);
             $user->setPodatak6($data['podatak6']);
             $user->setSlika($data['slika']);
-            $users[0]->setIdniv($data['idniv']);
-            $users[0]->setIdobl($data['idobl']);
-            $users[0]->setIdkor($data['idkor']);
+            $users->setIdniv($data['idniv']);
+            $users->setIdobl($data['idobl']);
+            $users->setIdkor($data['idkor']);
             $this->doctrine->em->flush();
         }  
-        
+        public function getLicnostPodaci($data){
+            $id=$data['id'];
+            $pit=  $this->doctrine->em->find ( "LicnostPitanje", $id );
+            $pit2= $this->doctrine->em->find ( "Pitanje", $id );
+           $pd['idniv']=$pit2->getIdniv()->getNaziv();
+           $pd['idobl']=$pit2->getIdobl() ->getNaziv();
+           $pd['podatak1']=$pit->getPodatak1();
+           $pd['podatak2']=$pit->getPodatak2();
+           $pd['podatak3']=$pit->getPodatak3();
+           $pd['podatak4']=$pit->getPodatak4();
+           $pd['podatak5']=$pit->getPodatak5();
+           $pd['podatak6']=$pit->getPodatak6();
+           $pd['licnost']=$pit->getLicnost();
+           $pd['slika']=$pit->getSlika();
+           $pd['id']=$id;
+            
+            return $pd;
+        }
         
 	
 	function getLicnostPitanje($data) {

@@ -35,7 +35,7 @@ function t(){
             document.getElementById("b12").disabled=true;
     }
 
-$(document).ready(function(){ 
+$(document).ready(function(){
     $("#b11").click(function(){
         $('#myModaldodaj').modal('show');
         
