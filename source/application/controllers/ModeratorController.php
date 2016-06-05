@@ -248,21 +248,21 @@ class ModeratorController extends BaseController {
         Redirect();
     }
         
-    public function izmeniTekstPitanje(){
-        $secret = $this->input->post('secret');
-        $id= $this->input->post('id');
+    public function izmeniTekstPitanje($id){
+        /*$secret = $this->input->post('secret');
+        //$id= $this->input->post('id');
         if (!$secret){
             Redirect();
         }
-        
-        $idniv=$this->input->post('nivo');
-        $idobl=$this->input->post('oblast');
-        $postavka = $this->input->post('postavka');
-        $odgovor1=$this->input->post('o1');
-        $odgovor2=$this->input->post('o2');
-        $odgovor3=$this->input->post('o3');
-        $odgovor4=$this->input->post('o4');
-        $tacan=$this->input->post('tacan');
+        */
+        $idniv=$this->input->post('nivo1');
+        $idobl=$this->input->post('oblast1');
+        $postavka = $this->input->post('postavka1');
+        $odgovor1=$this->input->post('o11');
+        $odgovor2=$this->input->post('o21');
+        $odgovor3=$this->input->post('o31');
+        $odgovor4=$this->input->post('o41');
+        $tacan=$this->input->post('tacan1');
         
                 $idkor=$this->session->all_userdata();
         //if(count($idkor)==0){echo "praznoo";}
@@ -292,9 +292,9 @@ class ModeratorController extends BaseController {
                             'odgovor4' => $odgovor4,
                             'tacan' => $tacan
             ]);
-        
-        $return['id']=$id;
-       echo json_encode($return);
+        Redirect();
+       // $return['id']=$id;
+      // echo json_encode($return);
     }
         
     public function izmeniSlikaPitanje($id){
