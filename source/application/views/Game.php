@@ -415,7 +415,7 @@
                             <!--ovde ide php za ubacivanje korisnika iz baze-->
                             <table id="rangT" border="1">
                                 <tr >
-                                    <td class="rangN">BR.</td>
+                                    <td class="rangN" >BR.</td>
                                     <td class="rangN">KORISNIČKO IME</td>
                                     <td class="rangN">POENI</td>
                                 </tr>
@@ -429,6 +429,32 @@
                                     <td class="rangO">MIKA</td>
                                     <td class="rangO">431</td>
                                 </tr>
+                                <tr >
+                                    <td class="rangO">2.</td>
+                                    <td class="rangO">MIKA</td>
+                                    <td class="rangO">431</td>
+                                </tr>
+                                <tr >
+                                    <td class="rangO">2.</td>
+                                    <td class="rangO">MIKA</td>
+                                    <td class="rangO">431</td>
+                                </tr>
+                                <tr >
+                                    <td class="rangO">2.</td>
+                                    <td class="rangO">MIKA</td>
+                                    <td class="rangO">431</td>
+                                </tr>
+                                <tr >
+                                    <td class="rangO">2.</td>
+                                    <td class="rangO">MIKA</td>
+                                    <td class="rangO">431</td>
+                                </tr>
+                                <tr >
+                                    <td class="rangO">2.</td>
+                                    <td class="rangO">MIKA</td>
+                                    <td class="rangO">431</td>
+                                </tr>
+                               
                                                
                                                             
                             </table>

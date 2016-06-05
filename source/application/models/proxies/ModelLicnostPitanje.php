@@ -73,7 +73,24 @@ class ModelLicnostPitanje extends CI_Model{
             $users[0]->setIdkor($data['idkor']);
             $this->doctrine->em->flush();
         }  
-        
+        public function getLicnostPodaci($data){
+            $id=$data['id'];
+            $pit=  $this->doctrine->em->find ( "LicnostPitanje", $id );
+            $pit2= $this->doctrine->em->find ( "Pitanje", $id );
+           $pd['idniv']=$pit2->getIdniv()->getNaziv();
+           $pd['idobl']=$pit2->getIdobl() ->getNaziv();
+           $pd['podatak1']=$pit->getPodatak1();
+           $pd['podatak2']=$pit->getPodatak2();
+           $pd['podatak3']=$pit->getPodatak3();
+           $pd['podatak4']=$pit->getPodatak4();
+           $pd['podatak5']=$pit->getPodatak5();
+           $pd['podatak6']=$pit->getPodatak6();
+           $pd['licnost']=$pit->getLicnost();
+           $pd['slika']=$pit->getSlika();
+           $pd['id']=$id;
+            
+            return $pd;
+        }
         
 	
 	function getLicnostPitanje($data) {

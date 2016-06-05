@@ -74,7 +74,18 @@ body{
     margin-left: 400px;
  
 }
-
+#myModalformaTextizmena{
+      margin-top: 130px;
+    margin-left: 400px;
+}
+#myModalformaPicizmena{
+    margin-top: 70px;
+    margin-left: 400px;
+}
+#myModalformaEnigizmena{
+    margin-top: 70px;
+    margin-left: 400px;
+}
 
 #scroll{
     margin:0px;

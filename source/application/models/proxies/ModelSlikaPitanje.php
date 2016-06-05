@@ -72,7 +72,23 @@ class ModelSlikaPitanje extends CI_Model {
         
         
         
-        
+        public function getSlikaPodaci($data){
+            $id=$data['id'];
+            $pit=  $this->doctrine->em->find ( "SlikaPitanje", $id );
+            $pit2= $this->doctrine->em->find ( "Pitanje", $id );
+           $pd['idniv']=$pit2->getIdniv()->getNaziv();
+           $pd['idobl']=$pit2->getIdobl() ->getNaziv();
+           $pd['odgovor1']=$pit->getOdgovor1();
+           $pd['odgovor2']=$pit->getOdgovor2();
+           $pd['odgovor3']=$pit->getOdgovor3();
+           $pd['odgovor4']=$pit->getOdgovor4();
+           $pd['postavka']=$pit->getPostavka();
+           $pd['tacan']=$pit->getTacanodgovor();
+           $pd['slika']=$pit->getSlika();
+           $pd['id']=$id;
+            
+            return $pd;
+        }
         
         
         

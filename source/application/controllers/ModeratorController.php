@@ -62,7 +62,7 @@ class ModeratorController extends BaseController {
         $idobl=$this->input->post('oblast');
         $idkor=$this->session->all_userdata();
         //if(count($idkor)==0){echo "praznoo";}
-        echo $idkor['username'];
+        //echo $idkor['username'];
         $this->load->model('proxies/ModelModerator');
         
         $users=$this->doctrine->em->getRepository ( 'RegKorisnik' )->findBy ( array (
@@ -100,7 +100,7 @@ class ModeratorController extends BaseController {
                             'odgovor4' => $odgovor4,
                             'tacan' => $tacan
             ]);
-        
+        Redirect();
     }
     
     //potrebno ograniciti fino velicinu slike..
@@ -114,7 +114,7 @@ class ModeratorController extends BaseController {
         
         $idkor=$this->session->all_userdata();
         //if(count($idkor)==0){echo "praznoo";}
-        echo $idkor['username'];
+       // echo $idkor['username'];
         $this->load->model('proxies/ModelModerator');
         
         $users=$this->doctrine->em->getRepository ( 'RegKorisnik' )->findBy ( array (
@@ -175,6 +175,7 @@ class ModeratorController extends BaseController {
           Redirect();  
           
           //popraviti povratnu adresu
+          
     }
     
     public function createLicnostPitanje(){ 
@@ -185,7 +186,7 @@ class ModeratorController extends BaseController {
         
          $idkor=$this->session->all_userdata();
         //if(count($idkor)==0){echo "praznoo";}
-        echo $idkor['username'];
+       // echo $idkor['username'];
         $this->load->model('proxies/ModelModerator');
         
         $users=$this->doctrine->em->getRepository ( 'RegKorisnik' )->findBy ( array (
@@ -518,18 +519,42 @@ class ModeratorController extends BaseController {
         
     }     
     
-    public function izmeniTekstAutoFill($id){
+    public function izmeniAutoFill(){
         $secret = $this->input->post('secret');
-        if (!$secret)
+        $id= $this->input->post('id');
+        if (!$secret){
             Redirect();
+        }
+        $this->load->model('proxies/ModelPitanje');
+        $pitanje = $this->doctrine->em->find ( "Pitanje", $id );
+        $p1=$this->doctrine->em->find ( "TekstPitanje", $id );
+        $p2=$this->doctrine->em->find ( "SlikaPitanje", $id );
+        $p3=$this->doctrine->em->find ( "LicnostPitanje", $id );
         
-        $this->load->model('proxies/ModelTekstPitanje');
-        
-        
-        $data['id']=$id;
-        $pd=$this->ModelTekstPitanje->getTekstPodaci($data);
-        $return['data']=$pd;
-        
+        if($p1!=null){
+                $this->load->model('proxies/ModelTekstPitanje');
+                $data['id']=$id;
+                $pd=$this->ModelTekstPitanje->getTekstPodaci($data);              
+          
+           $return['idniv']=$pd['idniv'];
+           $return['idobl']=$pd['idobl'];
+           $return['odgovor1']=$pd['odgovor1'];
+           $return['odgovor2']=$pd['odgovor2'];
+           $return['odgovor3']=$pd['odgovor3'];
+           $return['odgovor4']=$pd['odgovor4'];
+           $return['postavka']=$pd['postavka'];
+           $return['tacan']=$pd['tacan'];
+           $return['id']=$pd['id'];
+           $return['tip']=1;
+            
+
+            
+        }else if($p2!=null){
+            
+        }else if($p3!=null){
+            
+        }
+
          echo json_encode($return);
     }
     

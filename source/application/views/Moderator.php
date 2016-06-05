@@ -18,6 +18,8 @@
         ?>js/Moderator.js"></script>
         <script type = 'text/javascript' src = "<?php echo base_url();
         ?>js/deletePitanje.js"></script>
+        <script type = 'text/javascript' src = "<?php echo base_url();
+        ?>js/izmeniPitanje.js"></script>
 
         <title>Svetski putnik</title>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
@@ -346,43 +348,43 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" id="zatvoriformuT" >&times;</button>
-                        <h4> Forma za unos tekstualnog pitanja </h4>
+                        <button type="button" class="close" id="zatvoriformuTi" >&times;</button>
+                        <h4> Izmena tekstualnog pitanja </h4>
                     </div>
                     <div class="modal-body">
                         <div id="formaa">
-                            <form action="moderatorcontroller/createtekstpitanje"
+                            <form action="moderatorcontroller/"
                                   method="post" enctype="multipart/form-data">
                                 <label class="control-label">Postavka:</label>
                                 <div class="controls">
-                                    <textarea name="postavka" id="postavka" cols="50"></textarea>
+                                    <textarea name="postavka1" id="postavka1" cols="50"></textarea>
                                     <p class="help-block"></p><br/>
                                 </div>
 
                                 <div class="controls">
                                     <label class="control-label">Odgovor1:</label>
-                                    <input type="text" name="o1" id="o1">
+                                    <input type="text" name="o11" id="o11">
                                     <p class="help-block"></p>
                                 </div>
                                 <div class="controls">
                                     <label class="control-label">Odgovor2:</label>
-                                    <input type="text" name="o2" id="o2">
+                                    <input type="text" name="o21" id="o21">
                                     <p class="help-block"></p>
                                 </div>
                                 <div class="controls">
                                     <label class="control-label">Odgovor3:</label>
-                                    <input type="text" name="o3" id="o3">
+                                    <input type="text" name="o31" id="o31">
                                     <p class="help-block"></p>
                                 </div>
                                 <div class="controls">
                                     <label class="control-label">Odgovor4:</label>
-                                    <input type="text" name="o4" id="o4">
+                                    <input type="text" name="o41" id="o41">
                                     <p class="help-block"></p><br/>
                                 </div>
                                 <div class="controls">
                                     <label class="control-label">Tacan odgovor</label>
-                                    <select name="tacan">
-                                        <option value="">
+                                    <select name="tacan1" id="tacan1">
+                                        <option   value="">
                                             <?php
                                             for ($i = 1; $i <= 4; $i++)
                                                 echo "<option value='" . $i . "'>$i</option>";
@@ -392,7 +394,7 @@
                                 </div>
                                 <div class="controls">
                                     <label class="control-label">Nivo</label>
-                                    <select name="nivo">
+                                    <select name="nivo1" id="nivo1">
                                         <option value="">Izaberi nivo</option>
                                         <?php
                                         $nivo = $this->doctrine->em->getRepository('NivoTezine')->findAll();
@@ -406,7 +408,7 @@
                                 </div>
                                 <div class="controls">
                                     <label class="control-label">Oblast</label>
-                                    <select name="oblast">
+                                    <select name="oblast1" id="oblast1">
                                         <option value="">Izaberi oblast</option>
                                         <?php
                                         $oblast = $this->doctrine->em->getRepository('Oblast')->findAll();
@@ -641,8 +643,8 @@
                                                                         <td valign="middle"><?php echo $p['idPitanja']; ?> </td>
                                                                         <td valign="middle"><?php
                                                                             $pom=$p['idPitanja'];
-                                                                            echo "<button class=" . "'button3'" . "  id=" . "'izmeni'" ." name="."'izmeni'"." value="."'$pom'".">IZMENI</button>";
-                                                                           
+                                                                            //echo "<button class=" . "'button3'" . "  id=" . "'izmeni'" ." name="."'izmeni'"." value="."'$pom'".">IZMENI</button>";
+                                                                            echo "<button class="."'button3', type="."'submit'".", name='izmeni',"."  value="."'$pom'".",  id="."'$pom'"." >IZMENI</button>";
                                                                             ?></td> 
                                                                         <td valign="middle"><?php
                                                                             //$attrubutesRegister = ['name' => 'brisiDugme' . $p['idPitanja'], 'id' => 'brisiDugme' . $p['idPitanja'], 'class' => 'form-horizontal'];
