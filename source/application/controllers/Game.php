@@ -542,8 +542,11 @@ class Game extends BaseController {
         if (!$secret)
         $this->Redirect();
         
-        /*
         
+        
+        
+        
+        /*
         $igre= $this->doctrine->em->getRepository('Igra')->findAll();
         $max=0;
         $res=array();
