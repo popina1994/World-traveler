@@ -1,4 +1,8 @@
-
+/**
+ *
+ * @author Jelica Cincović 640/13
+ *
+ */
 function f() {
     location.href = "Izaberi nivo.html";
 };
