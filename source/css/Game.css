@@ -65,7 +65,12 @@ td.rangN{
       text-align: center;
       /*width: 600px;*/
       height: 550px;
+      overflow-y: scroll;
       
+  }
+  
+  label{
+      padding: 0px;
   }
   
   #modalText{
