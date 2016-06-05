@@ -116,7 +116,7 @@ $(document).ready(function(){
             event.preventDefault();
             $.ajax({
                 type: "POST",
-                url: BASE_URL + "index.php/moderatorcontroller/izmeniTekstPitanje/",
+                url: BASE_URL + "index.php/moderatorcontroller/inputValidationTekstPitanje/",
                 data : {id : $(this).val(),
                         nivo: $('#nivo1').val(),
                         oblast: $('#oblast1').val(),
@@ -129,8 +129,15 @@ $(document).ready(function(){
                         secret : true},
                 dataType: "json", 
                 success:function(data){
-                    alertify.success("Uspjesno izmenjeno pitanje: " + data.id);
-                    form.submit();
+               
+                    if(data.succ === true){
+                         alertify.success("Uspjesno izmenjeno pitanje: " + data.id);
+                         $('#izmenaForma2').attr('action', 'ModeratorController/createSlikaPitanje/'+data.id);
+                        form.submit();
+                    }else{
+                        alertify.error( data.error );
+                    }
+                    
                 }
                 });
     });
@@ -155,13 +162,15 @@ $(document).ready(function(){
                         secret : true},
                 dataType: "json", 
                 success:function(data){
-                    alertify.success("Pocinje: " + data.userfile);
+               
                     if(data.succ === true){
-                        alertify.success("Uspjesno izmenjeno pitanje: " + data.id);
-                        $('#izmenaForma2').attr('action', 'ModeratorController/izmeniSlikaPitanje/'+data.id);
-                       // alertify.success("Uspjesno izmenjeno pitanje: " + data.id);
+                         alertify.success("Uspjesno izmenjeno pitanje: " + data.id);
+                         $('#izmenaForma2').attr('action', 'ModeratorController/izmeniSlikaPitanje/'+data.id);
+                        form.submit();
+                    }else{
+                        alertify.error( data.error );
                     }
-                    form.submit();
+                    
                 }
                 });
     });
@@ -188,13 +197,15 @@ $(document).ready(function(){
                         secret : true},
                 dataType: "json", 
                 success:function(data){
-                    alertify.success("Pocinje: " );
+                   // alertify.error( data.idniv );
                     if(data.succ === true){
                         alertify.success("Uspjesno izmenjeno pitanje: " + data.id);
                         $('#izmenaForma3').attr('action', 'ModeratorController/izmeniLicnostPitanje/'+data.id);
-                       // alertify.success("Uspjesno izmenjeno pitanje: " + data.id);
+                        form.submit();
+                    }else{
+                        alertify.error( data.error );
                     }
-                    form.submit();
+                    
                 }
                 });
     });

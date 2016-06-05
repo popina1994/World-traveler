@@ -413,19 +413,20 @@ class ModeratorController extends BaseController {
            Redirect();
     }
     
-    
+
     
     public function inputValidationTekstPitanje() {
         
         // Protect from unauthorized access.
         //
          
-        
+        $id= $this->input->post('id');
         $secret = $this->input->post('secret');
-  
+       
         if (!$secret){
             Redirect();
         }
+        
         
         
         $idniv=$this->input->post('nivo');
@@ -459,7 +460,8 @@ class ModeratorController extends BaseController {
             $return['succ'] = true;
         }      
         
-        //$return['succ'] = true;
+     
+        $return['id']=$id;
         echo json_encode($return);     
 }
     
