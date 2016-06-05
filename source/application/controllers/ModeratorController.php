@@ -1,5 +1,5 @@
 <?php
-
+//Slavko Ivanovic 82/13
  include APPPATH.'models/entities/Pitanje.php';
   include APPPATH.'models/entities/RegKorisnik.php';
  include APPPATH.'models/entities/Oblast.php';
