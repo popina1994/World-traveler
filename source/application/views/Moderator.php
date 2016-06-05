@@ -125,7 +125,7 @@
                                 </div>
                                 <div class="controls">
                                     <label class="control-label">Tacan odgovor</label>
-                                    <select name="tacan">
+                                    <select name="tacan" id="tacan">
                                         <option value="">
                                             <?php
                                             for ($i = 1; $i <= 4; $i++)
@@ -136,7 +136,7 @@
                                 </div>
                                 <div class="controls">
                                     <label class="control-label">Nivo</label>
-                                    <select name="nivo">
+                                    <select name="nivo" id="nivo">
                                         <option value="">Izaberi nivo</option>
                                         <?php
                                         $nivo = $this->doctrine->em->getRepository('NivoTezine')->findAll();
@@ -150,7 +150,7 @@
                                 </div>
                                 <div class="controls">
                                     <label class="control-label">Oblast</label>
-                                    <select name="oblast">
+                                    <select name="oblast" id="oblast">
                                         <option value="">Izaberi oblast</option>
                                         <?php
                                         $oblast = $this->doctrine->em->getRepository('Oblast')->findAll();

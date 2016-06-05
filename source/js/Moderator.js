@@ -55,6 +55,14 @@ $(document).ready(function(){
              $('#myModaldodaj').modal('hide');
              $('input[name=vrsta]').prop('checked', false);
             $('#myModalformaText').modal('show');
+            document.getElementById("postavka").value="";
+            document.getElementById("o1").value="";
+            document.getElementById("o2").value="";
+            document.getElementById("o3").value="";
+            document.getElementById("o4").value="";
+            document.getElementById("nivo").value="";
+            document.getElementById("tacan").value="";
+            document.getElementById("oblast").value="";
             document.getElementById("b11").disabled=true;
             document.getElementById("b12").disabled=true;
          }
@@ -62,6 +70,14 @@ $(document).ready(function(){
               $('#myModaldodaj').modal('hide');
               $('input[name=vrsta]').prop('checked', false);
             $('#myModalformaPic').modal('show');
+            /*document.getElementById("postavka").value="";
+            document.getElementById("o1").value="";
+            document.getElementById("o2").value="";
+            document.getElementById("o3").value="";
+            document.getElementById("o4").value="";
+            document.getElementById("nivo").value="";
+            document.getElementById("tacan").value="";
+            document.getElementById("oblast").value="";*/
             document.getElementById("b11").disabled=true;
             document.getElementById("b12").disabled=true;
          }
@@ -69,6 +85,14 @@ $(document).ready(function(){
                $('#myModaldodaj').modal('hide');
                $('input[name=vrsta]').prop('checked', false);
             $('#myModalformaEnig').modal('show');
+            /*document.getElementById("postavka").value="";
+            document.getElementById("o1").value="";
+            document.getElementById("o2").value="";
+            document.getElementById("o3").value="";
+            document.getElementById("o4").value="";
+            document.getElementById("nivo").value="";
+            document.getElementById("tacan").value="";
+            document.getElementById("oblast").value="";*/
             document.getElementById("b11").disabled=true;
             document.getElementById("b12").disabled=true;
          }
