@@ -41,12 +41,12 @@
 ?>js/alertify.js"></script>
     </head>
     <body>
-        <div>
+        <div id="dugmici123">
             <button class="button1" id="b11" >DODAJ PITANJE</button>
             <button class="button1" id="b12" >IZMENI/OBRISI PITANJE</button>
         </div>
 
-        <p> <br/><br/><br/><br/><br/><br/><br/>
+        <p> <br/><br/><br/><br/>
             <?php
             $attrubutesRegister = ['name' => 'logOutForm', 'id' => 'logOutForm', 'class' => 'form-horizontal'];
             echo form_open('main/logOut', $attrubutesRegister);

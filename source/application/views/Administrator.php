@@ -47,7 +47,7 @@
 
 <body id="bodyadmin">
    
-    <div>
+    <div id="dugmici123">
         <button class="button1" id="kreiraj" >KREIRAJ MODERATORA</button>
         <button class="button1" id="ukloni" >UKLONI MODERATORA</button>
     </div>
@@ -175,7 +175,7 @@
     
     
 
-<p> <br/><br/><br/><br/><br/><br/><br/>
+<p> <br/><br/>
         <?php 
             $attrubutesRegister = ['name'=>'logOutForm', 'id'=>'logOutForm', 'class'=>'form-horizontal'];
             echo form_open('main/logOut', $attrubutesRegister); ?>

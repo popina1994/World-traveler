@@ -12,6 +12,33 @@ body{
 
 }
 
+#dugmici123{
+    /*padding-top: 150px !important;*/
+    text-align: center !important;
+    align-content: center !important;
+    width: 100% !important;
+   /* background-color: red;*/
+}
+
+.modal {
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) { 
+  .modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
 .modal fade{
     margin:0px;
     padding:0px;
@@ -48,14 +75,14 @@ body{
 
 
 #myModal3{
-    margin-top: 100px;
-    margin-left: 400px;
+    margin-top: 50px;
+   /* margin-left: 400px;*/
  
 }
 
 #myModal4{
-    margin-top: 100px;
-    margin-left: 400px;
+    margin-top: 50px;
+    /*margin-left: 400px;*/
     
 }
 
@@ -67,9 +94,6 @@ body{
     overflow-y: scroll;
     height: 300px;
 }
-
-
-
 
 .button1{
 	background-color: #DA0416; /* Green */
@@ -83,17 +107,18 @@ body{
     display: inline-block;
     font-size: 35px;
     cursor: pointer;
-    float: left;
-    margin-right: 10px;
-    margin-left: 240px;
+    /*float: left;*/
+    margin-right: 50px;
+    margin-left: 50px;
     border-radius: 12px;
     font-weight: bold;
     font-family: Verdana;
     width: 310px;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-    margin-bottom: 25px;
-
+    margin-bottom: 10px;
 }
+
+
 
 .button2{
     background-color: black;

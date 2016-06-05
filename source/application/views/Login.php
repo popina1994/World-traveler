@@ -21,6 +21,7 @@
         
 </head>
 <body>
+    <div id="mainwrapper">
     <div id="prijava_forma">
         <?php 
           $attrubutes = array('name'=>'loginForm', 'class'=>'form-horizontal',
@@ -71,8 +72,9 @@
                   </tr>
 
               </table>
-             
+            
 <?php echo form_close(); ?>
         </div>
+        </div> 
 </body>
 </html>

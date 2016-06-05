@@ -57,7 +57,7 @@
                 
 	</div>
     
-        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
         <?php 
             $attrubutesRegister = ['name'=>'logOutForm', 'id'=>'logOutForm', 'class'=>'form-horizontal'];
             echo form_open('main/logOut', $attrubutesRegister); ?>
