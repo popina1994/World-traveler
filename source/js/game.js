@@ -108,15 +108,39 @@ $(document).ready(function(){
             dataType: "json", 
             success:function(data){
                 
-              
-
+              //alertify.error(data.r1);
+              alertify.error("ddddddddd");  
+              alertify.error(data.user1);
+              document.getElementById("u1").innerHTML=data.user1;
+              document.getElementById("r1").innerHTML=data.rank1;
+               document.getElementById("p1").innerHTML=data.poeni1;
+               
+               document.getElementById("u2").innerHTML=data.user2;
+              document.getElementById("r2").innerHTML=data.rank2;
+               document.getElementById("p2").innerHTML=data.poeni2;
+               
+               document.getElementById("u3").innerHTML=data.user3;
+              document.getElementById("r3").innerHTML=data.rank3;
+               document.getElementById("p3").innerHTML=data.poeni3;
+               
+               document.getElementById("u4").innerHTML=data.user4;
+              document.getElementById("r4").innerHTML=data.rank4;
+               document.getElementById("p4").innerHTML=data.poeni4;
+               
+               document.getElementById("u5").innerHTML=data.user5;
+              document.getElementById("r5").innerHTML=data.rank5;
+               document.getElementById("p5").innerHTML=data.poeni5;
+               
+               document.getElementById("u6").innerHTML=data.user6;
+              document.getElementById("r6").innerHTML=data.rank6;
+               document.getElementById("p6").innerHTML=data.poeni6;
+               
+               document.getElementById("u7").innerHTML=data.user7;
+              document.getElementById("r7").innerHTML=data.rank7;
+               document.getElementById("p7").innerHTML=data.poeni7;
                     //$("#lista")=data.podaci;
-                    alertify.error("fddffd");
-                    
-                
-                
-                   
-                
+                    //alertify.error(data.r2);
+  
             },
            
 

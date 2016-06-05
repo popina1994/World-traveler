@@ -418,43 +418,43 @@
                             <table id="rangT" border="1">
                                 <tr >
                                     <td class="rangN" >BR.</td>
-                                    <td class="rangN">KORISNIČKO IME</td>
-                                    <td class="rangN">POENI</td>
+                                    <td class="rangN" >KORISNIČKO IME</td>
+                                    <td class="rangN" >POENI</td>
                                 </tr>
                                  <tr >
-                                    <td class="rangO">1.</td>
-                                    <td class="rangO">PERA</td>
-                                    <td class="rangO">432</td>
+                                    <td class="rangO" id='r1'  >1.</td>
+                                    <td class="rangO" id='u1'  >PERA</td>
+                                    <td class="rangO" id='p1'  >432</td>
                                 </tr>
                                  <tr >
-                                    <td class="rangO">2.</td>
-                                    <td class="rangO">MIKA</td>
-                                    <td class="rangO">431</td>
+                                    <td class="rangO" id='r2' >2.</td>
+                                    <td class="rangO" id='u2' >MIKA</td>
+                                    <td class="rangO" id='p2' >431</td>
                                 </tr>
                                 <tr >
-                                    <td class="rangO">2.</td>
-                                    <td class="rangO">MIKA</td>
-                                    <td class="rangO">431</td>
+                                    <td class="rangO" id='r3' >2.</td>
+                                    <td class="rangO" id='u3' >MIKA</td>
+                                    <td class="rangO" id='p3' >431</td>
                                 </tr>
                                 <tr >
-                                    <td class="rangO">2.</td>
-                                    <td class="rangO">MIKA</td>
-                                    <td class="rangO">431</td>
+                                    <td class="rangO" id='r4' >2.</td>
+                                    <td class="rangO" id='u4' >MIKA</td>
+                                    <td class="rangO" id='p4' >431</td>
                                 </tr>
                                 <tr >
-                                    <td class="rangO">2.</td>
-                                    <td class="rangO">MIKA</td>
-                                    <td class="rangO">431</td>
+                                    <td class="rangO" id='r5' >2.</td>
+                                    <td class="rangO" id='u5' >MIKA</td>
+                                    <td class="rangO" id='p5' >431</td>
                                 </tr>
                                 <tr >
-                                    <td class="rangO">2.</td>
-                                    <td class="rangO">MIKA</td>
-                                    <td class="rangO">431</td>
+                                    <td class="rangO" id='r6' >2.</td>
+                                    <td class="rangO" id='u6' >MIKA</td>
+                                    <td class="rangO" id='p6' >431</td>
                                 </tr>
                                 <tr >
-                                    <td class="rangO">2.</td>
-                                    <td class="rangO">MIKA</td>
-                                    <td class="rangO">431</td>
+                                    <td class="rangO" id='r7' >2.</td>
+                                    <td class="rangO" id='u7' >MIKA</td>
+                                    <td class="rangO" id='p7' >431</td>
                                 </tr>
                                
                                                
