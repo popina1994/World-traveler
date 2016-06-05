@@ -291,7 +291,9 @@
                             <label for="markEnigma3">3.   </label>  <label for="answerEnigma3"></label> <br/>
                             <label for="markEnigma4">4.   </label> <label for="answerEnigma4"></label>  <br/>
                             <label for="markEnigma5">5.  </label> <label for="answerEnigma5"></label>  <br/>
-                            <label for="markEnigma6">6.  </label> <label for="answerEnigma6"></label>  <br/></div>
+                            <label for="markEnigma6">6.  </label> <label for="answerEnigma6"></label>  <br/>
+                        </div>
+                            <div class="clear"></div>
                             <label for="Broj pokusaja">Broj pokušaja  </label> <label for="numTries"></label>  <br/>
                             <input type="text" maxlength="1" minlength="1" name="letter" id="letter" placeholder="Guess a letter" /> <br/>
                             <label for="Finish"></label>  <br/>
