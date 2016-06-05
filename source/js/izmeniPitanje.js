@@ -132,7 +132,7 @@ $(document).ready(function(){
                
                     if(data.succ === true){
                          alertify.success("Uspjesno izmenjeno pitanje: " + data.id);
-                         $('#izmenaForma2').attr('action', 'ModeratorController/createSlikaPitanje/'+data.id);
+                         $('#izmenaForma1').attr('action', 'ModeratorController/izmeniTekstPitanje/'+data.id);
                         form.submit();
                     }else{
                         alertify.error( data.error );
