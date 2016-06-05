@@ -279,20 +279,20 @@
                                                 <div class="modal-body">
                                                     <div id="formaa">
                                                         <form action="moderatorcontroller/createlicnostpitanje" 
-                                                              method="post" enctype="multipart/form-data" name='dodajt' id="dodajt" >
+                                                              method="post" enctype="multipart/form-data" name='dodajl' id="dodajl" >
 
                                                             <div class="controls">
-                                                                Stavka broj 1: <input type="text" name="s1" id="s1"><br />
-                                                                Stavka broj 2: <input type="text" name="s2" id="s2"><br />
-                                                                Stavka broj 3: <input type="text" name="s3" id="s3"><br />
-                                                                Stavka broj 4: <input type="text" name="s4" id="s4"><br />
-                                                                Stavka broj 5: <input type="text" name="s5" id="s5"><br />
-                                                                Stavka broj 6: <input type="text" name="s6" id="s6"><br />
-                                                                Ime Licnosti:&nbsp;&nbsp; <input type="text" name="licnost" id="licnost"><br /><br/>
+                                                                Stavka broj 1: <input type="text" name="s1l3" id="s1l3"><br />
+                                                                Stavka broj 2: <input type="text" name="s2l3" id="s2l3"><br />
+                                                                Stavka broj 3: <input type="text" name="s3l3" id="s3l3"><br />
+                                                                Stavka broj 4: <input type="text" name="s4l3" id="s4l3"><br />
+                                                                Stavka broj 5: <input type="text" name="s5l3" id="s5l3"><br />
+                                                                Stavka broj 6: <input type="text" name="s6l3" id="s6l3"><br />
+                                                                Ime Licnosti:&nbsp;&nbsp; <input type="text" name="licnostl3" id="licnostl3"><br /><br/>
                                                             </div>
                                                             <div class="controls">
                                                                 <label class="control-label">Nivo</label>
-                                                                <select name="nivo">
+                                                                <select name="nivol3" id="nivol3">
                                                                     <option value="">Izaberi nivo</option>
                                                                     <?php
                                                                     $nivo = $this->doctrine->em->getRepository('NivoTezine')->findAll();
@@ -306,7 +306,7 @@
                                                             </div>
                                                             <div class="controls">
                                                                 <label class="control-label">Oblast</label>
-                                                                <select name="oblast">
+                                                                <select name="oblastl3" id="oblastl3">
                                                                     <option value="">Izaberi oblast</option>
                                                                     <?php
                                                                     $oblast = $this->doctrine->em->getRepository('Oblast')->findAll();

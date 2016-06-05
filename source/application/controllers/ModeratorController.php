@@ -179,8 +179,8 @@ class ModeratorController extends BaseController {
     }
     
     public function createLicnostPitanje(){ 
-        $idniv=$this->input->post('nivo');
-        $idobl=$this->input->post('oblast');
+        $idniv=$this->input->post('nivol3');
+        $idobl=$this->input->post('oblastl3');
         //OVO TREBA UNCOMMENTOVATI KADA SE NAPRAVI HTML
       //kod za dohvatanje id-a moderatora
         
@@ -200,13 +200,13 @@ class ModeratorController extends BaseController {
         
         //$idkor= 583;//slaleM
         
-        $stavka1=$this->input->post('s1');
-        $stavka2=$this->input->post('s2');
-        $stavka3=$this->input->post('s3');
-        $stavka4=$this->input->post('s4');
-        $stavka5=$this->input->post('s5');
-        $stavka6=$this->input->post('s6');
-        $licnost=$this->input->post('licnost');
+        $stavka1=$this->input->post('s1l3');
+        $stavka2=$this->input->post('s2l3');
+        $stavka3=$this->input->post('s3l3');
+        $stavka4=$this->input->post('s4l3');
+        $stavka5=$this->input->post('s5l3');
+        $stavka6=$this->input->post('s6l3');
+        $licnost=$this->input->post('licnostl3');
         
         $idniv =  $this->doctrine->em->getRepository('NivoTezine')->findBy(array('naziv' => $idniv))[0];
         $idobl = $this->doctrine->em->getRepository('Oblast')->findBy(array('naziv' => $idobl))[0];		
@@ -530,7 +530,7 @@ class ModeratorController extends BaseController {
         $idniv=$this->input->post('nivo');
         $idobl=$this->input->post('oblast');
        // $slika=$this->input->post('userfile');
-   
+   $return['idniv']=$idniv;
 
         
         $this->load->model('proxies/ModelRegKorisnik');
