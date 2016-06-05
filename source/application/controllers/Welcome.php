@@ -26,9 +26,12 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		$this->load->library('doctrine');
+		$res = $this->ModelIgra->getScores(1);
+		foreach($res as $r)
+		{echo $r['rank']; echo ' '; echo $r['user']; echo ' '; echo $r['poeni']; echo '<br/>';}
 		
 		//echo CI_VERSION;
-		echo phpversion ();
+		//echo phpversion ();
 		
 	}
 	

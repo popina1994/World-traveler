@@ -139,4 +139,22 @@ class ModelIgra extends CI_Model {
 		return $this->doctrine->em->getRepository('Igra')->find($data['igraID'])->getStatus();
 	}
 	
+	//vraca rang listu za dati nivo(ID)
+	function getScores($nivo){
+		$res = $this->doctrine->em->getRepository('Igra')
+		->findBy(
+				array('idniv' => $nivo),
+				array('poeni' => 'DESC')
+		);
+		$scores = array();
+		$data;
+		$i=1;
+		foreach ($res as $r){
+			$data['rank']=$i++;
+			$data['user']=$r->getIdkor()->getIdkor()->getUsername();
+			$data['poeni']=$r->getPoeni();
+			array_push($scores, $data);
+		}
+		return $scores;
+	}
 }
