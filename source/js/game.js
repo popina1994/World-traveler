@@ -114,8 +114,7 @@ $(document).ready(function(){
             success:function(data){
                 
               //alertify.error(data.r1);
-              alertify.error("ddddddddd");  
-              alertify.error(data.user1);
+              
               document.getElementById("u1").innerHTML=data.user1;
               document.getElementById("r1").innerHTML=data.rank1;
                document.getElementById("p1").innerHTML=data.poeni1;
