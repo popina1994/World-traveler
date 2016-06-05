@@ -114,7 +114,7 @@
         </div>
             <div class="modal-body"  id="scroll">
         
-            <table id="t2">
+            <table id="t2" >
                     <?php
                         if(count($moderators)==0){
                             echo "Nema moderatora";

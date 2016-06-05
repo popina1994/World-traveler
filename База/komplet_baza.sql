@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 02, 2016 at 12:21 PM
+-- Generation Time: Jun 05, 2016 at 08:38 PM
 -- Server version: 5.7.9
 -- PHP Version: 5.6.16
 
@@ -56,14 +56,15 @@ CREATE TABLE IF NOT EXISTS `igra` (
   PRIMARY KEY (`IDIgr`),
   KEY `IDNiv` (`IDNiv`),
   KEY `IDKor` (`IDKor`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `igra`
 --
 
 INSERT INTO `igra` (`IDIgr`, `Poeni`, `Putnici`, `Status`, `IDNiv`, `IDKor`) VALUES
-(1, 2760, 273, 't', 1, 2);
+(1, 2760, 273, 't', 1, 2),
+(2, 0, 6, 't', 1, 5);
 
 -- --------------------------------------------------------
 
@@ -90,7 +91,11 @@ CREATE TABLE IF NOT EXISTS `licnost_pitanje` (
 --
 
 INSERT INTO `licnost_pitanje` (`IDPit`, `Licnost`, `Slika`, `Podatak1`, `Podatak2`, `Podatak3`, `Podatak4`, `Podatak5`, `Podatak6`) VALUES
-(232, 'Ernest Raderford', '232.jpg', 'Roditelji su mu bili farmeri, koji su emigrirali na Novi Zeland.', 'Radio je kao profesor na Univerzitetu u Montrealu.', 'Nobelovu nagradu za hemiju dobio je 1908. godine.', 'Zajedno sa Sodijem uveo je pojam vreme poluraspada i formulisao zakone radioaktivnog raspada.', 'Hemijski element raderfordijum po njemu nosi ime.', 'Po njemu je nazvana jedinica za merenje radioaktivnosti - raderford.');
+(232, 'Ernest Raderford', '232.jpg', 'Roditelji su mu bili farmeri, koji su emigrirali na Novi Zeland.', 'Radio je kao profesor na Univerzitetu u Montrealu.', 'Nobelovu nagradu za hemiju dobio je 1908. godine.', 'Zajedno sa Sodijem uveo je pojam vreme poluraspada i formulisao zakone radioaktivnog raspada.', 'Hemijski element raderfordijum po njemu nosi ime.', 'Po njemu je nazvana jedinica za merenje radioaktivnosti - raderford.'),
+(289, 'Marija Kiri', '289.jpg', 'Poznata fiziÄarka', 'Imala je i francusko i poljsko drÅ¾avljanstvo', 'Otkrila je radijum i polonijum', 'OsnivaÄica nove grane u hemiji - raiohemije', 'Rad na teoriji radioaktivnosti', 'Dvostruka dobitnica Nobelove nagrade'),
+(290, 'Marija Kiri', '290.jpg', 'Poznata fiziÄarka', 'Imala je i francusko i poljsko drÅ¾avljanstvo', 'Otkrila je radijum i polonijum', 'OsnivaÄica nove grane u hemiji - raiohemije', 'Rad na teoriji radioaktivnosti', 'Dvostruka dobitnica Nobelove nagrade'),
+(291, 'Lejton Hjuit', '291.jpg', 'Poznati teniser', 'NekadaÅ¡nji prvi reket sveta', 'NajmlaÄ‘i teniser koji je bio rangiran na prvom mestu', 'Osvojio je Vimbldon 2002.godine', 'Osnojen Dejvis kup 2002.godien', 'Rodjen je 1981.godine'),
+(292, 'Nik Kirgios', '292.jpg', 'Rodjen je 1995.godine', 'Poznati teniser', 'Igra desnom rukom', '2003.godine je osvojio Otvoreno prvenstvo Australije za juniore', 'Trenutno je 19-ti igraÄ sveta', 'Poznat je po tome Å¡to nije fer-plej igraÄ');
 
 -- --------------------------------------------------------
 
@@ -109,7 +114,8 @@ CREATE TABLE IF NOT EXISTS `moderator` (
 --
 
 INSERT INTO `moderator` (`IDKor`) VALUES
-(1);
+(1),
+(31);
 
 -- --------------------------------------------------------
 
@@ -258,7 +264,8 @@ INSERT INTO `osvajanje` (`IDIgr`, `IDObl`, `Status`) VALUES
 (1, 41, 'o'),
 (1, 42, 'o'),
 (1, 43, 'o'),
-(1, 44, 'o');
+(1, 44, 'o'),
+(2, 19, 'z');
 
 -- --------------------------------------------------------
 
@@ -278,7 +285,7 @@ CREATE TABLE IF NOT EXISTS `pitanje` (
   KEY `IdNiv` (`IdNiv`),
   KEY `IDObl` (`IDObl`),
   KEY `IDKor` (`IDKor`)
-) ENGINE=InnoDB AUTO_INCREMENT=234 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=303 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pitanje`
@@ -288,7 +295,6 @@ INSERT INTO `pitanje` (`IdPit`, `IdNiv`, `IDObl`, `IDKor`, `BrTacno`, `BrNetacno
 (200, 2, 30, 1, 0, 0),
 (201, 3, 30, 1, 0, 0),
 (202, 1, 30, 1, 0, 0),
-(204, 1, 4, 1, 0, 0),
 (205, 3, 28, 1, 0, 0),
 (206, 2, 28, 1, 0, 0),
 (207, 1, 28, 1, 0, 0),
@@ -315,7 +321,37 @@ INSERT INTO `pitanje` (`IdPit`, `IdNiv`, `IDObl`, `IDKor`, `BrTacno`, `BrNetacno
 (229, 2, 29, 1, 0, 0),
 (230, 2, 27, 1, 0, 0),
 (231, 2, 31, 1, 0, 0),
-(232, 2, 30, 1, 0, 0);
+(232, 2, 30, 1, 0, 0),
+(233, 3, 11, 31, 0, 0),
+(234, 1, 19, 31, 0, 0),
+(271, 2, 8, 1, 0, 0),
+(272, 2, 1, 1, 0, 0),
+(273, 2, 11, 1, 0, 0),
+(274, 2, 11, 1, 0, 0),
+(275, 2, 37, 1, 0, 0),
+(276, 2, 23, 1, 0, 0),
+(277, 2, 38, 1, 0, 0),
+(278, 2, 14, 1, 0, 0),
+(279, 2, 39, 1, 0, 0),
+(280, 2, 1, 1, 0, 0),
+(284, 1, 20, 31, 0, 0),
+(285, 1, 20, 31, 0, 0),
+(286, 2, 20, 31, 0, 0),
+(287, 2, 20, 31, 0, 0),
+(288, 3, 20, 1, 0, 0),
+(289, 2, 20, 31, 0, 0),
+(290, 3, 20, 31, 0, 0),
+(291, 2, 32, 31, 0, 0),
+(292, 2, 31, 31, 0, 0),
+(293, 1, 16, 31, 0, 0),
+(294, 2, 16, 31, 0, 0),
+(295, 2, 19, 31, 0, 0),
+(296, 1, 12, 31, 0, 0),
+(297, 2, 12, 31, 0, 0),
+(298, 1, 40, 31, 0, 0),
+(299, 2, 12, 31, 0, 0),
+(300, 3, 15, 31, 0, 0),
+(301, 2, 15, 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -329,7 +365,7 @@ CREATE TABLE IF NOT EXISTS `reg_korisnik` (
   `Username` varchar(20) NOT NULL,
   `Password` varchar(20) NOT NULL,
   PRIMARY KEY (`IDKor`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `reg_korisnik`
@@ -339,7 +375,9 @@ INSERT INTO `reg_korisnik` (`IDKor`, `Username`, `Password`) VALUES
 (1, 'User', 'Pass'),
 (2, 'Takmicar', 'Takmicar'),
 (3, 'Admin', 'Admin'),
-(4, 'guest', 'guest');
+(4, 'guest', 'guest'),
+(5, 'sp', 'aaaaaaaa1'),
+(31, 'Jelica', 'Jelica');
 
 -- --------------------------------------------------------
 
@@ -554,7 +592,13 @@ INSERT INTO `slika_pitanje` (`IDPit`, `Postavka`, `Slika`, `Odgovor1`, `Odgovor2
 (228, 'Koja je prva nota himne Filipina?', '228.jpg', 'C', 'D', 'FIS', 'G', '4'),
 (229, 'Koje sazveÅ¾Ä‘e predstavljaju zvezde na zastavi drÅ¾ave Papua Nova Gvineja?', '229.gif', 'JuÅ¾ni krst', 'Mali medved', 'Kompas', 'Å tit', '1'),
 (230, 'Koje indoneÅ¾ansko ostrvo je prirodno staniÅ¡te Å¾ivotinje sa slike, po kome nosi ime?', '230.jpg', 'Java', 'Bali', 'Komodo', 'Lomboka', '3'),
-(231, 'Kako se zove Å¾ivotinja sa slike, koja naseljava gotovo celu Australiju, uprkos tome Å¡to ne potiÄe iz Australije?', '231.jpg', 'Gebril', 'Dingo', 'Galago', 'Geko', '2');
+(231, 'Kako se zove Å¾ivotinja sa slike, koja naseljava gotovo celu Australiju, uprkos tome Å¡to ne potiÄe iz Australije?', '231.jpg', 'Gebril', 'Dingo', 'Galago', 'Geko', '2'),
+(287, 'Koji se kompozitor nalazi na slici?', '287.jpg', 'Frederik Å open', 'Johan Sebastian Bah', 'Stevan StojanoviÄ‡ Mokranjac', 'Frnac Å ubert', '1'),
+(288, 'Koji kompozitor se nalazi na slici?', '288', 'Frederik Å open', 'Johan Sebastian Bah', 'Stevan StojanoviÄ‡ Mokranjac', 'Frnac Å ubert', '1'),
+(293, 'Koja se gradjevina nalazi na slici?', '293.jpg', 'Big Ben', 'Koloseum', 'Hram Svetog Save', 'Toranj u Pizi', '1'),
+(294, 'Koja se gradjevina nalazi na slici?', '294.jpg', 'Big Ben', 'Koloseum', 'Hram Svetog Save', 'Toranj u Pizi', '1'),
+(295, 'Koja se gradjevina nalazi na slici?', '295.jpg', 'Big Ben', 'Koloseum', 'Hram Svetog Save', 'Toranj u Pizi', '2'),
+(299, 'Å ta se nalazi na slici?', '299.jpg', 'Sveti grad Inka MaÄu PikÄu', 'Kineski zid', 'TadÅ¾ Mahal', 'Tikal', '1');
 
 -- --------------------------------------------------------
 
@@ -577,7 +621,8 @@ CREATE TABLE IF NOT EXISTS `takmicar` (
 
 INSERT INTO `takmicar` (`IDKor`, `Ime`, `Prezime`, `Slika`) VALUES
 (2, 'Tamkicar', 'Takmicar', NULL),
-(4, 'guest', 'guest', NULL);
+(4, 'guest', 'guest', NULL),
+(5, 'svetski', 'putnik', NULL);
 
 -- --------------------------------------------------------
 
@@ -624,7 +669,25 @@ INSERT INTO `tekst_pitanje` (`IDPit`, `Postavka`, `Odgovor1`, `Odgovor2`, `Odgov
 (222, 'Å ta treba uraditi sa zastavom Singapura da bi se dobila zastava Indonezije?', 'ukloniti zvezde i mesec', 'okrenuti je naopako', 'dodati zvezde i mesec', 'niÅ¡ta, iste su', '1'),
 (223, 'Koja od navedenih boja se ne nalazi na zastavi drÅ¾ave Papua Nova Gvineja?', 'crna', 'Å¾uta', 'crvena', 'plava', '4'),
 (224, 'U kom delu ostrva Nova Gvineja se nalazi drÅ¾ava Papua Nova Gvineja?', 'zapadnom', 'istoÄnom', 'ne nalazi se', 'zauzima celo ostrvo', '2'),
-(225, 'Koja od navedenih reka se nalazi na ostrvu Nova Gvineja?', 'Flaj', 'FiÅ¡', 'Darling', 'Hejstings', '1');
+(225, 'Koja od navedenih reka se nalazi na ostrvu Nova Gvineja?', 'Flaj', 'FiÅ¡', 'Darling', 'Hejstings', '1'),
+(271, 'Iz kog grada je hokejaÅ¡ki klub Bruinsi (Bruins)?', 'Njujork', 'Boston', 'Majami', 'Baltimor', '2'),
+(272, 'Kome je pripadala Aljaska pre SAD?', 'Rusiji', 'Kini', 'Kanadi', 'Japanu', '1'),
+(273, 'Koji je sluÅ¾beni jezik u Brazilu?', 'Engleski', 'Å panski', 'Portugalski', 'Brazilski', '3'),
+(274, 'Koji grad u Brazilu ima najviÅ¡e stanovnika?', 'Rio de Å½aneiro', 'Belo Orizonte', 'Brazilija', 'Sao Paulo', '4'),
+(275, 'Koje pismo je u zvaniÄnoj upotrebi u Mongoliji?', 'Tradicionalno vertikalno pismo', 'Ä†irilica', 'Latinica', 'NiÅ¡ta od navedenog', '2'),
+(276, 'SluÅ¾beni jezik u Kongu je?', 'Francuski', 'NemaÄki', 'Å panski', 'Engleski', '1'),
+(277, 'Koje je najveÄ‡e od japanskih ostrva?', 'Hokaido', 'KjuÅ¡u', 'HonÅ¡u', 'Å ikoku', '3'),
+(278, 'NajveÄ‡i fjord u NorveÅ¡koj je?', 'Sognefjord', 'Gajrangerfjord', 'Oslofjord', 'Hardangerfjord', '1'),
+(279, 'Koji je najveÄ‡i grad Kazahstana?', 'Almati', 'Karagandi', 'Å imkent', 'Astana', '1'),
+(280, 'Za koliko novca je Rusija prodala Aljasku Sjedinjenim AmeriÄkim DrÅ¾avama?', '7,2 miliona dolara', '720 miliona dolara', '7,2 milijarde dolara', '720 milijardi dolara', '1'),
+(284, 'Koji je glavni grad Poljske?', 'VarÅ¡ava', 'Beograd', 'Novi Sad', 'Minhen', '1'),
+(285, 'Koje su boje na zastavi Poljske?', 'crna i bela', 'Å¾uta i zelena', 'crvena i bela', 'plava', '3'),
+(286, 'Koje su boje na zastavi Poljske?', 'crna i bela', 'Å¾uta i zelena', 'crvena i bela', 'plava', '3'),
+(296, 'Koji je glavni grad Perua?', 'Brazilija', 'Lima', 'Rim', 'London', '2'),
+(297, 'Koji je glavni grad Perua?', 'Brazilija', 'Lima', 'Rim', 'London', '2'),
+(298, 'Å ta se od ovoga nalazi u Kini?', 'Sveti grad Inka MaÄu PikÄu', 'Kineski zid', 'TadÅ¾ Mahal', 'Tikal', '2'),
+(300, 'Kada je Islad dobio nezavisnost?', '1918-te', '1919-te', '1915-te', '1920-te', '1'),
+(301, 'Island je bio kolonija koje od sledeÄ‡ih zemalja?', 'Danska', 'Francuska', 'NemaÄka', 'Rusija', '1');
 
 -- --------------------------------------------------------
 
