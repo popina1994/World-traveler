@@ -248,7 +248,12 @@ class ModeratorController extends BaseController {
         Redirect();
     }
         
-    public function izmeniTekstPitanje($id){
+    public function izmeniTekstPitanje(){
+        $secret = $this->input->post('secret');
+        $id= $this->input->post('id');
+        if (!$secret){
+            Redirect();
+        }
         
         $idniv=$this->input->post('nivo');
         $idobl=$this->input->post('oblast');
@@ -258,9 +263,11 @@ class ModeratorController extends BaseController {
         $odgovor3=$this->input->post('o3');
         $odgovor4=$this->input->post('o4');
         $tacan=$this->input->post('tacan');
+        
                 $idkor=$this->session->all_userdata();
         //if(count($idkor)==0){echo "praznoo";}
-        echo $idkor['username'];
+        //echo $idkor['username'];
+                
         $this->load->model('proxies/ModelModerator');
         
         $users=$this->doctrine->em->getRepository ( 'RegKorisnik' )->findBy ( array (
@@ -274,7 +281,7 @@ class ModeratorController extends BaseController {
         
        $this->load->model('proxies/ModelTekstPitanje');
        $this->ModelTekstPitanje->updateTekstPitanje([
- /*id pitanja za izmenu*/   'id'=>$id,
+                            'id'=>$id,
                             'idniv' => $idniv, 
                             'idobl' => $idobl,
                             'idkor' => $idkor,
@@ -286,23 +293,29 @@ class ModeratorController extends BaseController {
                             'tacan' => $tacan
             ]);
         
-        //vidi posle gdje treba da vrati ovaj controller  
-    }    
+        $return['id']=$id;
+       echo json_encode($return);
+    }
         
     public function izmeniSlikaPitanje($id){
-
-        $idniv=$this->input->post('nivo');
-        $idobl=$this->input->post('oblast');
-        $postavka=$this->input->post('postavka');
-        $odgovor1=$this->input->post('o1');
-        $odgovor2=$this->input->post('o2');
-        $odgovor3=$this->input->post('o3');
-        $odgovor4=$this->input->post('o4');
-        $tacan=$this->input->post('tacan');
+        //$secret = $this->input->post('secret');
+       // $id= $this->input->post('id');
+        //if (!$secret){
+        //    Redirect();
+        //}
+        
+        $idniv=$this->input->post('nivo2');
+        $idobl=$this->input->post('oblast2');
+        $postavka=$this->input->post('postavka2');
+        $odgovor1=$this->input->post('o12');
+        $odgovor2=$this->input->post('o22');
+        $odgovor3=$this->input->post('o32');
+        $odgovor4=$this->input->post('o42');
+        $tacan=$this->input->post('tacan2');
                 
         $idkor=$this->session->all_userdata();
         //if(count($idkor)==0){echo "praznoo";}
-        echo $idkor['username'];
+        //echo $idkor['username'];
         $this->load->model('proxies/ModelModerator');
         
         $users=$this->doctrine->em->getRepository ( 'RegKorisnik' )->findBy ( array (
@@ -322,11 +335,11 @@ class ModeratorController extends BaseController {
         $this->load->model('proxies/Uploader');
         $upload_data = $this->Uploader->uploadSlika($novoImeSlike);
         $slika= $upload_data['file_name'];
-        
-        
+        //$slika="dd";
+      
         $this->load->model('proxies/ModelSlikaPitanje');
-        $this->ModelSlikaPitanje->createSlikaPitanje([
- /*id pitanja za izmenu*/   'id'=>$id,
+        $this->ModelSlikaPitanje->updateSlikaPitanje([
+                            'id'=>$id,
                             'idniv' => $idniv, 
                             'idobl' => $idobl,
                             'idkor' => $idkor,
@@ -339,25 +352,27 @@ class ModeratorController extends BaseController {
                             'tacan' => $tacan
             ]);
         
-           
+      //$return['id']=$slika;
+       //echo json_encode($return);     
+        Redirect();
     }
     
     
      public function izmeniLicnostPitanje($id){
 
-        $idniv=$this->input->post('nivo');
-        $idobl=$this->input->post('oblast');
-        $stavka1=$this->input->post('s1');
-        $stavka2=$this->input->post('s2');
-        $stavka3=$this->input->post('s3');
-        $stavka4=$this->input->post('s4');
-        $stavka5=$this->input->post('s5');
-        $stavka6=$this->input->post('s6');
-        $licnost=$this->input->post('licnost');
+        $idniv=$this->input->post('nivo3');
+        $idobl=$this->input->post('oblast3');
+        $stavka1=$this->input->post('s13');
+        $stavka2=$this->input->post('s23');
+        $stavka3=$this->input->post('s33');
+        $stavka4=$this->input->post('s43');
+        $stavka5=$this->input->post('s53');
+        $stavka6=$this->input->post('s63');
+        $licnost=$this->input->post('licnost3');
                 
         $idkor=$this->session->all_userdata();
         //if(count($idkor)==0){echo "praznoo";}
-        echo $idkor['username'];
+        //echo $idkor['username'];
         $this->load->model('proxies/ModelModerator');
         
         $users=$this->doctrine->em->getRepository ( 'RegKorisnik' )->findBy ( array (
@@ -380,7 +395,7 @@ class ModeratorController extends BaseController {
         
         
         $this->load->model('proxies/ModelLicnostPitanje');
-        $this->ModelLicnostPitanje->createLicnostPitanje([
+        $this->ModelLicnostPitanje->updateLicnostPitanje([
  /*id pitanja za izmenu*/   'id'=>$id,
                             'idniv' => $idniv, 
                             'idobl' => $idobl,
@@ -395,7 +410,7 @@ class ModeratorController extends BaseController {
                             'podatak6' => $stavka6
             ]);
         //gdje vraca....
-           
+           Redirect();
     }
     
     
@@ -444,9 +459,12 @@ class ModeratorController extends BaseController {
         
         // Protect from unauthorized access.
         //
+        $id= $this->input->post('id');
         $secret = $this->input->post('secret');
-        if (!$secret)
+        $return['userfile'] = $this->input->post('userfile');
+        if (!$secret){
             Redirect();
+        }
         
  
         
@@ -458,7 +476,7 @@ class ModeratorController extends BaseController {
         $tacan=$this->input->post('tacan');
         $idniv=$this->input->post('nivo');
         $idobl=$this->input->post('oblast');
-        $slika=$this->input->post('userfile');
+        //$slika=$this->input->post('userfile');
    
 
         
@@ -467,14 +485,15 @@ class ModeratorController extends BaseController {
         // In future regex will be used for pass creation.
         //
         $return['error'] = "";
-
-        $return['registerSucc'] = false;
-       if ($odgovor1 == '' || $odgovor2 == '' || $odgovor3 == '' || $odgovor4 == '' || $tacan == '' || $postavka == '' || $idniv == '' || $idobl == ''  ||$slika=='') {
+        
+        $return['succ'] = false;
+       if ($odgovor1 == '' || $odgovor2 == '' || $odgovor3 == '' || $odgovor4 == '' || $tacan == '' || $postavka == '' || $idniv == '' || $idobl == '') {
             $return['error'] = 'Nisu sva polja popunjena';
         }
         else {
-            $return['registerSucc'] = true;
+            $return['succ'] = true;
         }
+        $return['id']=$id;
         echo json_encode($return);
         
     }
@@ -483,9 +502,13 @@ class ModeratorController extends BaseController {
         
         // Protect from unauthorized access.
         //
+        $id= $this->input->post('id');
         $secret = $this->input->post('secret');
-        if (!$secret)
+        $return['userfile'] = $this->input->post('userfile');
+        if (!$secret){
             Redirect();
+        }
+        
         
  
         
@@ -498,7 +521,7 @@ class ModeratorController extends BaseController {
         $licnost=$this->input->post('licnost');
         $idniv=$this->input->post('nivo');
         $idobl=$this->input->post('oblast');
-        $slika=$this->input->post('userfile');
+       // $slika=$this->input->post('userfile');
    
 
         
@@ -508,16 +531,19 @@ class ModeratorController extends BaseController {
         //
         $return['error'] = "";
 
-        $return['registerSucc'] = false;
-       if ($odgovor1 == '' || $odgovor2 == '' || $odgovor3 == '' || $odgovor4 == '' || $tacan == '' || $postavka == '' || $idniv == '' || $idobl == ''  ||$slika=='') {
+        $return['succ'] = false;
+       if ($stavka1 == '' || $stavka2 == '' || $stavka3 == '' || $stavka4 == '' ||$stavka5 == '' ||$stavka6 == '' || $licnost == '' || $idniv == '' || $idobl == ''  ) {
             $return['error'] = 'Nisu sva polja popunjena';
         }
         else {
-            $return['registerSucc'] = true;
+            $return['succ'] = true;
         }
+         
+         
+        $return['id']=$id;
         echo json_encode($return);
         
-    }     
+    }
     
     public function izmeniAutoFill(){
         $secret = $this->input->post('secret');
@@ -530,7 +556,8 @@ class ModeratorController extends BaseController {
         $p1=$this->doctrine->em->find ( "TekstPitanje", $id );
         $p2=$this->doctrine->em->find ( "SlikaPitanje", $id );
         $p3=$this->doctrine->em->find ( "LicnostPitanje", $id );
-        
+       
+         
         if($p1!=null){
                 $this->load->model('proxies/ModelTekstPitanje');
                 $data['id']=$id;
@@ -550,16 +577,45 @@ class ModeratorController extends BaseController {
 
             
         }else if($p2!=null){
+            $this->load->model('proxies/ModelSlikaPitanje');
+            $data['id']=$id;
+            $pd=$this->ModelSlikaPitanje->getSlikaPodaci($data);   
+            
+           $return['idniv']=$pd['idniv'];
+           $return['idobl']=$pd['idobl'];
+           $return['odgovor1']=$pd['odgovor1'];
+           $return['odgovor2']=$pd['odgovor2'];
+           $return['odgovor3']=$pd['odgovor3'];
+           $return['odgovor4']=$pd['odgovor4'];
+           $return['postavka']=$pd['postavka'];
+           $return['tacan']=$pd['tacan'];
+          // $return['slika']=$pd['slika'];
+           $return['id']=$pd['id'];
+           $return['tip']=2;
+            
             
         }else if($p3!=null){
+            $this->load->model('proxies/ModelLicnostPitanje');
+            $data['id']=$id;
+            $pd=$this->ModelLicnostPitanje->getLicnostPodaci($data);  
+            
+           $return['idniv']=$pd['idniv'];
+           $return['idobl']=$pd['idobl'];
+           $return['podatak1']=$pd['podatak1'];
+           $return['podatak2']=$pd['podatak2'];
+           $return['podatak3']=$pd['podatak3'];
+           $return['podatak4']=$pd['podatak4'];
+           $return['podatak5']=$pd['podatak5'];
+           $return['podatak6']=$pd['podatak6'];
+           $return['licnost']=$pd['licnost'];
+           //$return['slika']=$pd['slika'];
+           $return['id']=$pd['id'];
+           $return['tip']=3;
             
         }
 
          echo json_encode($return);
     }
     
-    
-    
-    
-    
+ 
 }

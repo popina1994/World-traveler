@@ -56,10 +56,11 @@ class ModelLicnostPitanje extends CI_Model{
         
         
         public function updateLicnostPitanje($data){
-            $users = $this->doctrine->em->getRepository ( 'Pitanje' )->findBy ( array (
+            /*$users = $this->doctrine->em->getRepository ( 'Pitanje' )->findBy ( array (
 				'idpit' => $data['$id']
-		) );
-            $user= $this->doctrine->em->find ( "LicnostPitanje", $users[0]->getIdpit() );
+		) );*/
+            $users=  $this->doctrine->em->find ( "Pitanje", $data['id'] );
+            $user= $this->doctrine->em->find ( "LicnostPitanje", $users->getIdpit() );
             $user->setLicnost($data['licnost']);
             $user->setPodatak1($data['podatak1']);
             $user->setPodatak2($data['podatak2']);
@@ -68,9 +69,9 @@ class ModelLicnostPitanje extends CI_Model{
             $user->setPodatak5($data['podatak5']);
             $user->setPodatak6($data['podatak6']);
             $user->setSlika($data['slika']);
-            $users[0]->setIdniv($data['idniv']);
-            $users[0]->setIdobl($data['idobl']);
-            $users[0]->setIdkor($data['idkor']);
+            $users->setIdniv($data['idniv']);
+            $users->setIdobl($data['idobl']);
+            $users->setIdkor($data['idkor']);
             $this->doctrine->em->flush();
         }  
         public function getLicnostPodaci($data){

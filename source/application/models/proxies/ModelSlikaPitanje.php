@@ -53,10 +53,9 @@ class ModelSlikaPitanje extends CI_Model {
         
         
         public function updateSlikaPitanje($data){
-            $users = $this->doctrine->em->getRepository ( 'Pitanje' )->findBy ( array (
-				'idpit' => $data['$id']
-		) );
-            $user= $this->doctrine->em->find ( "SlikaPitanje", $users[0]->getIdpit() );
+            
+            $users=  $this->doctrine->em->find ( "Pitanje", $data['id'] );
+            $user= $this->doctrine->em->find ( "SlikaPitanje", $users->getIdpit() );
             $user->setPostavka($data['postavka']);
             $user->setOdgovor1($data['odgovor1']);
             $user->setOdgovor2($data['odgovor2']);
@@ -64,14 +63,14 @@ class ModelSlikaPitanje extends CI_Model {
             $user->setOdgovor4($data['odgovor4']);
             $user->setTacanodgovor($data['tacan']);
             $user->setSlika($data['slika']);
-            $users[0]->setIdniv($data['idniv']);
-            $users[0]->setIdobl($data['idobl']);
-            $users[0]->setIdkor($data['idkor']);
+            $users->setIdniv($data['idniv']);
+            $users->setIdobl($data['idobl']);
+            $users->setIdkor($data['idkor']);
             $this->doctrine->em->flush();
         }
         
         
-        
+     
         public function getSlikaPodaci($data){
             $id=$data['id'];
             $pit=  $this->doctrine->em->find ( "SlikaPitanje", $id );
@@ -84,11 +83,13 @@ class ModelSlikaPitanje extends CI_Model {
            $pd['odgovor4']=$pit->getOdgovor4();
            $pd['postavka']=$pit->getPostavka();
            $pd['tacan']=$pit->getTacanodgovor();
-           $pd['slika']=$pit->getSlika();
+           //$pd['slika']=$pit->getSlika();
            $pd['id']=$id;
             
             return $pd;
         }
+        
+  
         
         
         
