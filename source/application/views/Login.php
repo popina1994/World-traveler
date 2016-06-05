@@ -1,4 +1,8 @@
-
+/**
+ *
+ * @author Jelica Cincović 640/13
+ *
+ */
 <html>
 <head>
 	<title>Svetski putnik</title>

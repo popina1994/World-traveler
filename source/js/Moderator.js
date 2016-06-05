@@ -1,4 +1,8 @@
-
+/**
+ *
+ * @author Jelica Cincović 640/13
+ *
+ */
 /*function show3(){
 	document.getElementById("d1").style.display='inline-block';
 	document.getElementById("b11").disabled=true;
