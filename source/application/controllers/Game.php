@@ -555,88 +555,19 @@ class Game extends BaseController {
         //vraca rang listu za dati nivo(ID)
 	$rez=$this->ModelIgra->getScores($nivo);
         
-        
-        if($rez[0]!=null){
-            $return['user1']=$rez[0]['user'];
-            $return['rank1']=$rez[0]['rank'];  
-            $return['poeni1']=$rez[0]['poeni'];
-                if($rez[0]!=null && $rez[1]!=null){
-                $return['user2']=$rez[1]['user'];
-                $return['rank2']=$rez[1]['rank'];  
-                $return['poeni2']=$rez[1]['poeni'];
-                            if($rez[0]!=null && $rez[1]!=null && $rez[2]!=null){
-                        $return['user3']=$rez[2]['user'];
-                        $return['rank3']=$rez[2]['rank'];  
-                        $return['poeni3']=$rez[2]['poeni'];
-                                                if($rez[0]!=null && $rez[1]!=null && $rez[2]!=null && $rez[3]!=null){
-                                   $return['user4']=$rez[3]['user'];
-                                   $return['rank4']=$rez[3]['rank'];  
-                                   $return['poeni4']=$rez[3]['poeni'];
-                                           if($rez[0]!=null && $rez[1]!=null && $rez[2]!=null && $rez[3]!=null && $rez[4]!=null){
-                                                    $return['user5']=$rez[4]['user'];
-                                                    $return['rank5']=$rez[4]['rank'];  
-                                                    $return['poeni5']=$rez[4]['poeni'];
-
-                                                            if($rez[0]!=null && $rez[1]!=null && $rez[2]!=null && $rez[3]!=null && $rez[4]!=null  && $rez[5]!=null){
-                                                                $return['user6']=$rez[5]['user'];
-                                                                $return['rank6']=$rez[5]['rank'];  
-                                                                $return['poeni6']=$rez[5]['poeni'];
-                                                                
-                                                    if($rez[0]!=null && $rez[1]!=null && $rez[2]!=null && $rez[3]!=null && $rez[4]!=null  && $rez[5]!=null && $rez[6]!=null){
-                                                        $return['user7']=$rez[6]['user'];
-                                                        $return['rank7']=$rez[6]['rank'];  
-                                                        $return['poeni7']=$rez[6]['poeni'];
-                                                    }else{
-                                                        $return['user7']="-";
-                                                        $return['rank7']="-";  
-                                                        $return['poeni7']="-";
-                                                    }
-                                                            }else{
-                                                                $return['user6']="-";
-                                                                $return['rank6']="-";  
-                                                                $return['poeni6']="-";
-                                                            }
-                                                }else{
-                                                    $return['user5']="-";
-                                                    $return['rank5']="-";  
-                                                    $return['poeni5']="-";
-                                                }
-                               }else{
-                                   $return['user4']="-";
-                                   $return['rank4']="-";  
-                                   $return['poeni4']="-";
-                               }
-                    }else{
-                        $return['user3']="-";
-                        $return['rank3']="-";  
-                        $return['poeni3']="-";
-                    }
-            }else{
-                $return['user2']="-";
-                $return['rank2']="-";  
-                $return['poeni2']="-";
-            }
-        }else{
-            $return['user1']="-";
-            $return['rank1']="-";  
-            $return['poeni1']="-";
+        for($i=1; $i<8; $i++){
+            $return['user'.$i]="-";
+            $return['rank'.$i]=''.$i;  
+            $return['poeni'.$i]="-";
         }
-        
-        
-       
-
-        
-       // $return['user1']="-";
-            //$return['rank1']="-";  
-           // $return['poeni1']="-";
-        
  
-        
-        
-        
-        
-        
-        
+       for( $i=1; $i< count($rez); $i++){
+            $return['user'.$i]=$rez[$i-1]['user'];
+            $return['rank'.$i]=$rez[$i-1]['rank'];  
+            $return['poeni'.$i]=$rez[$i-1]['poeni'];
+       }
+       
+       
         
         
         
