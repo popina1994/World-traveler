@@ -3,25 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/models/proxies/ModelTakmicar.php</file>
-            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/models/proxies/ModelSlikaPitanje.php</file>
-            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/models/proxies/ModelTekstPitanje.php</file>
-            <file>file:/C:/wamp64/www/SvetskiPutnik/source/js/alertify.min.js</file>
-            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/controllers/BaseController.php</file>
-            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/views/Administrator.php</file>
-            <file>file:/C:/wamp64/www/SvetskiPutnik/source/js/deleteModerator.js</file>
-            <file>file:/C:/wamp64/www/SvetskiPutnik/source/js/Moderator.js</file>
-            <file>file:/C:/wamp64/www/SvetskiPutnik/source/js/Main.js</file>
-            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/models/proxies/ModelAdministrator.php</file>
-            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/controllers/AdministratorController.php</file>
-            <file>file:/C:/wamp64/www/SvetskiPutnik/source/js/login.js</file>
-            <file>file:/C:/wamp64/www/SvetskiPutnik/source/js/register.js</file>
-            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/models/proxies/ModelRegKorisnik.php</file>
-            <file>file:/C:/wamp64/www/SvetskiPutnik/source/js/alertify.js</file>
-            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/models/proxies/ModelModerator.php</file>
             <file>file:/C:/wamp64/www/SvetskiPutnik/source/js/game.js</file>
-            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/controllers/ModeratorController.php</file>
-            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/controllers/Main.php</file>
             <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/controllers/Game.php</file>
         </group>
     </open-files>
