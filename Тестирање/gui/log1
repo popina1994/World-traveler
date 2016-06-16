@@ -1,0 +1,580 @@
+2016-06-16 16:50:31 [info] Playing test case registracija
+2016-06-16 16:50:31 [debug] createForWindow
+2016-06-16 16:50:31 [debug] browserName: Netscape
+2016-06-16 16:50:31 [debug] userAgent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:42.0) Gecko/20100101 Firefox/42.0
+2016-06-16 16:50:31 [debug] modifyWindow seleniumMarker1466088631396:undefined
+2016-06-16 16:50:31 [debug] _getFrameElement: frameElement=null
+2016-06-16 16:50:31 [debug] isPollingForLoad false, this.pollingForLoad[1]: undefined
+2016-06-16 16:50:31 [debug] Starting pollForLoad (selenium1466088631409): about:home
+2016-06-16 16:50:31 [debug] _getFrameElement: frameElement=null
+2016-06-16 16:50:31 [debug] pollForLoad original (selenium1466088631409): about:home
+2016-06-16 16:50:31 [debug] _isSamePage: currentHref: about:home
+2016-06-16 16:50:31 [debug] _isSamePage: originalHref: about:home
+2016-06-16 16:50:31 [debug] _isSamePage: sameDoc: true
+2016-06-16 16:50:31 [debug] _isSamePage: sameLoc: true
+2016-06-16 16:50:31 [debug] _isSamePage: sameHref: true
+2016-06-16 16:50:31 [debug] _isSamePage: markedLoc: true
+2016-06-16 16:50:31 [debug] pollForLoad continue (selenium1466088631409): undefined
+2016-06-16 16:50:31 [debug] getCurrentWindow newPageLoaded = false
+2016-06-16 16:50:31 [debug] currentTest.start()
+2016-06-16 16:50:31 [debug] currentTest.continueTest() - acquire the next command
+2016-06-16 16:50:31 [debug] currentTest.continueTestAtCurrentCommand()
+2016-06-16 16:50:31 [debug] currentTest.resume() - actually execute
+2016-06-16 16:50:31 [debug] runScheduledPollers
+2016-06-16 16:50:31 [debug] pollForLoad original (selenium1466088631409): about:home
+2016-06-16 16:50:31 [debug] _isSamePage: currentHref: about:home
+2016-06-16 16:50:31 [debug] _isSamePage: originalHref: about:home
+2016-06-16 16:50:31 [debug] _isSamePage: sameDoc: true
+2016-06-16 16:50:31 [debug] _isSamePage: sameLoc: true
+2016-06-16 16:50:31 [debug] _isSamePage: sameHref: true
+2016-06-16 16:50:31 [debug] _isSamePage: markedLoc: true
+2016-06-16 16:50:31 [debug] pollForLoad continue (selenium1466088631409): undefined
+2016-06-16 16:50:31 [debug] runScheduledPollers DONE
+2016-06-16 16:50:31 [info] Executing: |open | /svetskiputnik/source/index.php/main |  |
+2016-06-16 16:50:31 [debug] Command found, going to execute open
+2016-06-16 16:50:31 [debug] modifyWindow seleniumMarker1466088631396:selenium1466088631409
+2016-06-16 16:50:31 [debug] _getFrameElement: frameElement=null
+2016-06-16 16:50:31 [debug] modifySeparateTestWindowToDetectPageLoads: already polling this window: selenium1466088631409
+2016-06-16 16:50:31 [debug] getCurrentWindow newPageLoaded = false
+2016-06-16 16:50:31 [debug] openLocation newPageLoaded = false
+2016-06-16 16:50:31 [debug] runScheduledPollers
+2016-06-16 16:50:31 [debug] pollForLoad original (selenium1466088631409): about:home
+2016-06-16 16:50:31 [debug] _isSamePage: currentHref: about:home
+2016-06-16 16:50:31 [debug] _isSamePage: originalHref: about:home
+2016-06-16 16:50:31 [debug] _isSamePage: sameDoc: true
+2016-06-16 16:50:31 [debug] _isSamePage: sameLoc: true
+2016-06-16 16:50:31 [debug] _isSamePage: sameHref: true
+2016-06-16 16:50:31 [debug] _isSamePage: markedLoc: true
+2016-06-16 16:50:31 [debug] pollForLoad continue (selenium1466088631409): undefined
+2016-06-16 16:50:31 [debug] runScheduledPollers DONE
+2016-06-16 16:50:31 [debug] runScheduledPollers
+2016-06-16 16:50:31 [debug] pollForLoad original (selenium1466088631409): about:home
+2016-06-16 16:50:31 [debug] _isSamePage: currentHref: about:home
+2016-06-16 16:50:31 [debug] _isSamePage: originalHref: about:home
+2016-06-16 16:50:31 [debug] _isSamePage: sameDoc: true
+2016-06-16 16:50:31 [debug] _isSamePage: sameLoc: true
+2016-06-16 16:50:31 [debug] _isSamePage: sameHref: true
+2016-06-16 16:50:31 [debug] _isSamePage: markedLoc: true
+2016-06-16 16:50:31 [debug] pollForLoad continue (selenium1466088631409): undefined
+2016-06-16 16:50:31 [debug] runScheduledPollers DONE
+2016-06-16 16:50:31 [debug] runScheduledPollers
+2016-06-16 16:50:31 [debug] pollForLoad original (selenium1466088631409): about:home
+2016-06-16 16:50:31 [debug] _isSamePage: currentHref: about:home
+2016-06-16 16:50:31 [debug] _isSamePage: originalHref: about:home
+2016-06-16 16:50:31 [debug] _isSamePage: sameDoc: true
+2016-06-16 16:50:31 [debug] _isSamePage: sameLoc: true
+2016-06-16 16:50:31 [debug] _isSamePage: sameHref: true
+2016-06-16 16:50:31 [debug] _isSamePage: markedLoc: true
+2016-06-16 16:50:31 [debug] pollForLoad continue (selenium1466088631409): undefined
+2016-06-16 16:50:31 [debug] runScheduledPollers DONE
+2016-06-16 16:50:31 [debug] runScheduledPollers
+2016-06-16 16:50:31 [debug] pollForLoad original (selenium1466088631409): about:home
+2016-06-16 16:50:31 [debug] _isSamePage: currentHref: about:home
+2016-06-16 16:50:31 [debug] _isSamePage: originalHref: about:home
+2016-06-16 16:50:31 [debug] _isSamePage: sameDoc: true
+2016-06-16 16:50:31 [debug] _isSamePage: sameLoc: true
+2016-06-16 16:50:31 [debug] _isSamePage: sameHref: true
+2016-06-16 16:50:31 [debug] _isSamePage: markedLoc: true
+2016-06-16 16:50:31 [debug] pollForLoad continue (selenium1466088631409): undefined
+2016-06-16 16:50:31 [debug] runScheduledPollers DONE
+2016-06-16 16:50:31 [debug] runScheduledPollers
+2016-06-16 16:50:31 [debug] pollForLoad original (selenium1466088631409): about:home
+2016-06-16 16:50:31 [debug] _isSamePage: currentHref: about:home
+2016-06-16 16:50:31 [debug] _isSamePage: originalHref: about:home
+2016-06-16 16:50:31 [debug] _isSamePage: sameDoc: true
+2016-06-16 16:50:31 [debug] _isSamePage: sameLoc: true
+2016-06-16 16:50:31 [debug] _isSamePage: sameHref: true
+2016-06-16 16:50:31 [debug] _isSamePage: markedLoc: true
+2016-06-16 16:50:31 [debug] pollForLoad continue (selenium1466088631409): undefined
+2016-06-16 16:50:31 [debug] runScheduledPollers DONE
+2016-06-16 16:50:31 [debug] runScheduledPollers
+2016-06-16 16:50:31 [debug] pollForLoad original (selenium1466088631409): about:home
+2016-06-16 16:50:31 [debug] _isSamePage: currentHref: about:home
+2016-06-16 16:50:31 [debug] _isSamePage: originalHref: about:home
+2016-06-16 16:50:31 [debug] _isSamePage: sameDoc: true
+2016-06-16 16:50:31 [debug] _isSamePage: sameLoc: true
+2016-06-16 16:50:31 [debug] _isSamePage: sameHref: true
+2016-06-16 16:50:31 [debug] _isSamePage: markedLoc: true
+2016-06-16 16:50:31 [debug] pollForLoad continue (selenium1466088631409): undefined
+2016-06-16 16:50:31 [debug] runScheduledPollers DONE
+2016-06-16 16:50:31 [debug] runScheduledPollers
+2016-06-16 16:50:31 [debug] pollForLoad original (selenium1466088631409): about:home
+2016-06-16 16:50:31 [debug] _isSamePage: currentHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:31 [debug] _isSamePage: originalHref: about:home
+2016-06-16 16:50:31 [debug] _isSamePage: sameDoc: false
+2016-06-16 16:50:31 [debug] _isSamePage: sameLoc: false
+2016-06-16 16:50:31 [debug] _isSamePage: sameHref: false
+2016-06-16 16:50:31 [debug] _isSamePage: markedLoc: undefined
+2016-06-16 16:50:31 [debug] pollForLoad continue (selenium1466088631409): undefined
+2016-06-16 16:50:31 [debug] runScheduledPollers DONE
+2016-06-16 16:50:31 [debug] runScheduledPollers
+2016-06-16 16:50:31 [debug] pollForLoad original (selenium1466088631409): about:home
+2016-06-16 16:50:31 [debug] _isSamePage: currentHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:31 [debug] _isSamePage: originalHref: about:home
+2016-06-16 16:50:31 [debug] _isSamePage: sameDoc: false
+2016-06-16 16:50:31 [debug] _isSamePage: sameLoc: false
+2016-06-16 16:50:31 [debug] _isSamePage: sameHref: false
+2016-06-16 16:50:31 [debug] _isSamePage: markedLoc: undefined
+2016-06-16 16:50:31 [debug] pollForLoad continue (selenium1466088631409): undefined
+2016-06-16 16:50:31 [debug] runScheduledPollers DONE
+2016-06-16 16:50:31 [debug] runScheduledPollers
+2016-06-16 16:50:31 [debug] pollForLoad original (selenium1466088631409): about:home
+2016-06-16 16:50:31 [debug] _isSamePage: currentHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:31 [debug] _isSamePage: originalHref: about:home
+2016-06-16 16:50:31 [debug] _isSamePage: sameDoc: false
+2016-06-16 16:50:31 [debug] _isSamePage: sameLoc: false
+2016-06-16 16:50:31 [debug] _isSamePage: sameHref: false
+2016-06-16 16:50:31 [debug] _isSamePage: markedLoc: undefined
+2016-06-16 16:50:31 [debug] pollForLoad continue (selenium1466088631409): undefined
+2016-06-16 16:50:31 [debug] runScheduledPollers DONE
+2016-06-16 16:50:32 [debug] runScheduledPollers
+2016-06-16 16:50:32 [debug] pollForLoad original (selenium1466088631409): about:home
+2016-06-16 16:50:32 [debug] _isSamePage: currentHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:32 [debug] _isSamePage: originalHref: about:home
+2016-06-16 16:50:32 [debug] _isSamePage: sameDoc: false
+2016-06-16 16:50:32 [debug] _isSamePage: sameLoc: false
+2016-06-16 16:50:32 [debug] _isSamePage: sameHref: false
+2016-06-16 16:50:32 [debug] _isSamePage: markedLoc: undefined
+2016-06-16 16:50:32 [debug] pollForLoad continue (selenium1466088631409): undefined
+2016-06-16 16:50:32 [debug] runScheduledPollers DONE
+2016-06-16 16:50:32 [debug] runScheduledPollers
+2016-06-16 16:50:32 [debug] pollForLoad original (selenium1466088631409): about:home
+2016-06-16 16:50:32 [debug] _isSamePage: currentHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:32 [debug] _isSamePage: originalHref: about:home
+2016-06-16 16:50:32 [debug] _isSamePage: sameDoc: false
+2016-06-16 16:50:32 [debug] _isSamePage: sameLoc: false
+2016-06-16 16:50:32 [debug] _isSamePage: sameHref: false
+2016-06-16 16:50:32 [debug] _isSamePage: markedLoc: undefined
+2016-06-16 16:50:32 [debug] pollForLoad continue (selenium1466088631409): undefined
+2016-06-16 16:50:32 [debug] runScheduledPollers DONE
+2016-06-16 16:50:32 [debug] runScheduledPollers
+2016-06-16 16:50:32 [debug] pollForLoad original (selenium1466088631409): about:home
+2016-06-16 16:50:32 [debug] _isSamePage: currentHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:32 [debug] _isSamePage: originalHref: about:home
+2016-06-16 16:50:32 [debug] _isSamePage: sameDoc: false
+2016-06-16 16:50:32 [debug] _isSamePage: sameLoc: false
+2016-06-16 16:50:32 [debug] _isSamePage: sameHref: false
+2016-06-16 16:50:32 [debug] _isSamePage: markedLoc: undefined
+2016-06-16 16:50:32 [debug] pollForLoad FINISHED (selenium1466088631409): complete (http://localhost/svetskiputnik/source/index.php/main)
+2016-06-16 16:50:32 [debug] modifyWindow seleniumMarker1466088631396:undefined
+2016-06-16 16:50:32 [debug] _getFrameElement: frameElement=null
+2016-06-16 16:50:32 [debug] isPollingForLoad false, this.pollingForLoad[1]: undefined
+2016-06-16 16:50:32 [debug] Starting pollForLoad (selenium1466088632191): http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:32 [debug] _getFrameElement: frameElement=null
+2016-06-16 16:50:32 [debug] pollForLoad original (selenium1466088632191): http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:32 [debug] _isSamePage: currentHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:32 [debug] _isSamePage: originalHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:32 [debug] _isSamePage: sameDoc: true
+2016-06-16 16:50:32 [debug] _isSamePage: sameLoc: true
+2016-06-16 16:50:32 [debug] _isSamePage: sameHref: true
+2016-06-16 16:50:32 [debug] _isSamePage: markedLoc: true
+2016-06-16 16:50:32 [debug] pollForLoad continue (selenium1466088632191): undefined
+2016-06-16 16:50:32 [debug] _getFrameElement: frameElement=null
+2016-06-16 16:50:32 [debug] _getFrameElement: frameElement=null
+2016-06-16 16:50:32 [debug] pollForLoad (selenium1466088631409) restarting selenium1466088632191
+2016-06-16 16:50:32 [debug] Page load detected
+2016-06-16 16:50:32 [debug] Page load location=http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:32 [debug] runScheduledPollers DONE
+2016-06-16 16:50:32 [debug] condition satisfied; let's continueTest()
+2016-06-16 16:50:32 [debug] Command complete
+2016-06-16 16:50:32 [debug] currentTest.continueTest() - acquire the next command
+2016-06-16 16:50:32 [debug] currentTest.continueTestAtCurrentCommand()
+2016-06-16 16:50:32 [debug] currentTest.resume() - actually execute
+2016-06-16 16:50:32 [debug] runScheduledPollers
+2016-06-16 16:50:32 [debug] pollForLoad original (selenium1466088632191): http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:32 [debug] _isSamePage: currentHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:32 [debug] _isSamePage: originalHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:32 [debug] _isSamePage: sameDoc: true
+2016-06-16 16:50:32 [debug] _isSamePage: sameLoc: true
+2016-06-16 16:50:32 [debug] _isSamePage: sameHref: true
+2016-06-16 16:50:32 [debug] _isSamePage: markedLoc: true
+2016-06-16 16:50:32 [debug] pollForLoad continue (selenium1466088632191): undefined
+2016-06-16 16:50:32 [debug] runScheduledPollers DONE
+2016-06-16 16:50:32 [info] Executing: |click | id=registracija |  |
+2016-06-16 16:50:32 [debug] Command found, going to execute click
+2016-06-16 16:50:32 [debug] modifyWindow seleniumMarker1466088631396:selenium1466088632191
+2016-06-16 16:50:32 [debug] _getFrameElement: frameElement=null
+2016-06-16 16:50:32 [debug] modifySeparateTestWindowToDetectPageLoads: already polling this window: selenium1466088632191
+2016-06-16 16:50:32 [debug] getCurrentWindow newPageLoaded = false
+2016-06-16 16:50:32 [debug] modifyWindow seleniumMarker1466088631396:selenium1466088632191
+2016-06-16 16:50:32 [debug] _getFrameElement: frameElement=null
+2016-06-16 16:50:32 [debug] modifySeparateTestWindowToDetectPageLoads: already polling this window: selenium1466088632191
+2016-06-16 16:50:32 [debug] getCurrentWindow newPageLoaded = false
+2016-06-16 16:50:32 [debug] triggerMouseEvent assumes setting screenX and screenY to 0 is ok
+2016-06-16 16:50:32 [debug] runScheduledPollers
+2016-06-16 16:50:32 [debug] pollForLoad original (selenium1466088632191): http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:32 [debug] _isSamePage: currentHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:32 [debug] _isSamePage: originalHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:32 [debug] _isSamePage: sameDoc: true
+2016-06-16 16:50:32 [debug] _isSamePage: sameLoc: true
+2016-06-16 16:50:32 [debug] _isSamePage: sameHref: true
+2016-06-16 16:50:32 [debug] _isSamePage: markedLoc: true
+2016-06-16 16:50:32 [debug] pollForLoad continue (selenium1466088632191): undefined
+2016-06-16 16:50:32 [debug] runScheduledPollers DONE
+2016-06-16 16:50:32 [debug] null condition; let's continueTest()
+2016-06-16 16:50:32 [debug] Command complete
+2016-06-16 16:50:32 [debug] currentTest.continueTest() - acquire the next command
+2016-06-16 16:50:32 [debug] currentTest.continueTestAtCurrentCommand()
+2016-06-16 16:50:32 [debug] currentTest.resume() - actually execute
+2016-06-16 16:50:32 [debug] runScheduledPollers
+2016-06-16 16:50:32 [debug] pollForLoad original (selenium1466088632191): http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:32 [debug] _isSamePage: currentHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:32 [debug] _isSamePage: originalHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:32 [debug] _isSamePage: sameDoc: true
+2016-06-16 16:50:32 [debug] _isSamePage: sameLoc: true
+2016-06-16 16:50:32 [debug] _isSamePage: sameHref: true
+2016-06-16 16:50:32 [debug] _isSamePage: markedLoc: true
+2016-06-16 16:50:32 [debug] pollForLoad continue (selenium1466088632191): undefined
+2016-06-16 16:50:32 [debug] runScheduledPollers DONE
+2016-06-16 16:50:32 [info] Executing: |type | id=nameRegister | Ime |
+2016-06-16 16:50:32 [debug] Command found, going to execute type
+2016-06-16 16:50:32 [debug] modifyWindow seleniumMarker1466088631396:selenium1466088632191
+2016-06-16 16:50:32 [debug] _getFrameElement: frameElement=null
+2016-06-16 16:50:32 [debug] modifySeparateTestWindowToDetectPageLoads: already polling this window: selenium1466088632191
+2016-06-16 16:50:32 [debug] getCurrentWindow newPageLoaded = false
+2016-06-16 16:50:32 [debug] runScheduledPollers
+2016-06-16 16:50:32 [debug] pollForLoad original (selenium1466088632191): http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:32 [debug] _isSamePage: currentHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:32 [debug] _isSamePage: originalHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:32 [debug] _isSamePage: sameDoc: true
+2016-06-16 16:50:32 [debug] _isSamePage: sameLoc: true
+2016-06-16 16:50:32 [debug] _isSamePage: sameHref: true
+2016-06-16 16:50:32 [debug] _isSamePage: markedLoc: true
+2016-06-16 16:50:32 [debug] pollForLoad continue (selenium1466088632191): undefined
+2016-06-16 16:50:32 [debug] runScheduledPollers DONE
+2016-06-16 16:50:32 [debug] null condition; let's continueTest()
+2016-06-16 16:50:32 [debug] Command complete
+2016-06-16 16:50:32 [debug] currentTest.continueTest() - acquire the next command
+2016-06-16 16:50:32 [debug] currentTest.continueTestAtCurrentCommand()
+2016-06-16 16:50:32 [debug] currentTest.resume() - actually execute
+2016-06-16 16:50:32 [debug] runScheduledPollers
+2016-06-16 16:50:32 [debug] pollForLoad original (selenium1466088632191): http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:32 [debug] _isSamePage: currentHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:32 [debug] _isSamePage: originalHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:32 [debug] _isSamePage: sameDoc: true
+2016-06-16 16:50:32 [debug] _isSamePage: sameLoc: true
+2016-06-16 16:50:32 [debug] _isSamePage: sameHref: true
+2016-06-16 16:50:32 [debug] _isSamePage: markedLoc: true
+2016-06-16 16:50:32 [debug] pollForLoad continue (selenium1466088632191): undefined
+2016-06-16 16:50:32 [debug] runScheduledPollers DONE
+2016-06-16 16:50:32 [info] Executing: |type | id=userNameRegister | user32 |
+2016-06-16 16:50:32 [debug] Command found, going to execute type
+2016-06-16 16:50:32 [debug] modifyWindow seleniumMarker1466088631396:selenium1466088632191
+2016-06-16 16:50:32 [debug] _getFrameElement: frameElement=null
+2016-06-16 16:50:32 [debug] modifySeparateTestWindowToDetectPageLoads: already polling this window: selenium1466088632191
+2016-06-16 16:50:32 [debug] getCurrentWindow newPageLoaded = false
+2016-06-16 16:50:32 [debug] runScheduledPollers
+2016-06-16 16:50:32 [debug] pollForLoad original (selenium1466088632191): http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:32 [debug] _isSamePage: currentHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:32 [debug] _isSamePage: originalHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:32 [debug] _isSamePage: sameDoc: true
+2016-06-16 16:50:32 [debug] _isSamePage: sameLoc: true
+2016-06-16 16:50:32 [debug] _isSamePage: sameHref: true
+2016-06-16 16:50:32 [debug] _isSamePage: markedLoc: true
+2016-06-16 16:50:32 [debug] pollForLoad continue (selenium1466088632191): undefined
+2016-06-16 16:50:32 [debug] runScheduledPollers DONE
+2016-06-16 16:50:32 [debug] null condition; let's continueTest()
+2016-06-16 16:50:32 [debug] Command complete
+2016-06-16 16:50:32 [debug] currentTest.continueTest() - acquire the next command
+2016-06-16 16:50:32 [debug] currentTest.continueTestAtCurrentCommand()
+2016-06-16 16:50:32 [debug] currentTest.resume() - actually execute
+2016-06-16 16:50:32 [debug] runScheduledPollers
+2016-06-16 16:50:32 [debug] pollForLoad original (selenium1466088632191): http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:32 [debug] _isSamePage: currentHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:32 [debug] _isSamePage: originalHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:32 [debug] _isSamePage: sameDoc: true
+2016-06-16 16:50:32 [debug] _isSamePage: sameLoc: true
+2016-06-16 16:50:32 [debug] _isSamePage: sameHref: true
+2016-06-16 16:50:32 [debug] _isSamePage: markedLoc: true
+2016-06-16 16:50:32 [debug] pollForLoad continue (selenium1466088632191): undefined
+2016-06-16 16:50:32 [debug] runScheduledPollers DONE
+2016-06-16 16:50:32 [info] Executing: |type | id=passRegister | aaaaaaaa2 |
+2016-06-16 16:50:32 [debug] Command found, going to execute type
+2016-06-16 16:50:32 [debug] modifyWindow seleniumMarker1466088631396:selenium1466088632191
+2016-06-16 16:50:32 [debug] _getFrameElement: frameElement=null
+2016-06-16 16:50:32 [debug] modifySeparateTestWindowToDetectPageLoads: already polling this window: selenium1466088632191
+2016-06-16 16:50:32 [debug] getCurrentWindow newPageLoaded = false
+2016-06-16 16:50:32 [debug] runScheduledPollers
+2016-06-16 16:50:32 [debug] pollForLoad original (selenium1466088632191): http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:32 [debug] _isSamePage: currentHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:32 [debug] _isSamePage: originalHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:32 [debug] _isSamePage: sameDoc: true
+2016-06-16 16:50:32 [debug] _isSamePage: sameLoc: true
+2016-06-16 16:50:32 [debug] _isSamePage: sameHref: true
+2016-06-16 16:50:32 [debug] _isSamePage: markedLoc: true
+2016-06-16 16:50:32 [debug] pollForLoad continue (selenium1466088632191): undefined
+2016-06-16 16:50:32 [debug] runScheduledPollers DONE
+2016-06-16 16:50:32 [debug] null condition; let's continueTest()
+2016-06-16 16:50:32 [debug] Command complete
+2016-06-16 16:50:32 [debug] currentTest.continueTest() - acquire the next command
+2016-06-16 16:50:32 [debug] currentTest.continueTestAtCurrentCommand()
+2016-06-16 16:50:32 [debug] currentTest.resume() - actually execute
+2016-06-16 16:50:32 [debug] runScheduledPollers
+2016-06-16 16:50:32 [debug] pollForLoad original (selenium1466088632191): http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:32 [debug] _isSamePage: currentHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:32 [debug] _isSamePage: originalHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:32 [debug] _isSamePage: sameDoc: true
+2016-06-16 16:50:32 [debug] _isSamePage: sameLoc: true
+2016-06-16 16:50:32 [debug] _isSamePage: sameHref: true
+2016-06-16 16:50:32 [debug] _isSamePage: markedLoc: true
+2016-06-16 16:50:32 [debug] pollForLoad continue (selenium1466088632191): undefined
+2016-06-16 16:50:32 [debug] runScheduledPollers DONE
+2016-06-16 16:50:32 [info] Executing: |type | id=repeatPass | aaaaaaaa2 |
+2016-06-16 16:50:32 [debug] Command found, going to execute type
+2016-06-16 16:50:32 [debug] modifyWindow seleniumMarker1466088631396:selenium1466088632191
+2016-06-16 16:50:32 [debug] _getFrameElement: frameElement=null
+2016-06-16 16:50:32 [debug] modifySeparateTestWindowToDetectPageLoads: already polling this window: selenium1466088632191
+2016-06-16 16:50:32 [debug] getCurrentWindow newPageLoaded = false
+2016-06-16 16:50:32 [debug] runScheduledPollers
+2016-06-16 16:50:32 [debug] pollForLoad original (selenium1466088632191): http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:32 [debug] _isSamePage: currentHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:32 [debug] _isSamePage: originalHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:32 [debug] _isSamePage: sameDoc: true
+2016-06-16 16:50:32 [debug] _isSamePage: sameLoc: true
+2016-06-16 16:50:32 [debug] _isSamePage: sameHref: true
+2016-06-16 16:50:32 [debug] _isSamePage: markedLoc: true
+2016-06-16 16:50:32 [debug] pollForLoad continue (selenium1466088632191): undefined
+2016-06-16 16:50:32 [debug] runScheduledPollers DONE
+2016-06-16 16:50:32 [debug] null condition; let's continueTest()
+2016-06-16 16:50:32 [debug] Command complete
+2016-06-16 16:50:32 [debug] currentTest.continueTest() - acquire the next command
+2016-06-16 16:50:32 [debug] currentTest.continueTestAtCurrentCommand()
+2016-06-16 16:50:33 [debug] currentTest.resume() - actually execute
+2016-06-16 16:50:33 [debug] runScheduledPollers
+2016-06-16 16:50:33 [debug] pollForLoad original (selenium1466088632191): http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: currentHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: originalHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: sameDoc: true
+2016-06-16 16:50:33 [debug] _isSamePage: sameLoc: true
+2016-06-16 16:50:33 [debug] _isSamePage: sameHref: true
+2016-06-16 16:50:33 [debug] _isSamePage: markedLoc: true
+2016-06-16 16:50:33 [debug] pollForLoad continue (selenium1466088632191): undefined
+2016-06-16 16:50:33 [debug] runScheduledPollers DONE
+2016-06-16 16:50:33 [info] Executing: |click | id=dod2 |  |
+2016-06-16 16:50:33 [debug] Command found, going to execute click
+2016-06-16 16:50:33 [debug] modifyWindow seleniumMarker1466088631396:selenium1466088632191
+2016-06-16 16:50:33 [debug] _getFrameElement: frameElement=null
+2016-06-16 16:50:33 [debug] modifySeparateTestWindowToDetectPageLoads: already polling this window: selenium1466088632191
+2016-06-16 16:50:33 [debug] getCurrentWindow newPageLoaded = false
+2016-06-16 16:50:33 [debug] modifyWindow seleniumMarker1466088631396:selenium1466088632191
+2016-06-16 16:50:33 [debug] _getFrameElement: frameElement=null
+2016-06-16 16:50:33 [debug] modifySeparateTestWindowToDetectPageLoads: already polling this window: selenium1466088632191
+2016-06-16 16:50:33 [debug] getCurrentWindow newPageLoaded = false
+2016-06-16 16:50:33 [debug] triggerMouseEvent assumes setting screenX and screenY to 0 is ok
+2016-06-16 16:50:33 [debug] runScheduledPollers
+2016-06-16 16:50:33 [debug] pollForLoad original (selenium1466088632191): http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: currentHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: originalHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: sameDoc: true
+2016-06-16 16:50:33 [debug] _isSamePage: sameLoc: true
+2016-06-16 16:50:33 [debug] _isSamePage: sameHref: true
+2016-06-16 16:50:33 [debug] _isSamePage: markedLoc: true
+2016-06-16 16:50:33 [debug] pollForLoad continue (selenium1466088632191): undefined
+2016-06-16 16:50:33 [debug] runScheduledPollers DONE
+2016-06-16 16:50:33 [debug] null condition; let's continueTest()
+2016-06-16 16:50:33 [debug] Command complete
+2016-06-16 16:50:33 [debug] currentTest.continueTest() - acquire the next command
+2016-06-16 16:50:33 [debug] currentTest.continueTestAtCurrentCommand()
+2016-06-16 16:50:33 [debug] currentTest.resume() - actually execute
+2016-06-16 16:50:33 [debug] runScheduledPollers
+2016-06-16 16:50:33 [debug] pollForLoad original (selenium1466088632191): http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: currentHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: originalHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: sameDoc: true
+2016-06-16 16:50:33 [debug] _isSamePage: sameLoc: true
+2016-06-16 16:50:33 [debug] _isSamePage: sameHref: true
+2016-06-16 16:50:33 [debug] _isSamePage: markedLoc: true
+2016-06-16 16:50:33 [debug] pollForLoad continue (selenium1466088632191): undefined
+2016-06-16 16:50:33 [debug] runScheduledPollers DONE
+2016-06-16 16:50:33 [info] Executing: |verifyValue | id=surNameRegister |  |
+2016-06-16 16:50:33 [debug] Command found, going to execute verifyValue
+2016-06-16 16:50:33 [debug] modifyWindow seleniumMarker1466088631396:selenium1466088632191
+2016-06-16 16:50:33 [debug] _getFrameElement: frameElement=null
+2016-06-16 16:50:33 [debug] modifySeparateTestWindowToDetectPageLoads: already polling this window: selenium1466088632191
+2016-06-16 16:50:33 [debug] getCurrentWindow newPageLoaded = false
+2016-06-16 16:50:33 [debug] runScheduledPollers
+2016-06-16 16:50:33 [debug] pollForLoad original (selenium1466088632191): http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: currentHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: originalHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: sameDoc: true
+2016-06-16 16:50:33 [debug] _isSamePage: sameLoc: true
+2016-06-16 16:50:33 [debug] _isSamePage: sameHref: true
+2016-06-16 16:50:33 [debug] _isSamePage: markedLoc: true
+2016-06-16 16:50:33 [debug] pollForLoad continue (selenium1466088632191): undefined
+2016-06-16 16:50:33 [debug] runScheduledPollers DONE
+2016-06-16 16:50:33 [debug] null condition; let's continueTest()
+2016-06-16 16:50:33 [debug] Command complete
+2016-06-16 16:50:33 [debug] currentTest.continueTest() - acquire the next command
+2016-06-16 16:50:33 [debug] currentTest.continueTestAtCurrentCommand()
+2016-06-16 16:50:33 [debug] currentTest.resume() - actually execute
+2016-06-16 16:50:33 [debug] runScheduledPollers
+2016-06-16 16:50:33 [debug] pollForLoad original (selenium1466088632191): http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: currentHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: originalHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: sameDoc: true
+2016-06-16 16:50:33 [debug] _isSamePage: sameLoc: true
+2016-06-16 16:50:33 [debug] _isSamePage: sameHref: true
+2016-06-16 16:50:33 [debug] _isSamePage: markedLoc: true
+2016-06-16 16:50:33 [debug] pollForLoad continue (selenium1466088632191): undefined
+2016-06-16 16:50:33 [debug] runScheduledPollers DONE
+2016-06-16 16:50:33 [info] Executing: |verifyValue | id=nameRegister | Ime |
+2016-06-16 16:50:33 [debug] Command found, going to execute verifyValue
+2016-06-16 16:50:33 [debug] modifyWindow seleniumMarker1466088631396:selenium1466088632191
+2016-06-16 16:50:33 [debug] _getFrameElement: frameElement=null
+2016-06-16 16:50:33 [debug] modifySeparateTestWindowToDetectPageLoads: already polling this window: selenium1466088632191
+2016-06-16 16:50:33 [debug] getCurrentWindow newPageLoaded = false
+2016-06-16 16:50:33 [debug] runScheduledPollers
+2016-06-16 16:50:33 [debug] pollForLoad original (selenium1466088632191): http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: currentHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: originalHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: sameDoc: true
+2016-06-16 16:50:33 [debug] _isSamePage: sameLoc: true
+2016-06-16 16:50:33 [debug] _isSamePage: sameHref: true
+2016-06-16 16:50:33 [debug] _isSamePage: markedLoc: true
+2016-06-16 16:50:33 [debug] pollForLoad continue (selenium1466088632191): undefined
+2016-06-16 16:50:33 [debug] runScheduledPollers DONE
+2016-06-16 16:50:33 [debug] null condition; let's continueTest()
+2016-06-16 16:50:33 [debug] Command complete
+2016-06-16 16:50:33 [debug] currentTest.continueTest() - acquire the next command
+2016-06-16 16:50:33 [debug] currentTest.continueTestAtCurrentCommand()
+2016-06-16 16:50:33 [debug] currentTest.resume() - actually execute
+2016-06-16 16:50:33 [debug] runScheduledPollers
+2016-06-16 16:50:33 [debug] pollForLoad original (selenium1466088632191): http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: currentHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: originalHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: sameDoc: true
+2016-06-16 16:50:33 [debug] _isSamePage: sameLoc: true
+2016-06-16 16:50:33 [debug] _isSamePage: sameHref: true
+2016-06-16 16:50:33 [debug] _isSamePage: markedLoc: true
+2016-06-16 16:50:33 [debug] pollForLoad continue (selenium1466088632191): undefined
+2016-06-16 16:50:33 [debug] runScheduledPollers DONE
+2016-06-16 16:50:33 [info] Executing: |click | id=zatv_reg |  |
+2016-06-16 16:50:33 [debug] Command found, going to execute click
+2016-06-16 16:50:33 [debug] modifyWindow seleniumMarker1466088631396:selenium1466088632191
+2016-06-16 16:50:33 [debug] _getFrameElement: frameElement=null
+2016-06-16 16:50:33 [debug] modifySeparateTestWindowToDetectPageLoads: already polling this window: selenium1466088632191
+2016-06-16 16:50:33 [debug] getCurrentWindow newPageLoaded = false
+2016-06-16 16:50:33 [debug] modifyWindow seleniumMarker1466088631396:selenium1466088632191
+2016-06-16 16:50:33 [debug] _getFrameElement: frameElement=null
+2016-06-16 16:50:33 [debug] modifySeparateTestWindowToDetectPageLoads: already polling this window: selenium1466088632191
+2016-06-16 16:50:33 [debug] getCurrentWindow newPageLoaded = false
+2016-06-16 16:50:33 [debug] triggerMouseEvent assumes setting screenX and screenY to 0 is ok
+2016-06-16 16:50:33 [debug] runScheduledPollers
+2016-06-16 16:50:33 [debug] pollForLoad original (selenium1466088632191): http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: currentHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: originalHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: sameDoc: true
+2016-06-16 16:50:33 [debug] _isSamePage: sameLoc: true
+2016-06-16 16:50:33 [debug] _isSamePage: sameHref: true
+2016-06-16 16:50:33 [debug] _isSamePage: markedLoc: true
+2016-06-16 16:50:33 [debug] pollForLoad continue (selenium1466088632191): undefined
+2016-06-16 16:50:33 [debug] runScheduledPollers DONE
+2016-06-16 16:50:33 [debug] null condition; let's continueTest()
+2016-06-16 16:50:33 [debug] Command complete
+2016-06-16 16:50:33 [debug] currentTest.continueTest() - acquire the next command
+2016-06-16 16:50:33 [debug] currentTest.continueTestAtCurrentCommand()
+2016-06-16 16:50:33 [debug] currentTest.resume() - actually execute
+2016-06-16 16:50:33 [debug] runScheduledPollers
+2016-06-16 16:50:33 [debug] pollForLoad original (selenium1466088632191): http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: currentHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: originalHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: sameDoc: true
+2016-06-16 16:50:33 [debug] _isSamePage: sameLoc: true
+2016-06-16 16:50:33 [debug] _isSamePage: sameHref: true
+2016-06-16 16:50:33 [debug] _isSamePage: markedLoc: true
+2016-06-16 16:50:33 [debug] pollForLoad continue (selenium1466088632191): undefined
+2016-06-16 16:50:33 [debug] runScheduledPollers DONE
+2016-06-16 16:50:33 [info] Executing: |click | id=zatv_prij |  |
+2016-06-16 16:50:33 [debug] Command found, going to execute click
+2016-06-16 16:50:33 [debug] modifyWindow seleniumMarker1466088631396:selenium1466088632191
+2016-06-16 16:50:33 [debug] _getFrameElement: frameElement=null
+2016-06-16 16:50:33 [debug] modifySeparateTestWindowToDetectPageLoads: already polling this window: selenium1466088632191
+2016-06-16 16:50:33 [debug] getCurrentWindow newPageLoaded = false
+2016-06-16 16:50:33 [debug] modifyWindow seleniumMarker1466088631396:selenium1466088632191
+2016-06-16 16:50:33 [debug] _getFrameElement: frameElement=null
+2016-06-16 16:50:33 [debug] modifySeparateTestWindowToDetectPageLoads: already polling this window: selenium1466088632191
+2016-06-16 16:50:33 [debug] getCurrentWindow newPageLoaded = false
+2016-06-16 16:50:33 [debug] triggerMouseEvent assumes setting screenX and screenY to 0 is ok
+2016-06-16 16:50:33 [debug] runScheduledPollers
+2016-06-16 16:50:33 [debug] pollForLoad original (selenium1466088632191): http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: currentHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: originalHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: sameDoc: true
+2016-06-16 16:50:33 [debug] _isSamePage: sameLoc: true
+2016-06-16 16:50:33 [debug] _isSamePage: sameHref: true
+2016-06-16 16:50:33 [debug] _isSamePage: markedLoc: true
+2016-06-16 16:50:33 [debug] pollForLoad continue (selenium1466088632191): undefined
+2016-06-16 16:50:33 [debug] runScheduledPollers DONE
+2016-06-16 16:50:33 [debug] null condition; let's continueTest()
+2016-06-16 16:50:33 [debug] Command complete
+2016-06-16 16:50:33 [debug] currentTest.continueTest() - acquire the next command
+2016-06-16 16:50:33 [debug] currentTest.continueTestAtCurrentCommand()
+2016-06-16 16:50:33 [debug] currentTest.resume() - actually execute
+2016-06-16 16:50:33 [debug] runScheduledPollers
+2016-06-16 16:50:33 [debug] pollForLoad original (selenium1466088632191): http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: currentHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: originalHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: sameDoc: true
+2016-06-16 16:50:33 [debug] _isSamePage: sameLoc: true
+2016-06-16 16:50:33 [debug] _isSamePage: sameHref: true
+2016-06-16 16:50:33 [debug] _isSamePage: markedLoc: true
+2016-06-16 16:50:33 [debug] pollForLoad continue (selenium1466088632191): undefined
+2016-06-16 16:50:33 [debug] runScheduledPollers DONE
+2016-06-16 16:50:33 [info] Executing: |click | id=registracija |  |
+2016-06-16 16:50:33 [debug] Command found, going to execute click
+2016-06-16 16:50:33 [debug] modifyWindow seleniumMarker1466088631396:selenium1466088632191
+2016-06-16 16:50:33 [debug] _getFrameElement: frameElement=null
+2016-06-16 16:50:33 [debug] modifySeparateTestWindowToDetectPageLoads: already polling this window: selenium1466088632191
+2016-06-16 16:50:33 [debug] getCurrentWindow newPageLoaded = false
+2016-06-16 16:50:33 [debug] modifyWindow seleniumMarker1466088631396:selenium1466088632191
+2016-06-16 16:50:33 [debug] _getFrameElement: frameElement=null
+2016-06-16 16:50:33 [debug] modifySeparateTestWindowToDetectPageLoads: already polling this window: selenium1466088632191
+2016-06-16 16:50:33 [debug] getCurrentWindow newPageLoaded = false
+2016-06-16 16:50:33 [debug] triggerMouseEvent assumes setting screenX and screenY to 0 is ok
+2016-06-16 16:50:33 [debug] runScheduledPollers
+2016-06-16 16:50:33 [debug] pollForLoad original (selenium1466088632191): http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: currentHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: originalHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: sameDoc: true
+2016-06-16 16:50:33 [debug] _isSamePage: sameLoc: true
+2016-06-16 16:50:33 [debug] _isSamePage: sameHref: true
+2016-06-16 16:50:33 [debug] _isSamePage: markedLoc: true
+2016-06-16 16:50:33 [debug] pollForLoad continue (selenium1466088632191): undefined
+2016-06-16 16:50:33 [debug] runScheduledPollers DONE
+2016-06-16 16:50:33 [debug] null condition; let's continueTest()
+2016-06-16 16:50:33 [debug] Command complete
+2016-06-16 16:50:33 [debug] currentTest.continueTest() - acquire the next command
+2016-06-16 16:50:33 [debug] currentTest.continueTestAtCurrentCommand()
+2016-06-16 16:50:33 [debug] currentTest.resume() - actually execute
+2016-06-16 16:50:33 [debug] runScheduledPollers
+2016-06-16 16:50:33 [debug] pollForLoad original (selenium1466088632191): http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: currentHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: originalHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: sameDoc: true
+2016-06-16 16:50:33 [debug] _isSamePage: sameLoc: true
+2016-06-16 16:50:33 [debug] _isSamePage: sameHref: true
+2016-06-16 16:50:33 [debug] _isSamePage: markedLoc: true
+2016-06-16 16:50:33 [debug] pollForLoad continue (selenium1466088632191): undefined
+2016-06-16 16:50:33 [debug] runScheduledPollers DONE
+2016-06-16 16:50:33 [info] Executing: |verifyValue | id=nameRegister |  |
+2016-06-16 16:50:33 [debug] Command found, going to execute verifyValue
+2016-06-16 16:50:33 [debug] modifyWindow seleniumMarker1466088631396:selenium1466088632191
+2016-06-16 16:50:33 [debug] _getFrameElement: frameElement=null
+2016-06-16 16:50:33 [debug] modifySeparateTestWindowToDetectPageLoads: already polling this window: selenium1466088632191
+2016-06-16 16:50:33 [debug] getCurrentWindow newPageLoaded = false
+2016-06-16 16:50:33 [debug] runScheduledPollers
+2016-06-16 16:50:33 [debug] pollForLoad original (selenium1466088632191): http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: currentHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: originalHref: http://localhost/svetskiputnik/source/index.php/main
+2016-06-16 16:50:33 [debug] _isSamePage: sameDoc: true
+2016-06-16 16:50:33 [debug] _isSamePage: sameLoc: true
+2016-06-16 16:50:33 [debug] _isSamePage: sameHref: true
+2016-06-16 16:50:33 [debug] _isSamePage: markedLoc: true
+2016-06-16 16:50:33 [debug] pollForLoad continue (selenium1466088632191): undefined
+2016-06-16 16:50:33 [debug] runScheduledPollers DONE
+2016-06-16 16:50:34 [debug] null condition; let's continueTest()
+2016-06-16 16:50:34 [debug] Command complete
+2016-06-16 16:50:34 [debug] currentTest.continueTest() - acquire the next command
+2016-06-16 16:50:34 [debug] currentTest.continueTestAtCurrentCommand()
+2016-06-16 16:50:34 [debug] testComplete: failed=false
+2016-06-16 16:50:34 [info] Test case passed
