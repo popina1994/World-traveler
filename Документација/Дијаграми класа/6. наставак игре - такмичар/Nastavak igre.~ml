@@ -1784,7 +1784,7 @@
 <XPD:OBJ name="NameLabel" type="EdgeLabelView" guid="S3EsdKfhBESwXuoPeIMY9AAA">
 <XPD:ATTR name="Alpha" type="real">1,5707963267949</XPD:ATTR>
 <XPD:ATTR name="Distance" type="real">10</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">4 : true</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">4 : igra</XPD:ATTR>
 <XPD:REF name="Model">9teTjeds1Eyk1uY3kpjIYgAA</XPD:REF>
 <XPD:REF name="HostEdge">+z50ZDv4lkOd3s6A3WOSEgAA</XPD:REF>
 </XPD:OBJ>
@@ -1821,7 +1821,7 @@
 <XPD:OBJ name="NameLabel" type="EdgeLabelView" guid="QDwLvYEV5E+VedtRDWd23AAA">
 <XPD:ATTR name="Alpha" type="real">1,5707963267949</XPD:ATTR>
 <XPD:ATTR name="Distance" type="real">10</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">5 : data.dataExists = false</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">5 : data.dataExists = true</XPD:ATTR>
 <XPD:REF name="Model">vFSes5znG0qD6Kq0ZeuaUgAA</XPD:REF>
 <XPD:REF name="HostEdge">WzGJ1pxph02TG7fbjhVTXAAA</XPD:REF>
 </XPD:OBJ>
@@ -2220,7 +2220,7 @@
 <XPD:REF name="Views[3]">pmLhrkNgKUGerx8PRqnZ5gAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="ParticipatingStimuli[3]" type="UMLStimulus" guid="9teTjeds1Eyk1uY3kpjIYgAA">
-<XPD:ATTR name="Name" type="string">true</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">igra</XPD:ATTR>
 <XPD:REF name="Sender">HDatchdVo0KWp3SKHl6KeAAA</XPD:REF>
 <XPD:REF name="Receiver">9grYCShSt067bWksRGnNqgAA</XPD:REF>
 <XPD:OBJ name="Action" type="UMLReturnAction" guid="gDrnduZd3k23DbrCnhHbhAAA">
@@ -2234,7 +2234,7 @@
 <XPD:REF name="Views[3]">+6pLYW66SkOHX+fKzBWLZQAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="ParticipatingStimuli[4]" type="UMLStimulus" guid="vFSes5znG0qD6Kq0ZeuaUgAA">
-<XPD:ATTR name="Name" type="string">data.dataExists = false</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">data.dataExists = true</XPD:ATTR>
 <XPD:REF name="Sender">9grYCShSt067bWksRGnNqgAA</XPD:REF>
 <XPD:REF name="Receiver">je0NUjkcY0GqC3SvhOjSAQAA</XPD:REF>
 <XPD:OBJ name="Action" type="UMLReturnAction" guid="2tVAJEeGNkqPWfUfq+kw2AAA">

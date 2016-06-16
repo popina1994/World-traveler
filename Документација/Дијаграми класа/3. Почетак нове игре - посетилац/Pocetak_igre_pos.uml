@@ -2045,9 +2045,8 @@
 <XPD:REF name="Associations[1]">59a0JO9sfUWl4zTIRhRI2wAA</XPD:REF>
 <XPD:REF name="Associations[2]">tBbddGKEt0GhRS2ZzmtV4wAA</XPD:REF>
 <XPD:REF name="Associations[3]">otdERyPfq0mURAgKAGeQXAAA</XPD:REF>
-<XPD:ATTR name="#Instances" type="integer">2</XPD:ATTR>
-<XPD:REF name="Instances[0]">zZaOWYhRwk2lDO+I2+5OoAAA</XPD:REF>
-<XPD:REF name="Instances[1]">3eeuwIeZNkWGRbfjKQZz1gAA</XPD:REF>
+<XPD:ATTR name="#Instances" type="integer">1</XPD:ATTR>
+<XPD:REF name="Instances[0]">3eeuwIeZNkWGRbfjKQZz1gAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[6]" type="UMLAssociation" guid="HMLGKDjKUUm2nLi92m9MDAAA">
 <XPD:ATTR name="StereotypeProfile" type="string">WAE</XPD:ATTR>
@@ -2159,8 +2158,6 @@
 <XPD:REF name="BehavioralFeature">yW/aYYvD2kiOjSFMZ/SAbwAA</XPD:REF>
 </XPD:OBJ>
 </XPD:OBJ>
-<XPD:ATTR name="#Instances" type="integer">1</XPD:ATTR>
-<XPD:REF name="Instances[0]">avnj3bsWb0KuPdtqRq3gFgAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[8]" type="UMLDependency" guid="bjbyRiyA3k6dSJWvRDbA8gAA">
 <XPD:REF name="Namespace">/iny/zZwMEuaA1rH+esXhwAA</XPD:REF>
@@ -2788,7 +2785,7 @@
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="n4lkOmIbfE65Zjtbct+w6QAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="kp6z4hmeAEuthRMXMHG5jAAA">
 <XPD:ATTR name="FontStyle" type="integer">4</XPD:ATTR>
-<XPD:ATTR name="Text" type="string"> : game.php</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">Game</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="QUYOsFB+FUqiXZqqxcAVAwAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -2812,7 +2809,7 @@
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="x0E8gR5p3ketLcPbUilcTQAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="Cvi0D2jhNUy3VYt89jhYUQAA">
 <XPD:ATTR name="FontStyle" type="integer">4</XPD:ATTR>
-<XPD:ATTR name="Text" type="string"> : ModelIgra.php</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">ModelIgra</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="he5Fl91xmUm2M7ofGHJwBgAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -3886,7 +3883,7 @@
 <XPD:REF name="CollaborationInstanceSet">T3WZjDwVr0Kd/an5OtGhPAAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="ParticipatingInstances[3]" type="UMLObject" guid="zZaOWYhRwk2lDO+I2+5OoAAA">
-<XPD:REF name="Classifier">eZCN56oueUelyQk8B/dIBgAA</XPD:REF>
+<XPD:ATTR name="Name" type="string">Game</XPD:ATTR>
 <XPD:REF name="CollaborationInstanceSet">T3WZjDwVr0Kd/an5OtGhPAAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">2</XPD:ATTR>
 <XPD:REF name="Views[0]">kHxnyeSuD0WJ4vTy2QeHQgAA</XPD:REF>
@@ -3911,7 +3908,7 @@
 <XPD:REF name="ReceivingStimuli[7]">4w9B3EVzb0S6s3DNtLA5kgAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="ParticipatingInstances[4]" type="UMLObject" guid="avnj3bsWb0KuPdtqRq3gFgAA">
-<XPD:REF name="Classifier">CFdjgoJeRUW/30NLObxppgAA</XPD:REF>
+<XPD:ATTR name="Name" type="string">ModelIgra</XPD:ATTR>
 <XPD:REF name="CollaborationInstanceSet">T3WZjDwVr0Kd/an5OtGhPAAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">2</XPD:ATTR>
 <XPD:REF name="Views[0]">eXr9jwvFb0C/T5J9spgYYQAA</XPD:REF>
