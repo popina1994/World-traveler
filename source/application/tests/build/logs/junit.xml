@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="Test" file="D:\Sites\SvetskiPutnik\source\application\tests\models\Test.php" tests="1" assertions="0" failures="1" errors="0" time="0.002723">
-    <testcase name="Warning" assertions="0" time="0.002723">
-      <warning type="PHPUnit_Framework_Warning">Warning
-No tests found in class "Test".
-
-</warning>
-    </testcase>
+  <testsuite name="Test" file="D:\Sites\SvetskiPutnik\source\application\tests\models\Test.php" tests="1" assertions="0" failures="0" errors="0" time="0.059574">
+    <testcase name="test_InputValidation" class="Test" file="D:\Sites\SvetskiPutnik\source\application\tests\models\Test.php" line="23" assertions="0" time="0.059574"/>
   </testsuite>
 </testsuites>

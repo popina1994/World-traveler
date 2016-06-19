@@ -1,4 +1,5 @@
 <?php
+/*
 //Slavko Ivanovic 82/13
 /*
  include APPPATH.'models/entities/Pitanje.php';
@@ -634,6 +635,9 @@ class ModeratorController extends BaseController {
         }
 
          echo json_encode($return);
+    }
+    public function test() {
+
     }
     
  

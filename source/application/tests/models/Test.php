@@ -6,13 +6,24 @@
  * Date: 19.06.2016.
  * Time: 19:37
  */
+
+
 class Test extends TestCase
 {
-    public function RunShit() {
-        $this->assertTrue(true);
+
+
+    public function setUp()
+    {
+        $this->resetInstance();
+        $this->CI->load->model("modeltekstpitanje");
+        $this->objTxt = $this->CI->modeltekstpitanje;
     }
 
-    public function RunShit2() {
-        $this->assertTrue(false);
+
+    public function test_InputValidation()
+    {
+       $this->request("POST", "ModeratorController/test", ['secret'=>false]);
+        //$this->assertContains('error');
     }
+
 }
