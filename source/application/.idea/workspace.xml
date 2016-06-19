@@ -25,8 +25,8 @@
       <file leaf-file-name="TestText.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/models/TestText.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="23" column="9" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
+            <state relative-caret-position="203">
+              <caret line="24" column="9" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -46,7 +46,7 @@
         <entry file="file://$PROJECT_DIR$/tests/models/ModelModeratorTest.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-153">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -203,13 +203,9 @@
       <recent name="C:\Users\Jelica\Documents\svetski-putnik\source\application\tests\controllers" />
     </key>
   </component>
-  <component name="RunManager" selected="PHPUnit.TestAutorizacija (1)">
+  <component name="RunManager" selected="PHPUnit.MainTest">
     <configuration default="false" name="ModelModeratorTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="ModelModeratorTest" configuration_file="$PROJECT_DIR$/tests/phpunit.xml" file="$PROJECT_DIR$/tests/models/ModelModeratorTest.php" scope="Class" use_alternative_configuration_file="true" />
-      <method />
-    </configuration>
-    <configuration default="false" name="TestText" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="TestText" configuration_file="$PROJECT_DIR$/tests/phpunit.xml" file="$PROJECT_DIR$/tests/models/TestText.php" scope="Class" use_alternative_configuration_file="true" />
       <method />
     </configuration>
     <configuration default="false" name="TestAutorizacija" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
@@ -222,6 +218,10 @@
     </configuration>
     <configuration default="false" name="TestAut" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="TestAut" configuration_file="$PROJECT_DIR$/tests/phpunit.xml" file="$PROJECT_DIR$/tests/models/TestAut.php" scope="Class" use_alternative_configuration_file="true" />
+      <method />
+    </configuration>
+    <configuration default="false" name="MainTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="MainTest" configuration_file="$PROJECT_DIR$/tests/phpunit.xml" file="$PROJECT_DIR$/tests/controllers/MainTest.php" scope="Class" use_alternative_configuration_file="true" />
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
@@ -256,18 +256,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="PHPUnit.ModelModeratorTest" />
-      <item index="1" class="java.lang.String" itemvalue="PHPUnit.TestText" />
-      <item index="2" class="java.lang.String" itemvalue="PHPUnit.TestAutorizacija" />
-      <item index="3" class="java.lang.String" itemvalue="PHPUnit.TestAutorizacija (1)" />
-      <item index="4" class="java.lang.String" itemvalue="PHPUnit.TestAut" />
+      <item index="1" class="java.lang.String" itemvalue="PHPUnit.TestAutorizacija" />
+      <item index="2" class="java.lang.String" itemvalue="PHPUnit.TestAutorizacija (1)" />
+      <item index="3" class="java.lang.String" itemvalue="PHPUnit.TestAut" />
+      <item index="4" class="java.lang.String" itemvalue="PHPUnit.MainTest" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="PHPUnit.TestAutorizacija (1)" />
-        <item index="1" class="java.lang.String" itemvalue="PHPUnit.TestAut" />
-        <item index="2" class="java.lang.String" itemvalue="PHPUnit.TestAutorizacija" />
-        <item index="3" class="java.lang.String" itemvalue="PHPUnit.ModelModeratorTest" />
-        <item index="4" class="java.lang.String" itemvalue="PHPUnit.TestText" />
+        <item index="0" class="java.lang.String" itemvalue="PHPUnit.MainTest" />
+        <item index="1" class="java.lang.String" itemvalue="PHPUnit.TestAutorizacija (1)" />
+        <item index="2" class="java.lang.String" itemvalue="PHPUnit.TestAut" />
+        <item index="3" class="java.lang.String" itemvalue="PHPUnit.TestAutorizacija" />
+        <item index="4" class="java.lang.String" itemvalue="PHPUnit.ModelModeratorTest" />
       </list>
     </recent_temporary>
   </component>
@@ -283,16 +283,16 @@
       <updated>1466369280720</updated>
       <workItem from="1466369282099" duration="10000" />
       <workItem from="1466369309472" duration="347000" />
-      <workItem from="1466369675819" duration="3710000" />
+      <workItem from="1466369675819" duration="4265000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ModelModeratorTest - 2016.06.19 at 23h 52m 19s.xml">
-      <configuration name="ModelModeratorTest" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="MainTest - 2016.06.20 at 00h 13m 58s.xml">
+      <configuration name="MainTest" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="ModelModeratorTest - 2016.06.19 at 23h 52m 24s.xml">
-      <configuration name="ModelModeratorTest" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="MainTest - 2016.06.20 at 00h 14m 11s.xml">
+      <configuration name="MainTest" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
     <history-entry file="TestAut - 2016.06.19 at 23h 55m 23s.xml">
       <configuration name="TestAut" configurationId="PHPUnitRunConfigurationType" />
@@ -302,9 +302,6 @@
     </history-entry>
     <history-entry file="TestAut - 2016.06.19 at 23h 56m 26s.xml">
       <configuration name="TestAut" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="TestAutorizacija - 2016.06.19 at 23h 50m 28s.xml">
-      <configuration name="TestAutorizacija" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
     <history-entry file="TestAutorizacija - 2016.06.19 at 23h 52m 54s.xml">
       <configuration name="TestAutorizacija" configurationId="PHPUnitRunConfigurationType" />
@@ -318,12 +315,15 @@
     <history-entry file="TestAutorizacija_(1) - 2016.06.20 at 00h 00m 10s.xml">
       <configuration name="TestAutorizacija (1)" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
+    <history-entry file="TestAutorizacija_(1) - 2016.06.20 at 00h 13m 24s.xml">
+      <configuration name="TestAutorizacija (1)" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4067000" />
+    <option name="totallyTimeSpent" value="4622000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26172465" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -363,8 +363,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/models/TestText.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="23" column="9" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
+        <state relative-caret-position="203">
+          <caret line="24" column="9" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
           <folding />
         </state>
       </provider>
@@ -372,7 +372,7 @@
     <entry file="file://$PROJECT_DIR$/tests/models/ModelModeratorTest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-153">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
         </state>
       </provider>

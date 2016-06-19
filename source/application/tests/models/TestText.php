@@ -8,6 +8,7 @@
  */
 
 
+
 class TestText extends TestCase
 {
 
@@ -35,5 +36,22 @@ class TestText extends TestCase
             'tacan'=>'1', 'postavka'=>'postavka'
         ]));
 
+<<<<<<< HEAD
+=======
+        public function test_InputValidation()
+        {
+            $output = $this->request("POST", "ModeratorController/inputValidationTekstPitanje", ['secret'=>true, 'o1'=>'Slavko', 'o2'=>'Dragana', 'o3' =>'Dorde', 'o4'=>'Jelica',
+                'tacan'=>'1', 'postavka'=>'konj', 'nivo' => 'Beba1', 'oblast'=>'1', 'id' =>'3']);
+            $this->assertContains("error\":\"\"", $output);
+            $output = $this->request("POST", "ModeratorController/inputValidationTekstPitanje", ['secret'=>true, 'o1'=>'Slavko', 'o2'=>'Dragana', 'o3' =>'Dorde', 'o4'=>'Jelica',
+                'tacan'=>'1', 'postavka'=>'konj', 'nivo' => '', 'oblast'=>'1', 'id' =>'3']);
+            $this->assertContains("error\":\"\"", $output);
+        }
+    public function test_CreateText() {
+        $this->assertTrue($this->objTxt->createTekstPitanje(['idniv'=>'Beba', 'idobl'=>'Aljaska', 'idkor' =>'1', 'odgovor1'=>'a', 'odgovor2'=>'b', 'odgovor3'=>'c', 'odgovor4'=>'e',
+            'tacan'=>'1', 'postavka'=>'postavka'
+        ]));
+
+>>>>>>> 6e7e1a0ddd5d87b28bd5a70b5011e72a0bb84383
     }
 }

@@ -10,6 +10,7 @@
 
 class Welcome_test extends TestCase
 {
+	/*
 	public function test_index()
 	{
 		$output = $this->request('GET', ['Welcome', 'index']);
@@ -31,5 +32,5 @@ class Welcome_test extends TestCase
 			$actual,
 			'Your APPPATH seems to be wrong. Check your $application_folder in tests/Bootstrap.php'
 		);
-	}
+	*/
 }
