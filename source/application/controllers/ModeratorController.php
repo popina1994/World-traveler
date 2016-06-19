@@ -79,11 +79,11 @@ class ModeratorController extends BaseController {
         $odgovor4=$this->input->post('o4');
         $tacan=$this->input->post('tacan');
         
-        
+        /*
         $idniv =  $this->doctrine->em->getRepository('NivoTezine')->findBy(array('naziv' => $idniv))[0];
         $idobl = $this->doctrine->em->getRepository('Oblast')->findBy(array('naziv' => $idobl))[0];		
 	$idkor = $this->doctrine->em->find ( "Moderator", $idkor );
-        
+        */
         
         
         
