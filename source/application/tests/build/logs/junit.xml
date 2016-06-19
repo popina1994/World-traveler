@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="TestText" file="C:\Users\Jelica\Documents\svetski-putnik\source\application\tests\models\TestText.php" tests="1" assertions="1" failures="1" errors="0" time="0.216485">
-    <testcase name="test_CreateText" class="TestText" file="C:\Users\Jelica\Documents\svetski-putnik\source\application\tests\models\TestText.php" line="34" assertions="1" time="0.216485">
-      <failure type="PHPUnit_Framework_ExpectationFailedException">TestText::test_CreateText
-Failed asserting that true is false.
-
-C:\Users\Jelica\Documents\svetski-putnik\source\application\tests\models\TestText.php:37
-</failure>
-    </testcase>
+  <testsuite name="TestSlavko" file="C:\Users\Jelica\Documents\svetski-putnik\source\application\tests\models\TestSlavko.php" tests="2" assertions="2" failures="0" errors="0" time="0.029795">
+    <testcase name="test_DateExist" class="TestSlavko" file="C:\Users\Jelica\Documents\svetski-putnik\source\application\tests\models\TestSlavko.php" line="15" assertions="1" time="0.017837"/>
+    <testcase name="test_Move" class="TestSlavko" file="C:\Users\Jelica\Documents\svetski-putnik\source\application\tests\models\TestSlavko.php" line="20" assertions="1" time="0.011958"/>
   </testsuite>
 </testsuites>
