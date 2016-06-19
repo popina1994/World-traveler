@@ -1,0 +1,10 @@
+diff a/source/application/views/Game.php b/source/application/views/Game.php	(rejected hunks)
+@@ -30,7 +30,7 @@
+             <map name="Map" id="Map">
+                 
+                
+-                 <area class="areaMap" id="Severna Afrika" data-target="#myModal" data-toggle="modal"alt="" title="Severna Afrika" href="#" shape="poly" coords="628,317,625,339,622,354,628,363,647,371,669,373,680,385,678,403,672,423,652,434,644,453,636,467,616,465,604,451,553,445,534,446,521,431,505,399,511,370,529,342,543,324,570,307,603,302,631,302" />
++                 <area class="areaMap" id="Severna Afrika"  data-toggle="modal"alt="" title="Severna Afrika" href="#" shape="poly" coords="628,317,625,339,622,354,628,363,647,371,669,373,680,385,678,403,672,423,652,434,644,453,636,467,616,465,604,451,553,445,534,446,521,431,505,399,511,370,529,342,543,324,570,307,603,302,631,302" />
+                  <area class="areaMap" id="Egipat" data-target="#myModal" data-toggle="modal"alt="" title="Egipat" href="#" shape="poly" coords="635,323,632,329,627,337,627,352,631,361,649,369,664,369,674,374,679,384,685,382,701,374,735,369,733,342,723,332,672,322" />
+                  <area class="areaMap" id="Kongo" data-target="#myModal" data-toggle="modal"alt="" title="Kongo" href="#" shape="poly" coords="676,428,667,434,652,437,648,453,641,466,632,469,616,468,610,474,625,492,644,497,662,500,668,513,683,520,698,522,699,501,707,472,706,453,715,457,722,455,718,466,711,471,708,473" />
+                  <area class="areaMap" id="Istočna Afrika" data-target="#myModal" data-toggle="modal"alt="" title="Istočna Afrika" href="#" shape="poly" coords="692,380,685,390,683,407,683,426,694,435,701,443,711,450,723,455,729,459,718,470,707,483,707,501,711,512,714,524,726,516,747,514,748,481,777,465,792,453,796,425,740,374" />
