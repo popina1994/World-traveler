@@ -409,8 +409,12 @@ class Game extends BaseController {
             // Setting zagonetna string.
             //
             $zagonetna = "";
-            for($idx=0; $idx < strlen($enigmaQuestion->getLicnost()); $idx++)
-                $zagonetna[$idx] = '*';
+            $licnost = $enigmaQuestion->getLicnost();
+            for($idx=0; $idx < strlen($licnost); $idx++)
+                if ($licnost[$idx] == ' ')
+                    $zagonetna[$idx] = ' ';
+                else 
+                    $zagonetna[$idx] = '*';
             $this->session->set_userdata('zagonetna', $zagonetna);
             
             
