@@ -645,7 +645,10 @@ class Game extends BaseController {
         $m=false;
         $return['error'] = "";
         $return['updateSucc'] = false;
-        if ($ime == '') {
+        if ($this->session->username === 'guest'){
+            $return['error'] = 'Neregistrovanom korisniku nije dozvoljena ova opcija';
+        }
+        else if ($ime == '') {
             $return['error'] = 'Ime nednostaje';
         }
         else if ($prezime == '') {
