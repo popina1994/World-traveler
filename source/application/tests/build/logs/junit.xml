@@ -1,12 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
+<<<<<<< HEAD
   <testsuite name="TestText" file="D:\Sites\SvetskiPutnik\source\application\tests\models\TestText.php" tests="1" assertions="1" failures="1" errors="0" time="0.274917">
     <testcase name="test_CreateText" class="TestText" file="D:\Sites\SvetskiPutnik\source\application\tests\models\TestText.php" line="33" assertions="1" time="0.274917">
       <failure type="PHPUnit_Framework_ExpectationFailedException">TestText::test_CreateText
 Failed asserting that true is false.
+=======
+<<<<<<< HEAD
+  <testsuite name="Welcome_test" file="C:\Users\Jelica\Documents\svetski-putnik\source\application\tests\controllers\Welcome_test.php" tests="3" assertions="2" failures="0" errors="1" time="0.070973">
+    <testcase name="test_index" class="Welcome_test" file="C:\Users\Jelica\Documents\svetski-putnik\source\application\tests\controllers\Welcome_test.php" line="13" assertions="0" time="0.055557">
+      <error type="PHPUnit_Framework_ExceptionWrapper">Welcome_test::test_index
+PDOException: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+
+C:\Users\Jelica\Documents\svetski-putnik\source\application\libraries\Doctrine\DBAL\Driver\PDOConnection.php:36
+C:\Users\Jelica\Documents\svetski-putnik\source\application\libraries\Doctrine\DBAL\Driver\PDOMySql\Driver.php:47
+C:\Users\Jelica\Documents\svetski-putnik\source\application\libraries\Doctrine\DBAL\Connection.php:350
+C:\Users\Jelica\Documents\svetski-putnik\source\application\libraries\Doctrine\DBAL\Connection.php:627
+C:\Users\Jelica\Documents\svetski-putnik\source\application\libraries\Doctrine\ORM\Persisters\BasicEntityPersister.php:844
+C:\Users\Jelica\Documents\svetski-putnik\source\application\libraries\Doctrine\ORM\EntityRepository.php:157
+C:\Users\Jelica\Documents\svetski-putnik\source\application\models\proxies\ModelIgra.php:148
+C:\Users\Jelica\Documents\svetski-putnik\source\application\controllers\Welcome.php:29
+C:\Users\Jelica\Documents\svetski-putnik\source\application\tests\_ci_phpunit_test\CIPHPUnitTestRequest.php:331
+C:\Users\Jelica\Documents\svetski-putnik\source\application\tests\_ci_phpunit_test\CIPHPUnitTestRequest.php:226
+C:\Users\Jelica\Documents\svetski-putnik\source\application\tests\_ci_phpunit_test\CIPHPUnitTestRequest.php:137
+C:\Users\Jelica\Documents\svetski-putnik\source\application\tests\_ci_phpunit_test\CIPHPUnitTestCase.php:114
+C:\Users\Jelica\Documents\svetski-putnik\source\application\tests\controllers\Welcome_test.php:15
+</error>
+    </testcase>
+    <testcase name="test_method_404" class="Welcome_test" file="C:\Users\Jelica\Documents\svetski-putnik\source\application\tests\controllers\Welcome_test.php" line="19" assertions="1" time="0.014117"/>
+    <testcase name="test_APPPATH" class="Welcome_test" file="C:\Users\Jelica\Documents\svetski-putnik\source\application\tests\controllers\Welcome_test.php" line="25" assertions="1" time="0.001299"/>
+=======
+  <testsuite name="TestText" file="D:\Sites\SvetskiPutnik\source\application\tests\models\TestText.php" tests="1" assertions="2" failures="1" errors="0" time="0.050685">
+    <testcase name="test_InputValidation" class="TestText" file="D:\Sites\SvetskiPutnik\source\application\tests\models\TestText.php" line="23" assertions="2" time="0.050685">
+      <failure type="PHPUnit_Framework_ExpectationFailedException">TestText::test_InputValidation
+Failed asserting that '{"error":"Nisu sva polja popunjena","succ":false,"id":"3"}' contains "error":""".
+>>>>>>> ae936f11a912a2de9a0834adb9b949f732eaad75
 
 D:\Sites\SvetskiPutnik\source\application\tests\models\TestText.php:36
 </failure>
     </testcase>
+>>>>>>> 0aaf259e18c7e06f5758ce51d4f5a3e59f765f0f
   </testsuite>
 </testsuites>
