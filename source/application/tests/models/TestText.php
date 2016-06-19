@@ -20,7 +20,7 @@ class TestText extends TestCase
         $this->objTxt = $this->CI->modeltekstpitanje;
     }
 
-
+    /*
         public function test_InputValidation()
         {
             $output = $this->request("POST", "ModeratorController/inputValidationTekstPitanje", ['secret'=>true, 'o1'=>'Slavko', 'o2'=>'Dragana', 'o3' =>'Dorde', 'o4'=>'Jelica',
@@ -30,6 +30,7 @@ class TestText extends TestCase
                 'tacan'=>'1', 'postavka'=>'konj', 'nivo' => '', 'oblast'=>'1', 'id' =>'3']);
             $this->assertContains("error\":\"\"", $output);
         }
+<<<<<<< HEAD
         public function test_CreateText() {
             $this->assertTrue($this->objTxt->createTekstPitanje(['idniv'=>'Beba', 'idobl'=>'Aljaska', 'idkor' =>'1', 'odgovor1'=>'a', 'odgovor2'=>'b', 'odgovor3'=>'c', 'odgovor4'=>'e',
                 'tacan'=>'1', 'postavka'=>'postavka'
@@ -39,6 +40,14 @@ class TestText extends TestCase
     
     
 
+=======
+    */
+    public function test_CreateText() {
+        $this->assertFalse($this->objTxt->createTekstPitanje(['idniv'=>'Beba', 'idobl'=>'Aljaska', 'idkor' =>'1', 'odgovor1'=>'a', 'odgovor2'=>'b', 'odgovor3'=>'c', 'odgovor4'=>'d',
+            'tacan'=>'1', 'postavka'=>'postavka'
+        ]));
+>>>>>>> 1dfee778669c12d6c03950ad6371cabbd89a6d4f
 
 
+    }
 }

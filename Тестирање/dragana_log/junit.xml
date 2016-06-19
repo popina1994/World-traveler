@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="ModelModeratorTest" file="C:\wamp64\www\konacnopsi\source\application\tests\models\ModelModeratorTest.php" tests="2" assertions="2" failures="0" errors="0" time="0.121007">
+    <testcase name="test_getAllModerators" class="ModelModeratorTest" file="C:\wamp64\www\konacnopsi\source\application\tests\models\ModelModeratorTest.php" line="12" assertions="1" time="0.089005"/>
+    <testcase name="test_createModerator" class="ModelModeratorTest" file="C:\wamp64\www\konacnopsi\source\application\tests\models\ModelModeratorTest.php" line="18" assertions="1" time="0.032002"/>
+  </testsuite>
+</testsuites>

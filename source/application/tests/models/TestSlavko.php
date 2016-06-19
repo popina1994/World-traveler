@@ -2,9 +2,15 @@
 
 /**
  * Created by PhpStorm.
+<<<<<<< HEAD
  * User: popina
  * Date: 20.06.2016.
  * Time: 0:11
+=======
+ * User: slavko
+ * Date: 6/20/2016
+ * Time: 12:48 AM
+>>>>>>> 1dfee778669c12d6c03950ad6371cabbd89a6d4f
  */
 class TestSlavko extends TestCase
 {
@@ -23,6 +29,9 @@ class TestSlavko extends TestCase
         $this->assertContains("correct", $output);
     }
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 1dfee778669c12d6c03950ad6371cabbd89a6d4f
 }
