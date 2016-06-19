@@ -1,5 +1,6 @@
 <?php
 //Slavko Ivanovic 82/13
+/*
  include APPPATH.'models/entities/Pitanje.php';
   include APPPATH.'models/entities/RegKorisnik.php';
  include APPPATH.'models/entities/Oblast.php';
@@ -9,7 +10,7 @@
   include APPPATH.'models/entities/SlikaPitanje.php';
     include APPPATH.'models/entities/TekstPitanje.php';
       include APPPATH.'models/entities/LicnostPitanje.php';
- 
+ */
  //include_once (dirname(__FILE__) . "/uploader.php");
  require_once APPPATH.'controllers/BaseController.php';
 /*
