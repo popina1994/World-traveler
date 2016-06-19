@@ -30,11 +30,15 @@ class TestText extends TestCase
                 'tacan'=>'1', 'postavka'=>'konj', 'nivo' => '', 'oblast'=>'1', 'id' =>'3']);
             $this->assertContains("error\":\"\"", $output);
         }
-    public function test_CreateText() {
-        $this->assertTrue($this->objTxt->createTekstPitanje(['idniv'=>'Beba', 'idobl'=>'Aljaska', 'idkor' =>'1', 'odgovor1'=>'a', 'odgovor2'=>'b', 'odgovor3'=>'c', 'odgovor4'=>'e',
-            'tacan'=>'1', 'postavka'=>'postavka'
-        ]));
+        public function test_CreateText() {
+            $this->assertTrue($this->objTxt->createTekstPitanje(['idniv'=>'Beba', 'idobl'=>'Aljaska', 'idkor' =>'1', 'odgovor1'=>'a', 'odgovor2'=>'b', 'odgovor3'=>'c', 'odgovor4'=>'e',
+                'tacan'=>'1', 'postavka'=>'postavka'
+            ]));
 
-    }
+        }
+    
+    
+
+
 
 }
