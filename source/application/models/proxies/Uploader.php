@@ -3,7 +3,7 @@
 
 class Uploader extends CI_Model {
     
-        public function uploadSlika($novoImeSlike){
+        public function uploadSlika($novoImeSlike, $image){
                 /*Cuvanje slike:*/
         $this->load->helper('form');
         $this->load->helper('html');
@@ -26,7 +26,8 @@ class Uploader extends CI_Model {
                 $config['file_name'] = $novoImeSlike;
 		$this->load->library('upload', $config);
                 
-                $this->upload->do_upload();
+                //$this->upload->do_upload();
+                $this->upload->do_upload($image);
 
        $upload_data = $this->upload->data(); 
        return $upload_data;

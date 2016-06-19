@@ -103,14 +103,12 @@ class ModeratorController extends BaseController {
         Redirect();
     }
     
-    //potrebno ograniciti fino velicinu slike..
-    //potrebno napraviti js fajlove za proveru unetih podataka
-    //potrebno dodati ekstenziju na ime slike, mozda
+ 
     public function createSlikaPitanje(){
         $idniv=$this->input->post('nivos2');
         $idobl=$this->input->post('oblasts2');
-        //OVO TREBA UNCOMMENTOVATI KADA SE NAPRAVI HTML
-      //kod za dohvatanje id-a moderatora
+        $userfile=$this->input->post('userfile');
+     
         
         $idkor=$this->session->all_userdata();
         //if(count($idkor)==0){echo "praznoo";}
@@ -156,7 +154,7 @@ class ModeratorController extends BaseController {
         
 
         $this->load->model('proxies/Uploader');
-        $upload_data = $this->Uploader->uploadSlika($novoImeSlike);
+        $upload_data = $this->Uploader->uploadSlika($novoImeSlike,'userfile');
         $slika= $upload_data['file_name'];
          
 
@@ -181,6 +179,7 @@ class ModeratorController extends BaseController {
     public function createLicnostPitanje(){ 
         $idniv=$this->input->post('nivol3');
         $idobl=$this->input->post('oblastl3');
+        $userfile=$this->input->post('userfilel');
         //OVO TREBA UNCOMMENTOVATI KADA SE NAPRAVI HTML
       //kod za dohvatanje id-a moderatora
         
@@ -230,7 +229,7 @@ class ModeratorController extends BaseController {
         $novoImeSlike=$ID;
         
         $this->load->model('proxies/Uploader');
-        $upload_data = $this->Uploader->uploadSlika($novoImeSlike);
+        $upload_data = $this->Uploader->uploadSlika($novoImeSlike,'userfilel');
         $slika= $upload_data['file_name'];
 
 
@@ -305,7 +304,9 @@ class ModeratorController extends BaseController {
         //}
         
         $idniv=$this->input->post('nivo2');
+
         $idobl=$this->input->post('oblast2');
+        $userfile=$this->input->post('userfileus');
         $postavka=$this->input->post('postavka2');
         $odgovor1=$this->input->post('o12');
         $odgovor2=$this->input->post('o22');
@@ -333,7 +334,7 @@ class ModeratorController extends BaseController {
         
 
         $this->load->model('proxies/Uploader');
-        $upload_data = $this->Uploader->uploadSlika($novoImeSlike);
+        $upload_data = $this->Uploader->uploadSlika($novoImeSlike,'userfileus');
         $slika= $upload_data['file_name'];
         //$slika="dd";
       
@@ -362,6 +363,7 @@ class ModeratorController extends BaseController {
 
         $idniv=$this->input->post('nivo3');
         $idobl=$this->input->post('oblast3');
+        $userfile=$this->input->post('userfileul');
         $stavka1=$this->input->post('s13');
         $stavka2=$this->input->post('s23');
         $stavka3=$this->input->post('s33');
@@ -390,7 +392,7 @@ class ModeratorController extends BaseController {
         
 
         $this->load->model('proxies/Uploader');
-        $upload_data = $this->Uploader->uploadSlika($novoImeSlike);
+        $upload_data = $this->Uploader->uploadSlika($novoImeSlike,'userfileul');
         $slika= $upload_data['file_name'];
         
         
@@ -477,7 +479,7 @@ class ModeratorController extends BaseController {
         }
         
  
-        
+        $memorija=$this->input->post('memorija');
         $postavka=$this->input->post('postavka');
         $odgovor1=$this->input->post('o1');
         $odgovor2=$this->input->post('o2');
@@ -488,7 +490,7 @@ class ModeratorController extends BaseController {
         $idobl=$this->input->post('oblast');
         //$slika=$this->input->post('userfile');
    $return['idniv'] = $idniv;
-
+   $return['memorija']=$memorija;
         
         $this->load->model('proxies/ModelRegKorisnik');
         
@@ -497,8 +499,11 @@ class ModeratorController extends BaseController {
         $return['error'] = "";
         
         $return['succ'] = false;
-       if ($odgovor1 == '' || $odgovor2 == '' || $odgovor3 == '' || $odgovor4 == '' || $tacan == '' || $postavka == '' || $idniv == '' || $idobl == '') {
+       if ($odgovor1 == '' || $odgovor2 == '' || $odgovor3 == '' || $odgovor4 == '' || $tacan == '' || $postavka == '' || $idniv == '' || $idobl == '' || $memorija=='') {
             $return['error'] = 'Nisu sva polja popunjena';
+        }
+        else if(!($memorija=='png' || $memorija=='jpg' || $memorija=='gif')){
+            $return['error'] = 'Neispravna ekstenzija slike';
         }
         else {
             $return['succ'] = true;
@@ -521,7 +526,7 @@ class ModeratorController extends BaseController {
         
         
  
-        
+        $memorija=$this->input->post('memorija');
         $stavka1=$this->input->post('s1');
         $stavka2=$this->input->post('s2');
         $stavka3=$this->input->post('s3');
@@ -542,8 +547,11 @@ class ModeratorController extends BaseController {
         $return['error'] = "";
 
         $return['succ'] = false;
-       if ($stavka1 == '' || $stavka2 == '' || $stavka3 == '' || $stavka4 == '' ||$stavka5 == '' ||$stavka6 == '' || $licnost == '' || $idniv == '' || $idobl == ''  ) {
+       if ($stavka1 == '' || $stavka2 == '' || $stavka3 == '' || $stavka4 == '' ||$stavka5 == '' ||$stavka6 == '' || $licnost == '' || $idniv == '' || $idobl == '' || $memorija=='') {
             $return['error'] = 'Nisu sva polja popunjena';
+        }
+        else if(!($memorija=='png' || $memorija=='jpg' || $memorija=='gif')){
+            $return['error'] = 'Neispravna ekstenzija slike';
         }
         else {
             $return['succ'] = true;
