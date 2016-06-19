@@ -4,10 +4,7 @@
 /*
 * Djordje Zivanovic 0033/2013
 */
- include APPPATH.'models/entities/RegKorisnik.php';
- include APPPATH.'models/entities/Administrator.php';
- include APPPATH.'models/entities/Moderator.php';    
- include APPPATH.'models/entities/Takmicar.php';
+
  
  require_once APPPATH.'controllers/BaseController.php';
 
