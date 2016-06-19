@@ -30,7 +30,7 @@ class BaseController extends CI_Controller{
     
     // LoadView denotes that view should be loaded.
     //
-    protected function Redirect($data) {
+    protected function Redirect($data=[]) {
         
         $this->load->model('proxies/ModelRegKorisnik');
         

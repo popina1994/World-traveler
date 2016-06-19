@@ -325,7 +325,7 @@
                                                                 </select>
                                                                 <p class="help-block"></p><br/>
                                                             </div>
-                                                            Slika:<input type="file" name="userfile" id="userfile"><br /><br/>
+                                                            Slika:<input type="file" name="userfilel" id="userfilel"><br /><br/>
                                                             
                                                             <button class='button2' type='submit' name='submitl'  value=''  id='submitl' >Dodaj pitanje</button>
                                                         </form>
@@ -525,7 +525,7 @@
                                                             </select>
                                                             <p class="help-block"></p><br/>
                                                         </div>
-                                                        Nova Slika:<input type="file" name="userfile" id="userfile"><br /><br/>
+                                                        Nova Slika:<input type="file" name="userfileus" id="userfileus"><br /><br/>
                                                         <button class='button2' type='submit' name='submit2'  value=''  id='submit2' >Potvrdi</button>
                                                     
                                                     </form>
@@ -587,7 +587,7 @@
                                                                 </select>
                                                                 <p class="help-block"></p><br/>
                                                             </div>
-                                                             Nova Slika:<input type="file" name="userfile" id="userfile"><br /><br/>
+                                                             Nova Slika:<input type="file" name="userfileul" id="userfileul"><br /><br/>
                                                             <button class='button2' type='submit' name='submit3'  value=''  id='submit3' >Potvrdi</button>
                                                         
                                                         </form>

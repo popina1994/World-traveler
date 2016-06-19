@@ -22,6 +22,7 @@ class Main extends BaseController {
         // from base class, and it'll make some errors.
         
        //$this->session->sess_destroy();
+
        $this->Redirect(['view'=>'Main']);
          //$this->Redirect(['view'=>'Game']);
         //$this->Redirect(['view'=>'LevelChoice']);

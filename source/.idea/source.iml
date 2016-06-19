@@ -4,5 +4,18 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+<<<<<<< HEAD
+=======
+    <orderEntry type="module-library">
+      <library name="PHARS">
+        <CLASSES>
+          <root url="phar://$MODULE_DIR$/phpunit-5.4.6.phar/" />
+        </CLASSES>
+        <SOURCES>
+          <root url="phar://$MODULE_DIR$/phpunit-5.4.6.phar/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+>>>>>>> 0aaf259e18c7e06f5758ce51d4f5a3e59f765f0f
   </component>
 </module>

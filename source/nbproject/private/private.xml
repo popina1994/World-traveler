@@ -3,7 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/models/proxies/ModelIgra.php</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/models/proxies/ModelTakmicar.php</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/js/Administrator.js</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/js/registerModerator.js</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/views/Moderator.php</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/views/Administrator.php</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/js/Moderator.js</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/js/deleteModerator.js</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/js/izmeniPitanje.js</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/controllers/AdministratorController.php</file>
             <file>file:/C:/wamp64/www/SvetskiPutnik/source/js/game.js</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/js/deletePitanje.js</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/controllers/ModeratorController.php</file>
+            <file>file:/C:/wamp64/www/SvetskiPutnik/source/js/dodajPitanje.js</file>
             <file>file:/C:/wamp64/www/SvetskiPutnik/source/application/controllers/Game.php</file>
         </group>
     </open-files>
