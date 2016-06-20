@@ -6,6 +6,8 @@
 
 
 
+
+
 #row {
     white-space: nowrap; /* important */
     overflow: auto;
@@ -40,7 +42,10 @@ td.rangN{
     #slika_slika2{
       float: left;
       padding: 30px;
-       margin-left: 30px;
+       /*margin-left: 130px;*/
+       padding-left: 200px;
+       align-content: center;
+       text-align: cetner;
         padding-top: 50px;
   }
   
@@ -90,6 +95,13 @@ td.rangN{
       align-items: center;
       text-align: center;
      
+  }
+  
+  #modalEnigma{
+      /*width:1000px;*/
+      
+      align-items: center;
+      text-align: center;
   }
 
 .block {
@@ -262,5 +274,13 @@ td.rangO{
     margin-top: 10px;
     z-index: 60;
     position: absolute;
+}
+
+#me1{
+    width: 1000px;
+}
+
+#me2{
+    width: 1000px;
 }
 

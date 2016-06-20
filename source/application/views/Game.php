@@ -265,10 +265,10 @@
             
             
               <div class="modal fade" id="modalEnigma" role="dialog"data-backdrop="static" data-keyboard="false">
-                <div class="modal-dialog">
+                  <div class="modal-dialog" id="me1">
 
                     <!-- Modal content-->
-                    <div class="modal-content">
+                    <div class="modal-content" id="me2">
                         <div class="modal-header">                  
                             <h4 class="enigmaQuestion"  id ="enigmaQuestion">Zagonetna licnost</h4>
                         </div>
