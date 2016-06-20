@@ -16,7 +16,7 @@ class MainTest extends TestCase
 
 
     public function test_validation(){
-        $output = $this->request("POST", "Main/registerValidation",['secret'=>true,'userNameRegister'=>'usernametest', 'passRegister'=>'passtest1234', 'nameRegister'=>'Dragana', 'surNameRegister'=>'Dragana', 'repeatPass'=>'passtest2']);
+        $output = $this->request("POST", "Main/registerValidation",['secret'=>true,'userNameRegister'=>'usernametest', 'passRegister'=>'passtest1234!A', 'nameRegister'=>'Dragana', 'surNameRegister'=>'Dragana', 'repeatPass'=>'passtest2']);
         $this->assertContains("error\":\"Ne poklapaju se sifre", $output);
 
     }
