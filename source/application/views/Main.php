@@ -187,7 +187,7 @@
                                     <button disabled>Dodaj sliku</button>
                             </td>
                             <td>
-                                    Loznika:
+                                    Loznika: 
                                     <br>
                                     <input type="password" id ="passRegister" name = "passRegister">
                             </td>

@@ -118,7 +118,7 @@ class Main extends BaseController {
 
         $return['registerSucc'] = false;
         if ($name == '') {
-            $return['error'] = 'Ime nednostaje';
+            $return['error'] = 'Ime nedostaje';
         }
         else if ($surName == '') {
             $return['error'] = 'Prezime nedostaje';
@@ -127,7 +127,7 @@ class Main extends BaseController {
             $return['error'] = 'Nepravilno korisnickko ime';
         }
         else if (!preg_match('/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%])[0-9A-Za-z!@#$%]{8,16}$/', $password)) {
-            $return['error'] = 'Neispravan obrazac sifre';
+            $return['error'] = 'Neispravan obrazac sifre; Dužina sifre mora biti u intervalu 8-16 i mora da sadrzi veliko slovo, malo slovo broj i neki znak ';
         }
         else if ($password != $passCheck) {
             $return['error'] = 'Ne poklapaju se sifre';
