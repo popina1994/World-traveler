@@ -225,7 +225,7 @@
       <recent name="C:\Users\Jelica\Documents\svetski-putnik\source\application\tests\controllers" />
     </key>
   </component>
-  <component name="RunManager" selected="PHPUnit.MainTest">
+  <component name="RunManager" selected="PHPUnit.TestText">
     <configuration default="false" name="ModelModeratorTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="ModelModeratorTest" configuration_file="$PROJECT_DIR$/tests/phpunit.xml" file="$PROJECT_DIR$/tests/models/ModelModeratorTest.php" scope="Class" use_alternative_configuration_file="true" />
       <method />
@@ -285,11 +285,11 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="PHPUnit.MainTest" />
-        <item index="1" class="java.lang.String" itemvalue="PHPUnit.TestAutorizacija (1)" />
+        <item index="0" class="java.lang.String" itemvalue="PHPUnit.TestText" />
+        <item index="1" class="java.lang.String" itemvalue="PHPUnit.TestSlavko" />
         <item index="2" class="java.lang.String" itemvalue="PHPUnit.ModelModeratorTest" />
-        <item index="3" class="java.lang.String" itemvalue="PHPUnit.TestSlavko" />
-        <item index="4" class="java.lang.String" itemvalue="PHPUnit.TestText" />
+        <item index="3" class="java.lang.String" itemvalue="PHPUnit.TestAutorizacija (1)" />
+        <item index="4" class="java.lang.String" itemvalue="PHPUnit.MainTest" />
       </list>
     </recent_temporary>
   </component>
@@ -305,31 +305,28 @@
       <updated>1466369280720</updated>
       <workItem from="1466369282099" duration="10000" />
       <workItem from="1466369309472" duration="347000" />
-      <workItem from="1466369675819" duration="7132000" />
+      <workItem from="1466369675819" duration="7233000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MainTest - 2016.06.20 at 00h 59m 02s.xml">
-      <configuration name="MainTest" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
     <history-entry file="MainTest - 2016.06.20 at 02h 55m 39s.xml">
       <configuration name="MainTest" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="ModelModeratorTest - 2016.06.20 at 00h 59m 08s.xml">
-      <configuration name="ModelModeratorTest" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="MainTest - 2016.06.20 at 10h 05m 14s.xml">
+      <configuration name="MainTest" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
     <history-entry file="ModelModeratorTest - 2016.06.20 at 02h 55m 31s.xml">
       <configuration name="ModelModeratorTest" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="TestAutorizacija_(1) - 2016.06.20 at 00h 59m 04s.xml">
-      <configuration name="TestAutorizacija (1)" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="ModelModeratorTest - 2016.06.20 at 10h 05m 23s.xml">
+      <configuration name="ModelModeratorTest" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
     <history-entry file="TestAutorizacija_(1) - 2016.06.20 at 02h 55m 36s.xml">
       <configuration name="TestAutorizacija (1)" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="TestSlavko - 2016.06.20 at 00h 57m 50s.xml">
-      <configuration name="TestSlavko" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="TestAutorizacija_(1) - 2016.06.20 at 10h 05m 18s.xml">
+      <configuration name="TestAutorizacija (1)" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
     <history-entry file="TestSlavko - 2016.06.20 at 00h 59m 10s.xml">
       <configuration name="TestSlavko" configurationId="PHPUnitRunConfigurationType" />
@@ -337,12 +334,15 @@
     <history-entry file="TestSlavko - 2016.06.20 at 02h 55m 27s.xml">
       <configuration name="TestSlavko" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="TestText - 2016.06.20 at 00h 57m 45s.xml">
+    <history-entry file="TestSlavko - 2016.06.20 at 10h 05m 27s.xml">
+      <configuration name="TestSlavko" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="TestText - 2016.06.20 at 10h 05m 32s.xml">
       <configuration name="TestText" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7489000" />
+    <option name="totallyTimeSpent" value="7590000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
