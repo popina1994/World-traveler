@@ -26,7 +26,7 @@
         <entry file="file://$PROJECT_DIR$/tests/models/TestText.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="189">
-              <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+              <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -225,7 +225,7 @@
       <recent name="C:\Users\Jelica\Documents\svetski-putnik\source\application\tests\controllers" />
     </key>
   </component>
-  <component name="RunManager" selected="PHPUnit.TestSlavko">
+  <component name="RunManager" selected="PHPUnit.MainTest">
     <configuration default="false" name="ModelModeratorTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="ModelModeratorTest" configuration_file="$PROJECT_DIR$/tests/phpunit.xml" file="$PROJECT_DIR$/tests/models/ModelModeratorTest.php" scope="Class" use_alternative_configuration_file="true" />
       <method />
@@ -285,10 +285,10 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="PHPUnit.TestSlavko" />
-        <item index="1" class="java.lang.String" itemvalue="PHPUnit.ModelModeratorTest" />
-        <item index="2" class="java.lang.String" itemvalue="PHPUnit.TestAutorizacija (1)" />
-        <item index="3" class="java.lang.String" itemvalue="PHPUnit.MainTest" />
+        <item index="0" class="java.lang.String" itemvalue="PHPUnit.MainTest" />
+        <item index="1" class="java.lang.String" itemvalue="PHPUnit.TestAutorizacija (1)" />
+        <item index="2" class="java.lang.String" itemvalue="PHPUnit.ModelModeratorTest" />
+        <item index="3" class="java.lang.String" itemvalue="PHPUnit.TestSlavko" />
         <item index="4" class="java.lang.String" itemvalue="PHPUnit.TestText" />
       </list>
     </recent_temporary>
@@ -305,7 +305,7 @@
       <updated>1466369280720</updated>
       <workItem from="1466369282099" duration="10000" />
       <workItem from="1466369309472" duration="347000" />
-      <workItem from="1466369675819" duration="7115000" />
+      <workItem from="1466369675819" duration="7132000" />
     </task>
     <servers />
   </component>
@@ -313,20 +313,20 @@
     <history-entry file="MainTest - 2016.06.20 at 00h 59m 02s.xml">
       <configuration name="MainTest" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
+    <history-entry file="MainTest - 2016.06.20 at 02h 55m 39s.xml">
+      <configuration name="MainTest" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
     <history-entry file="ModelModeratorTest - 2016.06.20 at 00h 59m 08s.xml">
       <configuration name="ModelModeratorTest" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="TestAutorizacija_(1) - 2016.06.20 at 00h 52m 06s.xml">
-      <configuration name="TestAutorizacija (1)" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="ModelModeratorTest - 2016.06.20 at 02h 55m 31s.xml">
+      <configuration name="ModelModeratorTest" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
     <history-entry file="TestAutorizacija_(1) - 2016.06.20 at 00h 59m 04s.xml">
       <configuration name="TestAutorizacija (1)" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="TestSlavko - 2016.06.20 at 00h 48m 40s.xml">
-      <configuration name="TestSlavko" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="TestSlavko - 2016.06.20 at 00h 53m 03s.xml">
-      <configuration name="TestSlavko" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="TestAutorizacija_(1) - 2016.06.20 at 02h 55m 36s.xml">
+      <configuration name="TestAutorizacija (1)" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
     <history-entry file="TestSlavko - 2016.06.20 at 00h 57m 50s.xml">
       <configuration name="TestSlavko" configurationId="PHPUnitRunConfigurationType" />
@@ -334,26 +334,26 @@
     <history-entry file="TestSlavko - 2016.06.20 at 00h 59m 10s.xml">
       <configuration name="TestSlavko" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="TestText - 2016.06.20 at 00h 53m 35s.xml">
-      <configuration name="TestText" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="TestSlavko - 2016.06.20 at 02h 55m 27s.xml">
+      <configuration name="TestSlavko" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
     <history-entry file="TestText - 2016.06.20 at 00h 57m 45s.xml">
       <configuration name="TestText" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7472000" />
+    <option name="totallyTimeSpent" value="7489000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26172465" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26172465" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -426,7 +426,7 @@
     <entry file="file://$PROJECT_DIR$/tests/models/TestText.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
-          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding />
         </state>
       </provider>
