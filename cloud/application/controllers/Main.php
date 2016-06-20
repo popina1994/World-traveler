@@ -4,10 +4,11 @@
 /*
 * Djordje Zivanovic 0033/2013
 */
- include APPPATH.'models/entities/RegKorisnik.php';
- include APPPATH.'models/entities/Administrator.php';
- include APPPATH.'models/entities/Moderator.php';    
- include APPPATH.'models/entities/Takmicar.php';
+ //include APPPATH.'models/entities/RegKorisnik.php';
+ //include APPPATH.'models/entities/Administrator.php';
+ //include APPPATH.'models/entities/Moderator.php';    
+ //include APPPATH.'models/entities/Takmicar.php';
+
  
  require_once APPPATH.'controllers/BaseController.php';
 
@@ -22,6 +23,7 @@ class Main extends BaseController {
         // from base class, and it'll make some errors.
         
        //$this->session->sess_destroy();
+
        $this->Redirect(['view'=>'Main']);
          //$this->Redirect(['view'=>'Game']);
         //$this->Redirect(['view'=>'LevelChoice']);
