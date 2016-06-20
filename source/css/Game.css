@@ -57,6 +57,13 @@ td.rangN{
      width: 300px;
   }
   
+   #odg_slika33{
+      float: left;
+      align-items: left;
+      text-align: left;
+     width: 600px;
+  }
+  
   .clear{
       clear:both;
   }

@@ -290,7 +290,7 @@
                             echo form_open('game/conqured', $attrubutesRegister);
                             ?>
                             <p id="naslov"><label for="Enigma"></label></p>
-                        <div id="odg_slika">
+                        <div id="odg_slika33">
                             <label for="markEnigma1">1.   </label>  <label for="answerEnigma1"></label>  <br/>
                             <label for="markEnigma2">2.   </label>  <label for="answerEnigma2"></label> <br/> 
                             <label for="markEnigma3">3.   </label>  <label for="answerEnigma3"></label> <br/>
