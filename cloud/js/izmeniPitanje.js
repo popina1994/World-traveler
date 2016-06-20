@@ -112,6 +112,7 @@ $(document).ready(function(){
               //tekst forma
     $('button[name=submit1]').click( function(event) {
          var form=$('#izmenaForma1');
+         
            
             event.preventDefault();
             $.ajax({
@@ -144,6 +145,18 @@ $(document).ready(function(){
     //slika pitanje
     $('button[name=submit2]').click( function(event) {
          var form=$('#izmenaForma2');
+        var mem=234;
+      
+        var filename = $("#userfileus").val();
+        
+            var extension = filename.replace(/^.*\./, '');
+               if (extension == filename) {
+                extension = '';
+            } else {
+                extension = extension.toLowerCase();
+            }
+        
+        mem=extension;
            
             event.preventDefault();
             $.ajax({
@@ -159,6 +172,7 @@ $(document).ready(function(){
                         o4: $('#o42').val(),
                         tacan: $('#tacan2').val(),
                         userfile: $('#userfile').val(),
+                        memorija: mem,
                         secret : true},
                 dataType: "json", 
                 success:function(data){
@@ -176,7 +190,19 @@ $(document).ready(function(){
     });
     //licnost pitanje
         $('button[name=submit3]').click( function(event) {
-         var form=$('#izmenaForma3');
+        var form=$('#izmenaForma3');
+        var mem=234;
+      
+        var filename = $("#userfileul").val();
+        
+            var extension = filename.replace(/^.*\./, '');
+               if (extension == filename) {
+                extension = '';
+            } else {
+                extension = extension.toLowerCase();
+            }
+        
+        mem=extension;
            
             event.preventDefault();
             $.ajax({
@@ -192,6 +218,7 @@ $(document).ready(function(){
                         s4: $('#s43').val(),
                         s5: $('#s53').val(),
                         s6: $('#s63').val(),
+                        memorija: mem,
                        // tacan: $('#tacan3').val(),
                         //userfile: $('#userfile').val(),
                         secret : true},

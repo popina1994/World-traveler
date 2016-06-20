@@ -1,10 +1,10 @@
 //Slavko Ivanovic 82/13
 
 $(document).ready(function(){
-    
+                           
         $('button[name=submitt]').click( function(event) {
          var form=$('#dodajt');
-           
+         
             event.preventDefault();
             $.ajax({
                 type: "POST",
@@ -24,8 +24,10 @@ $(document).ready(function(){
                     //alertify.error( data.idniv );
                     if(data.succ === true){
                         alertify.success("Uspjesno dodato pitanje! ");
+                        
                         form.submit();
                     }else{
+                        
                         alertify.error( data.error );
                     }
                     
@@ -35,7 +37,19 @@ $(document).ready(function(){
     
     $('button[name=submits]').click( function(event) {
          var form=$('#dodajs');
-           
+         var mem=234;
+      
+        var filename = $("#userfile").val();
+        
+            var extension = filename.replace(/^.*\./, '');
+               if (extension == filename) {
+                extension = '';
+            } else {
+                extension = extension.toLowerCase();
+            }
+        
+        mem=extension;
+
             event.preventDefault();
             $.ajax({
                 type: "POST",
@@ -50,11 +64,12 @@ $(document).ready(function(){
                         o4: $('#o4s2').val(),
                         tacan: $('#tacans2').val(),
                         userfile: $('#userfile').val(),
+                        memorija: mem,
                         secret : true},
                 dataType: "json", 
                 success:function(data){
                    // alertify.error( data.idniv );
-                    if(data.succ === true){
+                    if(data.succ === true){                    
                         alertify.success("Uspjesno dodato pitanje! ");
                         form.submit();
                     }else{
@@ -65,7 +80,20 @@ $(document).ready(function(){
                 });
     });
     $('button[name=submitl]').click( function(event) {
-         var form=$('#dodajl');
+         var form=$('#dodajl'); 
+         var mem=234;
+      
+        var filename = $("#userfilel").val();
+        
+            var extension = filename.replace(/^.*\./, '');
+               if (extension == filename) {
+                extension = '';
+            } else {
+                extension = extension.toLowerCase();
+            }
+        
+        mem=extension;
+
            
             event.preventDefault();
             $.ajax({
@@ -81,8 +109,8 @@ $(document).ready(function(){
                         s4: $('#s4l3').val(),
                         s5: $('#s5l3').val(),
                         s6: $('#s6l3').val(),
-                       // tacan: $('#tacan3').val(),
-                        userfile: $('#userfile').val(),
+                        userfile: $('#userfilel').val(),
+                        memorija: mem,
                         secret : true},
                 dataType: "json", 
                 success:function(data){

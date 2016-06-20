@@ -19,13 +19,19 @@ class ModelTekstPitanje extends CI_Model {
 	}
 	
 	public function createTekstPitanje($data){
+            
+        $idniv =  $this->doctrine->em->getRepository('NivoTezine')->findBy(array('naziv' => $data['idniv']))[0];
+        $idobl = $this->doctrine->em->getRepository('Oblast')->findBy(array('naziv' => $data['idobl']))[0];		
+	$idkor = $this->doctrine->em->find ( "Moderator", $data['idkor'] );
+            
+            
 	
 		$pit = new Pitanje();
 		$pit->setBrnetacno(0);
 		$pit->setBrtacno(0);
-		$pit->setIdniv($data['idniv']);
-		$pit->setIdobl($data['idobl']);
-		$pit->setIdkor($data['idkor']);
+		$pit->setIdniv($idniv);
+		$pit->setIdobl($idobl);
+		$pit->setIdkor($idkor);
 	
 		$tp = new TekstPitanje();
 		$tp->setIdpit($pit);
